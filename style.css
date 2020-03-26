@@ -6,11 +6,11 @@ html {
 
 #content {
   display: block;
-  max-width: 640px;
+  width: 640px;
   margin: 0px auto;
   font-family: Verdana, Geneva, sans-serif;
   font-size: 14px;
-  line-height: 21px;
+  line-height: 25px;
   word-wrap: break-word;
   color: #444;
 }
