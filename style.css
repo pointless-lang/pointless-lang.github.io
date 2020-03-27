@@ -35,12 +35,12 @@ header pre {
 nav {
   color: #777;
   letter-spacing: 1px;
-  margin: 10px 0px 20px 0px;
+  margin: 10px 5px 10px 5px;
 }
 
 nav span {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 15px;
 }
 
 nav a {
@@ -51,7 +51,7 @@ nav a {
 pre, code {
   margin: 10px 0px;
   line-height: 17px;
-  font-family: 'DejaVu Sans Mono';
+  font-family: 'DejaVu Sans Mono', monospace;
   padding: 20px 40px;
 }
 
@@ -62,7 +62,7 @@ pre {
 .result {
   border-top: none;
   margin-top: -10px;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 }
 
 code {
