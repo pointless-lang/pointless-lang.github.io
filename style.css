@@ -43,9 +43,9 @@ nav span {
   padding: 10px 15px;
 }
 
-nav a {
-  text-decoration: none;
+a {
   color: inherit;
+  text-decoration-color: #ccc;
 }
 
 pre, code {
@@ -75,23 +75,9 @@ code {
   padding: 20px;
 }
 
-blockquote {
-  background-color: #f0f0f0;
-  padding: 20px;
-  margin: 5px 0px;
+footer {
+  font-style: italic;
+  color: #888;
+  text-align: center;
+  margin-bottom: 30px;
 }
-
-hr {
-  height: 2px;
-  border: none;
-  background-color: #ddd;
-}
-
-img { 
-  max-width: 100%; 
-  margin: 10px 0px;
-}
-
-h1, h2, h3, h4, h5, h6 { line-height: 100%; }
-p { margin: 25px 0px; }
-a { color: inherit; }
