@@ -9,7 +9,7 @@
 
   <body>
     <div class="content">
-      <header>
+      <a href="/"><header>
         <pre>
      ___           ___           ___           ___          ___            ___        ___           ___           ___     
     /\  \         /\  \         /\  \         /\__\        /\  \          /\__\      /\  \         /\  \         /\  \    
@@ -23,26 +23,19 @@
                  \::/  /       \:\__\         /:/  /                     \:\__\     \:\__\        \::/  /       \::/  /   
                   \/__/         \/__/         \/__/                       \/__/      \/__/         \/__/         \/__/     </pre>
                        
-      </header>
+      </header></a>
 
       <nav>
         <a href="/"><span>HOME</span></a>
-        <a href="examples.html"><span>DOCUMENTATION</span></a>
-        <a href=""><span>EXAMPLES</span></a>
+        <a href=""><span>DOCUMENTATION</span></a>
+        <a href="examples.html"><span>EXAMPLES</span></a>
         <a href=""><span>INSTALL</span></a>
         <a href=""><span>DEVELOPMENT</span></a>
       </nav>
 
       <div class="text">
-        <div>Pointless: a scripting language for learning and fun</div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        A handful of example programs demonstrating various features of Pointless. Copies of these
+        programs can be found in <a href="https://github.com/pointless-lang/pointless/tree/master/lib/examples">https://github.com/pointless-lang/pointless/tree/master/lib/examples</a>
       </div>
 
       <h2 style="font-weight: normal;">100Doors.ptls</h2>
@@ -57,10 +50,8 @@
 </span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>visit</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>100</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
 </span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>println</span><span style='color: #D8DEE9;'>
 
-
 </span><span style='color: #D8DEE9;'>toggle</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>state</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>if</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>state</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>is</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>Closed</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>then</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>Open</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>else</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>Closed</span><span style='color: #D8DEE9;'>
+</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>if</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>state</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>is</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>Closed</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>then</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>Open</span><span style='color: #D8DEE9;'></span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>else</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>Closed</span><span style='color: #D8DEE9;'>
 
 </span><span style='color: #A6ACB9;'>----------------------------------------------------------</span><span style='color: #D8DEE9;'>
 </span><span style='color: #A6ACB9;'>-- door state on iternation number iter is recursively</span><span style='color: #D8DEE9;'>
@@ -70,10 +61,9 @@
 </span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>iter</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>Closed</span><span style='color: #D8DEE9;'>
 </span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>index</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>%</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>iter</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>toggle</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>lastState</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
 </span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>otherwise</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>lastState</span><span style='color: #D8DEE9;'>
-
 </span><span style='color: #D8DEE9;'>}</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>where</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>lastState</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>visit</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>iter</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>-</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>index</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'></span>
-      </code>
+</span>
+</code>
 
       <pre class="result">$ ./pointless scratchpad
 
@@ -107,8 +97,8 @@
 </span><span style='color: #D8DEE9;'>showBottle</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
 </span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>format</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"{} {}"</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>bottleStr</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
 </span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>where</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>bottleStr</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>if</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>then</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>"bottle"</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>else</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>"bottles"</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'></span>
-      </code>
+</span>
+</code>
 
       <pre class="result">$ ./pointless scratchpad
 
@@ -159,6 +149,7 @@ You take one down, pass it around, no more bottles of beer on the wall!
  16: 
  17: Ooh, black and yellow!
  18: Let's shake it up a little
+ ...
 </pre>
 
       <h2 style="font-weight: normal;">collatz.ptls</h2>
@@ -251,7 +242,7 @@ You take one down, pass it around, no more bottles of beer on the wall!
       <pre class="result">
 
 (chart.ptls doesn't have an output variable defined, so we can't execute it directly,
- but we can import it to use its functions in other scripts, as seen in collats.ptls)
+ but we can import it to use its functions in other scripts, as seen in collatz.ptls)
       </pre>
 
       <h2 style="font-weight: normal;">permutations.ptls</h2>
