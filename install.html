@@ -35,15 +35,47 @@
       </nav>
 
       <div class="text">
-        <h3>Install</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <h3>Installation</h3>
+
+        <h4>Linux and Mac</h4>
+
+        <p>You'll need** to have both git and Make installed, as well as a C compiler:</p>
+
+        <div><a href="https://stackoverflow.com/questions/10265742/how-to-install-make-and-gcc-on-a-mac">
+          https://stackoverflow.com/questions/10265742/how-to-install-make-and-gcc-on-a-mac
+        </a></div>
+
+        <div><a href="https://linuxize.com/post/how-to-install-gcc-compiler-on-ubuntu-18-04/">
+          https://linuxize.com/post/how-to-install-gcc-compiler-on-ubuntu-18-04/
+        </a></div>
+
+        <div><a href="https://git-scm.com/downloads">
+          https://git-scm.com/downloads
+        </a></div>
+
+        <p>1: Clone the repository</p>
+        <pre>git clone https://github.com/pointless-lang/pointless.git</pre>
+
+        <p>2: Enter the repo directory</p>
+        <pre>cd pointless</pre>
+
+        <p>3: Build the project with GCC*</p>
+        <pre>make opt -B</pre>
+
+        <p>4: Test the build with a hello world script</p>
+        <pre>echo 'output = println("Hello World!")' > hello.ptls
+./pointless hello.ptls</pre>
+
+        <p>*To use a compiler other than GCC</p>
+        <pre>make CC=clang opt -B</pre>
+
+        <p>**If you're on linux (or WSL on windows), you may find that the binary in the repo (built for Ubuntu 18.04) works out-of-the-box. You can test this by replacing step 3 above with the following command</p>
+        <pre>chmod 755 pointless</pre>
+
+        <h4>Windows</h4>
+
+        <p>You can try Pointless on windows by installing the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a> (WSL) and using it to run the commands above.</p>
+
       </div>
 
       <footer>

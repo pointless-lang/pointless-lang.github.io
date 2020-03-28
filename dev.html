@@ -36,14 +36,37 @@
 
       <div class="text">
         <h3>Development</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+
+        <h4>Remaining technical issues:</h4>
+        <ul>
+          <li>gc is slow</li>
+          <p>Heap becomes fragmented over time, leading to slowdown</p>
+
+          <li>gc is untested</li>
+          <p>Needs to be tested</p>
+
+          <li>vm stack traces are could be improved</li>
+          <p>Tail-call optimization currently leads to poor stack-traces</p>
+
+          <li>vm code is poorly structured</li>
+          <p>VM implementation is spread across header files - need to find a way to make the vm modular without sacrificing performance / compiler optimizations (mainly inlining)</p>
+
+          <li>compiler doesn't optimize bytecode</li>
+          <p>Many opportunities to improve performance here</p>
+
+          <li>vm is slow</li>
+          <p>Could be optimized in many ways - but need benchmarks first</p>
+
+          <li>io interface is limited</li>
+          <p>Currently can only read from / write to stdin / stdout</p>
+
+          <li>visible mutation</li>
+          <p>Updating maps, sets, and arrays results in mutations that are visible to the user - accessing a stale reference to an updated object should result in a runtime error</p>
+
+          <li>better installtion instructions</li>
+          <p>Installation process could be made more robust / automated. Windows installation should not rely on the WSL.</p>
+
+        </ul>
       </div>
 
       <footer>
