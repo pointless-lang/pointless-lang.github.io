@@ -37,6 +37,23 @@
       <div class="text">
         <h3>Development</h3>
 
+        <div>
+          Source code can be found at <a href="https://github.com/pointless-lang/pointless">https://github.com/pointless-lang/pointless</a>
+        </div>.
+
+        <div>
+          Project can be built with optimizations using "make opt" (use "make opt -B") for first build. Alternatively, "make dev" will create binaries in "./debug" which will print the output from the tokenizer, parser, and compiler, which can be used to run the test cases in "./tests/*/".
+        </div>
+
+        <h4>Future features:</h4>
+        <ul>
+          <li>web ide</li>
+          <p>Use emscripten to compile Pointless to wasm, build online code demo playground</p>
+
+          <li>exports</li>
+          <p>provide a way to specify which definitions a file export when it is imported</p>
+        </ul>
+
         <h4>Remaining technical issues:</h4>
         <ul>
           <li>gc is slow</li>
@@ -63,8 +80,11 @@
           <li>visible mutation</li>
           <p>Updating maps, sets, and arrays results in mutations that are visible to the user - accessing a stale reference to an updated object should result in a runtime error</p>
 
-          <li>better installtion instructions</li>
-          <p>Installation process could be made more robust / automated. Windows installation should not rely on the WSL.</p>
+          <li>better installation instructions</li>
+          <p>Installation process could be made more robust / automated. Windows installation should not rely on the WSL</p>
+
+          <li>pointless must be called from directory containing prelude files</li>
+          <p>need to find portable way to get the directory of the c source files</p>
 
         </ul>
       </div>
