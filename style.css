@@ -52,7 +52,8 @@ pre, code {
   margin: 10px 0px;
   line-height: 17px;
   font-family: 'DejaVu Sans Mono', monospace;
-  padding: 20px 40px;
+  padding: 25px 30px 10px 30px;
+  overflow-x: scroll;
 }
 
 pre {
