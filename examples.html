@@ -46,7 +46,7 @@
         </p>
       </div>
 
-      <h2 style="font-weight: normal; margin-left: 20px;">100Doors.ptls</h2>
+      <h2 id="100Doors" style="font-weight: normal; margin-left: 20px;">100Doors.ptls</h2>
 
       <code><span style='color: #A6ACB9;'>----------------------------------------------------------</span><span style='color: #D8DEE9;'>
 </span><span style='color: #A6ACB9;'>-- solution to the '100 doors' problem</span><span style='color: #D8DEE9;'>
@@ -76,7 +76,7 @@
 [Open, Closed, Closed, Open, Closed, Closed, Closed, Closed, Open, Closed ...]
       </pre>
 
-      <h2 style="font-weight: normal; margin-left: 20px;">beer.ptls</h2>
+      <h2 id="beer" style="font-weight: normal; margin-left: 20px;">beer.ptls</h2>
 
       <code><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
 </span><span style='color: #A6ACB9;'>-- print the lyrics to the song '99 bottles of beer'</span><span style='color: #D8DEE9;'>
@@ -117,7 +117,7 @@ You take one down, pass it around, 1 bottle of beer on the wall!
 You take one down, pass it around, no more bottles of beer on the wall!
       </pre>
 
-      <h2 style="font-weight: normal; margin-left: 20px;">echoLines.ptls</h2>
+      <h2 id="echoLines" style="font-weight: normal; margin-left: 20px;">echoLines.ptls</h2>
 
       <code><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
 </span><span style='color: #A6ACB9;'>-- read lines from stdin, and print each line along</span><span style='color: #D8DEE9;'>
@@ -154,9 +154,9 @@ You take one down, pass it around, no more bottles of beer on the wall!
  ...
 </pre>
 
-      <h2 style="font-weight: normal; margin-left: 20px;">guess.ptls</h2>
+      <h2 id="guess" style="font-weight: normal; margin-left: 20px;">guess.ptls</h2>
 
-      <code><span style='color: #D8DEE9;'>number</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>round</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>1000</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>*</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>IO</span><span style='color: #D8DEE9;'>.!getRand</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
+      <code><span style='color: #D8DEE9;'>number</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>randRange</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>1000</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
 
 </span><span style='color: #D8DEE9;'>getResponse</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
 </span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>format</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"{} is {}"</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>compareGuess</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
@@ -173,8 +173,8 @@ You take one down, pass it around, no more bottles of beer on the wall!
 </span><span style='color: #A6ACB9;'>-- progarm reports whether guess is above or below the</span><span style='color: #D8DEE9;'>
 </span><span style='color: #A6ACB9;'>-- target number - continues until correct guess is entered</span><span style='color: #D8DEE9;'>
 
-</span><span style='color: #6699cc;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>readLines</span><span style='color: #D8DEE9;'>
+</span><span style='color: #D8DEE9;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
+</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>readLines</span><span style='color: #D8DEE9;'>
 </span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>toInt</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
 </span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>takeUntil</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>eq</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>number</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
 </span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>getResponse</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
@@ -193,7 +193,7 @@ You take one down, pass it around, no more bottles of beer on the wall!
 312 is correct!
 </pre>
 
-      <h2 style="font-weight: normal; margin-left: 20px;">collatz.ptls</h2>
+      <h2 id="collatz" style="font-weight: normal; margin-left: 20px;">collatz.ptls</h2>
 
       <code><span style='color: #c594c5;'>import</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>"chart.ptls"</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>as</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>chart</span><span style='color: #D8DEE9;'>
 
@@ -226,7 +226,7 @@ You take one down, pass it around, no more bottles of beer on the wall!
 ▂▄▃▆▃█▅█▆▄█▅▃▂▄▃▆▃█▄▃▆▄█▅▃▇▄█▅█████████▇██████████▅█▆▄█▅▃▇▄▂▂▁▂▂▁▁▁▁▂▁▂▁▁▁▁▁▁▁▁▁
       </pre>
 
-      <h2 style="font-weight: normal; margin-left: 20px;">chart.ptls</h2>
+      <h2 id="chart" style="font-weight: normal; margin-left: 20px;">chart.ptls</h2>
 
       <code><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
 </span><span style='color: #A6ACB9;'>-- given a list of numerical values, print an ascii bar-</span><span style='color: #D8DEE9;'>
@@ -281,7 +281,7 @@ You take one down, pass it around, no more bottles of beer on the wall!
  but we can import it to use its functions in other scripts, as seen in collatz.ptls)
       </pre>
 
-      <h2 style="font-weight: normal; margin-left: 20px;">permutations.ptls</h2>
+      <h2 id="permutations" style="font-weight: normal; margin-left: 20px;">permutations.ptls</h2>
 
       <code><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
 </span><span style='color: #A6ACB9;'>-- for a list of values, get a list of all permutations of</span><span style='color: #D8DEE9;'>
@@ -315,7 +315,7 @@ You take one down, pass it around, no more bottles of beer on the wall!
 [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]]
       </pre>
 
-      <h2 style="font-weight: normal; margin-left: 20px;">life.ptls</h2>
+      <h2 id="life" style="font-weight: normal; margin-left: 20px;">life.ptls</h2>
 
       <code><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
 </span><span style='color: #A6ACB9;'>-- print 100 simulated states of conway's game of life</span><span style='color: #D8DEE9;'>
