@@ -64,7 +64,7 @@
           </span>
 
           <a href="#hello world!">Hello World!</a>,
-          <a href="#comments!">Comments</a>,
+          <a href="#comments!">Comments</a>
         </div>
 
         <div class=contentsRow>
@@ -75,7 +75,7 @@
           <a href="#numbers">Numbers</a>,
           <a href="#strings">Strings</a>,
           <a href="#booleans">Booleans</a>,
-          <a href="#labels">Labels</a>,
+          <a href="#labels">Labels</a>
         </div>
 
         <div class=contentsRow>
@@ -103,7 +103,7 @@
           </span>
 
           <a href="#partial application">Partial Application</a>,
-          <a href="#pipe operator">Pipe Operator</a>,
+          <a href="#pipe operator">Pipe Operator</a>
         </div>
 
         <div class=contentsRow>
@@ -152,7 +152,7 @@
           </span>
 
           <a href="#basic comparison">Basic Types</a>,
-          <a href="#structure comparison">Data Structures</a>
+          <a href="#structure comparison">Data Structures</a>,
           <a href="#label comparison">Label Comparison</a>
         </div>
 
@@ -208,7 +208,7 @@
 
         <a href="#hello world"><h4 id="hello world">Hello World!</h4></a>
 
-        <p>The following code implements the classic "Hello World!" program in Pointless. The program can be run by executing the Pointless binary with the Pointless source file as an argument.</p>
+        <p>The following code implements the classic "Hello World!" program in Pointless. The program can be run by executing the Pointless binary with a source containing the following code as an argument.</p>
 
         <code><span style='color: #D8DEE9;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>println</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"Hello World!"</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'></span></code>
         <pre>./pointless hello.ptls</pre>
@@ -746,7 +746,7 @@
 
         <p>Unlike other programming language, which use functions to send information from a program to the outside system, Pointless program communicate their output through a sequence of output commands. To accomplish this, Pointless designates a special variable, 'output', from which output commands are read when an program is run. Some programming languages have a main method, which serves as the entry-point for executing the program - in Pointless, the output variable also serves as an entry-point, where the value of the output variable is the output from the program.</p>
 
-        <p>Pointless expects the output variable to be defined as a list of commands. Commands can be either labels or labeled values - the two output commands which Pointless currently supports are IOPrint(value), which directs the Pointless vm to print the string value, and IOClearConsole, which clears the console. The top-level source file for a Pointless program must define an output variable, and the value of output must be a valid list of commands - programs which do not meet these requirements will cause an error at runtime.</p>
+        <p>Pointless expects the output variable to be defined as a list of commands. Commands can be either labels or labeled values - the two output commands which Pointless currently supports are 'IOPrint(value)', which directs the Pointless vm to print the string value, and 'IOClearConsole', which clears the console. The top-level source file for a Pointless program must define an output variable, and the value of output must be a valid list of commands - programs which do not meet these requirements will cause an error at runtime.</p>
 
         <p>Since lists in Pointless are processed lazily, the sequence of output commands defined by a program will also be handled lazily. This means that, while programs must define a single entry-point for their output, that output is still handled as the programming running, rather than blocking until the program terminates.</p>
 
