@@ -52,8 +52,8 @@ pre, code {
   margin: 10px 0px;
   line-height: 17px;
   font-family: 'DejaVu Sans Mono', monospace;
-  padding: 25px 30px 10px 30px;
-  overflow-x: scroll;
+  padding: 25px 30px;
+  overflow-x: auto;
 }
 
 pre {
@@ -70,6 +70,10 @@ code {
   background-color: #343d46;
   display: block;
   white-space: pre;
+}
+
+code span {
+  vertical-align: middle;
 }
 
 .text {
