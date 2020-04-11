@@ -1,0 +1,74 @@
+
+getting started
+  -> installation
+  -> hello world!
+  -> running programs
+  -> file extension
+  -> comments (doc comments)
+
+basic types
+  -> numbers, strings, booleans, labels
+  -> operations
+
+conditionals
+  -> if, switch
+
+definitions
+  -> expressions
+  -> no statements
+  -> variables
+  -> functions
+  -> where
+
+calling functions
+  -> normal calls
+  -> partial application
+  -> pipe operator
+  -> tail-call optimization
+
+data structures
+  -> lists
+    -> comprehensions
+  -> arrays
+    -> index
+  -> sets
+  -> maps
+    -> index
+  -> tuples
+    -> destructure
+    -> is
+    -> ADTs
+  -> objects
+
+laziness
+  -> lists
+  -> objects
+  -> definitions
+  -> circular definitions
+
+equality
+  -> basic types
+  -> data structures
+  -> split for efficiency
+
+updates
+  -> through with
+    -> in order
+    -> rhs before lhs
+  -> through lang fields
+
+io
+  -> how vm processes io
+  -> output commands
+  -> input commands
+
+more lang fields
+
+imports
+  -> come at start of the file
+  -> relative
+  -> can be circular
+
+require
+
+prelude
