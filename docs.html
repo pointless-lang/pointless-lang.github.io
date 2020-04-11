@@ -210,7 +210,7 @@
 
         <p>The following code implements the classic "Hello World!" program in Pointless. The program can be run by executing the Pointless binary with a source containing the following code as an argument.</p>
 
-        <code><span style='color: #D8DEE9;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>println</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"Hello World!"</span><span style='color: #D8DEE9;'>)</span></code>
+        <code><span style='color: #6699cc;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>println</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"Hello World!"</span><span style='color: #D8DEE9;'>)</span></code>
         <p>Make source file:</p>
         <pre>echo 'output = println("Hello World!")' > hello.ptls</pre>
         <pre>./pointless hello.ptls</pre>
@@ -759,7 +759,7 @@
 
         <p>Because output sequences are made up of normal Pointless values, they themselves can be manipulated and visualized. In the example below, the code 'printLines(range(3))' generates a command sequence to print the numbers zero through two - the code then calls the 'println' function again to print a string representation of these commands. Running this code thus provides a visualization of a typical output command sequence.</p>
 
-        <code><span style='color: #D8DEE9;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>printLines</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>range</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>3</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>println</span></code>
+        <code><span style='color: #6699cc;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>printLines</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>range</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>3</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>println</span></code>
 
         <a href="#input commands"><h4 id="input commands">Input Commands</h4></a>
 
@@ -777,7 +777,7 @@
 
         <p>While the set of input choices is currently limited, the existing input sources can be easily processed using existing functions. For example, the following code reads lines from stdin, and prints the length of each line.</p>
 
-        <code><span style='color: #D8DEE9;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>readLines</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>length</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>printLines</span></code>
+        <code><span style='color: #6699cc;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>readLines</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>length</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>printLines</span></code>
 
         <a href="#imports"><h3 id="imports">Imports:</h3></a>
 
