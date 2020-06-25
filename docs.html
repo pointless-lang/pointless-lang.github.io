@@ -1025,7 +1025,7 @@ output = sum(range(1000)) |> println</pre>
         </h4>
 
         <p>
-          For implementation reasons, comparison of other data structures (lists, arrays, sets, maps, objects, and tuples not fitting the criteria above) using the basic equality operators compares these objects according to their location in memory. As a result, comparison of two data-structures will return false even if those structures contain the same values, unless they are two references to the same original structure. Comparison of functions follows the same rule.
+          For implementation reasons, comparison of other data structures (lists, arrays, sets, dicts, objects, and tuples not fitting the criteria above) using the basic equality operators compares these objects according to their location in memory. As a result, comparison of two data-structures will return false even if those structures contain the same values, unless they are two references to the same original structure. Comparison of functions follows the same rule.
         </p>
 
         <p>
@@ -1048,7 +1048,7 @@ is(Foo        , Foo)                 -- label
 is(PtlsFunc   , sum)                 -- function
 is(PtlsBuiltIn, {}.!getDelKey)       -- built-in
 is(PtlsSet    , {1})                 -- set
-is(PtlsMap    , {"one": 1})          -- map
+is(PtlsDict   , {"one": 1})          -- dict
 is(PtlsList   , ["a", "b"])          -- list
 is(PtlsArray  , [0 0 0])             -- array
 is(Baz        , Baz {x = 0; y = 2})  -- labeled object
@@ -1100,7 +1100,7 @@ newVals = values with { -- newVals = [10 4]
         </p>
 
         <p>
-          The following example demonstrates the nested update of an object containing a map and an object in its fields.
+          The following example demonstrates the nested update of an object containing a dict and an object in its fields.
         </p>     
 
         <div class="sample">
