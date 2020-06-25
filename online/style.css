@@ -88,6 +88,8 @@ header:hover span:first-child {
   border-radius: 2px;
   color: #bbb;
   cursor: pointer;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 
 :focus {outline:none;}
