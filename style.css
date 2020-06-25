@@ -54,6 +54,7 @@ hr {
 }
 
 .result {
+  font-family: "DejaVu Sans Mono";
   line-height: 17px;
   margin: 0px;
   border: 1px solid #e0e0e0;

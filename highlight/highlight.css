@@ -1,4 +1,11 @@
 
+@font-face {
+  font-family: "DejaVu Sans Mono";
+  src: url("../fonts/DejaVuSansMono.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .highlight {
   background-color: #343d46;
   display: block;
@@ -18,7 +25,7 @@
 }
 
 .highlight code, .highlight textarea {
-  font-family: inherit;
+  font-family: "DejaVu Sans Mono";
   font-size: inherit;
   line-height: inherit;
   width: 100%;

@@ -64,6 +64,11 @@
           </li>
 
           <li>
+            Download Dart dependencies:
+            <pre>pub get</pre>
+          </li>
+
+          <li>
             You can now run the Pointless repl using:
             <pre>dart lib/pointless.dart</pre>
             or supply a path to a file to run; for example:
@@ -77,6 +82,7 @@
         </div>
 
         <p>Compiling the interpreter avoids the startup overhead of the Dart VM.</p>
+        <p>After performing the steps above:</p>
 
         <ul>
           <li>
@@ -84,10 +90,11 @@
             <p>
               Run the following commands in the repository root (generates ./bin/pointless):
             </p>
-            <pre>pub get
-dart2native lib/pointless.dart -o bin/pointless
-</pre>
+
+            <pre>dart2native lib/pointless.dart -o bin/pointless</pre>
+
             <p>Alternatively, using Make, simply run:</p>
+            
             <pre>make</pre>
 
             <p>Now you can run Pointless like this:</p>
@@ -99,9 +106,10 @@ dart2native lib/pointless.dart -o bin/pointless
             <p>
               Run the following commands in the repository root (generates ./bin/pointless.exe):
             </p>
-            <pre>pub get
-dart2native lib/pointless.dart -o bin/pointless.exe
-</pre>
+
+            <pre>dart2native lib/pointless.dart -o bin/pointless.exe</pre>
+
+
 
             <p>Now you can run Pointless like this:</p>
             <pre>bin/pointless.exe examples/beer/beer.ptls</pre>
