@@ -43,6 +43,7 @@
 
 .highlight code:first-child {
   user-select: none;
+  overflow: hidden;
 }
 
 .highlight code:last-child {
