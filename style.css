@@ -8,6 +8,13 @@ html, body {
   color: #444;
 }
 
+
+@media print {
+  html, body {
+    background-color: white;
+  }
+}
+
 main {
   width: 900px;
   margin: 0px auto;
