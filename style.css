@@ -8,7 +8,7 @@ html, body {
   color: #444;
 }
 
-.content {
+main {
   width: 900px;
   margin: 0px auto;
 }
@@ -16,7 +16,6 @@ html, body {
 header {
   margin-top: 20px;
   color: #777;
-  border-radius: 2px;
   padding: 10px 0px;
   position: relative;
   text-align: center;
@@ -29,7 +28,6 @@ header pre {
   line-height: 13px;
   padding: 0px;
   display: inline-block;
-  border: none;
 }
 
 nav {
@@ -41,6 +39,7 @@ nav {
 nav span {
   display: inline-block;
   padding: 10px 15px;
+  cursor: pointer;
 }
 
 a {
@@ -48,36 +47,51 @@ a {
   text-decoration-color: #bbb;
 }
 
-pre, code {
-  margin: 10px 0px;
-  line-height: 17px;
-  font-family: 'DejaVu Sans Mono', monospace;
-  padding: 25px 30px;
-  overflow-x: auto;
-}
-
-pre {
-  border: 1px solid #e0e0e0;
+hr {
+  height: 3px;
+  background-color: #ddd;
+  border: none;
 }
 
 .result {
+  line-height: 17px;
+  margin: 0px;
+  border: 1px solid #e0e0e0;
   border-top: none;
-  margin-top: -10px;
-  margin-bottom: 70px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 25px 30px;
 }
 
-code {
-  background-color: #343d46;
-  display: block;
-  white-space: pre;
-}
-
-code span {
-  vertical-align: middle;
+.sample {
+  margin: 0px 0px 40px 0px;
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 .text {
-  padding: 20px;
+  padding: 0px 20px 20px 20px;
+}
+
+.exampleTitle {
+  font-size: 24px;
+  font-weight: normal;
+  margin: 40px 0px;
+  letter-spacing: 1px;
+  color: #555;
+}
+
+.exampleTitle span a {
+  text-decoration: none;
+}
+
+.fileName {
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0px;
+  padding: 15px 15px 15px 25px;
+  color: #777;
+  background-color: #ddd;
 }
 
 footer {

@@ -5,13 +5,15 @@
       <title>Pointless: examples</title>
 
       <link rel="stylesheet" type="text/css" href="style.css">
-      <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/dejavu-sans-mono" type="text/css"/>
+      <link rel="stylesheet" type="text/css" href="highlight/highlight.css">
+      <link rel="stylesheet" media="screen" href="fonts/fonts.css" type="text/css"/>
   </head>
 
   <body>
-    <div class="content">
-      <a href="/"><header>
-        <pre>
+    <main>
+      <a href="/">
+        <header>
+          <pre>
      ___           ___           ___           ___          ___            ___        ___           ___           ___     
     /\  \         /\  \         /\  \         /\__\        /\  \          /\__\      /\  \         /\  \         /\  \    
    /::\  \       /::\  \        \:\  \       /::|  |       \:\  \        /:/  /     /::\  \       /::\  \       /::\  \   
@@ -24,176 +26,319 @@
                  \::/  /       \:\__\         /:/  /                     \:\__\     \:\__\        \::/  /       \::/  /   
                   \/__/         \/__/         \/__/                       \/__/      \/__/         \/__/         \/__/     </pre>
                        
-      </header></a>
+        </header>
+      </a>
 
       <nav>
         <a href="/"><span>HOME</span></a>
+        <a href="online/index.html"><span>ONLINE</span></a>
         <a href="docs.html"><span>DOCUMENTATION</span></a>
         <a href="examples.html"><span>EXAMPLES</span></a>
+        <a href="api/index.html"><span>API</span></a>
         <a href="install.html"><span>INSTALL</span></a>
         <a href="dev.html"><span>DEVELOPMENT</span></a>
       </nav>
 
       <div class="text">
         <h3>Examples</h3>
-        <p>
-          A handful of example programs demonstrating various features of Pointless. Copies of these
-          programs can be found at <a href="https://github.com/pointless-lang/pointless/tree/master/lib/examples">https://github.com/pointless-lang/pointless/tree/master/lib/examples</a>
-        </p>
 
-        <h4>Example scripts:</h4>
+        A handful of example programs demonstrating various features of Pointless. Some examples (self-hosting tokenizer and stack-based toy-language vm) span multiple source files.
 
-        <ul>
-          <li><a href="#100Doors">100Doors.ptls</a></li>
-          <li><a href="#beer">beer.ptls</a></li>
-          <li><a href="#echoLines">echoLines.ptls</a></li>
-          <li><a href="#guess">guess.ptls</a></li>
-          <li><a href="#collatz">collatz.ptls</a></li>
-          <li><a href="#chart">chart.ptls</a></li>
-          <li><a href="#permutations">permutations.ptls</a></li>
-          <li><a href="#life">life.ptls</a></li>
+        <ul style="margin-bottom: 0px;">
+          <li><a href="#100Doors">100 Doors</a></li>
+          <li><a href="#beer">99 Bottles of Beer</a></li>
+          <li><a href="#chart">Chart</a></li>
+          <li><a href="#collatz">Collatz Sequence</a></li>
+          <li><a href="#echoLines">Echo Lines</a></li>
+          <li><a href="#guess">Number Guessing</a></li>
+          <li><a href="#life">Game of Life</a></li>
+          <li><a href="#permutations">Permutations</a></li>
+          <li><a href="#quine">Quine (a self-printing program)</a></li>
+          <li><a href="#stackVM">Stack-Based Toy-Language VM</a></li>
+          <li><a href="#tokenizer">Self-Hosting Tokenizer</a></li>
         </ul>
-
-        <p>
-          Library function implementations can be found at <a href="https://github.com/pointless-lang/pointless/tree/master/lib/prelude">https://github.com/pointless-lang/pointless/tree/master/lib/prelude</a>
-        </p>
       </div>
 
-      <a href="#100Doors"><h2 id="100Doors" style="font-weight: normal; margin-left: 20px;">100Doors.ptls</h2></a>
+      <hr>
 
-      <code><span style='color: #A6ACB9;'>----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- solution to the '100 doors' problem</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- (http://rosettacode.org/wiki/100_doors)</span><span style='color: #D8DEE9;'>
+      <div class="exampleTitle">
+        <span id="100Doors"><a href="#100Doors">100 Doors</a></span>
+        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/100Doors/">
+          (source)
+        </a>
+      </div>
 
-</span><span style='color: #6699cc;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>rangeStep</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>100</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>visit</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>100</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>println</span><span style='color: #D8DEE9;'>
+      <div class="sample">
+        <pre class="fileName">100Doors.ptls</pre>
 
-</span><span style='color: #D8DEE9;'>toggle</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>state</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>if</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>state</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>is</span><span style='color: #D8DEE9;'> </span><span style='color: #7986CB;'>Closed</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>then</span><span style='color: #D8DEE9;'> </span><span style='color: #7986CB;'>Open</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>else</span><span style='color: #D8DEE9;'> </span><span style='color: #7986CB;'>Closed</span><span style='color: #D8DEE9;'>
+        <pre class="highlight">----------------------------------------------------------
+-- Solution to the '100 doors' problem
+-- http://rosettacode.org/wiki/100_doors
 
-</span><span style='color: #A6ACB9;'>----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- door state on iternation number iter is recursively</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- defined in terms of pervious door state</span><span style='color: #D8DEE9;'>
+output =
+  range(1, 100)
+  |> map(visit(100))
+  |> println
 
-</span><span style='color: #D8DEE9;'>visit</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>iter</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>index</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>switch</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>{</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>iter</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #7986CB;'>Closed</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>index</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>%</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>iter</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>toggle</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>lastState</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>otherwise</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>lastState</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>}</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>where</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>lastState</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>visit</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>iter</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>-</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>index</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'></code>
+----------------------------------------------------------
 
-      <pre class="result">$ ./pointless scratchpad
+toggle(state) =
+  if state == Closed then Open else Closed
+
+----------------------------------------------------------
+-- Door state on iteration i is recursively
+-- defined in terms of previous door state
+
+visit(i, index) = cond {
+  case (i == 0) Closed
+  case (index % i == 0) toggle(lastState)
+  else lastState
+} where lastState = visit(i - 1, index)</pre>
+
+        <pre class="result">$ bin/pointless examples/100Doors/100Doors.ptls
 
 [Open, Closed, Closed, Open, Closed, Closed, Closed, Closed, Open, Closed ...]
-      </pre>
+        </pre>
+      </div>
 
-      <a href="#beer"><h2 id="beer" style="font-weight: normal; margin-left: 20px;">beer.ptls</h2></a>
+      <hr>
 
-      <code><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- print the lyrics to the song '99 bottles of beer'</span><span style='color: #D8DEE9;'>
+      <div class="exampleTitle">
+        <span id="beer"><a href="#beer">99 Bottles of Beer</a></span>
+        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/beer/">
+          (source)
+        </a>
+      </div>
 
-</span><span style='color: #6699cc;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>rangeStep</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>999</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>-</span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>showBeer</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>printLines</span><span style='color: #D8DEE9;'>
+      <div class="sample">
+        <pre class="fileName">beer.ptls</pre>
 
-</span><span style='color: #D8DEE9;'>showBeer</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>format</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"{} of beer on the wall! "</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>showBottle</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>+</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>format</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"{} of beer!\n"</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>showBottle</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>+</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #99C794;'>"You take one down, pass it around, "</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>+</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>nextBeer</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>-</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
+        <pre class="highlight">-----------------------------------------------------------
+-- Print the lyrics to the song '99 bottles of beer'
 
-</span><span style='color: #D8DEE9;'>nextBeer</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>if</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>then</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>"no more bottles of beer on the wall!"</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>else</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>format</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"{} of beer on the wall!\n"</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>showBottle</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
+output =
+  range(99, 1)
+  |> map(showBeer)
+  |> printLines
 
-</span><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- get appropriate singular / plural form of 'n bottle(s)'</span><span style='color: #D8DEE9;'>
+showBeer(n) =
+  format("{} of beer on the wall!\n", [showBottle(n)]) +
+  format("{} of beer!\n", [showBottle(n)]) +
+  "You take one down, pass it around\n" +
+  nextBeer(n - 1)
 
-</span><span style='color: #D8DEE9;'>showBottle</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>format</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"{} {}"</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>bottleStr</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>where</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>bottleStr</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>if</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>then</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>"bottle"</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>else</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>"bottles"</span><span style='color: #D8DEE9;'>
-</span></code>
+nextBeer(n) =
+  if n == 0 then "No more bottles of beer on the wall!"
+  else format("{} of beer on the wall!\n", [showBottle(n)])
 
-      <pre class="result">$ ./pointless scratchpad
+-----------------------------------------------------------
+-- Get appropriate singular / plural form of 'n bottle(s)'
+
+showBottle(n) =
+  format("{} {}", [n, bottleStr])
+  where bottleStr = if n == 1 then "bottle" else "bottles"</pre>
+
+        <pre class="result">$ bin/pointless examples/beer/beer.ptls
 
 ...
-3 bottles of beer on the wall! 3 bottles of beer!
-You take one down, pass it around, 2 bottles of beer on the wall!
 
-2 bottles of beer on the wall! 2 bottles of beer!
-You take one down, pass it around, 1 bottle of beer on the wall!
+2 bottles of beer on the wall!
+2 bottles of beer!
+You take one down, pass it around
+1 bottle of beer on the wall!
 
-1 bottle of beer on the wall! 1 bottle of beer!
-You take one down, pass it around, no more bottles of beer on the wall!
-      </pre>
+1 bottle of beer on the wall!
+1 bottle of beer!
+You take one down, pass it around
+No more bottles of beer on the wall!</pre>
+      </div>
 
-      <a href="#echoLines"><h2 id="echoLines" style="font-weight: normal; margin-left: 20px;">echoLines.ptls</h2></a>
+      <hr>
 
-      <code><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- read lines from stdin, and print each line along</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- with its line number, right-justified to 3 chars </span><span style='color: #D8DEE9;'>
+      <div class="exampleTitle">
+        <span id="chart"><a href="#chart">Chart</a></span>
+        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/chart/">
+          (source)
+        </a>
+      </div>
 
-</span><span style='color: #6699cc;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>readLines</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>enumerate</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>format</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"{>3}: {}"</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>printLines</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'></span></code>
+      <div class="sample">
+        <pre class="fileName">chart.ptls</pre>
 
-      <pre class="result">$ cat script.txt | ./pointless scratchpad
+        <pre class="highlight">-----------------------------------------------------------
+-- Given a list of numerical values, print an ascii bar-
+-- chart with dimensions (in terms of characters) 
+-- height x length(values), where the largest value takes
+-- up the full height of the chart
+-- Negative values get truncated to zero 
 
-  0: According to all known laws
-  1: of aviation,
-  2:   
-  3: there is no way a bee
-  4: should be able to fly.
-  5:   
-  6: Its wings are too small to get
-  7: its fat little body off the ground.
-  8:   
-  9: The bee, of course, flies anyway
- 10: 
- 11: because bees don't care
- 12: what humans think is impossible.
- 13:   
- 14: Yellow, black. Yellow, black.
- 15: Yellow, black. Yellow, black.
- 16: 
- 17: Ooh, black and yellow!
- 18: Let's shake it up a little
- ...
-</pre>
+scale(height, values) =
+  if values == Empty then ""
+  else
+    values
+    |> normalize(height)
+    |> getRows(height)
+    |> join("\n")
 
-      <a href="#guess"><h2 id="guess" style="font-weight: normal; margin-left: 20px;">guess.ptls</h2></a>
+-----------------------------------------------------------
+-- Get list of scaled values so that max(scaled) = height
 
-      <code><span style='color: #D8DEE9;'>number</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>randRange</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>1000</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
+normalize(height, values) =
+  values
+  |> map(mul(height / maximum(values)))
+  |> map(max(0))
 
-</span><span style='color: #D8DEE9;'>getResponse</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>format</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"{} is {}"</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>compareGuess</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
+-----------------------------------------------------------
+-- Build up the chart row-by-row starting with the hightest
+-- row index (from top to bottom)
 
-</span><span style='color: #D8DEE9;'>compareGuess</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>switch</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>{</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>></span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>number</span><span style='color: #D8DEE9;'>  </span><span style='color: #99C794;'>"too high"</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'><</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>number</span><span style='color: #D8DEE9;'>  </span><span style='color: #99C794;'>"too low"</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>number</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>"correct!"</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>}</span><span style='color: #D8DEE9;'>
+getRows(height, values) =
+  for row in reverse(range(0, height - 1))
+  yield rowChars(row, values) |> join("")
 
-</span><span style='color: #A6ACB9;'>----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- a number guessing game (binary search)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- user enters an integer guess between 0 and 1000</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- progarm reports whether guess is above or below the</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- target number - continues until correct guess is entered</span><span style='color: #D8DEE9;'>
+rowChars(row, values) =
+  values |> map(getBar(row))
 
-</span><span style='color: #6699cc;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>readLines</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>toInt</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>takeUntil</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>eq</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>number</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>getResponse</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>printLines</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'></span></code>
+-----------------------------------------------------------
+-- BarHeight is the height that the value n projects
+-- above the base of the current row (capped at max value
+-- seven when the value spans the entire row height)
+-- Use this value to index into the array of bar chars
 
-      <pre class="result">$ ./pointless scratchpad
+getBar(row, n) = cond {
+  case barHeight < 0 and row > 0  " "
+  case barHeight < 0 and row == 0 "_"
+  else bars[min(7, toInt(barHeight * 7))] 
+} where {barHeight = (n - row); bars = toArray("▁▂▃▄▅▆▇█")}</pre>
+
+        <pre class="result">-- chart.ptls doesn't have an output variable defined, so we can't execute it directly,
+-- but we can import it to use its functions in other scripts, as seen in collatz.ptls</pre>
+      </div>
+
+      <hr>
+
+      <div class="exampleTitle">
+        <span id="collatz"><a href="#collatz">Collatz Sequence</a></span>
+        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/collatz/">
+          (source)
+        </a>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">collatz.ptls</pre>
+
+        <pre class="highlight">import "../chart/chart.ptls" as chart
+
+-----------------------------------------------------------
+-- Calculate each number in the collatz sequence for some
+-- starting value, and ending when the value 1 is reached
+-- Display these values in an ascii bar-chart with 8 rows
+
+output =
+  iterate(step, 175) -- sequence starts at 175
+  |> takeUntil(eq(1))
+  |> chart.scale(4)
+  |> println
+
+-----------------------------------------------------------
+-- get the next number in a collatz sequence
+
+step(n) =
+  if n % 2 == 0 then n / 2 else n * 3 + 1</pre>
+
+        <pre class="result">$ bin/pointless examples/collatz/collatz.ptls
+
+                                    ▂         █                                  
+                                  ▁ █       ▅ █▁                                 
+                                ▃ █▁█▅  ▂ ▆ █▃██▁                                
+▁▂▁▃▂▄▂▆▃▂▅▃▂▁▂▁▃▂▄▂▁▃▂▄▂▁▃▂▅▃▇▄█▅████▆▃█▅█▇█████▄▂▆▃▂▄▂▁▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁</pre>
+      </div>
+
+      <hr>
+
+      <div class="exampleTitle">
+        <span id="echoLines"><a href="#echoLines">Echo Lines</a></span>
+        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/echoLines/">
+          (source)
+        </a>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">echoLines.ptls</pre>
+
+        <pre class="highlight">-----------------------------------------------------------
+-- Read lines from stdin, and print each line along
+-- with its line number, right-justified to 3 chars 
+
+output =
+  readLines
+  |> enumerate
+  |> map(format("{>3}: {}"))
+  |> printLines</pre>
+
+        <pre class="result">$ cat examples/echoLines/langs.txt | bin/pointless examples/echoLines/echoLines.ptls
+
+  0: c++:
+  1:   "The position you applied for is no longer available"
+  2: 
+  3: java:
+  4:   "We sincerely appreciated your enthusiasm, outstanding
+  5:   interview, impeccible resume, and engaging personality.
+  6:   It is rare to find a candidate as qualified and capable
+  7:   as yourself. That being said, we regret to inform you that..." 
+  8: 
+  9: python:
+ 10:   "... and we provide each of our software engineers with a standing desk",
+ 11:   "Actually, I'd prefer a normal desk if that's...",
+ 12:   "WE PROVIDE EACH OF OUR SOFTWARE ENGINEERS WITH A STANDING DESK" 
+ 13: 
+ 14: haskell:
+ 15:  "t o = whomSt :: so|ever| <*> it m $ ay conc . ern; it 
+ 16:   | is ++ m y !Pleasur (*e) ~~>> to >>= _ \i -> n fo (R m y o !! u)
+ 17:   | that -> [yo..u"
+ 18: 
+ 19: javascript:
+ 20:   "click here to learn all of ES6 in 20 seconds!
+ 21:   http://obliterating.the.coding.interview.io/"</pre>
+      </div>
+
+      <hr>
+
+      <div class="exampleTitle">
+        <span id="guess"><a href="#guess">Number Guessing</a></span>
+        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/guess/">
+          (source)
+        </a>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">guess.ptls</pre>
+
+        <pre class="highlight">number = randRange(0, 1000)
+
+getResponse(n) =
+  format("{} is {}", [n, compareGuess(n)])
+
+compareGuess(n) = cond {
+  case n > number  "too high"
+  case n < number  "too low"
+  case n == number "correct!"
+}
+
+----------------------------------------------------------
+-- A number guessing game (binary search)
+-- User enters an integer guess between 0 and 1000
+-- progarm reports whether guess is above or below the
+-- target number - continues until correct guess is entered
+
+output =
+  readLines
+  |> map(toInt)
+  |> takeUntil(eq(number))
+  |> map(getResponse)
+  |> printLines</pre>
+
+        <pre class="result">$ bin/pointless examples/guess/guess.ptls
 
 500
 500 is too high
@@ -202,229 +347,116 @@ You take one down, pass it around, no more bottles of beer on the wall!
 375
 375 is too high
 312
-312 is correct!
-</pre>
+312 is correct!</pre>
+      </div>
 
-      <a href="#collatz"><h2 id="collatz" style="font-weight: normal; margin-left: 20px;">collatz.ptls</h2></a>
+      <hr>
 
-      <code><span style='color: #c594c5;'>import</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>"chart.ptls"</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>as</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>chart</span><span style='color: #D8DEE9;'>
+      <div class="exampleTitle">
+        <span id="life"><a href="#life">Game of Life</a></span>
+        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/life/">
+          (source)
+        </a>
+      </div>
 
-</span><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- calculate each number in the collatz sequence for some</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- starting value, and ending when the value 1 is reached</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- display these values in an ascii bar-chart with 8 rows</span><span style='color: #D8DEE9;'>
+      <div class="sample">
+        <pre class="fileName">life.ptls</pre>
 
-</span><span style='color: #6699cc;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>iterate</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>collatzStep</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>175</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #A6ACB9;'>-- sequence starts at 175</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>takeWhile</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>greaterThan</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>chart</span><span style='color: #D8DEE9;'>.scale</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>8</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>println</span><span style='color: #D8DEE9;'>
+        <pre class="highlight">-----------------------------------------------------------
+-- Print 100 simulated states of conway's game of life
+-- for a glider starting pattern
+-- Print generation number along with cells
 
-</span><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- get the next number in a collatz sequence</span><span style='color: #D8DEE9;'>
+output =
+  initCells
+  |> iterate(updateCells)
+  |> take(20)
+  |> enumerate
+  |> map(showPair)
+  |> printFrames
 
-</span><span style='color: #D8DEE9;'>collatzStep</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>if</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>%</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>2</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>then</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>/</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>2</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>else</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>*</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>3</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>+</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'></span></code>
+-- need to concat results from printFrames to join the
+-- commands into one big sequence
 
-      <pre class="result">$ ./pointless scratchpad
+initCells =
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
 
-                                              █                                 
-                                    ▃         █                                 
-                                    █       ▃ █                                 
-                                  ▂ █       █ █▁                                
-                                  █ █▂    ▅ █ ██                                
-                                ▇ █▂██  ▄ █ █▆██▁                               
-     ▁ ▅  ▂            ▂    ▃ ▇ █▄████▅ █▂█▆█████▁ ▅  ▂                         
-▂▄▃▆▃█▅█▆▄█▅▃▂▄▃▆▃█▄▃▆▄█▅▃▇▄█▅█████████▇██████████▅█▆▄█▅▃▇▄▂▂▁▂▂▁▁▁▁▂▁▂▁▁▁▁▁▁▁▁▁
-      </pre>
+width  = length(initCells[0])
+height = length(initCells)
 
-      <a href="#chart"><h2 id="chart" style="font-weight: normal; margin-left: 20px;">chart.ptls</h2></a>
+positions = 
+  for y in range(0, height - 1)
+  for x in range(0, width - 1)
+  yield (x, y)
 
-      <code><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- given a list of numerical values, print an ascii bar-</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- chart with dimensions (in terms of characters) </span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- height x length(values), where the largest value takes</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- up the full height of the chart</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- negative values get truncated to zero </span><span style='color: #D8DEE9;'>
+-----------------------------------------------------------
+-- Update each cell in the grid according to its position,
+-- and convert the resulting list back to a 2D array
 
-</span><span style='color: #D8DEE9;'>scale</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>height</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>values</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>if</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>values</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>is</span><span style='color: #D8DEE9;'> </span><span style='color: #7986CB;'>Empty</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>then</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>""</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>else</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>    </span><span style='color: #D8DEE9;'>values</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>    </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>normalize</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>height</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>    </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>getRows</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>height</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>    </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>join</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"\n"</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
+updateCells(cells) =
+  positions
+  |> map(tick(cells))
+  |> toNDArray((height, width))
 
-</span><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- get list of scaled values so that max(scaled) = height</span><span style='color: #D8DEE9;'>
+-----------------------------------------------------------
+-- Get the new value for a cell at a give position
+-- based on the current cell values in the grid
 
-</span><span style='color: #D8DEE9;'>normalize</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>height</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>values</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>values</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>mul</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>height</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>/</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>maximum</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>values</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>max</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
+tick(cells, pos) = toInt(survive or birth) where {
+  survive = cells[y][x] == 1 and count in {2, 3}
+  birth   = cells[y][x] == 0 and count == 3
+  count   = getCount(x, y, cells)
+  (x, y)  = pos
+}
 
-</span><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- build up the chart row-by-row starting with the hightest</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- row index (from top to bottom)</span><span style='color: #D8DEE9;'>
+-----------------------------------------------------------
+-- Get the number of live neighbors of a given position
 
-</span><span style='color: #D8DEE9;'>getRows</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>height</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>values</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>for</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>row</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>in</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>reverse</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>range</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>height</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>yield</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>rowChars</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>row</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>values</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>join</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>""</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
+getCount(x, y, cells) = sum(neighborVals) where {
+  neighborVals = 
+    for dx in deltas 
+    for dy in deltas 
+    when (dx != 0 or dy != 0)
+    yield getNeighbor(x + dx, y + dy, cells) 
+  deltas = [-1, 0, 1]
+}
 
-</span><span style='color: #D8DEE9;'>rowChars</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>row</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>values</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>values</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>getBar</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>row</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
+getNeighbor(x, y, cells) = cells[y % height][x % width]   
 
-</span><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- barHeight is the height that the value n projects</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- above the base of the current row (capped at max value</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- seven when the value spans the entire row height</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- use this value to index into the array of bar chars</span><span style='color: #D8DEE9;'>
+-----------------------------------------------------------
+-- Print the board and generation number given pairs
+-- of (gen, cells) from the enumerate function
 
-</span><span style='color: #D8DEE9;'>getBar</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>row</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>switch</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>{</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>barHeight</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'><</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>and</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>row</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>></span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>  </span><span style='color: #99C794;'>" "</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>barHeight</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'><</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>and</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>row</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>"_"</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>otherwise</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>bars</span><span style='color: #D8DEE9;'>[</span><span style='color: #6699cc;'>min</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>7</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>toInt</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>barHeight</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>*</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>7</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>}</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>where</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>{</span><span style='color: #D8DEE9;'>barHeight</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>-</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>row</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>;</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>bars</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>toArray</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"▁▂▃▄▅▆▇█"</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>}</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'></span></code>
+showPair(pair) =
+  format("{}\ngeneration: {}", [showCells(cells), gen])
+  where (gen, cells) = pair
 
-      <pre class="result">
+showCells(cells) =
+  toList(cells)
+  |> map(showRow)
+  |> join("\n")
 
-(chart.ptls doesn't have an output variable defined, so we can't execute it directly,
- but we can import it to use its functions in other scripts, as seen in collatz.ptls)
-      </pre>
+showRow(row) =
+  format("|{}|", [map(showCell, toList(row)) |> join("")])
 
-      <a href="#permutations"><h2 id="permutations" style="font-weight: normal; margin-left: 20px;">permutations.ptls</h2></a>
+showCell(cell) =
+  if cell == 1 then "*" else " "</pre>
 
-      <code><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- for a list of values, get a list of all permutations of</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- the items in the original list</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- (algorithm produces duplicate permutations for lists</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- containing duplicate elements)</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #6699cc;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>range</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>3</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #A6ACB9;'>-- this example uses the list [0, 1, 2]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>permutations</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>println</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>permutations</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>list</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>switch</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>{</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>list</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>is</span><span style='color: #D8DEE9;'> </span><span style='color: #7986CB;'>Empty</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>tail</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>list</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>is</span><span style='color: #D8DEE9;'> </span><span style='color: #7986CB;'>Empty</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>list</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>otherwise</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>    </span><span style='color: #c594c5;'>for</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>elem</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>in</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>list</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>    </span><span style='color: #c594c5;'>for</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>perm</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>in</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>permutations</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>delete</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>elem</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>list</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>    </span><span style='color: #c594c5;'>yield</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>elem</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>++</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>perm</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>}</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>delete</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>elem</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>list</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>switch</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>{</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>list</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>is</span><span style='color: #D8DEE9;'> </span><span style='color: #7986CB;'>Empty</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>case</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>head</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>list</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>elem</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>tail</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>list</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>otherwise</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #6699cc;'>head</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>list</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>++</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>delete</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>elem</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>tail</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>list</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>}</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'></span></code>
-
-      <pre class="result">$ ./pointless scratchpad
-
-[[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]]
-      </pre>
-
-      <a href="#life"><h2 id="life" style="font-weight: normal; margin-left: 20px;">life.ptls</h2></a>
-
-      <code><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- print 100 simulated states of conway's game of life</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- for a glider pattern</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- print generation number along with cells</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #6699cc;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>initCells</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>iterate</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>updateCells</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>take</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>100</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>enumerate</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>showPair</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>concatMap</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>printFrame</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #A6ACB9;'>-- need to concat results from printFrames to join the</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- commands into one big sequence</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>initCells</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>width</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>length</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>initCells</span><span style='color: #D8DEE9;'>[</span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>height</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>length</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>initCells</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>positions</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>for</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>y</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>in</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>range</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>height</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>for</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>x</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>in</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>range</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>width</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>yield</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>x</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>y</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- update each cell in the grid according to its position,</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- and convert the resulting list back to a 2D array</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>updateCells</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>positions</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>tick</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>toNDArray</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>height</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>width</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- get the new value for a cell at a give position</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- based on the current cell values in the grid</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>tick</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>pos</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>toInt</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>survive</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>or</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>birth</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>where</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>{</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>survive</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>y</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>x</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>and</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>count</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>in</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>{</span><span style='color: #F9AE58;'>2</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>3</span><span style='color: #D8DEE9;'>}</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>birth</span><span style='color: #D8DEE9;'>   </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>y</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>x</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>and</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>count</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>3</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>count</span><span style='color: #D8DEE9;'>   </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>getCount</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>x</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>y</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>x</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>y</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>pos</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>}</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- get the number of live neighbors of a given position</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>getCount</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>x</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>y</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>sum</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>neighborVals</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>where</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>{</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>neighborVals</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>    </span><span style='color: #c594c5;'>for</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>dx</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>in</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>deltas</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>    </span><span style='color: #c594c5;'>for</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>dy</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>in</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>deltas</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>    </span><span style='color: #c594c5;'>when</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>dx</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>!=</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>or</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>dy</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>!=</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>    </span><span style='color: #c594c5;'>yield</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>getNeighbor</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>x</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>+</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>dx</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>y</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>+</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>dy</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>deltas</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>-</span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>}</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>getNeighbor</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>x</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>y</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>y</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>%</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>height</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>x</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>%</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>width</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>   </span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #A6ACB9;'>-----------------------------------------------------------</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- print the board and generation number given pairs</span><span style='color: #D8DEE9;'>
-</span><span style='color: #A6ACB9;'>-- of (gen, cells) from the enumerate function</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>showPair</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>pair</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>format</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"{}\ngeneration: {}"</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #D8DEE9;'>showCells</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>gen</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>where</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>gen</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>pair</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>showCells</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #D8DEE9;'>cells</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>showRow</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>join</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"\n"</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>showRow</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>row</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>format</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>"|{}|"</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>[</span><span style='color: #6699cc;'>map</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>showCell</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>row</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>join</span><span style='color: #D8DEE9;'>(</span><span style='color: #99C794;'>""</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>]</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-
-</span><span style='color: #D8DEE9;'>showCell</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>cell</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>if</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>cell</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>then</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>"*"</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>else</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>" "</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'></span></code>
-
-      <pre class="result">$ ./pointless scratchpad
+        <pre class="result">$ bin/pointless examples/life/life.ptls
 
 |                            |
 |  *                         |
@@ -477,14 +509,956 @@ generation: 1
 |                            |
 generation: 2
 
+...</pre>
+      </div>
+
+      <hr>
+
+      <div class="exampleTitle">
+        <span id="permutations"><a href="#permutations">Permutations</a></span>
+        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/permutations/">
+          (source)
+        </a>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">permutations.ptls</pre>
+
+        <pre class="highlight">-----------------------------------------------------------
+-- For a list of values, get a list of all permutations of
+-- the items in the original list
+-- (algorithm produces duplicate permutations for lists
+-- containing duplicate elements)
+
+permutations(list) = cond {
+  case isEmpty(list) []
+  case isEmpty(tail(list)) [list]
+  else
+    for elem in list
+    for perm in permutations(delete(elem, list))
+    yield [elem] ++ perm
+}
+  
+-----------------------------------------------------------
+  
+delete(elem, list) = cond {
+  case isEmpty(list) []
+  case (head(list) == elem) tail(list)
+  else [head(list)] ++ delete(elem, tail(list))
+}
+
+-----------------------------------------------------------
+
+output =
+  range(0, 2) -- this example uses the list [0, 1, 2]
+  |> permutations
+  |> println</pre>
+
+        <pre class="result">$ bin/pointless examples/permutations/permutations.ptls
+
+[[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]]
+</pre>
+      </div>
+
+      <hr>
+
+      <div class="exampleTitle">
+        <span id="quine"><a href="#quine">Quine (a self-printing program)</a></span>
+        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/quine/">
+          (source)
+        </a>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">quine.ptls</pre>
+
+        <pre class="highlight">output = (s => println(s + show(toTuple([s]))))("output = (s => println(s + show(toTuple([s]))))")</pre>
+
+        <pre class="result">$ bin/pointless examples/quine/quine.ptls
+
+output = (s => println(s + show(toTuple([s]))))("output = (s => println(s + show(toTuple([s]))))")</pre>
+      </div>
+
+      <hr>
+
+      <div class="exampleTitle">
+        <span id="stackVM"><a href="#stackVM">Stack-Based Toy-Language VM</a></span>
+        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/stackVM/">
+          (source)
+        </a>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">collatzVM.ptls</pre>
+
+        <pre class="highlight">import "stackVM.ptls" as stackVM
+
+------------------------------------------------------------------------------
+
+n = 870
+
+collatz = [
+  Init(1),
+  Const(n),
+  Label("startLoop"),
+  Store(0),
+  Load(0),
+  Const(1),
+  Eq,
+  JmpIf("end"),
+  Load(0),
+  Print,
+  Load(0),
+  Const(2),
+  Mod,
+  Const(0),
+  Eq,
+  JmpIf("even"),
+  Load(0),
+  Const(3),
+  Mul,
+  Const(1),
+  Add,
+  Jmp("startLoop"),
+  Label("even"),
+  Load(0),
+  Const(2),
+  Div,
+  Jmp("startLoop"),
+  Label("end"),
+  Load(0),
+  Print,
+  Exit,
+]
+
+------------------------------------------------------------------------------
+
+output =
+  stackVM.runGetOutput(collatz) ++ ["done"]
+  |> printLines</pre>
+
+        <pre class="result">$ bin/pointless examples/stackVM/collatzVM.ptls
+
+870
+435.0
 ...
-      </pre>
+4.0
+2.0
+1.0
+done</pre>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">factorsVM.ptls</pre>
+
+        <pre class="highlight">import "stackVM.ptls" as stackVM
+
+------------------------------------------------------------------------------
+
+n = 80122
+
+factors = [
+  Init(2),
+  Const(2),
+  Store(0),
+  Const(n),
+  Store(1),
+  Label("checkDone"),
+  Load(1),
+  Const(1),
+  Eq,
+  JmpIf("end"),
+  Label("checkDiv"),
+  Load(1),
+  Load(0),
+  Mod,
+  Const(0),
+  Eq,
+  JmpIf("divisible"),
+  Load(0),
+  Const(1),
+  Add,
+  Store(0),
+  Jmp("checkDiv"),
+  Label("divisible"),
+  Load(0),
+  Print,
+  Load(1),
+  Load(0),
+  Div,
+  Store(1),
+  Jmp("checkDone"),
+  Label("end"),
+  Exit,
+]
+
+------------------------------------------------------------------------------
+
+output =
+  stackVM.runGetOutput(factors) ++ ["done"]
+  |> printLines</pre>
+
+        <pre class="result">$ bin/pointless examples/stackVM/factorsVM.ptls
+
+2
+7
+59
+97
+done</pre>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">instructions.ptls</pre>
+
+        <pre class="highlight">export {
+  showInst, makeInstArray
+}
+
+------------------------------------------------------------------------------
+
+showInst(inst) = cond {
+  case is(Label, inst) format("{}:", [unwrap(inst)])
+  case is(PtlsLabel, inst) format("[ {<5} ]", [getLabel(inst)])
+  else format("[ {<5} ] {}", [getLabel(inst), unwrap(inst)])
+}
+
+------------------------------------------------------------------------------
+
+makeInstArray(rawInsts) =
+ rawInsts
+ |> convertJumps(getLabelInds(rawInsts))
+ |> toArray
+
+------------------------------------------------------------------------------
+
+convertJumps(inds, insts) =
+  insts
+  |> filter(notIs(Label))
+  |> map(convertJump(inds))
+
+------------------------------------------------------------------------------
+
+convertJump(inds, inst) = cond {
+  case is(Jmp, inst) Jmp(inds[unwrap(inst)])
+  case is(JmpIf, inst) JmpIf(inds[unwrap(inst)])
+  else inst
+}
+
+------------------------------------------------------------------------------
+
+getLabelInds(insts) = reduce(scanInst, (0, {}), insts) |> at(1)
+
+------------------------------------------------------------------------------
+
+scanInst(pair, inst) = 
+  if is(Label, inst)
+  then (ind, newInds)
+  else (ind + 1, inds)
+  where {
+    newInds = inds with $[unwrap(inst)] = ind
+    (ind, inds) = pair
+  }</pre>
+
+        <pre class="result">-- see examples above</pre>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">instructions.ptls</pre>
+
+        <pre class="highlight">export {
+  runGetOutput
+}
+
+------------------------------------------------------------------------------
+
+import "instructions.ptls" as instructions
+
+------------------------------------------------------------------------------
+-- Supported commands:
+--
+-- "push" and "pop" refer to vm stack
+-- "advance" = jump to next instruction
+--
+-- Eq        - pop top 2 vals (b, a), push a == b, advance
+-- Add       - pop top 2 vals (b, a), push a + b, advance
+-- Sub       - pop top 2 vals (b, a), push a - b, advance
+-- Mul       - pop top 2 vals (b, a), push a * b, advance
+-- Div       - pop top 2 vals (b, a), push a / b, advance
+-- Mod       - pop top 2 vals (b, a), push a % b, advance
+-- Print     - pop top val a, set vm output to a, advance
+-- Init  arg - init vm vars to array of zeros with length arg, advance
+-- Const arg - push arg, advance
+-- Store arg - pop value, value at index arg in vm vars array , advance
+-- Load  arg - get value at index arg in vm vars array, push value, advance
+-- JmpIf arg - pop value, jump to label arg if value, else advance 
+-- Jmp   arg - jump to label arg
+
+vmFromInsts(rawInsts) = VM {
+  vars = None
+  insts = instructions.makeInstArray(rawInsts)
+  index = 0
+  stack = []
+  outVal = None
+}
+
+------------------------------------------------------------------------------
+
+pushVal(arg, vm) = vm with $.stack = [arg] ++ vm.stack
+popVals(n, vm)   = vm with $.stack = drop(n, vm.stack)
+load(arg, vm)    = pushVal(vm.vars[arg], vm)
+
+------------------------------------------------------------------------------
+
+init(arg, vm)  = vm with $.vars = zeroArray(arg)
+store(arg, vm) = vm with $.vars[arg] = head(vm.stack)
+
+------------------------------------------------------------------------------
+
+valAt(n, vm) = at(n, vm.stack)
+
+------------------------------------------------------------------------------
+
+advance(vm) = vm with $.index += 1
+
+------------------------------------------------------------------------------
+
+jumpIf(pred, arg, vm) =
+  if pred
+  then vm with $.index = arg
+  else advance(vm) 
+
+------------------------------------------------------------------------------
+
+saveOutput(vm)  = vm with $.outVal = valAt(0, vm)
+clearOutput(vm) = vm with $.outVal = None
+
+------------------------------------------------------------------------------
+
+binaryOp(op, vm) =
+ vm
+ |> popVals(2)
+ |> pushVal(op(valAt(0, vm), valAt(1, vm)))
+ |> advance
+
+------------------------------------------------------------------------------
+
+eval(vm) = cond {
+
+  case is(Init, inst)
+    vm
+    |> init(arg)
+    |> advance
+
+  case is(Const, inst)
+    vm
+    |> pushVal(arg)
+    |> advance
+
+  case is(Store, inst)
+    vm
+    |> store(arg)
+    |> popVals(1)
+    |> advance
+
+  case is(Load, inst)
+    vm
+    |> load(arg)
+    |> advance
+
+  case is(JmpIf, inst)
+    vm
+    |> popVals(1)
+    |> jumpIf(valAt(0, vm), arg)
+
+  case is(Jmp, inst)
+    vm
+    |> jumpIf(true, arg)
+
+  case is(Print, inst)
+    vm
+    |> saveOutput
+    |> popVals(1)
+    |> advance
+
+  case is(Eq,  inst) vm |> binaryOp(eq)
+  case is(Add, inst) vm |> binaryOp(add)
+  case is(Sub, inst) vm |> binaryOp(sub)
+  case is(Mul, inst) vm |> binaryOp(mul)
+  case is(Div, inst) vm |> binaryOp(div)
+  case is(Mod, inst) vm |> binaryOp(mod)
+
+} where {
+  inst = vm.insts[vm.index]
+  arg = unwrap(inst)
+}
+
+------------------------------------------------------------------------------
+
+runGetOutput(insts) =
+  vmFromInsts(insts)
+  |> iterate(compose(clearOutput, eval))
+  |> takeUntil(vm => vm.insts[vm.index] == Exit)
+  |> map(vm => vm.outVal)
+  |> filter(notEq(None))</pre>
+
+        <pre class="result">-- see examples above</pre>
+      </div>
+
+      <hr>
+
+      <div class="exampleTitle">
+        <span id="tokenizer"><a href="#tokenizer">Self-Hosting Tokenizer</a></span>
+        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/tokenizer/">
+          (source)
+        </a>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">tokenize.ptls</pre>
+
+        <pre class="highlight">import "location.ptls" as location
+import "symbols.ptls" as symbols
+
+------------------------------------------------------------------------------
+-- For tokenizer tok with chars c0, c1, c2 ... cn
+-- and funcs f0, f1, f2, ... fn
+-- return true if n >= m and all([f0(c0), f1(c1), ...])
+
+matchChars(funcs, tok) =
+  if length(pairs) < length(funcs) then false
+  else
+    pairs
+    |> map(pair => (func(char) where (func, char) = pair))
+    |> all
+  where pairs = zip(funcs, tok.chars)
+
+------------------------------------------------------------------------------
+-- New tokenizer object
+
+new(text) = Tokenizer {
+  chars    = split("", text)
+  locs     = location.fromChars("path", chars)
+  stack    = []
+  tokens   = []
+  tokenLoc = head(locs) -- where the current token started
+}
+
+------------------------------------------------------------------------------
+-- Move forward one char, push char onto stack
+
+advance(tok) =
+  tok with {
+    $.chars = tail(tok.chars)
+    $.stack = [head(tok.chars)] ++ tok.stack
+    $.locs  = tail(tok.locs)
+  }
+
+------------------------------------------------------------------------------
+-- Skip chars (don't push to stack)
+
+skipVal(tok) = advance(tok) with {
+  -- keep stack of tok before advance (leaves out current char)
+  $.stack = tok.stack
+}
+
+------------------------------------------------------------------------------
+-- Push chars to stack as long as matchChars(funcs)
+
+advanceWhile(funcs, tok) =
+  iterate(advance, tok)
+  |> dropWhile(matchChars(funcs))
+  |> head
+
+------------------------------------------------------------------------------
+-- Skip chars (don't push to stack) as long as matchChars(funcs)
+
+skipWhile(funcs, tok) =
+  iterate(skipVal, tok)
+  |> dropWhile(matchChars(funcs))
+  |> head
+
+------------------------------------------------------------------------------
+-- No more chars to parse
+
+isEOF(tok) = tok.chars == Empty
+
+------------------------------------------------------------------------------
+-- Get token string from stack of tokens
+
+tokVal(tok) =
+  tok.stack
+  |> reverse -- pushing chars reversed order - reverse again to correct
+  |> join("")
+
+------------------------------------------------------------------------------
+-- Push new token to token stack
+
+makeToken(labelFunc, tok) = tok with {
+  $.tokens   = [token] ++ tok.tokens
+  $.stack    = []                       -- clear stack
+  $.tokenLoc = head(tok.locs)           -- set loc for next token
+
+} where {
+  -- add label to token object (Name {...})
+  token = wrapObject(labelFunc(val), {value = val; loc = tok.tokenLoc})
+  val = tokVal(tok)
+}
+
+------------------------------------------------------------------------------
+-- Find matching token type for upcoming chars
+
+isBlank        = matchChars([eq("_")])
+isComment      = matchChars([eq("-"), eq("-")])
+isInt          = matchChars([inFunc(digits)])
+isFloat        = matchChars([eq("."), inFunc(digits)])
+isName         = matchChars([inFunc(lowers)])
+isLabel        = matchChars([inFunc(uppers)])
+isCustomField  = matchChars([eq("."), inFunc(alphas)])
+isLangField    = matchChars([eq("."), eq("!"), inFunc(alphas)])
+isOpSym        = matchChars([inFunc(symbols.opSymChars)])
+isWhitespace   = matchChars([eq(" ")])
+isNewline      = matchChars([eq("\n")])
+isSeparator    = matchChars([inFunc(symbols.separators)])
+isLeftSym      = matchChars([inFunc(symbols.leftSyms)])
+isRightSym     = matchChars([inFunc(symbols.rightSyms)])
+isString       = matchChars([eq("\"")])
+
+------------------------------------------------------------------------------
+-- Make a new token and push to token stack
+-- must have not isEOF(tok)
+-- throws TokenizerError
+
+getToken(tok) = cond {
+
+  case isBlank(tok)
+    tok
+    |> skipVal -- skip blank char
+    |> makeToken(const(Blank))
+
+  ----------------------------------------------------------------------------
+
+  case isComment(tok)
+    tok
+    |> advanceWhile([eq("-")]) -- take all dashes
+    |> advanceWhile([notEq("\n")]) -- comment extends to the end of line
+    |> makeToken(const(Comment))
+
+  ----------------------------------------------------------------------------
+
+  case isWhitespace(tok)
+    tok
+    |> skipWhile([eq(" ")]) -- combine repeated spaces into one token
+    |> makeToken(const(Whitespace))
+
+  ----------------------------------------------------------------------------
+
+  case isNewline(tok)
+    tok
+    |> skipWhile([eq("\n")]) -- combine repeated newlines into one token
+    |> makeToken(const(Newline))
+
+  ----------------------------------------------------------------------------
+
+  case isSeparator(tok)
+    tok
+    |> advance -- take separator char
+    |> makeToken(getIndex(symbols.separators))
+
+  ----------------------------------------------------------------------------
+
+  case isName(tok)
+    tok
+    |> advanceWhile([inFunc(alNums)]) -- take all alphanumeric chars
+    -- return matching keyword token if name is a keyword
+    |> makeToken(getDefault(symbols.keywords, Name))
+
+  ----------------------------------------------------------------------------
+
+  case isCustomField(tok)
+    tok
+    |> skipVal -- take '.'
+    |> advanceWhile([inFunc(alNums)])
+    |> makeToken(const(Field))
+
+  ----------------------------------------------------------------------------
+
+  case isLangField(tok)
+    tok
+    |> skipVal -- take '.'
+    |> advance -- take '!'
+    |> advanceWhile([inFunc(alNums)])
+    |> makeToken(const(Field))
+
+  ----------------------------------------------------------------------------
+
+  case isLabel(tok)
+    tok
+    |> advanceWhile([inFunc(alNums)]) -- take all alphanumeric chars
+    |> makeToken(const(Label))
+
+  ----------------------------------------------------------------------------
+
+  case isString(tok)
+    tok
+    |> skipVal -- skip opening '"'
+    |> getStringChars
+    |> skipVal -- skip closing '"'
+    |> makeToken(const(String))
+
+  ----------------------------------------------------------------------------
+
+  case isInt(tok)
+    tok
+    |> advanceWhile([inFunc(digits)]) -- take all leading digits
+    -- if there's a decimal point followed by more digits, take those too
+    |> (tok => if isFloat(tok) then getFloatDigits(tok) else tok)
+    |> makeToken(const(Number))
+
+  ----------------------------------------------------------------------------
+
+  case isFloat(tok)
+    tok
+    |> getFloatDigits(tok) -- get decimal point and following digits
+    |> makeToken(const(Number))
+
+  ----------------------------------------------------------------------------
+
+  case isOpSym(tok)
+    tok
+    |> advanceWhile([inFunc(symbols.opSymChars)]) -- take all operator chars
+    |> checkOpSym -- check that chars form a valid operator
+    |> makeToken(getIndex(symbols.opSyms))
+
+  ----------------------------------------------------------------------------
+  -- leftSyms and rightSyms kept separate to accomodate Sub -> Neg conversion
+
+  case isLeftSym(tok)
+    tok
+    |> advance -- take leftSym char
+    |> makeToken(getIndex(symbols.leftSyms))
+
+  ----------------------------------------------------------------------------
+
+  case isRightSym(tok)
+    tok
+    |> advance -- take rightSym char
+    |> makeToken(getIndex(symbols.rightSyms))
+
+  ----------------------------------------------------------------------------
+  -- leading chars don't form a valid token
+  -- example: a non alphaNumeric char not in any operator or symbol like '&'
+
+  else
+    tokError(tok, message)
+    where message = format("Unexpected symbol '{}'", [head(tok.chars)])
+
+} requires not isEOF(tok)
+
+------------------------------------------------------------------------------
+-- Get chars inside string
+
+getStringChars(tok) = cond {
+  case isEOF(tok)
+    -- reached end of file before closing quote
+    tokError(tok, "Unmatched quote")
+
+  case matchChars([eq("\n")], tok)
+    -- reached end of line before closing quote
+    tokError(tok, "Unmatched quote (must escape line breaks in string)")
+
+  case matchChars([eq("\\")], tok)
+    -- on backslash, move past backslash and escape char
+    getStringChars(advance(advance(tok)))
+
+  case matchChars([eq("\"")], tok)
+    tok -- stop before taking closing quote
+
+  else getStringChars(advance(tok))
+}
+
+------------------------------------------------------------------------------
+-- Get decimal point and following digits
+
+getFloatDigits(tok) =
+  tok
+  |> advance
+  |> advanceWhile([inFunc(digits)])
+
+------------------------------------------------------------------------------
+-- Check that current token chars form valid operator
+
+checkOpSym(tok) =
+  if val in symbols.opSyms then tok
+  else tokError(tok, format("Invalid operator '{}'", [val]))
+  where val = tokVal(tok)
+
+------------------------------------------------------------------------------
+-- Throw TokenizerError
+
+tokError(tok, message) = throw TokenizerError(fullMessage)
+  where fullMessage = format(
+    "{}\nTokenizer Error:\n\n{}\n{}\n\n{}",
+    [sep, message, sep, location.showLoc(tok.tokenLoc)]
+  )
+
+sep = repeat("-") |> take(79) |> join("")
+
+------------------------------------------------------------------------------
+-- Get string representation for token
+
+showTok(token) =
+  format(
+    "{>3}:{<2} [ {<12} ] {}",
+    [line, col, getLabel(token), token.value]
+  ) where (line, col) = at(0, token.loc)
+ 
+------------------------------------------------------------------------------
+
+startToks = toSet(
+  vals(symbols.opSyms)
+  ++ vals(symbols.separators)
+  ++ vals(symbols.leftSyms)
+  ++ vals(symbols.keywords)
+)
+
+endToks = toSet(
+  vals(symbols.rightSyms)
+  ++ [Name, Field, String, Number]
+)
+
+updateIsStart(isStart, token) = cond {
+  case getLabel(token) in startToks true
+  case getLabel(token) in endToks false
+  else isStart
+}
+
+------------------------------------------------------------------------------
+
+getTokens(tok) =
+  tok
+  |> iterate(getToken)
+  |> drop(1)
+  |> takeUntil(isEOF)
+  |> map(tok => head(tok.tokens))
+
+------------------------------------------------------------------------------
+
+convert(tokens) =
+  scan(updateIsStart, false, tokens)
+  |> zip(tokens)
+  |> map(convertSubExpr)
+  |> getNeighborTruples
+  |> map(convertSubPadding)
+
+------------------------------------------------------------------------------
+-- Scan tokens, keeping track of whether '-' corresponds to a negative
+-- sign or subtraction operator, depending on whether they occur at the start
+-- of an expression, and update (all '-' are initially parsed as subtraction)
+
+convertSubExpr(pair) =
+  if is(Sub, token) and isStart
+  then wrapObject(Neg, token)
+  else token
+  where (token, isStart) = pair
+
+------------------------------------------------------------------------------
+
+getNeighborTruples(tokens) =
+  zipN([tokens, [None] ++ tokens, drop(1, tokens)])
+
+------------------------------------------------------------------------------
+-- Special case: conver '-' to neg in 'a -b'
+-- for examplem:
+--   array = [1 2 -3] 
+
+convertSubPadding(triple) =
+  if is(Sub, current) and is(Whitespace, last) and is(Number, next)
+  then wrapObject(Neg, current)
+  else current
+  where (current, last, next) = triple
+
+------------------------------------------------------------------------------
+
+text = readLines |> join("\n")
+
+output =
+  try
+    new(text)
+    |> getTokens
+    |> convert
+    |> map(showTok)
+    |> eager
+    |> printLines
+
+  catch const(TokenizerError)
+    err => println(unwrap(err))</pre>
+
+        <pre class="result">$ cat examples/tokenizer/tokenizer.ptls | bin/pointless examples/tokenizer/tokenizer.ptls 
+
+  1:1  [ Newline      ] 
+  2:1  [ Import       ] import
+  2:7  [ Whitespace   ] 
+  2:8  [ String       ] location.ptls
+  2:23 [ Whitespace   ] 
+  2:24 [ As           ] as
+  2:26 [ Whitespace   ] 
+  2:27 [ Name         ] location
+  2:35 [ Newline      ] 
+  3:1  [ Import       ] import
+  3:7  [ Whitespace   ] 
+  3:8  [ String       ] symbols.ptls
+  3:22 [ Whitespace   ] 
+  3:23 [ As           ] as
+  ...</pre>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">location.ptls</pre>
+
+        <pre class="highlight">export {fromChars, showLoc}
+
+------------------------------------------------------------------------------
+
+nextPos(pos, char) =
+  if char == "\n" then (line + 1, 1) else (line, col + 1)
+  where (line, col) = pos
+
+------------------------------------------------------------------------------
+
+makeLoc(lines, path, pos) =
+  Loc(pos, path, lines[line - 1])
+  where (line, _) = pos
+
+------------------------------------------------------------------------------
+
+fromChars(path, chars) =
+  scan(nextPos, (1, 1), chars ++ [EOF])
+  |> map(makeLoc(getLines(chars), path))
+
+getLines(chars) =
+  chars
+  |> split("\n")
+  |> toArray
+
+------------------------------------------------------------------------------
+
+colMarker(col) =
+  repeat(" ")
+  |> take(col - 1)
+  |> join("")
+
+------------------------------------------------------------------------------
+
+showLoc(loc) =
+  format(
+    "(line {}, column {}) in '{}'\n{}\n{}^",
+    [line, col, path, lineStr, colMarker(col)]
+  ) where {
+    (line, col) = pos
+    (pos, path, lineStr) = loc
+  }</pre>
+
+        <pre class="result">-- see examples above</pre>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">symbols.ptls</pre>
+
+        <pre class="highlight">------------------------------------------------------------------------------
+-- Language keywords, operators, and symbols, and associated token types
+------------------------------------------------------------------------------
+
+keywords = {
+  "if": If,
+  "then": Then,
+  "else": Else,
+  "where": Where,
+  "with": With,
+  "cond": Cond,
+  "case": Case,
+  "and": And,
+  "or": Or,
+  "not": Not,
+  "in": In,
+  "as": As,
+  "true": Bool,
+  "false": Bool,
+  "for": For,
+  "when": When,
+  "yield": Yield,
+  "import": Import,
+  "export": Export,
+  "throw": Throw,
+  "try": Try,
+  "catch": Catch,
+}
+
+------------------------------------------------------------------------------
+
+opSyms = {
+  "+": Add,
+  "-": Sub,
+  "*": Mul,
+  "/": Div,
+  "**": Pow,
+  "%": Mod,
+  "+=": AddAssign,
+  "-=": SubAssign,
+  "*=": MulAssign,
+  "/=": DivAssign,
+  "**=": PowAssign,
+  "%=": ModAssign,
+  "|>": Pipe,
+  "=": Assign,
+  "==": Equals,
+  "!=": NotEq,
+  "<": LessThan,
+  ">": GreaterThan,
+  "<=": LessEq,
+  ">=": GreaterEq,
+  "=>": Lambda,
+  "\$": Dollar,
+  "++": Concat,
+}
+
+opSymChars = toSet("/+$>!<*-|=%")
+
+------------------------------------------------------------------------------
+-- Keep left and right separate to help keep track of
+-- when tokenizer is at the start of a new expression
+-- Used to disambiguate negation and subtraction
+
+leftSyms = {
+  "(": LParen,
+  "{": LBracket,
+  "[": LArray,
+}
+
+rightSyms = {
+  ")": RParen,
+  "}": RBracket,
+  "]": RArray,
+}
+
+------------------------------------------------------------------------------
+
+separators = {
+  ";": Semicolon,
+  ":": Colon,
+  ",": Comma,
+}</pre>
+
+        <pre class="result">-- see examples above</pre>
+      </div>
 
       <footer>
         <div>copyright (c) 2020 Avery N. Nortonsmith</div>
         <div>logo based on isometric1 by Kent Nassen</div>
       </footer>
+    </main>
+
+    <script src="highlight/js/highlightGen.js"></script>
+    <script src="highlight/js/highlight.js"></script>
       
-    </div>
   </body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pointless API Docs: pointless/prelude/format.ptls</title>
+    <link rel="stylesheet" type="text/css" href="../docStyle.css">
+  </head>
+
+  <body>
+    <main>
+      <h1>Pointless API Docs</h1>
+      <h2>pointless/prelude/format.ptls     (<a href='https://github.com/pointless-lang/pointless/tree/master/prelude/format.ptls'>source</a>)</h2>
+
+      <hr>
+<strong id='format'>format(fmtString, values)</strong>
+<a href='#format' class='anchor'>link</a>
+<pre class='doc'>Use a format pattern to build a string with inserted values
+
+example:
+
+>> format("{} {}!", ["Hello", "world"])
+"Hello world!"
+
+example:
+
+>> pairs  = [("dolor", 5), ("sit", 3), ("amet", 4)]
+>> output = pairs |> map(format("[{<5} {}]")) |> printLines
+[dolor 5]
+[sit   3]
+[amet  4]
+</pre>
+    </main>
+  </body>
+</html>
+  

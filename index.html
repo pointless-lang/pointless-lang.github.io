@@ -5,13 +5,15 @@
       <title>Pointless: a scripting language for learning and fun</title>
 
       <link rel="stylesheet" type="text/css" href="style.css">
-      <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/dejavu-sans-mono" type="text/css"/>
+      <link rel="stylesheet" type="text/css" href="highlight/highlight.css">
+      <link rel="stylesheet" media="screen" href="fonts/fonts.css" type="text/css"/>
   </head>
 
   <body>
-    <div class="content">
-      <a href="/"><header>
-        <pre>
+    <main>
+      <a href="/">
+        <header>
+          <pre>
      ___           ___           ___           ___          ___            ___        ___           ___           ___     
     /\  \         /\  \         /\  \         /\__\        /\  \          /\__\      /\  \         /\  \         /\  \    
    /::\  \       /::\  \        \:\  \       /::|  |       \:\  \        /:/  /     /::\  \       /::\  \       /::\  \   
@@ -24,52 +26,109 @@
                  \::/  /       \:\__\         /:/  /                     \:\__\     \:\__\        \::/  /       \::/  /   
                   \/__/         \/__/         \/__/                       \/__/      \/__/         \/__/         \/__/     </pre>
                        
-      </header></a>
+        </header>
+      </a>
 
       <nav>
         <a href="/"><span>HOME</span></a>
+        <a href="online/index.html"><span>ONLINE</span></a>
         <a href="docs.html"><span>DOCUMENTATION</span></a>
         <a href="examples.html"><span>EXAMPLES</span></a>
+        <a href="api/index.html"><span>API</span></a>
         <a href="install.html"><span>INSTALL</span></a>
         <a href="dev.html"><span>DEVELOPMENT</span></a>
       </nav>
 
       <div class="text">
-        <div>Pointless: a scripting language for learning and fun</div>
+
+        <h3 style="color: #555;">
+          Pointless: A Scripting Language for Learning and Fun (v0.1.0)
+        </h3>
+
         <p>
-          I've made this site to share a project I've been working on intermittently for the last couple of years - a programming language called Pointless. The language is a distillation of some of the concepts from functional programming that I find interesting, with a design goal that can be roughly summarized as "creating the programming language that I'd like to have learned as a beginner programmer". This language is still very much in-the-works, but I'm excited to share the progress that I've made so far. More information can be found in the <a href="examples.html">examples</a> and <a href="docs.html">documentation</a> sections.
+          Pointless 0.1.0 brings a number of changes from the initial release, informed by 
+          feedback and experience. The latest implementation of Pointless is interpreter, rather than compiled, and is written in Dart. This move marks a deemphasis on performance with a focus instead on improved language design and faster development. It's my hope that the new Dart-based implementation will make Pointless easier for others to <a href="install.html">install</a>, <a href="online">use</a>, and <a href="dev.html">modify</a>.
+        </p>
+
+        <strong>New utilities:</strong>
+
+        <ul>
+          <li>A repl for interactive programming</li>
+          <li>An web-based <a href="online">language playground</a></li>
+          <li>Auto-generated <a href="api">API docs</a> for prelude functions</li>
+        </ul>
+
+        <strong>Language updates:</strong>
+
+        <ul>
+          <li>Syntax consolidation and updates</li>
+          <li>
+            Better error messages with location information for incorrect types
+            <br>
+            (showing where in the code the incorrect type came from)
+          </li>
+          <li>Explicit exports for multi-file projects</li>
+          <li>Expanded standard library</li>
+          <li>Try / Catch error handling mechanism</li>
+          <li>Labels support for objects</li>
+        </ul>
+
+        <strong>Implementation updates:</strong>
+
+        <ul>
+          <li>A smaller, easier to edit codebase</li>
+          <li>Improved Windows support</li>
+          <li>Bug fixes</li>
+          <li>MIT licensed source code</li>
+        </ul>
+
+        <strong>Site updates:</strong>
+
+        <ul>
+          <li>Updated documentation</li>
+          <li>More in-depth examples</li>
+          <li>Automatic syntax highlighting</li>
+          <li>Faster loading</li>
+        </ul>
+
+        <p>
+          I've made this site to share a project I've been working on intermittently for the last couple of years - a programming language called Pointless. The language is a distillation of some of the concepts from functional programming that I find interesting, with a design goal that can be roughly summarized as "creating the programming language that I'd like to have learned as a beginner programmer". This language is still very much in-the-works, but I'm excited to share the progress that I've made so far.
         </p>
 
         <p style="text-align: right; padding-right: 50px;"><em>- Avery Nortonsmith</em></p>
       </div>
 
-      <code><span style='color: #c594c5;'>import</span><span style='color: #D8DEE9;'> </span><span style='color: #99C794;'>"chart.ptls"</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>as</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>chart</span><span style='color: #D8DEE9;'>
+      <div class="sample">
+        <pre class="highlight">import "chart.ptls" as chart
 
-</span><span style='color: #6699cc;'>output</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #6699cc;'>iterate</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>collatzStep</span><span style='color: #D8DEE9;'>,</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>175</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>takeWhile</span><span style='color: #D8DEE9;'>(</span><span style='color: #6699cc;'>greaterThan</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>1</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>chart</span><span style='color: #D8DEE9;'>.scale</span><span style='color: #D8DEE9;'>(</span><span style='color: #F9AE58;'>8</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #F97B58;'>|></span><span style='color: #D8DEE9;'> </span><span style='color: #6699cc;'>println</span><span style='color: #D8DEE9;'>
+output =
+  iterate(step, 175) -- sequence starts at 175
+  |> takeUntil(eq(1))
+  |> chart.scale(4)
+  |> println
 
-</span><span style='color: #D8DEE9;'>collatzStep</span><span style='color: #D8DEE9;'>(</span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'>)</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>=</span><span style='color: #D8DEE9;'>
-</span><span style='color: #D8DEE9;'>  </span><span style='color: #c594c5;'>if</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>%</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>2</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>==</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>0</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>then</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>/</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>2</span><span style='color: #D8DEE9;'> </span><span style='color: #c594c5;'>else</span><span style='color: #D8DEE9;'> </span><span style='color: #D8DEE9;'>n</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>*</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>3</span><span style='color: #D8DEE9;'> </span><span style='color: #F97B58;'>+</span><span style='color: #D8DEE9;'> </span><span style='color: #F9AE58;'>1</span></code>
+-----------------------------------------------------------
+-- get the next number in a collatz sequence
 
-      <pre class="result">$ ./pointless lib/examples/collatz.ptls
-                                              █                                 
-                                    ▃         █                                 
-                                    █       ▃ █                                 
-                                  ▂ █       █ █▁                                
-                                  █ █▂    ▅ █ ██                                
-                                ▇ █▂██  ▄ █ █▆██▁                               
-     ▁ ▅  ▂            ▂    ▃ ▇ █▄████▅ █▂█▆█████▁ ▅  ▂                         
-▂▄▃▆▃█▅█▆▄█▅▃▂▄▃▆▃█▄▃▆▄█▅▃▇▄█▅█████████▇██████████▅█▆▄█▅▃▇▄▂▂▁▂▂▁▁▁▁▂▁▂▁▁▁▁▁▁▁▁▁
-      </pre>
+step(n) =
+  if n % 2 == 0 then n / 2 else n * 3 + 1</pre>
+
+      <pre class="result">$ bin/pointless lib/examples/collatz.ptls
+
+                                    ▂         █                                 
+                                  ▁ █       ▅ █▁                                
+                                ▃ █▁█▅  ▂ ▆ █▃██▁                               
+▁▂▁▃▂▄▂▆▃▂▅▃▂▁▂▁▃▂▄▂▁▃▂▄▂▁▃▂▅▃▇▄█▅████▆▃█▅█▇█████▄▂▆▃▂▄▂▁▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁</pre>
+      </div>
 
       <footer>
         <div>copyright (c) 2020 Avery N. Nortonsmith</div>
         <div>logo based on isometric1 by Kent Nassen</div>
       </footer>
+    </main>
+
+    <script src="highlight/js/highlightGen.js"></script>
+    <script src="highlight/js/highlight.js"></script>
       
-    </div>
   </body>
 </html>

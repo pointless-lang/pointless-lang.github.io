@@ -5,13 +5,15 @@
       <title>Pointless: install</title>
 
       <link rel="stylesheet" type="text/css" href="style.css">
-      <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/dejavu-sans-mono" type="text/css"/>
+      <link rel="stylesheet" type="text/css" href="highlight/highlight.css">
+      <link rel="stylesheet" media="screen" href="fonts/fonts.css" type="text/css"/>
   </head>
 
   <body>
-    <div class="content">
-      <a href="/"><header>
-        <pre>
+    <main>
+      <a href="/">
+        <header>
+          <pre>
      ___           ___           ___           ___          ___            ___        ___           ___           ___     
     /\  \         /\  \         /\  \         /\__\        /\  \          /\__\      /\  \         /\  \         /\  \    
    /::\  \       /::\  \        \:\  \       /::|  |       \:\  \        /:/  /     /::\  \       /::\  \       /::\  \   
@@ -24,63 +26,97 @@
                  \::/  /       \:\__\         /:/  /                     \:\__\     \:\__\        \::/  /       \::/  /   
                   \/__/         \/__/         \/__/                       \/__/      \/__/         \/__/         \/__/     </pre>
                        
-      </header></a>
+        </header>
+      </a>
 
       <nav>
         <a href="/"><span>HOME</span></a>
+        <a href="online/index.html"><span>ONLINE</span></a>
         <a href="docs.html"><span>DOCUMENTATION</span></a>
         <a href="examples.html"><span>EXAMPLES</span></a>
+        <a href="api/index.html"><span>API</span></a>
         <a href="install.html"><span>INSTALL</span></a>
         <a href="dev.html"><span>DEVELOPMENT</span></a>
       </nav>
 
       <div class="text">
-        <h3>Installation</h3>
+        <h3>Installation:</h3>
 
-        <h4>Linux and Mac</h4>
+        <p>
+          Remember, you can <a href="online"><strong>try Pointless online</strong></a> without installing.
+          <br>
+          To install Pointless locally, you'll need to have <a href="https://git-scm.com/downloads">Git</a> installed to clone the repository, as well as the <a href="https://dart.dev/get-dart">Dart SDK</a>.
+        </p>
 
-        <p>You'll need to have both git and Make installed, as well as a C compiler**:</p>
+        <div style="margin: 20px 0px;">
+          <strong>Installing on Linux, Mac and Windows (PowerShell):</strong>
+        </div>
 
-        <div><a href="https://stackoverflow.com/questions/10265742/how-to-install-make-and-gcc-on-a-mac">
-          https://stackoverflow.com/questions/10265742/how-to-install-make-and-gcc-on-a-mac
-        </a></div>
+        <ol>
+          <li>
+            Clone the repository
+            <pre>git clone https://github.com/pointless-lang/pointless.git</pre>
+          </li>
 
-        <div><a href="https://linuxize.com/post/how-to-install-gcc-compiler-on-ubuntu-18-04/">
-          https://linuxize.com/post/how-to-install-gcc-compiler-on-ubuntu-18-04/
-        </a></div>
+          <li>
+            Enter the repo directory
+            <pre>cd pointless</pre>
+          </li>
 
-        <div><a href="https://git-scm.com/downloads">
-          https://git-scm.com/downloads
-        </a></div>
+          <li>
+            You can now run the Pointless repl using:
+            <pre>dart lib/pointless.dart</pre>
+            or supply a path to a file to run; for example:
+            <pre>dart lib/pointless.dart examples/beer/beer.ptls</pre>
+            (for repl readline support, try <a href="https://github.com/hanslub42/rlwrap">rlwrap</a>)
+          </li>
+        </ol>
 
-        <p>1: Clone the repository</p>
-        <pre>git clone https://github.com/pointless-lang/pointless.git</pre>
+        <div style="margin: 20px 0px;">
+          <strong>Compiling the interpreter with dart2native:</strong>
+        </div>
 
-        <p>2: Enter the repo directory</p>
-        <pre>cd pointless</pre>
+        <p>Compiling the interpreter avoids the startup overhead of the Dart VM.</p>
 
-        <p>3: Build the project with GCC*</p>
-        <pre>make opt -B</pre>
+        <ul>
+          <li>
+            <p>Linux and Mac:</p>
+            <p>
+              Run the following commands in the repository root (generates ./bin/pointless):
+            </p>
+            <pre>pub get
+dart2native lib/pointless.dart -o bin/pointless
+</pre>
+            <p>Alternatively, using Make, simply run:</p>
+            <pre>make</pre>
 
-        <p>4: Test the build with a <a href="docs.html#helloworld">hello world</a> script</p>
+            <p>Now you can run Pointless like this:</p>
+            <pre>bin/pointless examples/beer/beer.ptls</pre>
+          </li>
 
-        <p>*To use a compiler other than GCC</p>
-        <pre>make CC=clang opt -B</pre>
+          <li>
+            <p>Windows:</p>
+            <p>
+              Run the following commands in the repository root (generates ./bin/pointless.exe):
+            </p>
+            <pre>pub get
+dart2native lib/pointless.dart -o bin/pointless.exe
+</pre>
 
-        <p>**If you're on linux (or WSL on windows), you may find that the binary in the repo (built for Ubuntu 18.04) works out-of-the-box. You can test this by replacing step 3 above with the following command</p>
-        <pre>chmod 755 pointless</pre>
-
-        <h4>Windows</h4>
-
-        <p>You can try Pointless on windows by installing the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a> (WSL) and using it to run the commands above.</p>
-
+            <p>Now you can run Pointless like this:</p>
+            <pre>bin/pointless.exe examples/beer/beer.ptls</pre>
+          </li>
+        </ul>
       </div>
 
       <footer>
         <div>copyright (c) 2020 Avery N. Nortonsmith</div>
         <div>logo based on isometric1 by Kent Nassen</div>
       </footer>
+    </main>
 
-    </div>
+    <script src="highlight/js/highlightGen.js"></script>
+    <script src="highlight/js/highlight.js"></script>
+
   </body>
 </html>
