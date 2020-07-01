@@ -32,11 +32,12 @@
       <nav>
         <a href="/"><span>HOME</span></a>
         <a href="online/"><span>ONLINE</span></a>
-        <a href="docs.html"><span>DOCUMENTATION</span></a>
+        <a href="docs.html"><span>DOCS</span></a>
         <a href="examples.html"><span>EXAMPLES</span></a>
         <a href="api/index.html"><span>API</span></a>
         <a href="install.html"><span>INSTALL</span></a>
         <a href="dev.html"><span>DEVELOPMENT</span></a>
+        <a href="tutorials/"><span>TUTORIALS</span></a>
       </nav>
 
       <div class="text">
@@ -94,14 +95,15 @@
         <br>
 
         <p>
-          I've made this site to share a project I've been working on intermittently for the last couple of years - a programming language called Pointless. The language is a distillation of some of the concepts from functional programming that I find interesting, with a design goal that can be roughly summarized as "creating the programming language that I'd like to have learned as a beginner programmer". This language is still very much in-the-works, but I'm excited to share the progress that I've made so far.
+          I've made this site to share a project I've been working on intermittently for the last couple of years -- a programming language called Pointless. The language is a distillation of some of the concepts from functional programming that I find interesting, with a design goal that can be roughly summarized as "creating the programming language that I'd like to have learned as a beginner programmer". This language is still very much in-the-works, but I'm excited to share the progress that I've made so far.
         </p>
 
         <p style="text-align: right; padding-right: 50px;"><em>- Avery Nortonsmith</em></p>
       </div>
 
-      <div class="sample">
-        <pre class="highlight">import "chart.ptls" as chart
+      <a href="online/collatz.html" style="text-decoration: none;">
+        <div class="sample">
+          <pre class="highlight">import "chart.ptls" as chart
 
 output =
   iterate(step, 175) -- sequence starts at 175
@@ -115,13 +117,14 @@ output =
 step(n) =
   if n % 2 == 0 then n / 2 else n * 3 + 1</pre>
 
-      <pre class="result">$ bin/pointless lib/examples/collatz.ptls
+          <pre class="result">$ bin/pointless lib/examples/collatz.ptls
 
-                                    ▂         █                                 
-                                  ▁ █       ▅ █▁                                
-                                ▃ █▁█▅  ▂ ▆ █▃██▁                               
-▁▂▁▃▂▄▂▆▃▂▅▃▂▁▂▁▃▂▄▂▁▃▂▄▂▁▃▂▅▃▇▄█▅████▆▃█▅█▇█████▄▂▆▃▂▄▂▁▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁</pre>
-      </div>
+                                      ▂         █                                 
+                                    ▁ █       ▅ █▁                                
+                                  ▃ █▁█▅  ▂ ▆ █▃██▁                               
+  ▁▂▁▃▂▄▂▆▃▂▅▃▂▁▂▁▃▂▄▂▁▃▂▄▂▁▃▂▅▃▇▄█▅████▆▃█▅█▇█████▄▂▆▃▂▄▂▁▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁</pre>
+        </div>
+      </a>
 
       <footer>
         <div>copyright (c) 2020 Avery N. Nortonsmith</div>

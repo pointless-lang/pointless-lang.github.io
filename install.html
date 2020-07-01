@@ -32,11 +32,12 @@
       <nav>
         <a href="/"><span>HOME</span></a>
         <a href="online/"><span>ONLINE</span></a>
-        <a href="docs.html"><span>DOCUMENTATION</span></a>
+        <a href="docs.html"><span>DOCS</span></a>
         <a href="examples.html"><span>EXAMPLES</span></a>
         <a href="api/index.html"><span>API</span></a>
         <a href="install.html"><span>INSTALL</span></a>
         <a href="dev.html"><span>DEVELOPMENT</span></a>
+        <a href="tutorials/"><span>TUTORIALS</span></a>
       </nav>
 
       <div class="text">
@@ -55,24 +56,24 @@
         <ol>
           <li>
             Clone the repository
-            <pre>git clone https://github.com/pointless-lang/pointless.git</pre>
+            <pre><code>git clone https://github.com/pointless-lang/pointless.git</code></pre>
           </li>
 
           <li>
             Enter the repo directory
-            <pre>cd pointless</pre>
+            <pre><code>cd pointless</code></pre>
           </li>
 
           <li>
             Download Dart dependencies:
-            <pre>pub get</pre>
+            <pre><code>pub get</code></pre>
           </li>
 
           <li>
             You can now run the Pointless repl using:
-            <pre>dart lib/pointless.dart</pre>
+            <pre><code>dart lib/pointless.dart</code></pre>
             or supply a path to a file to run; for example:
-            <pre>dart lib/pointless.dart examples/beer/beer.ptls</pre>
+            <pre><code>dart lib/pointless.dart examples/beer/beer.ptls</code></pre>
             (for repl readline support, try <a href="https://github.com/hanslub42/rlwrap">rlwrap</a>)
           </li>
         </ol>
@@ -91,14 +92,14 @@
               Run the following commands in the repository root (generates ./bin/pointless):
             </p>
 
-            <pre>dart2native lib/pointless.dart -o bin/pointless</pre>
+            <pre><code>dart2native lib/pointless.dart -o bin/pointless</code></pre>
 
             <p>Alternatively, using Make, simply run:</p>
             
-            <pre>make</pre>
+            <pre><code>make</code></pre>
 
             <p>Now you can run Pointless like this:</p>
-            <pre>bin/pointless examples/beer/beer.ptls</pre>
+            <pre><code>bin/pointless examples/beer/beer.ptls</code></pre>
           </li>
 
           <li>
@@ -107,12 +108,12 @@
               Run the following commands in the repository root (generates ./bin/pointless.exe):
             </p>
 
-            <pre>dart2native lib/pointless.dart -o bin/pointless.exe</pre>
+            <pre><code>dart2native lib/pointless.dart -o bin/pointless.exe</code></pre>
 
 
 
             <p>Now you can run Pointless like this:</p>
-            <pre>bin/pointless.exe examples/beer/beer.ptls</pre>
+            <pre><code>bin/pointless.exe examples/beer/beer.ptls</code></pre>
           </li>
         </ul>
       </div>

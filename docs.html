@@ -31,12 +31,6 @@
           margin: 40px 0px;
         }
 
-        code {
-          padding: 2px 6px;
-          border-radius: 2px;
-          background-color: #ddd;
-        }
-
         .sample {
           margin: 20px 0px 40px 0px;
         }
@@ -71,11 +65,12 @@
       <nav>
         <a href="/"><span>HOME</span></a>
         <a href="online/"><span>ONLINE</span></a>
-        <a href="docs.html"><span>DOCUMENTATION</span></a>
+        <a href="docs.html"><span>DOCS</span></a>
         <a href="examples.html"><span>EXAMPLES</span></a>
         <a href="api/index.html"><span>API</span></a>
         <a href="install.html"><span>INSTALL</span></a>
         <a href="dev.html"><span>DEVELOPMENT</span></a>
+        <a href="tutorials/"><span>TUTORIALS</span></a>
       </nav>
 
       <div class="text">
@@ -255,7 +250,7 @@
         
         <div class="sample">
           <pre class="highlight">-----------------------------------------------------------
--- check whether a number is even - returns true for even
+-- check whether a number is even -- returns true for even
 -- ints, false for odd ints or non-int numbers
 
 isEven(n) = n % 2 == 0 -- even ints equal zero mod 2</pre>
@@ -298,7 +293,7 @@ a >= b  -- greater-than or equal-to</pre>
         </h4>
 
         <p>
-          In Pointless, strings are the fundamental type for representing pieces of text - Pointless has no character type. Two strings can be concatenated into a new string using the <code>+</code> operator.
+          In Pointless, strings are the fundamental type for representing pieces of text -- Pointless has no character type. Two strings can be concatenated into a new string using the <code>+</code> operator.
         </p>
 
         <div class="sample">
@@ -334,7 +329,7 @@ b = false
         </h4>
 
         <p>
-          Labels in Pointless are like symbols in Lisp - they can be used much like enumeration values in other language, except that the enumeration doesn't have to be explicitly declared. Label names start with a capital latter, and can contain alphanumeric characters.
+          Labels in Pointless are like symbols in Lisp -- they can be used much like enumeration values in other language, except that the enumeration doesn't have to be explicitly declared. Label names start with a capital latter, and can contain alphanumeric characters.
         </p>
         
         <div class="sample">
@@ -412,7 +407,7 @@ output = getSignZero(-4) |> getSignSymbol |> println</pre>
         </h3>
 
         <p>
-          As seen in the previous section, conditionals in Pointless are themselves expression - they evaluate to a value. A Pointless program is made up entirely of expressions and definitions - Pointless does not have explicit execution flow, unlike imperative programming languages. Furthermore, every expression in a program must be part of a definition - Pointless doesn't allow functions to be called without using the resulting value as many other languages do.
+          As seen in the previous section, conditionals in Pointless are themselves expression -- they evaluate to a value. A Pointless program is made up entirely of expressions and definitions -- Pointless does not have explicit execution flow, unlike imperative programming languages. Furthermore, every expression in a program must be part of a definition -- Pointless doesn't allow functions to be called without using the resulting value as many other languages do.
         </p>
 
         <p>
@@ -609,7 +604,7 @@ output = println(triple(2))</pre>
         </h3>
 
         <p>
-          Pointless has a number of built-in data-structures - that is, types which contain other types within them. These data-structure types are: lists, arrays, sets, dicts, tuples, and objects. The examples below demonstrate the basic methods for creating and interacting with data-structure in Pointless. See the prelude <a href="api">api docs</a> for many more data-structure-related functions.
+          Pointless has a number of built-in data-structures -- that is, types which contain other types within them. These data-structure types are: lists, arrays, sets, dicts, tuples, and objects. The examples below demonstrate the basic methods for creating and interacting with data-structure in Pointless. See the prelude <a href="api">api docs</a> for many more data-structure-related functions.
         </p>
 
         <h4 id="lists">
@@ -749,7 +744,7 @@ point = (3, 4)
         </div>
 
        <p>
-          Tuples can also have labels - labeled tuples can be created using the function <code>wrap</code> (to make a single-element tuple with a given label) or the function <code>wrapTuple</code> (to make a labeled tuple from an unlabeled tuple). Pointless also has special syntax for creating labeled tuples, where <code>SomeLabel(val)</code> is equivalent to <code>wrap(SomeLabel, val)</code> and <code>SomeLabel(valA, valB, valC)</code> is equivalent to <code>wrapTuple(SomeLabel, (valA, valB, valC))</code> for any number of values >= 2:
+          Tuples can also have labels -- labeled tuples can be created using the function <code>wrap</code> (to make a single-element tuple with a given label) or the function <code>wrapTuple</code> (to make a labeled tuple from an unlabeled tuple). Pointless also has special syntax for creating labeled tuples, where <code>SomeLabel(val)</code> is equivalent to <code>wrap(SomeLabel, val)</code> and <code>SomeLabel(valA, valB, valC)</code> is equivalent to <code>wrapTuple(SomeLabel, (valA, valB, valC))</code> for any number of values >= 2:
        </p>
 
         <div class="sample">
@@ -778,7 +773,7 @@ y = is(Leaf, tree)   -- false</pre>
         </h4>
 
         <p>
-          An object is a set of definitions - as in where expressions, these can be variable definitions or function definitions. The fields (definitions) within an object can be accessed through using the syntax <code>objectValue.fieldName</code> show below:
+          An object is a set of definitions -- as in where expressions, these can be variable definitions or function definitions. The fields (definitions) within an object can be accessed through using the syntax <code>objectValue.fieldName</code> show below:
         </p>
 
         <div class="sample">
@@ -842,7 +837,7 @@ pairs =
         </h4>
 
         <p>
-          Comprehensions can also include when expressions of the form <code>when [condition] [body]</code>, where the body expression is evaluated only when the condition is met - otherwise no elements are returned for that iteration of the comprehension. When expressions can be used to filter the output from a comprehensions:
+          Comprehensions can also include when expressions of the form <code>when [condition] [body]</code>, where the body expression is evaluated only when the condition is met -- otherwise no elements are returned for that iteration of the comprehension. When expressions can be used to filter the output from a comprehensions:
         </p>
 
         <div class="sample">
@@ -856,7 +851,7 @@ pairs =
   yield (a, b)</pre>
         </div>
 
-        <p>List comprehensions are syntactic sugar - the precise semantics of for, when and yield can be understood by looking at canonical forms that the parser translates these expressions to:</p>
+        <p>List comprehensions are syntactic sugar -- the precise semantics of for, when and yield can be understood by looking at canonical forms that the parser translates these expressions to:</p>
 
         <div class="sample">
           <pre class="highlight">for var in iter body
@@ -898,7 +893,7 @@ output =
         </div>
 
         <p>
-          The Pointless prelude contains many functions that can process infinite lists - for example the take function, which can be used to make finite list from an infinite list:
+          The Pointless prelude contains many functions that can process infinite lists -- for example the take function, which can be used to make finite list from an infinite list:
         </p>
 
         <div class="sample">
@@ -931,7 +926,7 @@ c = 3</pre>
         </p>
 
         <p>
-          Normally, accessing the value of a circularly-defined variable will result in a call-stack overflow. However, lazy definitions allow some types of recursive structures to be defined - for example recursive objects. While it is possible to use these recursive structures in some situations (as shown below), using them with other operations, like the <code>show</code> function, will make the program enter in infinite loop:
+          Normally, accessing the value of a circularly-defined variable will result in a call-stack overflow. However, lazy definitions allow some types of recursive structures to be defined -- for example recursive objects. While it is possible to use these recursive structures in some situations (as shown below), using them with other operations, like the <code>show</code> function, will make the program enter in infinite loop:
         </p>
 
         <div class="sample">
@@ -956,7 +951,7 @@ b = show(x) -- loops infinitely</pre>
         </h4>
 
         <p>
-          Pointless performs tail-call optimizations during program execution - that is, a function which returns the result of another function call does not extend the call-stack when performing this inner call. The following code, for example, is not in tail-call form and cannot be optimized, since the addition step is performed after the inner call returns. This function would create a call-stack overflow if called on a large list.
+          Pointless performs tail-call optimizations during program execution -- that is, a function which returns the result of another function call does not extend the call-stack when performing this inner call. The following code, for example, is not in tail-call form and cannot be optimized, since the addition step is performed after the inner call returns. This function would create a call-stack overflow if called on a large list.
         </p>
 
         <div class="sample">
@@ -1066,7 +1061,7 @@ is(PtlsTuple  , (1, 2))              -- unlabeled tuple</pre>
         </h3>
 
         <p>
-          In Pointless, arrays, sets, dict, objects, and tuples are persistent, immutable types - that is, once created, their values cannot be changed. Instead, Pointless provides several ways to create new data-structures based on old ones, depending on their types.
+          In Pointless, arrays, sets, dict, objects, and tuples are persistent, immutable types -- that is, once created, their values cannot be changed. Instead, Pointless provides several ways to create new data-structures based on old ones, depending on their types.
         </p>
 
         <h4 id="viaWith">
@@ -1083,7 +1078,7 @@ newVals = values with $[0] = 0 -- [0 2 3]</pre>
         </div>
 
         <p>
-          With expressions can contain multiple update definitions, as in the example below. As with where expressions, with expressions with multiple definitions must wrap these definitions in curly brackets. The below with statement returns a clone of the original array with the elements at indecies zero and one swapped. Note that the right hand sides of the update definitions are calculate before the updates are processed - which allows the swap to occur without using a temporary variable.
+          With expressions can contain multiple update definitions, as in the example below. As with where expressions, with expressions with multiple definitions must wrap these definitions in curly brackets. The below with statement returns a clone of the original array with the elements at indecies zero and one swapped. Note that the right hand sides of the update definitions are calculate before the updates are processed -- which allows the swap to occur without using a temporary variable.
         </p>
 
         <div class="sample">
@@ -1149,11 +1144,11 @@ delKey({Foo: "bar"}, Foo) -- {}</pre>
         </h4>
 
         <p>
-          Unlike other programming language, which use functions to send information from a program to the outside system, Pointless programs communicate their output through a sequence of output commands. To accomplish this, Pointless designates a special variable, <code>output</code>, from which output commands are read when an program is run. Some programming languages have a main method, which serves as the entry-point for executing the program - in Pointless, the output variable also serves as an entry-point, where the value of the output variable is the output from the program.
+          Unlike other programming language, which use functions to send information from a program to the outside system, Pointless programs communicate their output through a sequence of output commands. To accomplish this, Pointless designates a special variable, <code>output</code>, from which output commands are read when an program is run. Some programming languages have a main method, which serves as the entry-point for executing the program -- in Pointless, the output variable also serves as an entry-point, where the value of the output variable is the output from the program.
         </p>
 
         <p>
-          Pointless expects the output variable to be defined as a list of commands. Commands can be either labels or labeled values - the two output commands which Pointless currently supports are <code>IOPrint(value)</code>, which directs the Pointless interpreter to print the string value, and <code>IOClearConsole</code>, which clears the console. The top-level source file for a Pointless program must define an output variable, and the value of output must be a valid list of commands - programs which do not meet these requirements will cause an error at runtime.
+          Pointless expects the output variable to be defined as a list of commands. Commands can be either labels or labeled values -- the two output commands which Pointless currently supports are <code>IOPrint(value)</code>, which directs the Pointless interpreter to print the string value, and <code>IOClearConsole</code>, which clears the console. The top-level source file for a Pointless program must define an output variable, and the value of output must be a valid list of commands -- programs which do not meet these requirements will cause an error at runtime.
         </p>
 
         <p>
@@ -1177,7 +1172,7 @@ printLines(values) -- print each element in a sequence on a separate line</pre>
         </div>
 
         <p>
-          Because output sequences are made up of normal Pointless values, they themselves can be manipulated and visualized. In the example below, the code <code>printLines(range(3))</code> generates a command sequence to print the numbers zero through two - the code then calls the <code>println</code> function again to print a string representation of these commands. Running this code thus provides a visualization of a typical output command sequence.
+          Because output sequences are made up of normal Pointless values, they themselves can be manipulated and visualized. In the example below, the code <code>printLines(range(3))</code> generates a command sequence to print the numbers zero through two -- the code then calls the <code>println</code> function again to print a string representation of these commands. Running this code thus provides a visualization of a typical output command sequence.
         </p>
 
         <div class="sample">
@@ -1204,7 +1199,7 @@ printLines(values) -- print each element in a sequence on a separate line</pre>
         </h4>
 
         <p>
-          At present, Pointless provides two input sources - lines read from stdin, and random numbers. These inputs are accessible through special fields on the IO label, shown below:
+          At present, Pointless provides two input sources -- lines read from stdin, and random numbers. These inputs are accessible through special fields on the IO label, shown below:
         </p>
 
         <div class="sample">
@@ -1274,7 +1269,7 @@ randChoice(elems) -- get random elem from collection</pre>
         </h3>
 
         <p>
-          Pointless programs use both errors and exceptions to signal erroneous states - however, these mechanisms arise in different scenarios and are handled in different ways.
+          Pointless programs use both errors and exceptions to signal erroneous states -- however, these mechanisms arise in different scenarios and are handled in different ways.
         </p>
 
         <h4 id="errors">
@@ -1298,7 +1293,7 @@ randChoice(elems) -- get random elem from collection</pre>
         </p>
 
         <p>
-          Errors can sometimes be prevented before they occur. Functions can be adapted to check for certain erroneous conditions before performing an operation that could lead to an error. For example, indexing a dict with a key that the dict does not contain will result in an error - this could be prevented by wrapping a dict access in a conditional which check that the dict contains the required key before attempting to index the dict, and falling back to some other behavior if the key is not present:
+          Errors can sometimes be prevented before they occur. Functions can be adapted to check for certain erroneous conditions before performing an operation that could lead to an error. For example, indexing a dict with a key that the dict does not contain will result in an error -- this could be prevented by wrapping a dict access in a conditional which check that the dict contains the required key before attempting to index the dict, and falling back to some other behavior if the key is not present:
         </p>
 
         <div class="sample">
@@ -1359,7 +1354,7 @@ randChoice(elems) -- get random elem from collection</pre>
         </h4>
 
         <p>
-          Requires statements are similar to assertions in other programming languages - they provide an easy way to check that a condition is met and throw an error if it is not. Unlike assertions, requires statements are attached to a specific expression, and take the form <code>[expression] requires [condition]</code>, where the condition is checked before the expression is evaluated. This allows functions to verify preconditions before they run, as in the following function, which returns the last element in a list after checking that the list is not empty.
+          Requires statements are similar to assertions in other programming languages -- they provide an easy way to check that a condition is met and throw an error if it is not. Unlike assertions, requires statements are attached to a specific expression, and take the form <code>[expression] requires [condition]</code>, where the condition is checked before the expression is evaluated. This allows functions to verify preconditions before they run, as in the following function, which returns the last element in a list after checking that the list is not empty.
         </p>
 
         <div class="sample">
@@ -1381,7 +1376,7 @@ randChoice(elems) -- get random elem from collection</pre>
         </h4>
 
         <p>
-          Values in Pointless have a number of special fields of the form <code>.!get[FieldName]</code>, for example <code>"123".!getInt</code> (get the integer value of the string), <code>{false}.!getAddElem</code> (get the cloned set with the added element), and so on, which are used to expose built-in functions of Pointless types. The prelude contains wrapper functions for accessing this functionality, for example <code>toInt</code> and <code>addElem</code>, which wrap access to the fields above. Avoid accessing special fields directly - use the provided wrapper functions instead (the APIs of the wrappers are more stable than those of the fields themselves).
+          Values in Pointless have a number of special fields of the form <code>.!get[FieldName]</code>, for example <code>"123".!getInt</code> (get the integer value of the string), <code>{false}.!getAddElem</code> (get the cloned set with the added element), and so on, which are used to expose built-in functions of Pointless types. The prelude contains wrapper functions for accessing this functionality, for example <code>toInt</code> and <code>addElem</code>, which wrap access to the fields above. Avoid accessing special fields directly -- use the provided wrapper functions instead (the APIs of the wrappers are more stable than those of the fields themselves).
         </p>
 
         <hr>

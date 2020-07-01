@@ -54,6 +54,12 @@ a {
   text-decoration-color: #bbb;
 }
 
+code {
+  padding: 2px 6px;
+  border-radius: 2px;
+  background-color: #ddd;
+}
+
 hr {
   height: 3px;
   background-color: #ddd;
@@ -69,6 +75,7 @@ hr {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   padding: 25px 30px;
+  overflow-x: auto;
 }
 
 .sample {

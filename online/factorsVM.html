@@ -19,46 +19,49 @@
 
     <div id="main">
       <div id="left">
-        <pre class="highlight" id="source" data-storeid="factorsVM" data-edit>output =
-  runGetOutput(factors) ++ ["done"]
+        <pre class="highlight" id="source" data-storeid="factorsVM" data-edit>
+output =
+  program
+  |> runGetOutput
   |> printLines
 
 ------------------------------------------------------------------------------
 
 n = 80122
 
-factors = [
-  Init(2),
+program = [
   Const(2),
-  Store(0),
+  Store(0),            -- store value 2 in slot 0 (initial divisor)
   Const(n),
-  Store(1),
+  Store(1),            -- store value n in slot 1 (initial dividend)
   Label("checkDone"),
-  Load(1),
+  Load(1),             -- load dividend
   Const(1),
-  Eq,
-  JmpIf("end"),
-  Label("checkDiv"),
-  Load(1),
-  Load(0),
+  Eq,                  -- compare dividend to value 1
+  JmpIf("end"),        -- jump to end if dividend == 1
+  Label("checkDiv"), 
+  Load(1),             -- load dividend
+  Load(0),             -- load divisor
   Mod,
   Const(0),
-  Eq,
+  Eq,                  -- compare dividend % dividor == 0 
   JmpIf("divisible"),
-  Load(0),
+  Load(0),             -- load divisor
   Const(1),
-  Add,
-  Store(0),
-  Jmp("checkDiv"),
+  Add,                 -- increment divisor
+  Store(0),            -- store new divisor
+  Jmp("checkDiv"),     -- check end condition
   Label("divisible"),
-  Load(0),
-  Print,
-  Load(1),
-  Load(0),
+  Load(0),             -- load divisor
+  Print,               -- print divisor (current factor)
+  Load(1),             -- load dividend
+  Load(0),             -- load divisor
   Div,
-  Store(1),
-  Jmp("checkDone"),
+  Store(1),            -- store dividend / divisor as new dividend
+  Jmp("checkDone"),    -- check end condition
   Label("end"),
+  Const("done"),
+  Print,               -- print "done"
   Exit,
 ]
 
@@ -75,83 +78,52 @@ factors = [
 -- Div       - pop top 2 vals (b, a), push a / b, advance
 -- Mod       - pop top 2 vals (b, a), push a % b, advance
 -- Print     - pop top val a, set vm output to a, advance
--- Init  arg - init vm vars to array of zeros with length arg, advance
 -- Const arg - push arg, advance
--- Store arg - pop value, value at index arg in vm vars array , advance
--- Load  arg - get value at index arg in vm vars array, push value, advance
+-- Store arg - pop value, value at index arg in vm slots array , advance
+-- Load  arg - get value at index arg in vm slots array, push value, advance
 -- JmpIf arg - pop value, jump to label arg if value, else advance 
 -- Jmp   arg - jump to label arg
 
-vmFromInsts(rawInsts) = VM {
-  vars = None
-  insts = makeInstArray(rawInsts)
-  index = 0
-  stack = []
+vmFromInsts(program) = VM {
+  slots  = zeroArray(8)
+  insts  = convertJumps(program)
+  index  = 0
+  stack  = []
   outVal = None
 }
 
 ------------------------------------------------------------------------------
 
-pushVal(arg, vm) = vm with $.stack = [arg] ++ vm.stack
-popVals(n, vm)   = vm with $.stack = drop(n, vm.stack)
-load(arg, vm)    = pushVal(vm.vars[arg], vm)
-
-------------------------------------------------------------------------------
-
-init(arg, vm)  = vm with $.vars = zeroArray(arg)
-store(arg, vm) = vm with $.vars[arg] = head(vm.stack)
-
-------------------------------------------------------------------------------
-
-valAt(n, vm) = at(n, vm.stack)
-
-------------------------------------------------------------------------------
-
-advance(vm) = vm with $.index += 1
-
-------------------------------------------------------------------------------
-
-jumpIf(pred, arg, vm) =
-  if pred
-  then vm with $.index = arg
-  else advance(vm) 
-
-------------------------------------------------------------------------------
-
-saveOutput(vm)  = vm with $.outVal = valAt(0, vm)
-clearOutput(vm) = vm with $.outVal = None
-
-------------------------------------------------------------------------------
-
-binaryOp(op, vm) =
- vm
- |> popVals(2)
- |> pushVal(op(valAt(0, vm), valAt(1, vm)))
- |> advance
+runGetOutput(insts) =
+  vmFromInsts(insts)
+  |> iterate(compose(setOutput(None), eval))
+  |> takeUntil(vm => vm.insts[vm.index] == Exit)
+  |> map(vm => vm.outVal)
+  |> filter(notEq(None))
 
 ------------------------------------------------------------------------------
 
 eval(vm) = cond {
-
-  case is(Init, inst)
-    vm
-    |> init(arg)
-    |> advance
-
   case is(Const, inst)
     vm
     |> pushVal(arg)
+    |> advance
+
+  case is(Print, inst)
+    vm
+    |> popVals(1)
+    |> setOutput(valAt(0, vm))
+    |> advance
+
+  case is(Load, inst)
+    vm
+    |> load(arg)
     |> advance
 
   case is(Store, inst)
     vm
     |> store(arg)
     |> popVals(1)
-    |> advance
-
-  case is(Load, inst)
-    vm
-    |> load(arg)
     |> advance
 
   case is(JmpIf, inst)
@@ -162,12 +134,6 @@ eval(vm) = cond {
   case is(Jmp, inst)
     vm
     |> jumpIf(true, arg)
-
-  case is(Print, inst)
-    vm
-    |> saveOutput
-    |> popVals(1)
-    |> advance
 
   case is(Eq,  inst) vm |> binaryOp(eq)
   case is(Add, inst) vm |> binaryOp(add)
@@ -183,34 +149,42 @@ eval(vm) = cond {
 
 ------------------------------------------------------------------------------
 
-runGetOutput(insts) =
-  vmFromInsts(insts)
-  |> iterate(compose(clearOutput, eval))
-  |> takeUntil(vm => vm.insts[vm.index] == Exit)
-  |> map(vm => vm.outVal)
-  |> filter(notEq(None))
+advance(vm)        = vm with $.index += 1
+pushVal(arg, vm)   = vm with $.stack = [arg] ++ vm.stack
+popVals(n, vm)     = vm with $.stack = drop(n, vm.stack)
+setOutput(val, vm) = vm with $.outVal = val
+store(arg, vm)     = vm with $.slots[arg] = head(vm.stack)
+load(arg, vm)      = pushVal(vm.slots[arg], vm)
+
+jumpIf(pred, arg, vm) =
+  if pred
+  then vm with $.index = arg
+  else advance(vm) 
+
+valAt(n, vm) = at(n, vm.stack)
+
+binaryOp(op, vm) =
+ vm
+ |> popVals(2)
+ |> pushVal(op(valAt(0, vm), valAt(1, vm)))
+ |> advance
 
 ------------------------------------------------------------------------------
 
-showInst(inst) = cond {
-  case is(Label, inst) format("{}:", [unwrap(inst)])
-  case is(PtlsLabel, inst) format("[ {<5} ]", [getLabel(inst)])
-  else format("[ {<5} ] {}", [getLabel(inst), unwrap(inst)])
-}
+showInst(inst) =
+ format("[ {<5} ] {}", [getLabel(inst), argOrBlank(inst)])
+
+argOrBlank(inst) =
+  if is(PtlsTuple, inst) then unwrap(inst) else ""
 
 ------------------------------------------------------------------------------
 
-makeInstArray(rawInsts) =
- rawInsts
- |> convertJumps(getLabelInds(rawInsts))
- |> toArray
-
-------------------------------------------------------------------------------
-
-convertJumps(inds, insts) =
+convertJumps(insts) =
   insts
   |> filter(notIs(Label))
   |> map(convertJump(inds))
+  |> toArray
+  where inds = getLabelInds(insts)
 
 ------------------------------------------------------------------------------
 
@@ -222,18 +196,22 @@ convertJump(inds, inst) = cond {
 
 ------------------------------------------------------------------------------
 
-getLabelInds(insts) = reduce(scanInst, (0, {}), insts) |> at(1)
+getLabelInds(insts) =
+  insts
+  |> reduce(scanInst, (0, {})) -- keep track of (currentIndex, indexMap)
+  |> at(1) -- return index map
 
 ------------------------------------------------------------------------------
 
 scanInst(pair, inst) = 
-  if is(Label, inst)
-  then (ind, newInds)
-  else (ind + 1, inds)
+  if not is(Label, inst)
+  then (ind + 1, inds)
+  else (ind, newInds)
   where {
     newInds = inds with $[unwrap(inst)] = ind
     (ind, inds) = pair
-  }</pre>
+  }
+</pre>
       </div>
 
       <div id="right">
