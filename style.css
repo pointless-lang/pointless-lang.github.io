@@ -18,6 +18,8 @@ html, body {
 main {
   width: 900px;
   margin: 0px auto;
+  padding: 0px 20px 20px 20px;
+  box-sizing: border-box;
 }
 
 header {
@@ -40,7 +42,8 @@ header pre {
 nav {
   color: #777;
   letter-spacing: 1px;
-  margin: 10px 5px 10px 5px;
+  margin: 20px 0px 30px 0px;
+  text-align: center;
 }
 
 nav span {
@@ -58,6 +61,7 @@ code {
   padding: 2px 6px;
   border-radius: 2px;
   background-color: #ddd;
+  white-space: nowrap;
 }
 
 hr {
@@ -79,13 +83,9 @@ hr {
 }
 
 .sample {
-  margin: 0px 0px 40px 0px;
+  margin: 40px 0px;
   border-radius: 3px;
   overflow: hidden;
-}
-
-.text {
-  padding: 0px 20px 20px 20px;
 }
 
 .exampleTitle {
