@@ -872,7 +872,7 @@ Add, Div, Load, Store, Jmp, JmpIf
         <pre class="highlight">
 getLabelInds(insts) =
   insts
-  |> reduce(scanInst, (0, {})) -- keep track of (currentIndex, indexMap)
+  |> reduce(scanInst, (0, {})) -- keep track of (current index, index map)
   |> at(1) -- return index map
 
 scanInst(pair, inst) = 
@@ -881,7 +881,7 @@ scanInst(pair, inst) =
   else (ind, newInds)
   where {
     newInds = inds with $[unwrap(inst)] = ind
-    (ind, inds) = pair
+    (ind, inds) = pair -- (current index, index map)
   }
 </pre>
       </div>
@@ -1392,7 +1392,7 @@ convertJump(inds, inst) = cond {
 
 getLabelInds(insts) =
   insts
-  |> reduce(scanInst, (0, {})) -- keep track of (currentIndex, indexMap)
+  |> reduce(scanInst, (0, {})) -- keep track of (current index, index map)
   |> at(1) -- return index map
 
 ------------------------------------------------------------------------------
@@ -1403,7 +1403,7 @@ scanInst(pair, inst) =
   else (ind, newInds)
   where {
     newInds = inds with $[unwrap(inst)] = ind
-    (ind, inds) = pair
+    (ind, inds) = pair -- (current index, index map)
   }
 </pre>
       </div>
