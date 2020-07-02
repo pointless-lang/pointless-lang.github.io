@@ -267,7 +267,7 @@ eval(vm) = cond {
       </p>
 
       <p>
-        Structures in Pointless persistent, and thus immutable. As such, our program will never mutate the state of a VM object; rather, it will produce new VM objects. The code above uses <a href="../docs.html#viaWith">with syntax</a> (one of Pointless's little innovations) to create a new VM object with a new stack value: the old stack with the instruction argument pushed to the top. The <code>unwrap</code> function is used to get the argument from the <code>Const</code> instruction.
+        Structures in Pointless persistent, and thus immutable. As such, our program will never mutate the state of a VM object; rather, it will produce new VM objects. The code above uses <a href="../docs.html#viaWith">with syntax</a> (which can handle both shallow and nested updates -- one of Pointless's little innovations) to create a new VM object with a new stack value: the old stack with the instruction argument pushed to the top. The <code>unwrap</code> function is used to get the argument from the <code>Const</code> instruction.
       </p>
 
       <p>
