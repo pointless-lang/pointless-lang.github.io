@@ -19,10 +19,9 @@
   </head>
 
   <body>
-    <main>
-      <a href="/">
-        <header>
-          <pre>
+    <a href="/">
+      <header>
+        <pre>
      ___           ___           ___           ___          ___            ___        ___           ___           ___     
     /\  \         /\  \         /\  \         /\__\        /\  \          /\__\      /\  \         /\  \         /\  \    
    /::\  \       /::\  \        \:\  \       /::|  |       \:\  \        /:/  /     /::\  \       /::\  \       /::\  \   
@@ -34,20 +33,22 @@
       \/__/     \:\/:/  /     \:\  \          |::/  /    \/__/          \:\  \     \:\ \/__/     \:\/:/  /     \:\/:/  /  
                  \::/  /       \:\__\         /:/  /                     \:\__\     \:\__\        \::/  /       \::/  /   
                   \/__/         \/__/         \/__/                       \/__/      \/__/         \/__/         \/__/     </pre>
-                       
-        </header>
-      </a>
+                     
+      </header>
+    </a>
 
-      <nav>
-        <a href="/"><span>HOME</span></a>
-        <a href="../online/"><span>ONLINE</span></a>
-        <a href="../docs.html"><span>DOCS</span></a>
-        <a href="../examples.html"><span>EXAMPLES</span></a>
-        <a href="../api/index.html"><span>API</span></a>
-        <a href="../install.html"><span>INSTALL</span></a>
-        <a href="../dev.html"><span>DEVELOPMENT</span></a>
-        <a href="../tutorials/"><span>TUTORIALS</span></a>
-      </nav>
+    <nav>
+      <a href="/"><span>HOME</span></a>
+      <a href="../online/"><span>ONLINE</span></a>
+      <a href="../docs.html"><span>DOCS</span></a>
+      <a href="../examples.html"><span>EXAMPLES</span></a>
+      <a href="../api/index.html"><span>API</span></a>
+      <a href="../install.html"><span>INSTALL</span></a>
+      <a href="../dev.html"><span>DEVELOPMENT</span></a>
+      <a href="../tutorials/"><span>TUTORIALS</span></a>
+    </nav>
+
+    <main>
 
       <h3>Tutorial: Writing a VM for a Small Stack-Base Language in Pointless</h3>
       <pre>- Avery N. Nortonsmith</pre>
@@ -59,10 +60,14 @@
       </p>
 
       <p>
-        Object-oriented programming has come and gone. Functional programming -- the wise, quiet observer -- has waited patiently for its turn. But FP, like OOP, will fade away in time as software yields to the inexorable pull of the one <em>True Paradigm</em>: stack-based programming.
+        Object-oriented programming has come and gone. Functional programming -- the wise, quiet observer -- has waited patiently for its turn. But FP, like OOP, will fade away in time as software yields to the inexorable pull of the one <em>True Paradigm</em>: stack-based programming!
       </p>
 
       <hr>
+
+      <p>
+        Joking aside, stack-based programming <em>is</em> pretty cool.
+      </p>
 
       <p>
         This tutorial covers the implementation of a <strong>virtual-machine</strong> for a small, <strong>stack-based</strong> language in Pointless. We'll take an <strong>incremental</strong> approach to building the VM and improving its capabilities until it can run a short <strong>prime-factorization</strong> program.
