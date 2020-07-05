@@ -125,6 +125,7 @@ footer {
 
 @media only screen and (max-width: 900px) {
   header pre {
+    color: #000;
     font-size: 3px;
     line-height: 4px;
   }
