@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pointless: online</title>
+    <link rel="stylesheet" type="text/css" href="../highlight/highlight.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <header>
+      <a href="/">
+        <span>ptls.dev</span><span>/online</span>
+      </a>
+    </header>
+
+    <div id="main">
+      <div id="left">
+        <pre class="highlight" id="source" data-storeid="collatz" data-edit>-----------------------------------------------------------
+-- Calculate each number in the collatz sequence for some
+-- starting value, and ending when the value 1 is reached
+-- Display these values in an ascii bar-chart with 8 rows
+
+output =
+  iterate(step, 175) -- sequence starts at 175
+  |> takeUntil(eq(1))
+  |> scale(4)
+  |> println
+
+-----------------------------------------------------------
+-- get the next number in a collatz sequence
+
+step(n) =
+  if n % 2 == 0 then n / 2 else n * 3 + 1
+
+-----------------------------------------------------------
+-- Given a list of numerical values, print an ascii bar-
+-- chart with dimensions (in terms of characters) 
+-- height x length(values), where the largest value takes
+-- up the full height of the chart
+-- Negative values get truncated to zero 
+
+scale(height, values) =
+  if values == Empty then ""
+  else
+    values
+    |> normalize(height)
+    |> getRows(height)
+    |> join("\n")
+
+-----------------------------------------------------------
+-- Get list of scaled values so that max(scaled) = height
+
+normalize(height, values) =
+  values
+  |> map(mul(height / maximum(values)))
+  |> map(max(0))
+
+-----------------------------------------------------------
+-- Build up the chart row-by-row starting with the hightest
+-- row index (from top to bottom)
+
+getRows(height, values) =
+  for row in reverse(range(0, height - 1))
+  yield rowChars(row, values) |> join("")
+
+rowChars(row, values) =
+  values |> map(getBar(row))
+
+-----------------------------------------------------------
+-- BarHeight is the height that the value n projects
+-- above the base of the current row (capped at max value
+-- seven when the value spans the entire row height)
+-- Use this value to index into the array of bar chars
+
+getBar(row, n) = cond {
+  case barHeight < 0 and row > 0  " "
+  case barHeight < 0 and row == 0 "_"
+  else bars[min(7, toInt(barHeight * 7))] 
+} where {barHeight = (n - row); bars = toArray("▁▂▃▄▅▆▇█")}</pre>
+      </div>
+
+      <div id="right">
+        <pre id="output">
+      ___           ___           ___           ___          ___      
+     /\  \         /\  \         /\  \         /\__\        /\  \     
+    /::\  \       /::\  \        \:\  \       /::|  |       \:\  \    
+   /:/\:\  \     /:/\:\  \        \:\  \     /:|:|  |        \:\  \   
+  /::\~\:\  \   /:/  \:\  \   ___ /::\  \   /:/|:|  |__      /::\  \  
+ /:/\:\ \:\__\ /:/__/ \:\__\ /\  /:/\:\__\ /:/ |:| /\__\    /:/\:\__\ 
+ \/__\:\/:/  / \:\  \ /:/  / \:\/:/  \/__/ \/__|:|/:/  /   /:/  \/__/ 
+      \::/  /   \:\  /:/  /   \::/__/          |:/:/  /   /:/  /      
+       \/__/     \:\/:/  /     \:\  \          |::/  /    \/__/       
+                  \::/  /       \:\__\         /:/  /                 
+                   \/__/         \/__/         \/__/                  
+     ___        ___           ___           ___     
+    /\__\      /\  \         /\  \         /\  \      Pointless (0.1.0)
+   /:/  /     /::\  \       /::\  \       /::\  \     
+  /:/  /     /:/\:\  \     /:/\ \  \     /:/\ \  \    A scripting language
+ /:/  /     /::\~\:\  \   _\:\~\ \  \   _\:\~\ \  \   for learning and fun
+/:/__/     /:/\:\ \:\__\ /\ \:\ \ \__\ /\ \:\ \ \__\  
+\:\  \     \:\~\:\ \/__/ \:\ \:\ \/__/ \:\ \:\ \/__/  copyright (c) 2020
+ \:\  \     \:\ \:\__\    \:\ \:\__\    \:\ \:\__\    
+  \:\  \     \:\ \/__/     \:\/:/  /     \:\/:/  /    Avery N. Nortonsmith
+   \:\__\     \:\__\        \::/  /       \::/  /     
+    \/__/      \/__/         \/__/         \/__/      https://plts.dev
+
+----------
+
+- Enter code in the editor on the left
+
+- Output is displayed here on the right
+
+- (imports and user input disabled are, everything else should work, *albeit slowly*)
+
+----------
+
+logo based on isometric1 by Kent Nassen
+        </pre>
+      </div>
+      
+    </div>
+
+    <div id="controls">
+      <button id="runButton" style="float: left;">run program</button>
+    </div>
+
+    <script src="../highlight/js/highlightGen.js"></script>
+    <script src="../highlight/js/highlight.js"></script>
+    <script src="js/driver.js"></script>
+    <script src="js/ptlsWeb.js"></script>
+
+  </body>
+</html>

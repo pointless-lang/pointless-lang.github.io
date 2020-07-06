@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pointless: online</title>
+    <link rel="stylesheet" type="text/css" href="../highlight/highlight.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <header>
+      <a href="/">
+        <span>ptls.dev</span><span>/online</span>
+      </a>
+    </header>
+
+    <div id="main">
+      <div id="left">
+        <pre class="highlight" id="source" data-storeid="collatzVM" data-edit>
+output =
+  program
+  |> runGetOutput
+  |> printLines
+
+------------------------------------------------------------------------------
+
+n = 870
+
+program = [
+  Const(n),
+  Label("startLoop"),
+  Store(0),
+  Load(0),
+  Const(1),
+  Eq,
+  JmpIf("end"),
+  Load(0),
+  Print,
+  Load(0),
+  Const(2),
+  Mod,
+  Const(0),
+  Eq,
+  JmpIf("even"),
+  Load(0),
+  Const(3),
+  Mul,
+  Const(1),
+  Add,
+  Jmp("startLoop"),
+  Label("even"),
+  Load(0),
+  Const(2),
+  Div,
+  Jmp("startLoop"),
+  Label("end"),
+  Load(0),
+  Print,
+  Const("done"),
+  Print,
+  Exit,
+]
+
+------------------------------------------------------------------------------
+-- Supported commands:
+--
+-- "push" and "pop" refer to vm stack
+-- "advance" = jump to next instruction
+--
+-- Eq        - pop top 2 vals (b, a), push a == b, advance
+-- Add       - pop top 2 vals (b, a), push a + b, advance
+-- Sub       - pop top 2 vals (b, a), push a - b, advance
+-- Mul       - pop top 2 vals (b, a), push a * b, advance
+-- Div       - pop top 2 vals (b, a), push a / b, advance
+-- Mod       - pop top 2 vals (b, a), push a % b, advance
+-- Print     - pop top val a, set vm output to a, advance
+-- Const arg - push arg, advance
+-- Store arg - pop value, value at index arg in vm slots array , advance
+-- Load  arg - get value at index arg in vm slots array, push value, advance
+-- JmpIf arg - pop value, jump to label arg if value, else advance 
+-- Jmp   arg - jump to label arg
+
+vmFromInsts(program) = VM {
+  slots  = zeroArray(8)
+  insts  = convertJumps(program)
+  index  = 0
+  stack  = []
+  outVal = None
+}
+
+------------------------------------------------------------------------------
+
+runGetOutput(insts) =
+  vmFromInsts(insts)
+  |> iterate(compose(setOutput(None), eval))
+  |> takeUntil(vm => vm.insts[vm.index] == Exit)
+  |> map(vm => vm.outVal)
+  |> filter(notEq(None))
+
+------------------------------------------------------------------------------
+
+eval(vm) = cond {
+  case is(Const, inst)
+    vm
+    |> pushVal(arg)
+    |> advance
+
+  case is(Print, inst)
+    vm
+    |> popVals(1)
+    |> setOutput(valAt(0, vm))
+    |> advance
+
+  case is(Load, inst)
+    vm
+    |> load(arg)
+    |> advance
+
+  case is(Store, inst)
+    vm
+    |> store(arg)
+    |> popVals(1)
+    |> advance
+
+  case is(JmpIf, inst)
+    vm
+    |> popVals(1)
+    |> jumpIf(valAt(0, vm), arg)
+
+  case is(Jmp, inst)
+    vm
+    |> jumpIf(true, arg)
+
+  case is(Eq,  inst) vm |> binaryOp(eq)
+  case is(Add, inst) vm |> binaryOp(add)
+  case is(Sub, inst) vm |> binaryOp(sub)
+  case is(Mul, inst) vm |> binaryOp(mul)
+  case is(Div, inst) vm |> binaryOp(div)
+  case is(Mod, inst) vm |> binaryOp(mod)
+
+} where {
+  inst = vm.insts[vm.index]
+  arg = unwrap(inst)
+}
+
+------------------------------------------------------------------------------
+
+advance(vm)        = vm with $.index += 1
+pushVal(arg, vm)   = vm with $.stack = [arg] ++ vm.stack
+popVals(n, vm)     = vm with $.stack = drop(n, vm.stack)
+setOutput(val, vm) = vm with $.outVal = val
+store(arg, vm)     = vm with $.slots[arg] = head(vm.stack)
+load(arg, vm)      = pushVal(vm.slots[arg], vm)
+
+jumpIf(pred, arg, vm) =
+  if pred
+  then vm with $.index = arg
+  else advance(vm) 
+
+valAt(n, vm) = at(n, vm.stack)
+
+binaryOp(op, vm) =
+ vm
+ |> popVals(2)
+ |> pushVal(op(valAt(0, vm), valAt(1, vm)))
+ |> advance
+
+------------------------------------------------------------------------------
+
+showInst(inst) =
+ format("[ {<5} ] {}", [getLabel(inst), argOrBlank(inst)])
+
+argOrBlank(inst) =
+  if is(PtlsTuple, inst) then unwrap(inst) else ""
+
+------------------------------------------------------------------------------
+
+convertJumps(insts) =
+  insts
+  |> filter(notIs(Label))
+  |> map(convertJump(inds))
+  |> toArray
+  where inds = getLabelInds(insts)
+
+------------------------------------------------------------------------------
+
+convertJump(inds, inst) = cond {
+  case is(Jmp, inst) Jmp(inds[unwrap(inst)])
+  case is(JmpIf, inst) JmpIf(inds[unwrap(inst)])
+  else inst
+}
+
+------------------------------------------------------------------------------
+
+getLabelInds(insts) =
+  insts
+  |> reduce(scanInst, (0, {})) -- keep track of (currentIndex, indexMap)
+  |> at(1) -- return index map
+
+------------------------------------------------------------------------------
+
+scanInst(pair, inst) = 
+  if not is(Label, inst)
+  then (ind + 1, inds)
+  else (ind, newInds)
+  where {
+    newInds = inds with $[unwrap(inst)] = ind
+    (ind, inds) = pair
+  }
+</pre>
+      </div>
+
+      <div id="right">
+        <pre id="output">
+      ___           ___           ___           ___          ___      
+     /\  \         /\  \         /\  \         /\__\        /\  \     
+    /::\  \       /::\  \        \:\  \       /::|  |       \:\  \    
+   /:/\:\  \     /:/\:\  \        \:\  \     /:|:|  |        \:\  \   
+  /::\~\:\  \   /:/  \:\  \   ___ /::\  \   /:/|:|  |__      /::\  \  
+ /:/\:\ \:\__\ /:/__/ \:\__\ /\  /:/\:\__\ /:/ |:| /\__\    /:/\:\__\ 
+ \/__\:\/:/  / \:\  \ /:/  / \:\/:/  \/__/ \/__|:|/:/  /   /:/  \/__/ 
+      \::/  /   \:\  /:/  /   \::/__/          |:/:/  /   /:/  /      
+       \/__/     \:\/:/  /     \:\  \          |::/  /    \/__/       
+                  \::/  /       \:\__\         /:/  /                 
+                   \/__/         \/__/         \/__/                  
+     ___        ___           ___           ___     
+    /\__\      /\  \         /\  \         /\  \      Pointless (0.1.0)
+   /:/  /     /::\  \       /::\  \       /::\  \     
+  /:/  /     /:/\:\  \     /:/\ \  \     /:/\ \  \    A scripting language
+ /:/  /     /::\~\:\  \   _\:\~\ \  \   _\:\~\ \  \   for learning and fun
+/:/__/     /:/\:\ \:\__\ /\ \:\ \ \__\ /\ \:\ \ \__\  
+\:\  \     \:\~\:\ \/__/ \:\ \:\ \/__/ \:\ \:\ \/__/  copyright (c) 2020
+ \:\  \     \:\ \:\__\    \:\ \:\__\    \:\ \:\__\    
+  \:\  \     \:\ \/__/     \:\/:/  /     \:\/:/  /    Avery N. Nortonsmith
+   \:\__\     \:\__\        \::/  /       \::/  /     
+    \/__/      \/__/         \/__/         \/__/      https://plts.dev
+
+----------
+
+- Enter code in the editor on the left
+
+- Output is displayed here on the right
+
+- (imports and user input disabled are, everything else should work, *albeit slowly*)
+
+----------
+
+logo based on isometric1 by Kent Nassen
+        </pre>
+      </div>
+      
+    </div>
+
+    <div id="controls">
+      <button id="runButton" style="float: left;">run program</button>
+    </div>
+
+    <script src="../highlight/js/highlightGen.js"></script>
+    <script src="../highlight/js/highlight.js"></script>
+    <script src="js/driver.js"></script>
+    <script src="js/ptlsWeb.js"></script>
+
+  </body>
+</html>

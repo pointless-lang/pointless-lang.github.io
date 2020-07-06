@@ -1,56 +1,8 @@
+---
+layout: default
+title: "Pointless: tutorials -- Writing a VM for a Small Stack-Base Language in Pointless"
+---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-      <title>Pointless: tutorials -- Writing a VM for a Small Stack-Base Language in Pointless</title>
-
-      <link rel="stylesheet" type="text/css" href="../style.css">
-      <link rel="stylesheet" type="text/css" href="style.css">
-      <link rel="stylesheet" type="text/css" href="../highlight/highlight.css">
-      <link rel="stylesheet" media="screen" href="pointlessSite/fonts/fonts.css" type="text/css"/>
-
-      <style type="text/css">
-        p {
-          margin: 24px 0px;
-        }
-      </style>
-
-  </head>
-
-  <body>
-    <a href="/">
-      <header>
-        <pre>
-     ___           ___           ___           ___          ___            ___        ___           ___           ___     
-    /\  \         /\  \         /\  \         /\__\        /\  \          /\__\      /\  \         /\  \         /\  \    
-   /::\  \       /::\  \        \:\  \       /::|  |       \:\  \        /:/  /     /::\  \       /::\  \       /::\  \   
-  /:/\:\  \     /:/\:\  \        \:\  \     /:|:|  |        \:\  \      /:/  /     /:/\:\  \     /:/\ \  \     /:/\ \  \  
- /::\~\:\  \   /:/  \:\  \   ___ /::\  \   /:/|:|  |__      /::\  \    /:/  /     /::\~\:\  \   _\:\~\ \  \   _\:\~\ \  \ 
-/:/\:\ \:\__\ /:/__/ \:\__\ /\  /:/\:\__\ /:/ |:| /\__\    /:/\:\__\  /:/__/     /:/\:\ \:\__\ /\ \:\ \ \__\ /\ \:\ \ \__\
-\/__\:\/:/  / \:\  \ /:/  / \:\/:/  \/__/ \/__|:|/:/  /   /:/  \/__/  \:\  \     \:\~\:\ \/__/ \:\ \:\ \/__/ \:\ \:\ \/__/
-     \::/  /   \:\  /:/  /   \::/__/          |:/:/  /   /:/  /        \:\  \     \:\ \:\__\    \:\ \:\__\    \:\ \:\__\  
-      \/__/     \:\/:/  /     \:\  \          |::/  /    \/__/          \:\  \     \:\ \/__/     \:\/:/  /     \:\/:/  /  
-                 \::/  /       \:\__\         /:/  /                     \:\__\     \:\__\        \::/  /       \::/  /   
-                  \/__/         \/__/         \/__/                       \/__/      \/__/         \/__/         \/__/     </pre>
-                     
-      </header>
-    </a>
-
-    <nav>
-      <a href="/"><span>HOME</span></a>
-      <a href="../online/"><span>ONLINE</span></a>
-      <a href="../docs.html"><span>DOCS</span></a>
-      <a href="../examples.html"><span>EXAMPLES</span></a>
-      <a href="../api/index.html"><span>API</span></a>
-      <a href="../install.html"><span>INSTALL</span></a>
-      <a href="../dev.html"><span>DEVELOPMENT</span></a>
-      <a href="../tutorials/"><span>TUTORIALS</span></a>
-    </nav>
-
-    <main>
 
       <h3>Tutorial: Writing a VM for a Small Stack-Base Language in Pointless</h3>
       <pre>- Avery N. Nortonsmith</pre>
@@ -92,7 +44,7 @@
       </ul>
 
       <p>
-        Before we tackle prime-factorization, let's take a look at a small example of the stack-based code that our VM will evaluate. The following Pointless code defines a <a href="../docs.html#lists">list</a> of 'instructions', where <a href="../docs.html#tuples">labeled-tuples</a> are used to represent instructions with an argument, and <a href="../docs.html#labels">labels</a> are used for those without. A list of instructions like this represents a program in our stack-based language:
+        Before we tackle prime-factorization, let's take a look at a small example of the stack-based code that our VM will evaluate. The following Pointless code defines a <a href="/docs.html#lists">list</a> of 'instructions', where <a href="/docs.html#tuples">labeled-tuples</a> are used to represent instructions with an argument, and <a href="/docs.html#labels">labels</a> are used for those without. A list of instructions like this represents a program in our stack-based language:
       </p>
 
       <div class="sample">
@@ -124,15 +76,15 @@ argOrBlank(inst) =
       </div>
 
       <p>
-        In the code above, <code><a href="../api/prelude/format.html#format">format</a></code>, <code><a href="../api/prelude/label.html#getLabel">getLabel</a></code>, <code><a href="../api/prelude/types.html#is">is</a></code>, and <code><a href="../api/prelude/label.html#unwrap">unwrap</a></code> are defined in the Pointless <a href="../api/index.html">prelude</a> (standard-library).
+        In the code above, <code><a href="/api/prelude/format.html#format">format</a></code>, <code><a href="/api/prelude/label.html#getLabel">getLabel</a></code>, <code><a href="/api/prelude/types.html#is">is</a></code>, and <code><a href="/api/prelude/label.html#unwrap">unwrap</a></code> are defined in the Pointless <a href="/api/index.html">prelude</a> (standard-library).
       </p>
 
       <p>
-        To see our new functions in action, we'll define an output variable for our program; in Pointless, a program's output is defined by its output variable. The prelude contains functions like <code><a href="../api/prelude/io.html#printLines">printLines</a></code> which generate sequences of IO commands that can be assigned to a program's output variable.
+        To see our new functions in action, we'll define an output variable for our program; in Pointless, a program's output is defined by its output variable. The prelude contains functions like <code><a href="/api/prelude/io.html#printLines">printLines</a></code> which generate sequences of IO commands that can be assigned to a program's output variable.
       </p>
 
       <p>
-        The output definition below takes our list of instructions, generates a new list of instruction-strings by calling <code>showInst</code> on each instruction, and produces IO commands to print each string on a separate line. Take a look at the docs for more info on the function <a href="../docs.html#pipeOperator">pipe operator</a> <code>|></code>, and for <a href="../docs.html#partialApplication">partial application</a>.
+        The output definition below takes our list of instructions, generates a new list of instruction-strings by calling <code>showInst</code> on each instruction, and produces IO commands to print each string on a separate line. Take a look at the docs for more info on the function <a href="/docs.html#pipeOperator">pipe operator</a> <code>|></code>, and for <a href="/docs.html#partialApplication">partial application</a>.
       </p>
 
       <p><em>
@@ -163,7 +115,7 @@ $ ./bin/pointless main.ptls
       <p>Seeing is believing. Time to start making our VM.</p>
 
       <p>
-        We'll represent the VM as an <a href="../docs.html#objects">object</a> with the following fields:
+        We'll represent the VM as an <a href="/docs.html#objects">object</a> with the following fields:
       </p>
 
       <ul>
@@ -191,7 +143,7 @@ vmFromInsts(program) = VM {
       </div>
 
       <p>
-        To check that <code>vmFromInsts</code> works, we'll modify our output definition to create and print a new VM object. Note that we've replaced <code>printLines</code> with <code><a href="../api/prelude/io.html#println">println</a></code> -- <code>printLines</code> expects a sequence of values (and can print these values on-the-fly as they're computed in the case of lists!), whereas <code>println</code> can handle sequence and non-sequences types.
+        To check that <code>vmFromInsts</code> works, we'll modify our output definition to create and print a new VM object. Note that we've replaced <code>printLines</code> with <code><a href="/api/prelude/io.html#println">println</a></code> -- <code>printLines</code> expects a sequence of values (and can print these values on-the-fly as they're computed in the case of lists!), whereas <code>println</code> can handle sequence and non-sequences types.
       </p>
 
       <div class="sample">
@@ -265,11 +217,11 @@ eval(vm) = cond {
       </div>
 
       <p>
-        Our <code>eval</code> function uses a <code><a href="../docs.html#cond">cond</a></code> conditional -- eventually this will include cases for all instructions, but we'll start with just <code>Const</code> for now. The code above calls the function <code><a href="../api/prelude/types.html#is">is</a></code> to check whether the current instruction has the label <code>Const</code> (where the current instruction is the instruction in the <code>vm.insts</code> array at index <code>vm.index</code>). If <code>is</code> returns true, then conditional evaluates and returns the body of the case expression.
+        Our <code>eval</code> function uses a <code><a href="/docs.html#cond">cond</a></code> conditional -- eventually this will include cases for all instructions, but we'll start with just <code>Const</code> for now. The code above calls the function <code><a href="/api/prelude/types.html#is">is</a></code> to check whether the current instruction has the label <code>Const</code> (where the current instruction is the instruction in the <code>vm.insts</code> array at index <code>vm.index</code>). If <code>is</code> returns true, then conditional evaluates and returns the body of the case expression.
       </p>
 
       <p>
-        Structures in Pointless persistent, and thus immutable. As such, our program will never mutate the state of a VM object; rather, it will produce new VM objects. The code above uses <a href="../docs.html#viaWith">with syntax</a> (which can handle both shallow and nested updates -- one of Pointless's little innovations) to create a new VM object with a new stack value: the old stack with the instruction argument pushed to the top. The <code>unwrap</code> function is used to get the argument from the <code>Const</code> instruction.
+        Structures in Pointless persistent, and thus immutable. As such, our program will never mutate the state of a VM object; rather, it will produce new VM objects. The code above uses <a href="/docs.html#viaWith">with syntax</a> (which can handle both shallow and nested updates -- one of Pointless's little innovations) to create a new VM object with a new stack value: the old stack with the instruction argument pushed to the top. The <code>unwrap</code> function is used to get the argument from the <code>Const</code> instruction.
       </p>
 
       <p>
@@ -478,7 +430,7 @@ program = [
       </div>
 
       <p>
-        Instead of single calling <code>eval</code> once as before, we now call <code>eval</code> repeatedly using the <code><a href="../api/prelude/function.html#iterate">iterate</a></code> function. This generates a sequence of VM objects where the first element is the initial VM object, and the following elements are the VM objects produced by each subsequent application of <code>eval</code>. We use <code><a href="../api/prelude/list.html#takeUntil">takeUntil</a></code> to get these updated VM objects until we reach the VM object with <code>Exit</code> as its current instruction. Node that the <code>Exit</code> instruction is not evaluated -- it's just there to mark the end of the program.
+        Instead of single calling <code>eval</code> once as before, we now call <code>eval</code> repeatedly using the <code><a href="/api/prelude/function.html#iterate">iterate</a></code> function. This generates a sequence of VM objects where the first element is the initial VM object, and the following elements are the VM objects produced by each subsequent application of <code>eval</code>. We use <code><a href="/api/prelude/list.html#takeUntil">takeUntil</a></code> to get these updated VM objects until we reach the VM object with <code>Exit</code> as its current instruction. Node that the <code>Exit</code> instruction is not evaluated -- it's just there to mark the end of the program.
       </p>
 
       <div class="sample">
@@ -546,7 +498,7 @@ binaryOp(op, vm) =
       </div>
 
       <p>
-        Note that <code>v0</code> comes before <code>v1</code> in <code>binaryOp</code>.  This is done because the prelude functions that we'll pass <code>binaryOp</code> take their arguments in <em>reversed order</em> (for example the function <code><a href="../api/prelude/numerical.html#mod">mod</a></code> which wraps the operator <code>%</code>). These numerical prelude functions are designed this way with partial application in mind: it's more useful for <code>mod(2)</code> to mean <code>n => n % 2</code> instead of <code>n => 2 % n</code>. This happens to match the order that the operands will popped from the stack, so no reversal is needed.
+        Note that <code>v0</code> comes before <code>v1</code> in <code>binaryOp</code>.  This is done because the prelude functions that we'll pass <code>binaryOp</code> take their arguments in <em>reversed order</em> (for example the function <code><a href="/api/prelude/numerical.html#mod">mod</a></code> which wraps the operator <code>%</code>). These numerical prelude functions are designed this way with partial application in mind: it's more useful for <code>mod(2)</code> to mean <code>n => n % 2</code> instead of <code>n => 2 % n</code>. This happens to match the order that the operands will popped from the stack, so no reversal is needed.
       </p>
 
       <p>
@@ -653,7 +605,7 @@ false
       </p>
 
       <p>
-        To keep the definition for the output variable simple, we'll refactor our output code into a new function, <code>runGetOutput</code>, which takes a list of instructions, creates a new VM object, evaluates the instructions, and get the VM output.           <code>runGetOutput</code> also uses the <code><a href="../api/prelude/list.html#filter">filter</a></code> function to discard the <code>None</code> outputs that come from the non-<code>Print</code> instructions.
+        To keep the definition for the output variable simple, we'll refactor our output code into a new function, <code>runGetOutput</code>, which takes a list of instructions, creates a new VM object, evaluates the instructions, and get the VM output.           <code>runGetOutput</code> also uses the <code><a href="/api/prelude/list.html#filter">filter</a></code> function to discard the <code>None</code> outputs that come from the non-<code>Print</code> instructions.
       </p>
 
       <div class="sample">
@@ -889,8 +841,8 @@ scanInst(pair, inst) =
       </div>
 
       <p>
-        <code>getLabelInds</code> uses the <code><a href="../api/prelude/list.html#reduce">reduce</a></code> function to iterate through the given instructions list while keeping track of the current index (not counting <code>Label</code> instructions)
-        and maintaining a <a href="../docs.html#dicts">dict</a> matching jump target strings with instruction indices. After iterating through all of the instructions, <code>getLabelInds</code> returns this dict. 
+        <code>getLabelInds</code> uses the <code><a href="/api/prelude/list.html#reduce">reduce</a></code> function to iterate through the given instructions list while keeping track of the current index (not counting <code>Label</code> instructions)
+        and maintaining a <a href="/docs.html#dicts">dict</a> matching jump target strings with instruction indices. After iterating through all of the instructions, <code>getLabelInds</code> returns this dict. 
       </p>
 
       <p>
@@ -936,7 +888,7 @@ convertJump(inds, inst) = cond {
       </div>
 
       <p>
-        To make sure our code works, we'll modify our output definition to call <code>convertJumps</code> and use the function <code>showInst</code> from before to get string representations for each resulting instruction. In addition to this, we'll call <code><a href="../api/prelude/list.html#enumerate">enumerate</a></code> to get <code>(index, value)</code> pairs for each instruction string, and call <code>format("{>2} {}")</code> on each pair to print each instruction along with its index (this helps us see where the jump instructions now point).
+        To make sure our code works, we'll modify our output definition to call <code>convertJumps</code> and use the function <code>showInst</code> from before to get string representations for each resulting instruction. In addition to this, we'll call <code><a href="/api/prelude/list.html#enumerate">enumerate</a></code> to get <code>(index, value)</code> pairs for each instruction string, and call <code>format("{>2} {}")</code> on each pair to print each instruction along with its index (this helps us see where the jump instructions now point).
       </p>
 
       <div class="sample">
@@ -1191,7 +1143,7 @@ done
       </p>
 
       <p>
-        You can run the final prime-factorization program and VM implementation <a href="../online/factorsVM.html">online</a>. There are many numerical programs that could now be written for our VM -- see this <a href="../online/factorsVM.html">collatz sequence example</a>.
+        You can run the final prime-factorization program and VM implementation <a href="/online/factorsVM.html">online</a>. There are many numerical programs that could now be written for our VM -- see this <a href="/online/factorsVM.html">collatz sequence example</a>.
       </p>
 
       <p>
@@ -1409,15 +1361,3 @@ scanInst(pair, inst) =
   }
 </pre>
       </div>
-
-      <footer>
-        <div>copyright (c) 2020 Avery N. Nortonsmith</div>
-        <div>logo based on isometric1 by Kent Nassen</div>
-      </footer>
-    </main>
-
-    <script src="../highlight/js/highlightGen.js"></script>
-    <script src="../highlight/js/highlight.js"></script>
-      
-  </body>
-</html>

@@ -1,133 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pointless: a scripting language for learning and fun</title>
+---
+layout: default
+title: "Pointless: A Scripting Language for Learning and Fun"
+---
 
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="highlight/highlight.css">
-    <link rel="stylesheet" media="screen" href="fonts/fonts.css" type="text/css"/>
-  </head>
+<h3 style="color: #555;">
+  Pointless: A Scripting Language for Learning and Fun (v0.1.0)
+</h3>
 
-  <body>
-    <a href="/">
-      <header>
-        <pre>
-     ___           ___           ___           ___          ___            ___        ___           ___           ___     
-    /\  \         /\  \         /\  \         /\__\        /\  \          /\__\      /\  \         /\  \         /\  \    
-   /::\  \       /::\  \        \:\  \       /::|  |       \:\  \        /:/  /     /::\  \       /::\  \       /::\  \   
-  /:/\:\  \     /:/\:\  \        \:\  \     /:|:|  |        \:\  \      /:/  /     /:/\:\  \     /:/\ \  \     /:/\ \  \  
- /::\~\:\  \   /:/  \:\  \   ___ /::\  \   /:/|:|  |__      /::\  \    /:/  /     /::\~\:\  \   _\:\~\ \  \   _\:\~\ \  \ 
-/:/\:\ \:\__\ /:/__/ \:\__\ /\  /:/\:\__\ /:/ |:| /\__\    /:/\:\__\  /:/__/     /:/\:\ \:\__\ /\ \:\ \ \__\ /\ \:\ \ \__\
-\/__\:\/:/  / \:\  \ /:/  / \:\/:/  \/__/ \/__|:|/:/  /   /:/  \/__/  \:\  \     \:\~\:\ \/__/ \:\ \:\ \/__/ \:\ \:\ \/__/
-     \::/  /   \:\  /:/  /   \::/__/          |:/:/  /   /:/  /        \:\  \     \:\ \:\__\    \:\ \:\__\    \:\ \:\__\  
-      \/__/     \:\/:/  /     \:\  \          |::/  /    \/__/          \:\  \     \:\ \/__/     \:\/:/  /     \:\/:/  /  
-                 \::/  /       \:\__\         /:/  /                     \:\__\     \:\__\        \::/  /       \::/  /   
-                  \/__/         \/__/         \/__/                       \/__/      \/__/         \/__/         \/__/     </pre>
-                     
-      </header>
+<div id="whyPointless">
+  <h3>Why Learn Pointless?</h3>
+
+  <p>What language should beginner programmers learn? Pointless, of course!</p>
+
+  <p>
+    Here's the deal: I like the way that writing programs in scripting languages (like Python) tends to feel -- easy and flexible -- and I like the types of programs that functional languages (like Haskell) are designed to produce -- declarative and correct. But Python and Haskell are very different languages -- is there a middle-ground between the two? Pointless aims to provide just this.
+  </p>
+
+  <h4>Comparison with Scripting Languages:</h4>
+
+  <p>
+    Scripting languages are often seen as flexible and easy to use. My own experience has show me that languages which are easy to use also make it easy to write bad programs. One of the primary goals of Pointless ...
+
+    <a href="https://github.com/pointless-lang/pointless/blob/master/why_pointless.md">
+      <strong><em>link to full text</em></strong>
     </a>
+  </p>
 
-    <nav>
-      <a href="/"><span>HOME</span></a>
-      <a href="online/"><span>ONLINE</span></a>
-      <a href="docs.html"><span>DOCS</span></a>
-      <a href="examples.html"><span>EXAMPLES</span></a>
-      <a href="api/index.html"><span>API</span></a>
-      <a href="install.html"><span>INSTALL</span></a>
-      <a href="dev.html"><span>DEVELOPMENT</span></a>
-      <a href="tutorials/"><span>TUTORIALS</span></a>
-    </nav>
-    
-    <main>
+</div>
 
-      <h3 style="color: #555;">
-        Pointless: A Scripting Language for Learning and Fun (v0.1.0)
-      </h3>
+<p>
+  Pointless 0.1.0 brings a number of changes from the initial release, informed by 
+  feedback and experience. The latest implementation of Pointless is interpreted, rather than compiled, and is written in Dart. This move marks a deemphasis on performance with a focus instead on improved language design and faster development. It's my hope that the new Dart-based implementation will make Pointless easier for others to <a href="install.html">install</a>, <a href="online">use</a>, and <a href="dev.html">modify</a>.
+</p>
 
-      <div id="whyPointless">
-        <h3>Why Learn Pointless?</h3>
+<strong>New utilities:</strong>
 
-        <p>What language should beginner programmers learn? Pointless, of course!</p>
+<ul>
+  <li>A repl for interactive programming</li>
+  <li>An web-based <a href="online">language playground</a></li>
+  <li>Auto-generated <a href="api">API docs</a> for prelude functions</li>
+</ul>
 
-        <p>
-          Here's the deal: I like the way that writing programs in scripting languages (like Python) tends to feel -- easy and flexible -- and I like the types of programs that functional languages (like Haskell) are designed to produce -- declarative and correct. But Python and Haskell are very different languages -- is there a middle-ground between the two? Pointless aims to provide just this.
-        </p>
+<strong>Language updates:</strong>
 
-        <h4>Comparison with Scripting Languages:</h4>
+<ul>
+  <li>Syntax consolidation and updates</li>
+  <li>
+    Better error messages with location information for incorrect types
+    <br>
+    (showing where in the code the incorrect type came from)
+  </li>
+  <li>Explicit exports for multi-file projects</li>
+  <li>Expanded standard library</li>
+  <li>Try / Catch error handling mechanism</li>
+  <li>Support for labeled objects</li>
+</ul>
 
-        <p>
-          Scripting languages are often seen as flexible and easy to use. My own experience has show me that languages which are easy to use also make it easy to write bad programs. One of the primary goals of Pointless ...
+<strong>Implementation updates:</strong>
 
-          <a href="https://github.com/pointless-lang/pointless/blob/master/why_pointless.md">
-            <strong><em>link to full text</em></strong>
-          </a>
-        </p>
+<ul>
+  <li>A smaller, easier to edit codebase</li>
+  <li>Improved Windows support</li>
+  <li>Bug fixes</li>
+  <li>MIT licensed source code</li>
+</ul>
 
-      </div>
+<strong>Site updates:</strong>
 
-      <p>
-        Pointless 0.1.0 brings a number of changes from the initial release, informed by 
-        feedback and experience. The latest implementation of Pointless is interpreted, rather than compiled, and is written in Dart. This move marks a deemphasis on performance with a focus instead on improved language design and faster development. It's my hope that the new Dart-based implementation will make Pointless easier for others to <a href="install.html">install</a>, <a href="online">use</a>, and <a href="dev.html">modify</a>.
-      </p>
+<ul>
+  <li>Updated documentation</li>
+  <li>More in-depth examples</li>
+  <li>Automatic syntax highlighting</li>
+  <li>Faster loading</li>
+</ul>
 
-      <strong>New utilities:</strong>
+<br>
 
-      <ul>
-        <li>A repl for interactive programming</li>
-        <li>An web-based <a href="online">language playground</a></li>
-        <li>Auto-generated <a href="api">API docs</a> for prelude functions</li>
-      </ul>
+<p>
+  I've made this site to share a project I've been working on intermittently for the last couple of years -- a programming language called Pointless. The language is a distillation of some of the concepts from functional programming that I find interesting, with a design goal that can be roughly summarized as "creating the programming language that I'd like to have learned as a beginner programmer". This language is still very much in-the-works, but I'm excited to share the progress that I've made so far.
+</p>
 
-      <strong>Language updates:</strong>
+<p style="text-align: right; padding-right: 50px;">
+  <em>- Avery N. Nortonsmith</em>
+  <br>
+  <em>averynortonsmith@fastmail.com</em>
+</p>
 
-      <ul>
-        <li>Syntax consolidation and updates</li>
-        <li>
-          Better error messages with location information for incorrect types
-          <br>
-          (showing where in the code the incorrect type came from)
-        </li>
-        <li>Explicit exports for multi-file projects</li>
-        <li>Expanded standard library</li>
-        <li>Try / Catch error handling mechanism</li>
-        <li>Support for labeled objects</li>
-      </ul>
-
-      <strong>Implementation updates:</strong>
-
-      <ul>
-        <li>A smaller, easier to edit codebase</li>
-        <li>Improved Windows support</li>
-        <li>Bug fixes</li>
-        <li>MIT licensed source code</li>
-      </ul>
-
-      <strong>Site updates:</strong>
-
-      <ul>
-        <li>Updated documentation</li>
-        <li>More in-depth examples</li>
-        <li>Automatic syntax highlighting</li>
-        <li>Faster loading</li>
-      </ul>
-
-      <br>
-
-      <p>
-        I've made this site to share a project I've been working on intermittently for the last couple of years -- a programming language called Pointless. The language is a distillation of some of the concepts from functional programming that I find interesting, with a design goal that can be roughly summarized as "creating the programming language that I'd like to have learned as a beginner programmer". This language is still very much in-the-works, but I'm excited to share the progress that I've made so far.
-      </p>
-
-      <p style="text-align: right; padding-right: 50px;">
-        <em>- Avery N. Nortonsmith</em>
-        <br>
-        <em>averynortonsmith@fastmail.com</em>
-      </p>
-
-      <a href="online/collatz.html" style="text-decoration: none;">
-        <div class="sample">
-          <pre class="highlight">import "chart.ptls" as chart
+<a href="online/collatz.html" style="text-decoration: none;">
+  <div class="sample">
+    <pre class="highlight">
+import "chart.ptls" as chart
 
 output =
   iterate(step, 175) -- sequence starts at 175
@@ -139,25 +101,16 @@ output =
 -- get the next number in a collatz sequence
 
 step(n) =
-  if n % 2 == 0 then n / 2 else n * 3 + 1</pre>
+  if n % 2 == 0 then n / 2 else n * 3 + 1
+</pre>
 
-          <pre class="result">$ bin/pointless examples/collatz.ptls
+<pre class="result">
+$ bin/pointless examples/collatz.ptls
 
-                                      ▂         █                                 
-                                    ▁ █       ▅ █▁                                
-                                  ▃ █▁█▅  ▂ ▆ █▃██▁                               
-  ▁▂▁▃▂▄▂▆▃▂▅▃▂▁▂▁▃▂▄▂▁▃▂▄▂▁▃▂▅▃▇▄█▅████▆▃█▅█▇█████▄▂▆▃▂▄▂▁▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁</pre>
-        </div>
-      </a>
-
-      <footer>
-        <div>copyright (c) 2020 Avery N. Nortonsmith</div>
-        <div>logo based on isometric1 by Kent Nassen</div>
-      </footer>
-    </main>
-
-    <script src="highlight/js/highlightGen.js"></script>
-    <script src="highlight/js/highlight.js"></script>
-      
-  </body>
-</html>
+                                    ▂         █                                 
+                                  ▁ █       ▅ █▁                                
+                                ▃ █▁█▅  ▂ ▆ █▃██▁                               
+▁▂▁▃▂▄▂▆▃▂▅▃▂▁▂▁▃▂▄▂▁▃▂▄▂▁▃▂▅▃▇▄█▅████▆▃█▅█▇█████▄▂▆▃▂▄▂▁▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+</pre>
+  </div>
+</a>

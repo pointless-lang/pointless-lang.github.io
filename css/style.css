@@ -22,20 +22,13 @@ main {
 }
 
 header {
-  margin-top: 20px;
-  color: #777;
-  padding: 10px 0px;
-  position: relative;
+  max-width: 900px;
+  margin: 40px auto 20px auto;
   text-align: center;
 }
 
-header pre {
-  letter-spacing: 1px;
-  font-size: 10px;
-  font-weight: bold;
-  line-height: 13px;
-  padding: 0px;
-  display: inline-block;
+header img {
+  max-width: 100%;
 }
 
 nav {
@@ -49,6 +42,12 @@ nav span {
   display: inline-block;
   padding: 10px 15px;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+  nav span {
+    padding: 2px 6px;
+  }
 }
 
 a {
@@ -121,16 +120,4 @@ footer {
   color: #888;
   text-align: center;
   margin-bottom: 30px;
-}
-
-@media only screen and (max-width: 900px) {
-  header pre {
-    color: #000;
-    font-size: 3px;
-    line-height: 4px;
-  }
-
-  nav span {
-    padding: 2px 6px;
-  }
 }

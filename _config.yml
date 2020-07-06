@@ -1,0 +1,6 @@
+
+# Site settings
+description: >
+  Pointless: A Scripting Language for Learning and Fun
+# Build settings
+markdown: kramdown

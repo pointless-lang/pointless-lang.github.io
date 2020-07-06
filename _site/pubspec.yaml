@@ -1,0 +1,15 @@
+name: pointlessSite
+
+version: "0.1.0"
+
+description: >-
+  Homepage for the Pointless programming language
+
+homepage: https://ptls.dev
+
+environment:
+  sdk: ">=2.8.4"
+
+dependencies:
+  pointless:
+    path: "pointless/"

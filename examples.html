@@ -1,107 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pointless: examples</title>
+---
+layout: default
+title: "Pointless: examples"
+---
 
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="highlight/highlight.css">
-    <link rel="stylesheet" media="screen" href="fonts/fonts.css" type="text/css"/>
-  </head>
+<h3>Examples</h3>
 
-  <body>
-    <a href="/">
-      <header>
-        <pre>
-     ___           ___           ___           ___          ___            ___        ___           ___           ___     
-    /\  \         /\  \         /\  \         /\__\        /\  \          /\__\      /\  \         /\  \         /\  \    
-   /::\  \       /::\  \        \:\  \       /::|  |       \:\  \        /:/  /     /::\  \       /::\  \       /::\  \   
-  /:/\:\  \     /:/\:\  \        \:\  \     /:|:|  |        \:\  \      /:/  /     /:/\:\  \     /:/\ \  \     /:/\ \  \  
- /::\~\:\  \   /:/  \:\  \   ___ /::\  \   /:/|:|  |__      /::\  \    /:/  /     /::\~\:\  \   _\:\~\ \  \   _\:\~\ \  \ 
-/:/\:\ \:\__\ /:/__/ \:\__\ /\  /:/\:\__\ /:/ |:| /\__\    /:/\:\__\  /:/__/     /:/\:\ \:\__\ /\ \:\ \ \__\ /\ \:\ \ \__\
-\/__\:\/:/  / \:\  \ /:/  / \:\/:/  \/__/ \/__|:|/:/  /   /:/  \/__/  \:\  \     \:\~\:\ \/__/ \:\ \:\ \/__/ \:\ \:\ \/__/
-     \::/  /   \:\  /:/  /   \::/__/          |:/:/  /   /:/  /        \:\  \     \:\ \:\__\    \:\ \:\__\    \:\ \:\__\  
-      \/__/     \:\/:/  /     \:\  \          |::/  /    \/__/          \:\  \     \:\ \/__/     \:\/:/  /     \:\/:/  /  
-                 \::/  /       \:\__\         /:/  /                     \:\__\     \:\__\        \::/  /       \::/  /   
-                  \/__/         \/__/         \/__/                       \/__/      \/__/         \/__/         \/__/     </pre>
-                     
-      </header>
-    </a>
+A handful of example programs demonstrating various features of Pointless. Some examples (self-hosting tokenizer and stack-based language vm) span multiple source files.
 
-    <nav>
-      <a href="/"><span>HOME</span></a>
-      <a href="online/"><span>ONLINE</span></a>
-      <a href="docs.html"><span>DOCS</span></a>
-      <a href="examples.html"><span>EXAMPLES</span></a>
-      <a href="api/index.html"><span>API</span></a>
-      <a href="install.html"><span>INSTALL</span></a>
-      <a href="dev.html"><span>DEVELOPMENT</span></a>
-      <a href="tutorials/"><span>TUTORIALS</span></a>
-    </nav>
-    
-    <main>
+<ul style="margin-bottom: 0px;">
+  <li>
+    <a href="#100Doors">100 Doors</a>
+    <a href="online/100Doors.html">(demo)</a>
+  </li>
+  <li>
+    <a href="#beer">99 Bottles of Beer</a>
+    <a href="online/beer.html">(demo)</a>
+  </li>
+  <li>
+    <a href="#chart">Chart</a>
+  </li>
+  <li>
+    <a href="#collatz">Collatz Sequence</a>
+    <a href="online/collatz.html">(demo)</a>
+  </li>
+  <li>
+    <a href="#echoLines">Echo Lines</a>
+  </li>
+  <li>
+    <a href="#guess">Number Guessing</a>
+  </li>
+  <li>
+    <a href="#life">Game of Life</a>
+  </li>
+  <li>
+    <a href="#permutations">Permutations</a>
+    <a href="online/permutations.html">(demo)</a>
+  </li>
+  <li>
+    <a href="#quine">Quine (a self-printing program)</a>
+    <a href="online/quine.html">(demo)</a>
+  </li>
+  <li>
+    <a href="#stackVM">Stack-Based Language VM</a>
+    <a href="online/factorsVM.html">(demo)</a>
+  </li>
+  <li>
+    <a href="#tokenizer">Self-Hosting Tokenizer</a>
+  </li>
+</ul>
 
-      <h3>Examples</h3>
+<br>
+<hr>
 
-      A handful of example programs demonstrating various features of Pointless. Some examples (self-hosting tokenizer and stack-based language vm) span multiple source files.
+<div class="exampleTitle">
+  <span id="100Doors"><a href="#100Doors">100 Doors</a></span>
+  <a href="https://github.com/pointless-lang/pointless/tree/master/examples/100Doors/">
+    (source)
+  </a>
+</div>
 
-      <ul style="margin-bottom: 0px;">
-        <li>
-          <a href="#100Doors">100 Doors</a>
-          <a href="online/100Doors.html">(demo)</a>
-        </li>
-        <li>
-          <a href="#beer">99 Bottles of Beer</a>
-          <a href="online/beer.html">(demo)</a>
-        </li>
-        <li>
-          <a href="#chart">Chart</a>
-        </li>
-        <li>
-          <a href="#collatz">Collatz Sequence</a>
-          <a href="online/collatz.html">(demo)</a>
-        </li>
-        <li>
-          <a href="#echoLines">Echo Lines</a>
-        </li>
-        <li>
-          <a href="#guess">Number Guessing</a>
-        </li>
-        <li>
-          <a href="#life">Game of Life</a>
-        </li>
-        <li>
-          <a href="#permutations">Permutations</a>
-          <a href="online/permutations.html">(demo)</a>
-        </li>
-        <li>
-          <a href="#quine">Quine (a self-printing program)</a>
-          <a href="online/quine.html">(demo)</a>
-        </li>
-        <li>
-          <a href="#stackVM">Stack-Based Language VM</a>
-          <a href="online/factorsVM.html">(demo)</a>
-        </li>
-        <li>
-          <a href="#tokenizer">Self-Hosting Tokenizer</a>
-        </li>
-      </ul>
+<div class="sample">
+  <pre class="fileName">100Doors.ptls</pre>
 
-      <br>
-      <hr>
-
-      <div class="exampleTitle">
-        <span id="100Doors"><a href="#100Doors">100 Doors</a></span>
-        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/100Doors/">
-          (source)
-        </a>
-      </div>
-
-      <div class="sample">
-        <pre class="fileName">100Doors.ptls</pre>
-
-        <pre class="highlight">----------------------------------------------------------
+        <pre class="highlight">
+----------------------------------------------------------
 -- Solution to the '100 doors' problem
 -- http://rosettacode.org/wiki/100_doors
 
@@ -143,7 +105,8 @@ visit(i, index) = cond {
       <div class="sample">
         <pre class="fileName">beer.ptls</pre>
 
-        <pre class="highlight">-----------------------------------------------------------
+        <pre class="highlight">
+-----------------------------------------------------------
 -- Print the lyrics to the song '99 bottles of beer'
 
 output =
@@ -195,7 +158,8 @@ No more bottles of beer on the wall!</pre>
       <div class="sample">
         <pre class="fileName">chart.ptls</pre>
 
-        <pre class="highlight">-----------------------------------------------------------
+        <pre class="highlight">
+-----------------------------------------------------------
 -- Given a list of numerical values, print an ascii bar-
 -- chart with dimensions (in terms of characters) 
 -- height x length(values), where the largest value takes
@@ -257,7 +221,8 @@ getBar(row, n) = cond {
       <div class="sample">
         <pre class="fileName">collatz.ptls</pre>
 
-        <pre class="highlight">import "../chart/chart.ptls" as chart
+        <pre class="highlight">
+import "../chart/chart.ptls" as chart
 
 -----------------------------------------------------------
 -- Calculate each number in the collatz sequence for some
@@ -296,7 +261,8 @@ step(n) =
       <div class="sample">
         <pre class="fileName">echoLines.ptls</pre>
 
-        <pre class="highlight">-----------------------------------------------------------
+        <pre class="highlight">
+-----------------------------------------------------------
 -- Read lines from stdin, and print each line along
 -- with its line number, right-justified to 3 chars 
 
@@ -344,7 +310,8 @@ output =
       <div class="sample">
         <pre class="fileName">guess.ptls</pre>
 
-        <pre class="highlight">number = randRange(0, 1000)
+        <pre class="highlight">
+number = randRange(0, 1000)
 
 getResponse(n) =
   format("{} is {}", [n, compareGuess(n)])
@@ -392,7 +359,8 @@ output =
       <div class="sample">
         <pre class="fileName">life.ptls</pre>
 
-        <pre class="highlight">-----------------------------------------------------------
+        <pre class="highlight">
+-----------------------------------------------------------
 -- Print 100 simulated states of conway's game of life
 -- for a glider starting pattern
 -- Print generation number along with cells
@@ -554,7 +522,8 @@ generation: 2
       <div class="sample">
         <pre class="fileName">permutations.ptls</pre>
 
-        <pre class="highlight">-----------------------------------------------------------
+        <pre class="highlight">
+-----------------------------------------------------------
 -- For a list of values, get a list of all permutations of
 -- the items in the original list
 -- (algorithm produces duplicate permutations for lists
@@ -602,7 +571,8 @@ output =
       <div class="sample">
         <pre class="fileName">quine.ptls</pre>
 
-        <pre class="highlight">output = (s => println(s + show(toTuple([s]))))("output = (s => println(s + show(toTuple([s]))))")</pre>
+        <pre class="highlight">
+output = (s => println(s + show(toTuple([s]))))("output = (s => println(s + show(toTuple([s]))))")</pre>
 
         <pre class="result">$ bin/pointless examples/quine/quine.ptls
 
@@ -914,7 +884,8 @@ scanInst(pair, inst) =
       <div class="sample">
         <pre class="fileName">tokenize.ptls</pre>
 
-        <pre class="highlight">import "location.ptls" as location
+        <pre class="highlight">
+import "location.ptls" as location
 import "symbols.ptls" as symbols
 
 ------------------------------------------------------------------------------
@@ -1313,7 +1284,8 @@ output =
       <div class="sample">
         <pre class="fileName">location.ptls</pre>
 
-        <pre class="highlight">export {fromChars, showLoc}
+        <pre class="highlight">
+export {fromChars, showLoc}
 
 ------------------------------------------------------------------------------
 
@@ -1362,7 +1334,8 @@ showLoc(loc) =
       <div class="sample">
         <pre class="fileName">symbols.ptls</pre>
 
-        <pre class="highlight">------------------------------------------------------------------------------
+        <pre class="highlight">
+------------------------------------------------------------------------------
 -- Language keywords, operators, and symbols, and associated token types
 ------------------------------------------------------------------------------
 
@@ -1448,15 +1421,3 @@ separators = {
 
         <pre class="result">-- see examples above</pre>
       </div>
-
-      <footer>
-        <div>copyright (c) 2020 Avery N. Nortonsmith</div>
-        <div>logo based on isometric1 by Kent Nassen</div>
-      </footer>
-    </main>
-
-    <script src="highlight/js/highlightGen.js"></script>
-    <script src="highlight/js/highlight.js"></script>
-      
-  </body>
-</html>
