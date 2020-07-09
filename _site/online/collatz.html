@@ -1,14 +1,12 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Edit and run Pointless programs online. Syntax highlighting and online interpreter">
 
-    <title>Pointless: online</title>
-    <link rel="stylesheet" type="text/css" href="../highlight/highlight.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
+  <title>Pointless: online</title>
+  <link rel="stylesheet" type="text/css" href="/highlight/highlight.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 
   <body>
     <header>
@@ -19,7 +17,7 @@
 
     <div id="main">
       <div id="left">
-        <pre class="highlight" id="source" data-storeid="collatz" data-edit>-----------------------------------------------------------
+        <pre class="highlight" id="source" data-storeid="editor" data-edit>-----------------------------------------------------------
 -- Calculate each number in the collatz sequence for some
 -- starting value, and ending when the value 1 is reached
 -- Display these values in an ascii bar-chart with 8 rows
@@ -80,7 +78,8 @@ getBar(row, n) = cond {
   case barHeight < 0 and row > 0  " "
   case barHeight < 0 and row == 0 "_"
   else bars[min(7, toInt(barHeight * 7))] 
-} where {barHeight = (n - row); bars = toArray("▁▂▃▄▅▆▇█")}</pre>
+} where {barHeight = (n - row); bars = toArray("▁▂▃▄▅▆▇█")}
+ </pre>
       </div>
 
       <div id="right">
@@ -118,7 +117,10 @@ getBar(row, n) = cond {
 
 ----------
 
-logo based on isometric1 by Kent Nassen
+<div>copyright (c) 2020 Avery N. Nortonsmith (averynortonsmith@fastmail.com)</div>
+<div>logo based on <a href="http://www.figlet.org/fontdb_example.cgi?font=isometric1.flf">isometric1</a> by Kent Nassen</div>
+<div>code color scheme based on Mariana from <a href="https://www.sublimetext.com/">Sublime Text</a></div>
+
         </pre>
       </div>
       
@@ -128,8 +130,11 @@ logo based on isometric1 by Kent Nassen
       <button id="runButton" style="float: left;">run program</button>
     </div>
 
-    <script src="../highlight/js/highlightGen.js"></script>
-    <script src="../highlight/js/highlight.js"></script>
+    <script src="/highlight/js/highlightGen.js"></script>
+<script src="/highlight/js/highlight.js"></script>
+
+<script async defer data-domain="ptls.dev" src="https://plausible.io/js/plausible.js"></script>
+
     <script src="js/driver.js"></script>
     <script src="js/ptlsWeb.js"></script>
 

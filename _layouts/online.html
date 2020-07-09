@@ -17,7 +17,7 @@
 
     <div id="main">
       <div id="left">
-        <pre class="highlight" id="source" data-storeid="editor" data-edit>output = (s => println(s + show(toTuple([s]))))("output = (s => println(s + show(toTuple([s]))))") </pre>
+        <pre class="highlight" id="source" data-storeid="editor" data-edit>{{ content }} </pre>
       </div>
 
       <div id="right">
@@ -55,10 +55,7 @@
 
 ----------
 
-<div>copyright (c) 2020 Avery N. Nortonsmith (averynortonsmith@fastmail.com)</div>
-<div>logo based on <a href="http://www.figlet.org/fontdb_example.cgi?font=isometric1.flf">isometric1</a> by Kent Nassen</div>
-<div>code color scheme based on Mariana from <a href="https://www.sublimetext.com/">Sublime Text</a></div>
-
+{% include credits.html %}
         </pre>
       </div>
       
@@ -68,10 +65,7 @@
       <button id="runButton" style="float: left;">run program</button>
     </div>
 
-    <script src="/highlight/js/highlightGen.js"></script>
-<script src="/highlight/js/highlight.js"></script>
-
-<script async defer data-domain="ptls.dev" src="https://plausible.io/js/plausible.js"></script>
+    {% include foot.html %}
 
     <script src="js/driver.js"></script>
     <script src="js/ptlsWeb.js"></script>

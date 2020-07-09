@@ -1,14 +1,12 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Edit and run Pointless programs online. Syntax highlighting and online interpreter">
 
-    <title>Pointless: online</title>
-    <link rel="stylesheet" type="text/css" href="../highlight/highlight.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
+  <title>Pointless: online</title>
+  <link rel="stylesheet" type="text/css" href="/highlight/highlight.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 
   <body>
     <header>
@@ -19,8 +17,7 @@
 
     <div id="main">
       <div id="left">
-        <pre class="highlight" id="source" data-storeid="factorsVM" data-edit>
-output =
+        <pre class="highlight" id="source" data-storeid="editor" data-edit>output =
   program
   |> runGetOutput
   |> printLines
@@ -211,7 +208,7 @@ scanInst(pair, inst) =
     newInds = inds with $[unwrap(inst)] = ind
     (ind, inds) = pair
   }
-</pre>
+   </pre>
       </div>
 
       <div id="right">
@@ -249,7 +246,10 @@ scanInst(pair, inst) =
 
 ----------
 
-logo based on isometric1 by Kent Nassen
+<div>copyright (c) 2020 Avery N. Nortonsmith (averynortonsmith@fastmail.com)</div>
+<div>logo based on <a href="http://www.figlet.org/fontdb_example.cgi?font=isometric1.flf">isometric1</a> by Kent Nassen</div>
+<div>code color scheme based on Mariana from <a href="https://www.sublimetext.com/">Sublime Text</a></div>
+
         </pre>
       </div>
       
@@ -259,8 +259,11 @@ logo based on isometric1 by Kent Nassen
       <button id="runButton" style="float: left;">run program</button>
     </div>
 
-    <script src="../highlight/js/highlightGen.js"></script>
-    <script src="../highlight/js/highlight.js"></script>
+    <script src="/highlight/js/highlightGen.js"></script>
+<script src="/highlight/js/highlight.js"></script>
+
+<script async defer data-domain="ptls.dev" src="https://plausible.io/js/plausible.js"></script>
+
     <script src="js/driver.js"></script>
     <script src="js/ptlsWeb.js"></script>
 

@@ -1,26 +1,9 @@
 ---
+layout: online
 title: "Pointless: online"
 ---
 
-<!DOCTYPE html>
-<html>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Pointless: online</title>
-  <link rel="stylesheet" type="text/css" href="/highlight/highlight.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
-
-  <body>
-    <header>
-      <a href="/">
-        <span>ptls.dev</span><span>/online</span>
-      </a>
-    </header>
-
-    <div id="main">
-      <div id="left">
-        <pre class="highlight" id="source" data-storeid="editor" data-edit>-----------------------------------------------------------
+-----------------------------------------------------------
 -- Print the lyrics to the song '99 bottles of beer'
 
 output =
@@ -43,58 +26,4 @@ nextBeer(n) =
 
 showBottle(n) =
   format("{} {}", [n, bottleStr])
-  where bottleStr = if n == 1 then "bottle" else "bottles"</pre>
-      </div>
-
-      <div id="right">
-        <pre id="output">
-      ___           ___           ___           ___          ___      
-     /\  \         /\  \         /\  \         /\__\        /\  \     
-    /::\  \       /::\  \        \:\  \       /::|  |       \:\  \    
-   /:/\:\  \     /:/\:\  \        \:\  \     /:|:|  |        \:\  \   
-  /::\~\:\  \   /:/  \:\  \   ___ /::\  \   /:/|:|  |__      /::\  \  
- /:/\:\ \:\__\ /:/__/ \:\__\ /\  /:/\:\__\ /:/ |:| /\__\    /:/\:\__\ 
- \/__\:\/:/  / \:\  \ /:/  / \:\/:/  \/__/ \/__|:|/:/  /   /:/  \/__/ 
-      \::/  /   \:\  /:/  /   \::/__/          |:/:/  /   /:/  /      
-       \/__/     \:\/:/  /     \:\  \          |::/  /    \/__/       
-                  \::/  /       \:\__\         /:/  /                 
-                   \/__/         \/__/         \/__/                  
-     ___        ___           ___           ___     
-    /\__\      /\  \         /\  \         /\  \      Pointless (0.1.0)
-   /:/  /     /::\  \       /::\  \       /::\  \     
-  /:/  /     /:/\:\  \     /:/\ \  \     /:/\ \  \    A scripting language
- /:/  /     /::\~\:\  \   _\:\~\ \  \   _\:\~\ \  \   for learning and fun
-/:/__/     /:/\:\ \:\__\ /\ \:\ \ \__\ /\ \:\ \ \__\  
-\:\  \     \:\~\:\ \/__/ \:\ \:\ \/__/ \:\ \:\ \/__/  copyright (c) 2020
- \:\  \     \:\ \:\__\    \:\ \:\__\    \:\ \:\__\    
-  \:\  \     \:\ \/__/     \:\/:/  /     \:\/:/  /    Avery N. Nortonsmith
-   \:\__\     \:\__\        \::/  /       \::/  /     
-    \/__/      \/__/         \/__/         \/__/      https://plts.dev
-
-----------
-
-- Enter code in the editor on the left
-
-- Output is displayed here on the right
-
-- (imports and user input disabled are, everything else should work, *albeit slowly*)
-
-----------
-
-{% include credits.html %}
-        </pre>
-      </div>
-      
-    </div>
-
-    <div id="controls">
-      <button id="runButton" style="float: left;">run program</button>
-    </div>
-
-    {% include foot.html %}
-
-    <script src="js/driver.js"></script>
-    <script src="js/ptlsWeb.js"></script>
-
-  </body>
-</html>
+  where bottleStr = if n == 1 then "bottle" else "bottles"
