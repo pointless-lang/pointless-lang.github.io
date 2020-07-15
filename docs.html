@@ -142,6 +142,7 @@ description: >-
 
           <a href="#basicComparison">Basic Types</a>,
           <a href="#structureComparison">Data Structures</a>,
+          <a href="#functionComparison">Function Comparison</a>,
           <a href="#labelComparison">Label Comparison</a>
         </div>
 
@@ -971,14 +972,14 @@ output = sum(range(1000)) |> println</pre>
           <a href="#equality">Equality:</a>
         </h3>
 
-        <p>Notes on the different ways to compare values in Pointless.</p>
+        <p>Definitions of equality for values in Pointless. Note that hashes for sets and dicts keys follow equality rules: (hash <code>a</code> equals hash <code>b</code> if and only if <code>a == b</code>).
 
         <h4 id="basicComparison">
           <a href="#basicComparison">Basic Types</a>
         </h4>
 
         <p>
-          Basic types (numbers, booleans, strings, and labels) can be compared using the basic equality operators <code>==</code> and <code>!=</code> (note that comparing non-integer numbers using these operators may fail due to floating-point inaccuracies). Additionally, tuples can be compared using the basic equality operators if all of their member values are comparable using these operators.
+          Basic types (numbers, booleans, strings, and labels) can be compared using the equality operators <code>==</code> and <code>!=</code> (note that comparing non-integer numbers using these operators may fail due to floating-point inaccuracies).
         </p>
 
         <div class="sample">
@@ -991,12 +992,26 @@ output = sum(range(1000)) |> println</pre>
         </h4>
 
         <p>
-          For implementation reasons, comparison of other data structures (lists, arrays, sets, dicts, objects, and tuples not fitting the criteria above) using the basic equality operators compares these objects according to their location in memory. As a result, comparison of two data-structures will return false even if those structures contain the same values, unless they are two references to the same original structure. Comparison of functions follows the same rule.
+          Data structures (lists, arrays, sets, dicts, objects, and tuples) can also be compared with the operators above. In this case, equality is determined structurally: for example, two arrays are equal if and only if they contain the same values in the same order. 
         </p>
 
+        <h4 id="functionComparison">
+          <a href="#functionComparison">Function Comparison</a>
+        </h4>
+
         <p>
-          To overcome this limitation, Pointless defines functions <code>deepEq</code> (and correspondingly <code>deepNotEq</code>), which can be used to perform deep-comparison of data-structures.
+          Functions are compared according to their location in memory, as demonstrated below:
         </p>
+
+        <div class="sample">
+          <pre class="highlight">
+incA(n) = n + 1
+incB(n) = n + 1
+
+incA == incA -- true
+incA == incB -- false
+</pre>
+        </div>
 
         <h4 id="labelComparison">
           <a href="#labelComparison">Label Comparison</a>
