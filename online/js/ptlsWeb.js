@@ -336,6 +336,9 @@
     Symbol: function Symbol(t0) {
       this.__internal$_name = t0;
     },
+    ConstantMap__throwUnmodifiable: function() {
+      throw H.wrapException(P.UnsupportedError$("Cannot modify unmodifiable Map"));
+    },
     instantiate1: function(f, T1) {
       var t1 = new H.Instantiation1(f, T1._eval$1("Instantiation1<0>"));
       t1.Instantiation$1(f);
@@ -1381,6 +1384,10 @@
     },
     ConstantStringMap_values_closure: function ConstantStringMap_values_closure(t0) {
       this.$this = t0;
+    },
+    _ConstantMapKeyIterable: function _ConstantMapKeyIterable(t0, t1) {
+      this._map = t0;
+      this.$ti = t1;
     },
     Instantiation: function Instantiation() {
     },
@@ -3125,6 +3132,9 @@
             return receiver[a0];
       return J.getInterceptor$asx(receiver).$index(receiver, a0);
     },
+    $indexSet$ax: function(receiver, a0, a1) {
+      return J.getInterceptor$ax(receiver).$indexSet(receiver, a0, a1);
+    },
     $or$n: function(receiver, a0) {
       if (typeof receiver == "number" && typeof a0 == "number")
         return (receiver | a0) >>> 0;
@@ -3245,6 +3255,25 @@
     Future: function Future() {
     },
     StreamTransformerBase: function StreamTransformerBase() {
+    },
+    HashMap_HashMap: function($K, $V) {
+      return new P._HashMap($K._eval$1("@<0>")._bind$1($V)._eval$1("_HashMap<1,2>"));
+    },
+    _HashMap__getTableEntry: function(table, key) {
+      var entry = table[key];
+      return entry === table ? null : entry;
+    },
+    _HashMap__setTableEntry: function(table, key, value) {
+      if (value == null)
+        table[key] = table;
+      else
+        table[key] = value;
+    },
+    _HashMap__newHashTable: function() {
+      var table = Object.create(null);
+      P._HashMap__setTableEntry(table, "<non-identifier-key>", table);
+      delete table["<non-identifier-key>"];
+      return table;
     },
     LinkedHashMap_LinkedHashMap$_literal: function(keyValuePairs, $K, $V) {
       return $K._eval$1("@<0>")._bind$1($V)._eval$1("LinkedHashMap<1,2>")._as(H.fillLiteralMap(keyValuePairs, new H.JsLinkedHashMap($K._eval$1("@<0>")._bind$1($V)._eval$1("JsLinkedHashMap<1,2>"))));
@@ -3423,6 +3452,27 @@
         if (nextNumber === 0)
           return number;
       }
+    },
+    _HashMap: function _HashMap(t0) {
+      var _ = this;
+      _._collection$_length = 0;
+      _._keys = _._collection$_rest = _._collection$_nums = _._collection$_strings = null;
+      _.$ti = t0;
+    },
+    _HashMap_values_closure: function _HashMap_values_closure(t0) {
+      this.$this = t0;
+    },
+    _HashMapKeyIterable: function _HashMapKeyIterable(t0, t1) {
+      this._collection$_map = t0;
+      this.$ti = t1;
+    },
+    _HashMapKeyIterator: function _HashMapKeyIterator(t0, t1, t2) {
+      var _ = this;
+      _._collection$_map = t0;
+      _._keys = t1;
+      _._offset = 0;
+      _._collection$_current = null;
+      _.$ti = t2;
     },
     _LinkedHashSet: function _LinkedHashSet(t0) {
       var _ = this;
@@ -5749,6 +5799,35 @@
     __StyleSheetList_Interceptor_ListMixin_ImmutableListMixin: function __StyleSheetList_Interceptor_ListMixin_ImmutableListMixin() {
     }
   },
+  U = {
+    MapEquality$: function($K, $V) {
+      return new U.MapEquality($K._eval$1("@<0>")._bind$1($V)._eval$1("MapEquality<1,2>"));
+    },
+    DefaultEquality: function DefaultEquality(t0) {
+      this.$ti = t0;
+    },
+    ListEquality: function ListEquality(t0) {
+      this.$ti = t0;
+    },
+    _MapEntry: function _MapEntry(t0, t1, t2) {
+      this.equality = t0;
+      this.key = t1;
+      this.value = t2;
+    },
+    MapEquality: function MapEquality(t0) {
+      this.$ti = t0;
+    },
+    ASTNode: function ASTNode(t0, t1, t2) {
+      this.nodeType = t0;
+      this.loc = t1;
+      this.values = t2;
+    },
+    ASTNode_toString_closure: function ASTNode_toString_closure() {
+    },
+    Tok: function Tok(t0) {
+      this._tokenTypes$_name = t0;
+    }
+  },
   G = {
     IHashMap_IHashMap$empty: function($K, $V) {
       var t1 = $K._eval$1("@<0>")._bind$1($V),
@@ -5825,6 +5904,19 @@
     IHashMap_remove__closure: function IHashMap_remove__closure(t0, t1) {
       this.$this = t0;
       this.k = t1;
+    },
+    IHashMap_toMap_closure: function IHashMap_toMap_closure(t0) {
+      this.$this = t0;
+    },
+    IHashMap_foldLeftKV_closure: function IHashMap_foldLeftKV_closure(t0, t1, t2) {
+      this.$this = t0;
+      this.f = t1;
+      this.B = t2;
+    },
+    IHashMap_foldLeftKV__closure: function IHashMap_foldLeftKV__closure(t0, t1, t2) {
+      this.$this = t0;
+      this.f = t1;
+      this.B = t2;
     },
     IHashMap_foldLeft_closure: function IHashMap_foldLeft_closure(t0, t1, t2) {
       this.$this = t0;
@@ -5987,7 +6079,7 @@
     IVector: function IVector(t0, t1, t2, t3) {
       var _ = this;
       _._elementsByIndex = t0;
-      _._offset = t1;
+      _._dartz$_offset = t1;
       _._dartz$_length = t2;
       _.$ti = t3;
     },
@@ -6077,7 +6169,6 @@
     PtlsBuiltIn: function PtlsBuiltIn(t0, t1) {
       this.signature = t0;
       this.handler = t1;
-      this.loc = null;
     },
     main: function() {
       var t2, t1 = {};
@@ -6153,7 +6244,6 @@
     PtlsTuple: function PtlsTuple(t0, t1) {
       this.label = t0;
       this.members = t1;
-      this.loc = null;
     },
     isAlphabetic: function(char) {
       var t1;
@@ -6220,11 +6310,9 @@
       this.$this = t0;
     },
     PtlsFunc: function PtlsFunc(t0, t1, t2) {
-      var _ = this;
-      _.env = t0;
-      _.params = t1;
-      _.body = t2;
-      _.loc = null;
+      this.env = t0;
+      this.params = t1;
+      this.body = t2;
     },
     PtlsList_fromValues: function(values) {
       var t2, thunk, thunk0,
@@ -6247,7 +6335,6 @@
     PtlsList: function PtlsList(t0, t1) {
       this.headThunk = t0;
       this.tailThunk = t1;
-      this.loc = null;
     },
     PtlsList_concat_closure: function PtlsList_concat_closure(t0, t1) {
       this.env = t0;
@@ -6260,7 +6347,6 @@
     },
     PtlsString: function PtlsString(t0) {
       this.value = t0;
-      this.loc = null;
     },
     PtlsString_getField_closure: function PtlsString_getField_closure() {
     }
@@ -6302,7 +6388,6 @@
     },
     PtlsDict: function PtlsDict(t0) {
       this.map = t0;
-      this.loc = null;
     }
   },
   E = {PosixStyle: function PosixStyle(t0, t1, t2) {
@@ -6320,7 +6405,6 @@
       this._nodeTypes$_name = t0;
     }, PtlsBool: function PtlsBool(t0) {
       this.value = t0;
-      this.loc = null;
     },
     PtlsObject$: function(env, label) {
       var t1 = new F.PtlsObject(label, env);
@@ -6331,7 +6415,6 @@
     PtlsObject: function PtlsObject(t0, t1) {
       this.label = t0;
       this.env = t1;
-      this.loc = null;
     },
     handleUnaryOp: function(env, op, operandNode) {
       var t1;
@@ -6481,13 +6564,10 @@
           t3 = type$.PtlsNumber;
           lhs = t3._as(A.$eval(env, lhsNode).checkType$1(t2));
           t1 = H.setRuntimeTypeInfo([C.Type_PtlsNumber_2Vr], t1);
-          rhs = t3._as(A.$eval(env, rhsNode).checkType$1(t1));
-          t1 = rhs.value;
+          t1 = t3._as(A.$eval(env, rhsNode).checkType$1(t1)).value;
           if (t1 === 0) {
-            t1 = P.LinkedHashSet_LinkedHashSet(type$.Location);
-            error = new S.PtlsError("Arithmetic Error", t1);
+            error = new S.PtlsError("Arithmetic Error", P.LinkedHashSet_LinkedHashSet(type$.Location));
             error.message = "Division by zero";
-            t1.add$1(0, rhs.loc);
             throw H.wrapException(error);
           }
           t2 = lhs.value;
@@ -6558,6 +6638,30 @@
         return H.ioore(t2, 0);
       return L.PtlsValue_update(env, t3._as(t2[0]), result);
     },
+    PtlsValue_hashCodeIter: function(values) {
+      var t1, result, _i, t2;
+      for (t1 = values.length, result = 0, _i = 0; _i < values.length; values.length === t1 || (0, H.throwConcurrentModificationError)(values), ++_i) {
+        t2 = J.get$hashCode$(values[_i]);
+        if (typeof t2 !== "number")
+          return H.iae(t2);
+        result = (result + t2) * 7;
+      }
+      return result;
+    },
+    PtlsValue_hashCodeMap: function(map) {
+      var t1, t2, result, key, t3, t4;
+      for (t1 = J.getInterceptor$x(map), t2 = J.get$iterator$ax(t1.get$keys(map)), result = 0; t2.moveNext$0();) {
+        key = t2.get$current(t2);
+        t3 = J.get$hashCode$(key);
+        if (typeof t3 !== "number")
+          return H.iae(t3);
+        t4 = J.get$hashCode$(t1.$index(map, key));
+        if (typeof t4 !== "number")
+          return H.iae(t4);
+        result = ((result + t3) * 7 + t4) * 7;
+      }
+      return result;
+    },
     PtlsValue: function PtlsValue() {
     },
     Token: function Token(t0, t1, t2) {
@@ -6573,14 +6677,6 @@
       _.locs = t1;
     }
   },
-  U = {ASTNode: function ASTNode(t0, t1, t2) {
-      this.nodeType = t0;
-      this.loc = t1;
-      this.values = t2;
-    }, ASTNode_toString_closure: function ASTNode_toString_closure() {
-    }, Tok: function Tok(t0) {
-      this._tokenTypes$_name = t0;
-    }},
   D = {
     checkArity: function(label, args, arity) {
       var error, t1, argStr;
@@ -6601,7 +6697,6 @@
     },
     PtlsSet: function PtlsSet(t0) {
       this.map = t0;
-      this.loc = null;
     },
     current: function() {
       var exception, t1, path, lastIndex, uri = null;
@@ -6663,14 +6758,13 @@
   },
   A = {
     $eval: function(env, node) {
-      var result, traceLocs, err, error, oldLastLoc, exception, t1;
+      var result, traceLocs, err, error, exception, t1;
       if ($.depth > 1000) {
         error = new S.PtlsError("Recursion Error", P.LinkedHashSet_LinkedHashSet(type$.Location));
         error.message = "Max call depth (1000) exceeded";
         throw H.wrapException(error);
       }
       result = null;
-      oldLastLoc = $.lastLoc;
       traceLocs = P.LinkedHashSet_LinkedHashSet(type$.Location);
       try {
         $.depth = $.depth + 1;
@@ -6687,10 +6781,6 @@
         } else
           throw exception;
       }
-      t1 = result;
-      if (t1.loc == null)
-        t1.loc = $.lastLoc;
-      $.lastLoc = oldLastLoc;
       return result;
     },
     dispatch: function(env, node, traceLocs) {
@@ -7184,7 +7274,6 @@
     }},
   T = {PtlsArray: function PtlsArray(t0) {
       this.elems = t0;
-      this.loc = null;
     }},
   S = {PtlsError: function PtlsError(t0, t1) {
       this.header = t0;
@@ -7192,7 +7281,6 @@
       this.locs = t1;
     }, PtlsNumber: function PtlsNumber(t0) {
       this.value = t0;
-      this.loc = null;
     }},
   R = {
     PtlsLabel$: function(value) {
@@ -7200,7 +7288,6 @@
     },
     PtlsLabel: function PtlsLabel(t0) {
       this.value = t0;
-      this.loc = null;
     },
     PtlsLabel_closure: function PtlsLabel_closure() {
     }
@@ -7329,7 +7416,7 @@
       return t1.charCodeAt(0) == 0 ? t1 : t1;
     }
   };
-  var holders = [C, H, J, P, W, G, M, B, X, O, E, F, L, U, D, Q, A, V, T, S, R, Z];
+  var holders = [C, H, J, P, W, U, G, M, B, X, O, E, F, L, D, Q, A, V, T, S, R, Z];
   hunkHelpers.setFunctionNamesIfNecessary(holders);
   var $ = {};
   H.JS_CONST.prototype = {};
@@ -8146,6 +8233,12 @@
     toString$0: function(_) {
       return P.MapBase_mapToString(this);
     },
+    $indexSet: function(_, key, val) {
+      var t1 = H._instanceType(this);
+      t1._precomputed1._as(key);
+      t1._rest[1]._as(val);
+      return H.ConstantMap__throwUnmodifiable();
+    },
     $isMap: 1
   };
   H.ConstantStringMap.prototype = {
@@ -8177,6 +8270,9 @@
         f.call$2(key, t1._as(this._fetch$1(key)));
       }
     },
+    get$keys: function(_) {
+      return new H._ConstantMapKeyIterable(this, H._instanceType(this)._eval$1("_ConstantMapKeyIterable<1>"));
+    },
     get$values: function(_) {
       var t1 = H._instanceType(this);
       return H.MappedIterable_MappedIterable(this.__js_helper$_keys, new H.ConstantStringMap_values_closure(this), t1._precomputed1, t1._rest[1]);
@@ -8190,6 +8286,15 @@
     },
     $signature: function() {
       return H._instanceType(this.$this)._eval$1("2(1)");
+    }
+  };
+  H._ConstantMapKeyIterable.prototype = {
+    get$iterator: function(_) {
+      var t1 = this._map.__js_helper$_keys;
+      return new J.ArrayIterator(t1, t1.length, H._arrayInstanceType(t1)._eval$1("ArrayIterator<1>"));
+    },
+    get$length: function(_) {
+      return this._map.__js_helper$_keys.length;
     }
   };
   H.Instantiation.prototype = {
@@ -9066,6 +9171,207 @@
   };
   P.Future.prototype = {};
   P.StreamTransformerBase.prototype = {};
+  P._HashMap.prototype = {
+    get$length: function(_) {
+      return this._collection$_length;
+    },
+    get$isEmpty: function(_) {
+      return this._collection$_length === 0;
+    },
+    get$keys: function(_) {
+      return new P._HashMapKeyIterable(this, H._instanceType(this)._eval$1("_HashMapKeyIterable<1>"));
+    },
+    get$values: function(_) {
+      var t1 = H._instanceType(this);
+      return H.MappedIterable_MappedIterable(new P._HashMapKeyIterable(this, t1._eval$1("_HashMapKeyIterable<1>")), new P._HashMap_values_closure(this), t1._precomputed1, t1._rest[1]);
+    },
+    $index: function(_, key) {
+      var strings, t1, nums;
+      if (typeof key == "string" && key !== "__proto__") {
+        strings = this._collection$_strings;
+        t1 = strings == null ? null : P._HashMap__getTableEntry(strings, key);
+        return t1;
+      } else if (typeof key == "number" && (key & 1073741823) === key) {
+        nums = this._collection$_nums;
+        t1 = nums == null ? null : P._HashMap__getTableEntry(nums, key);
+        return t1;
+      } else
+        return this._get$1(0, key);
+    },
+    _get$1: function(_, key) {
+      var bucket, index,
+        rest = this._collection$_rest;
+      if (rest == null)
+        return null;
+      bucket = this._getBucket$2(rest, key);
+      index = this._findBucketIndex$2(bucket, key);
+      return index < 0 ? null : bucket[index + 1];
+    },
+    $indexSet: function(_, key, value) {
+      var strings, nums, _this = this,
+        t1 = H._instanceType(_this);
+      t1._precomputed1._as(key);
+      t1._rest[1]._as(value);
+      if (typeof key == "string" && key !== "__proto__") {
+        strings = _this._collection$_strings;
+        _this._collection$_addHashTableEntry$3(strings == null ? _this._collection$_strings = P._HashMap__newHashTable() : strings, key, value);
+      } else if (typeof key == "number" && (key & 1073741823) === key) {
+        nums = _this._collection$_nums;
+        _this._collection$_addHashTableEntry$3(nums == null ? _this._collection$_nums = P._HashMap__newHashTable() : nums, key, value);
+      } else
+        _this._set$2(key, value);
+    },
+    _set$2: function(key, value) {
+      var rest, hash, bucket, index, _this = this,
+        t1 = H._instanceType(_this);
+      t1._precomputed1._as(key);
+      t1._rest[1]._as(value);
+      rest = _this._collection$_rest;
+      if (rest == null)
+        rest = _this._collection$_rest = P._HashMap__newHashTable();
+      hash = _this._computeHashCode$1(key);
+      bucket = rest[hash];
+      if (bucket == null) {
+        P._HashMap__setTableEntry(rest, hash, [key, value]);
+        ++_this._collection$_length;
+        _this._keys = null;
+      } else {
+        index = _this._findBucketIndex$2(bucket, key);
+        if (index >= 0)
+          bucket[index + 1] = value;
+        else {
+          bucket.push(key, value);
+          ++_this._collection$_length;
+          _this._keys = null;
+        }
+      }
+    },
+    forEach$1: function(_, action) {
+      var keys, $length, i, key, _this = this,
+        t1 = H._instanceType(_this);
+      t1._eval$1("~(1,2)")._as(action);
+      keys = _this._computeKeys$0();
+      for ($length = keys.length, t1 = t1._precomputed1, i = 0; i < $length; ++i) {
+        key = keys[i];
+        action.call$2(t1._as(key), _this.$index(0, key));
+        if (keys !== _this._keys)
+          throw H.wrapException(P.ConcurrentModificationError$(_this));
+      }
+    },
+    _computeKeys$0: function() {
+      var result, strings, names, entries, index, i, nums, rest, bucket, $length, i0, _this = this,
+        t1 = _this._keys;
+      if (t1 != null)
+        return t1;
+      result = new Array(_this._collection$_length);
+      result.fixed$length = Array;
+      strings = _this._collection$_strings;
+      if (strings != null) {
+        names = Object.getOwnPropertyNames(strings);
+        entries = names.length;
+        for (index = 0, i = 0; i < entries; ++i) {
+          result[index] = names[i];
+          ++index;
+        }
+      } else
+        index = 0;
+      nums = _this._collection$_nums;
+      if (nums != null) {
+        names = Object.getOwnPropertyNames(nums);
+        entries = names.length;
+        for (i = 0; i < entries; ++i) {
+          result[index] = +names[i];
+          ++index;
+        }
+      }
+      rest = _this._collection$_rest;
+      if (rest != null) {
+        names = Object.getOwnPropertyNames(rest);
+        entries = names.length;
+        for (i = 0; i < entries; ++i) {
+          bucket = rest[names[i]];
+          $length = bucket.length;
+          for (i0 = 0; i0 < $length; i0 += 2) {
+            result[index] = bucket[i0];
+            ++index;
+          }
+        }
+      }
+      return _this._keys = result;
+    },
+    _collection$_addHashTableEntry$3: function(table, key, value) {
+      var t1 = H._instanceType(this);
+      t1._precomputed1._as(key);
+      t1._rest[1]._as(value);
+      if (table[key] == null) {
+        ++this._collection$_length;
+        this._keys = null;
+      }
+      P._HashMap__setTableEntry(table, key, value);
+    },
+    _computeHashCode$1: function(key) {
+      return J.get$hashCode$(key) & 1073741823;
+    },
+    _getBucket$2: function(table, key) {
+      return table[this._computeHashCode$1(key)];
+    },
+    _findBucketIndex$2: function(bucket, key) {
+      var $length, i;
+      if (bucket == null)
+        return -1;
+      $length = bucket.length;
+      for (i = 0; i < $length; i += 2)
+        if (J.$eq$(bucket[i], key))
+          return i;
+      return -1;
+    }
+  };
+  P._HashMap_values_closure.prototype = {
+    call$1: function(each) {
+      var t1 = this.$this;
+      return t1.$index(0, H._instanceType(t1)._precomputed1._as(each));
+    },
+    $signature: function() {
+      return H._instanceType(this.$this)._eval$1("2(1)");
+    }
+  };
+  P._HashMapKeyIterable.prototype = {
+    get$length: function(_) {
+      return this._collection$_map._collection$_length;
+    },
+    get$isEmpty: function(_) {
+      return this._collection$_map._collection$_length === 0;
+    },
+    get$iterator: function(_) {
+      var t1 = this._collection$_map;
+      return new P._HashMapKeyIterator(t1, t1._computeKeys$0(), this.$ti._eval$1("_HashMapKeyIterator<1>"));
+    }
+  };
+  P._HashMapKeyIterator.prototype = {
+    get$current: function(_) {
+      return this._collection$_current;
+    },
+    moveNext$0: function() {
+      var _this = this,
+        keys = _this._keys,
+        offset = _this._offset,
+        t1 = _this._collection$_map;
+      if (keys !== t1._keys)
+        throw H.wrapException(P.ConcurrentModificationError$(t1));
+      else if (offset >= keys.length) {
+        _this.set$_collection$_current(null);
+        return false;
+      } else {
+        _this.set$_collection$_current(keys[offset]);
+        _this._offset = offset + 1;
+        return true;
+      }
+    },
+    set$_collection$_current: function(_current) {
+      this._collection$_current = this.$ti._precomputed1._as(_current);
+    },
+    $isIterator: 1
+  };
   P._LinkedHashSet.prototype = {
     get$iterator: function(_) {
       var _this = this,
@@ -9334,10 +9640,21 @@
     },
     $isIterator: 1
   };
-  P._UnmodifiableMapMixin.prototype = {};
+  P._UnmodifiableMapMixin.prototype = {
+    $indexSet: function(_, key, value) {
+      var t1 = this.$ti;
+      t1._precomputed1._as(key);
+      t1._rest[1]._as(value);
+      throw H.wrapException(P.UnsupportedError$("Cannot modify unmodifiable map"));
+    }
+  };
   P.MapView.prototype = {
     $index: function(_, key) {
       return this._collection$_map.$index(0, key);
+    },
+    $indexSet: function(_, key, value) {
+      var t1 = this.$ti;
+      this._collection$_map.$indexSet(0, t1._precomputed1._as(key), t1._rest[1]._as(value));
     },
     forEach$1: function(_, action) {
       this._collection$_map.forEach$1(0, this.$ti._eval$1("~(1,2)")._as(action));
@@ -9347,6 +9664,10 @@
     },
     get$length: function(_) {
       return this._collection$_map._length;
+    },
+    get$keys: function(_) {
+      var t1 = this._collection$_map;
+      return new H.LinkedHashMapKeyIterable(t1, H._instanceType(t1)._eval$1("LinkedHashMapKeyIterable<1>"));
     },
     toString$0: function(_) {
       return P.MapBase_mapToString(this._collection$_map);
@@ -11438,6 +11759,10 @@
     get$isEmpty: function(receiver) {
       return receiver.size === 0;
     },
+    $indexSet: function(receiver, key, value) {
+      H._asStringNullable(key);
+      throw H.wrapException(P.UnsupportedError$("Not supported"));
+    },
     $isMap: 1
   };
   W.MidiInputMap_keys_closure.prototype = {
@@ -11482,6 +11807,10 @@
     },
     get$isEmpty: function(receiver) {
       return receiver.size === 0;
+    },
+    $indexSet: function(receiver, key, value) {
+      H._asStringNullable(key);
+      throw H.wrapException(P.UnsupportedError$("Not supported"));
     },
     $isMap: 1
   };
@@ -11619,6 +11948,10 @@
     get$isEmpty: function(receiver) {
       return receiver.size === 0;
     },
+    $indexSet: function(receiver, key, value) {
+      H._asStringNullable(key);
+      throw H.wrapException(P.UnsupportedError$("Not supported"));
+    },
     $isMap: 1
   };
   W.RtcStatsReport_keys_closure.prototype = {
@@ -11697,6 +12030,9 @@
   W.Storage.prototype = {
     $index: function(receiver, key) {
       return receiver.getItem(H._asStringNullable(key));
+    },
+    $indexSet: function(receiver, key, value) {
+      receiver.setItem(H._asStringNullable(key), H._asStringNullable(value));
     },
     forEach$1: function(receiver, f) {
       var i, key;
@@ -12380,6 +12716,10 @@
     get$isEmpty: function(receiver) {
       return receiver.size === 0;
     },
+    $indexSet: function(receiver, key, value) {
+      H._asStringNullable(key);
+      throw H.wrapException(P.UnsupportedError$("Not supported"));
+    },
     $isMap: 1
   };
   P.AudioParamMap_keys_closure.prototype = {
@@ -12429,6 +12769,81 @@
   };
   P._SqlResultSetRowList_Interceptor_ListMixin.prototype = {};
   P._SqlResultSetRowList_Interceptor_ListMixin_ImmutableListMixin.prototype = {};
+  U.DefaultEquality.prototype = {};
+  U.ListEquality.prototype = {
+    equals$2: function(list1, list2) {
+      var $length, i,
+        t1 = this.$ti._eval$1("List<1>");
+      t1._as(list1);
+      t1._as(list2);
+      if (list1 === list2)
+        return true;
+      $length = list1.length;
+      if ($length !== list2.length)
+        return false;
+      for (i = 0; i < $length; ++i) {
+        if (i >= list1.length)
+          return H.ioore(list1, i);
+        t1 = list1[i];
+        if (i >= list2.length)
+          return H.ioore(list2, i);
+        if (!J.$eq$(t1, list2[i]))
+          return false;
+      }
+      return true;
+    }
+  };
+  U._MapEntry.prototype = {
+    get$hashCode: function(_) {
+      var t2,
+        t1 = J.get$hashCode$(this.key);
+      if (typeof t1 !== "number")
+        return H.iae(t1);
+      t2 = J.get$hashCode$(this.value);
+      if (typeof t2 !== "number")
+        return H.iae(t2);
+      return 3 * t1 + 7 * t2 & 2147483647;
+    },
+    $eq: function(_, other) {
+      if (other == null)
+        return false;
+      return other instanceof U._MapEntry && J.$eq$(this.key, other.key) && J.$eq$(this.value, other.value);
+    }
+  };
+  U.MapEquality.prototype = {
+    equals$2: function(map1, map2) {
+      var t2, equalElementCounts, t3, key, entry, count,
+        t1 = this.$ti._eval$1("Map<1,2>");
+      t1._as(map1);
+      t1._as(map2);
+      if (map1 == null ? map2 == null : map1 === map2)
+        return true;
+      if (map1 == null || map2 == null)
+        return false;
+      t1 = J.getInterceptor$asx(map1);
+      t2 = J.getInterceptor$asx(map2);
+      if (t1.get$length(map1) != t2.get$length(map2))
+        return false;
+      equalElementCounts = P.HashMap_HashMap(type$._MapEntry, type$.int);
+      for (t3 = J.get$iterator$ax(t1.get$keys(map1)); t3.moveNext$0();) {
+        key = t3.get$current(t3);
+        entry = new U._MapEntry(this, key, t1.$index(map1, key));
+        count = equalElementCounts.$index(0, entry);
+        equalElementCounts.$indexSet(0, entry, (count == null ? 0 : count) + 1);
+      }
+      for (t1 = J.get$iterator$ax(t2.get$keys(map2)); t1.moveNext$0();) {
+        key = t1.get$current(t1);
+        entry = new U._MapEntry(this, key, t2.$index(map2, key));
+        count = equalElementCounts.$index(0, entry);
+        if (count == null || count === 0)
+          return false;
+        if (typeof count !== "number")
+          return count.$sub();
+        equalElementCounts.$indexSet(0, entry, count - 1);
+      }
+      return true;
+    }
+  };
   G.StringMonoid.prototype = {
     zero$0: function() {
       return "";
@@ -12499,6 +12914,13 @@
       var t1 = this.$ti;
       t1._precomputed1._as(k);
       return new G.IHashMap(this._dartz$_map.modify$3(0, J.get$hashCode$(k), new G.IHashMap_remove_closure(this, k), new G.Nil(t1._eval$1("Nil<Tuple2<1,2>>"))), t1._eval$1("@<1>")._bind$1(t1._rest[1])._eval$1("IHashMap<1,2>"));
+    },
+    toMap$0: function() {
+      var t1 = this.$ti;
+      return this.foldLeftKV$1$2(new H.JsLinkedHashMap(t1._eval$1("@<1>")._bind$1(t1._rest[1])._eval$1("JsLinkedHashMap<1,2>")), new G.IHashMap_toMap_closure(this), t1._eval$1("Map<1,2>"));
+    },
+    foldLeftKV$1$2: function(z, f, $B) {
+      return this._dartz$_map.foldLeft$1$2($B._as(z), new G.IHashMap_foldLeftKV_closure(this, this.$ti._bind$1($B)._eval$1("1(1,2,3)")._as(f), $B), $B);
     },
     foldLeft$1$2: function(z, f, $B) {
       return this._dartz$_map.foldLeft$1$2($B._as(z), new G.IHashMap_foldLeft_closure(this, this.$ti._bind$1($B)._eval$1("1(1,3)")._as(f), $B), $B);
@@ -12624,6 +13046,39 @@
     },
     $signature: function() {
       return this.$this.$ti._eval$1("bool(Tuple2<1,2>)");
+    }
+  };
+  G.IHashMap_toMap_closure.prototype = {
+    call$3: function(p, k, v) {
+      var t1 = this.$this.$ti;
+      t1._eval$1("Map<1,2>")._as(p);
+      J.$indexSet$ax(p, t1._precomputed1._as(k), t1._rest[1]._as(v));
+      return p;
+    },
+    $signature: function() {
+      return this.$this.$ti._eval$1("Map<1,2>(Map<1,2>,1,2)");
+    }
+  };
+  G.IHashMap_foldLeftKV_closure.prototype = {
+    call$2: function(prev, kvs) {
+      var t2,
+        t1 = this.B;
+      t1._as(prev);
+      t2 = this.$this;
+      return t2.$ti._eval$1("IList<Tuple2<1,2>>")._as(kvs).foldLeft$1$2(prev, new G.IHashMap_foldLeftKV__closure(t2, this.f, t1), t1);
+    },
+    $signature: function() {
+      return this.$this.$ti._bind$1(this.B)._eval$1("1(1,IList<Tuple2<2,3>>)");
+    }
+  };
+  G.IHashMap_foldLeftKV__closure.prototype = {
+    call$2: function(pprev, kv) {
+      this.B._as(pprev);
+      this.$this.$ti._eval$1("Tuple2<1,2>")._as(kv);
+      return this.f.call$3(pprev, kv.value1, kv.value2);
+    },
+    $signature: function() {
+      return this.$this.$ti._bind$1(this.B)._eval$1("1(1,Tuple2<2,3>)");
     }
   };
   G.IHashMap_foldLeft_closure.prototype = {
@@ -13489,7 +13944,7 @@
   G.IVector.prototype = {
     $index: function(_, i) {
       var t1 = this._elementsByIndex;
-      return t1._tree.$get$2(0, t1._order, t1.$ti._precomputed1._as(this._offset + H._asIntNullable(i)));
+      return t1._tree.$get$2(0, t1._order, t1.$ti._precomputed1._as(this._dartz$_offset + H._asIntNullable(i)));
     },
     length$0: function(_) {
       return this._dartz$_length;
@@ -13523,7 +13978,7 @@
       var _this = this,
         t1 = _this._elementsByIndex,
         t2 = t1.$ti;
-      return "ivector[" + H.S(new G.IVector(new G.IMap(t1._order, t1._tree.map$1$1(0, t2._eval$1("String(2)")._as(_this.$ti._eval$1("String(1)")._as(new G.IVector_toString_closure(_this))), type$.String), t2._eval$1("IMap<1,String>")), _this._offset, _this._dartz$_length, type$.IVector_String).intercalate$2($.$get$StringMi(), ", ")) + "]";
+      return "ivector[" + H.S(new G.IVector(new G.IMap(t1._order, t1._tree.map$1$1(0, t2._eval$1("String(2)")._as(_this.$ti._eval$1("String(1)")._as(new G.IVector_toString_closure(_this))), type$.String), t2._eval$1("IMap<1,String>")), _this._dartz$_offset, _this._dartz$_length, type$.IVector_String).intercalate$2($.$get$StringMi(), ", ")) + "]";
     },
     intercalate$2: function(mi, a) {
       var t2,
@@ -13552,7 +14007,7 @@
       t1 = p.$ti;
       t1._precomputed1._as(a);
       t2 = p._elementsByIndex;
-      t3 = p._offset;
+      t3 = p._dartz$_offset;
       t4 = p._dartz$_length;
       t5 = t2.$ti;
       t6 = t5._rest[1];
@@ -14244,6 +14699,15 @@
     $signature: 29
   };
   Q.Env.prototype = {
+    valuesMap$0: function() {
+      var t2, t3,
+        t1 = P.LinkedHashMap_LinkedHashMap$_empty(type$.String, type$.PtlsValue);
+      for (t2 = this.defs, t2 = new H.LinkedHashMapKeyIterable(t2, H._instanceType(t2)._eval$1("LinkedHashMapKeyIterable<1>")), t2 = t2.get$iterator(t2); t2.moveNext$0();) {
+        t3 = t2._current;
+        t1.$indexSet(0, t3, this.defs.$index(0, t3).getValue$0());
+      }
+      return t1;
+    },
     clone$0: function(_) {
       var t2, t3,
         newEnv = Q.Env$(this.parent),
@@ -14418,7 +14882,7 @@
     },
     "call*": "call$0",
     $requiredArgCount: 0,
-    $signature: 1
+    $signature: 0
   };
   Q.Env_addDefTuple_func.prototype = {
     call$0: function() {
@@ -14444,7 +14908,7 @@
     },
     "call*": "call$0",
     $requiredArgCount: 0,
-    $signature: 1
+    $signature: 0
   };
   A.dispatch_closure.prototype = {
     call$0: function() {
@@ -14452,7 +14916,7 @@
     },
     "call*": "call$0",
     $requiredArgCount: 0,
-    $signature: 1
+    $signature: 0
   };
   A.dispatch_closure0.prototype = {
     call$0: function() {
@@ -14460,7 +14924,7 @@
     },
     "call*": "call$0",
     $requiredArgCount: 0,
-    $signature: 1
+    $signature: 0
   };
   A.dispatch_closure1.prototype = {
     call$0: function() {
@@ -14468,7 +14932,7 @@
     },
     "call*": "call$0",
     $requiredArgCount: 0,
-    $signature: 1
+    $signature: 0
   };
   A.dispatch_closure2.prototype = {
     call$0: function() {
@@ -14480,7 +14944,7 @@
     },
     "call*": "call$0",
     $requiredArgCount: 0,
-    $signature: 1
+    $signature: 0
   };
   V.Location.prototype = {
     $eq: function(_, other) {
@@ -15148,6 +15612,15 @@
     }
   };
   T.PtlsArray.prototype = {
+    get$elemsList: function() {
+      var t2, t3,
+        t1 = H.setRuntimeTypeInfo([], type$.JSArray_PtlsValue);
+      for (t2 = this.elems._elementsByIndex, t3 = t2.$ti, t3 = new G._IMapValueIterable(t2, t3._eval$1("@<1>")._bind$1(t3._rest[1])._eval$1("_IMapValueIterable<1,2>")), t3 = t3.get$iterator(t3); t3.moveNext$0();) {
+        t2 = t3._currentNode;
+        C.JSArray_methods.add$1(t1, t2 != null ? t2._v : null);
+      }
+      return t1;
+    },
     checkIndex$1: function(index) {
       var error, len,
         _s11_ = "Index Error";
@@ -15168,7 +15641,7 @@
       var index = this.checkIndex$1(type$.PtlsNumber._as(rhs.checkType$1(H.setRuntimeTypeInfo([C.Type_PtlsNumber_2Vr], type$.JSArray_Type))).value),
         t1 = this.elems,
         t2 = t1._elementsByIndex;
-      return type$.PtlsValue._as(type$.Some_dynamic._as(t2._tree.$get$2(0, t2._order, t2.$ti._precomputed1._as(t1._offset + index)))._a);
+      return type$.PtlsValue._as(type$.Some_dynamic._as(t2._tree.$get$2(0, t2._order, t2.$ti._precomputed1._as(t1._dartz$_offset + index)))._a);
     },
     updateIndex$2: function(index, result) {
       var t2, t3, t4, t5, t6, t7, t8, newTree,
@@ -15178,7 +15651,7 @@
       t2 = t1.$ti;
       t2._precomputed1._as(result);
       t3 = t1._elementsByIndex;
-      t4 = t1._offset;
+      t4 = t1._dartz$_offset;
       t5 = t3.$ti;
       t6 = t5._rest[1];
       t7 = t3._tree;
@@ -15210,18 +15683,23 @@
       }
       throw H.wrapException(false);
     },
+    $eq: function(_, other) {
+      if (other == null)
+        return false;
+      if (this === other)
+        return true;
+      if (other instanceof T.PtlsArray)
+        return new U.ListEquality(type$.ListEquality_dynamic).equals$2(other.get$elemsList(), this.get$elemsList());
+      return false;
+    },
+    get$hashCode: function(_) {
+      return L.PtlsValue_hashCodeIter(this.get$elemsList());
+    },
     toString$0: function(_) {
       return H.S(this.elems);
     }
   };
   F.PtlsBool.prototype = {
-    $eq: function(_, other) {
-      if (other == null)
-        return false;
-      if (other instanceof F.PtlsBool)
-        return other.value == this.value;
-      return false;
-    },
     getField$1: function($name) {
       var _this = this;
       switch ($name) {
@@ -15237,6 +15715,13 @@
           _this.super$PtlsValue$getField($name);
       }
       throw H.wrapException(false);
+    },
+    $eq: function(_, other) {
+      if (other == null)
+        return false;
+      if (other instanceof F.PtlsBool)
+        return other.value == this.value;
+      return false;
     },
     get$hashCode: function(_) {
       return J.get$hashCode$(this.value);
@@ -15298,6 +15783,21 @@
           _this.super$PtlsValue$getField($name);
       }
       throw H.wrapException(false);
+    },
+    $eq: function(_, other) {
+      var t1;
+      if (other == null)
+        return false;
+      if (this === other)
+        return true;
+      if (other instanceof O.PtlsDict) {
+        t1 = type$.dynamic;
+        return U.MapEquality$(t1, t1).equals$2(other.map.toMap$0(), this.map.toMap$0());
+      }
+      return false;
+    },
+    get$hashCode: function(_) {
+      return L.PtlsValue_hashCodeMap(this.map.toMap$0());
     },
     toString$0: function(_) {
       return H.S(this.map);
@@ -15365,11 +15865,6 @@
       $.$get$PtlsLabel_debugHandler().call$1(J.toString$0$(val));
       return val;
     },
-    getDebugLoc$1: function(val) {
-      type$.PtlsValue._as(val);
-      $.$get$PtlsLabel_debugHandler().call$1(J.toString$0$(val.loc));
-      return val;
-    },
     getLines$0: function() {
       var line, thunk,
         t1 = P._StdIOUtils__getStdioInputStream(0);
@@ -15393,19 +15888,16 @@
       return F.PtlsObject$(type$.PtlsObject._as(object).env, this);
     },
     getField$1: function($name) {
-      var t1, _this = this, _s2_ = "IO";
+      var t1, _this = this;
       switch ($name) {
         case "!getLines":
-          _this.checkLabel$2(_s2_, "!getLines");
+          _this.checkLabel$2("IO", "!getLines");
           return _this.getLines$0();
         case "!getDebug":
-          _this.checkLabel$2(_s2_, "!getDebug");
+          _this.checkLabel$2("IO", "!getDebug");
           return new G.PtlsBuiltIn("!getDebug(value)", _this.get$getDebug());
-        case "!getDebugLoc":
-          _this.checkLabel$2(_s2_, "!getDebugLoc");
-          return new G.PtlsBuiltIn("!getDebugLoc(value)", _this.get$getDebugLoc());
         case "!getRand":
-          _this.checkLabel$2(_s2_, "!getRand");
+          _this.checkLabel$2("IO", "!getRand");
           return new S.PtlsNumber($.$get$PtlsLabel_random().nextDouble$0());
         case "!getSet":
           _this.checkLabel$2("Empty", "!getSet");
@@ -15462,6 +15954,17 @@
     checkIsList$0: function() {
       return this;
     },
+    toList$0: function(_) {
+      var t1,
+        tailIter = this.tailThunk.getValue$0(),
+        result = H.setRuntimeTypeInfo([this.headThunk.getValue$0()], type$.JSArray_PtlsValue);
+      for (t1 = type$.PtlsList; !tailIter.get$isEmpty(tailIter);) {
+        t1._as(tailIter);
+        C.JSArray_methods.add$1(result, tailIter.headThunk.getValue$0());
+        tailIter = tailIter.tailThunk.getValue$0();
+      }
+      return result;
+    },
     getField$1: function($name) {
       var _this = this;
       switch ($name) {
@@ -15485,6 +15988,18 @@
         return new X.PtlsList(_this.headThunk, new A.Thunk("", new X.PtlsList_concat_closure(env, rhsNode)));
       return new X.PtlsList(_this.headThunk, new A.Thunk("", new X.PtlsList_concat_closure0(_this, env, rhsNode)));
     },
+    $eq: function(_, other) {
+      if (other == null)
+        return false;
+      if (this === other)
+        return true;
+      if (other instanceof X.PtlsList)
+        return new U.ListEquality(type$.ListEquality_dynamic).equals$2(other.toList$0(0), this.toList$0(0));
+      return false;
+    },
+    get$hashCode: function(_) {
+      return L.PtlsValue_hashCodeIter(this.toList$0(0));
+    },
     toString$0: function(_) {
       var list, t1,
         memberStrs = H.setRuntimeTypeInfo([], type$.JSArray_String);
@@ -15505,7 +16020,7 @@
     },
     "call*": "call$0",
     $requiredArgCount: 0,
-    $signature: 1
+    $signature: 0
   };
   X.PtlsList_concat_closure0.prototype = {
     call$0: function() {
@@ -15513,16 +16028,9 @@
     },
     "call*": "call$0",
     $requiredArgCount: 0,
-    $signature: 1
+    $signature: 0
   };
   S.PtlsNumber.prototype = {
-    $eq: function(_, other) {
-      if (other == null)
-        return false;
-      if (other instanceof S.PtlsNumber)
-        return other.value == this.value;
-      return false;
-    },
     getField$1: function($name) {
       var t1, _this = this;
       switch ($name) {
@@ -15554,6 +16062,13 @@
           _this.super$PtlsValue$getField($name);
       }
       throw H.wrapException(false);
+    },
+    $eq: function(_, other) {
+      if (other == null)
+        return false;
+      if (other instanceof S.PtlsNumber)
+        return other.value == this.value;
+      return false;
     },
     get$hashCode: function(_) {
       return J.get$hashCode$(this.value);
@@ -15603,6 +16118,31 @@
       newEnv.addDefThunk$1(thunk);
       return F.PtlsObject$(newEnv, this.label);
     },
+    $eq: function(_, other) {
+      var t1;
+      if (other == null)
+        return false;
+      if (this === other)
+        return true;
+      if (other instanceof F.PtlsObject) {
+        if (!J.$eq$(other.label, this.label))
+          return false;
+        t1 = type$.dynamic;
+        return U.MapEquality$(t1, t1).equals$2(other.env.valuesMap$0(), this.env.valuesMap$0());
+      }
+      return false;
+    },
+    get$hashCode: function(_) {
+      var t2, t3,
+        t1 = type$.dynamic;
+      t1 = P.LinkedHashMap_LinkedHashMap$_empty(t1, t1);
+      t1.$indexSet(0, "label", this.label);
+      for (t2 = this.env.valuesMap$0(), t2 = t2.get$entries(t2), t2 = t2.get$iterator(t2); t2.moveNext$0();) {
+        t3 = t2.get$current(t2);
+        t1.$indexSet(0, t3.key, t3.value);
+      }
+      return L.PtlsValue_hashCodeMap(t1);
+    },
     toString$0: function(_) {
       var _this = this;
       if (J.$eq$(_this.label, $.$get$PtlsObject_defaultLabel()))
@@ -15637,6 +16177,21 @@
           _this.super$PtlsValue$getField($name);
       }
       throw H.wrapException(false);
+    },
+    $eq: function(_, other) {
+      var t1;
+      if (other == null)
+        return false;
+      if (this === other)
+        return true;
+      if (other instanceof D.PtlsSet) {
+        t1 = type$.dynamic;
+        return U.MapEquality$(t1, t1).equals$2(other.map.toMap$0(), this.map.toMap$0());
+      }
+      return false;
+    },
+    get$hashCode: function(_) {
+      return L.PtlsValue_hashCodeMap(this.map.toMap$0());
     },
     toString$0: function(_) {
       return H.S(this.map);
@@ -15714,33 +16269,23 @@
       throw H.wrapException(false);
     },
     $eq: function(_, other) {
-      var t1, t2, t3, i;
       if (other == null)
         return false;
-      if (other instanceof B.PtlsTuple) {
-        if (!J.$eq$(this.label, other.label))
-          return false;
-        t1 = this.members;
-        t2 = t1.length;
-        t3 = other.members;
-        if (t2 !== t3.length)
-          return false;
-        for (i = 0; i < t1.length; ++i) {
-          t2 = t1[i];
-          if (i >= t3.length)
-            return H.ioore(t3, i);
-          if (!J.$eq$(t2, t3[i]))
-            return false;
-        }
+      if (this === other)
         return true;
+      if (other instanceof B.PtlsTuple) {
+        if (!J.$eq$(other.label, this.label))
+          return false;
+        return new U.ListEquality(type$.ListEquality_dynamic).equals$2(other.members, this.members);
       }
       return false;
     },
     get$hashCode: function(_) {
-      var t1, t2, result, _i;
-      for (t1 = this.members, t2 = t1.length, result = 0, _i = 0; _i < t1.length; t1.length === t2 || (0, H.throwConcurrentModificationError)(t1), ++_i)
-        result = (result + J.get$hashCode$(t1[_i])) * 7;
-      return result;
+      var t2, t3, _i, t1 = [];
+      t1.push(this.label);
+      for (t2 = this.members, t3 = t2.length, _i = 0; _i < t2.length; t2.length === t3 || (0, H.throwConcurrentModificationError)(t2), ++_i)
+        t1.push(t2[_i]);
+      return L.PtlsValue_hashCodeIter(t1);
     },
     toString$0: function(_) {
       return H.S(this.label) + "(" + C.JSArray_methods.join$1(this.members, ", ") + ")";
@@ -15764,14 +16309,12 @@
       throw H.wrapException(false);
     },
     getField$1: function($name) {
-      var t1, error;
+      var error;
       if (0 >= $name.length)
         return H.ioore($name, 0);
       if ($name[0] === "!") {
-        t1 = P.LinkedHashSet_LinkedHashSet(type$.Location);
-        error = new S.PtlsError("Type Error", t1);
+        error = new S.PtlsError("Type Error", P.LinkedHashSet_LinkedHashSet(type$.Location));
         error.message = "No built-in field '" + H.S($name) + "' for type '" + H.getRuntimeType(this).toString$0(0) + "'";
-        t1.add$1(0, this.loc);
         throw H.wrapException(error);
       }
       this.checkType$1(H.setRuntimeTypeInfo([C.Type_PtlsObject_YRK], type$.JSArray_Type));
@@ -15782,33 +16325,22 @@
       throw H.wrapException(false);
     },
     checkType$1: function(types) {
-      var typesStr, t1, error, _this = this;
+      var typesStr, error;
       type$.List_Type._as(types);
-      if (!C.JSArray_methods.contains$1(types, H.getRuntimeType(_this))) {
+      if (!C.JSArray_methods.contains$1(types, H.getRuntimeType(this))) {
         typesStr = C.JSArray_methods.join$1(types, " or ");
-        t1 = P.LinkedHashSet_LinkedHashSet(type$.Location);
-        error = new S.PtlsError("Type Error", t1);
-        error.message = "Expected type '" + typesStr + "', got '" + H.getRuntimeType(_this).toString$0(0) + "'";
-        t1.add$1(0, _this.loc);
+        error = new S.PtlsError("Type Error", P.LinkedHashSet_LinkedHashSet(type$.Location));
+        error.message = "Expected type '" + typesStr + "', got '" + H.getRuntimeType(this).toString$0(0) + "'";
         throw H.wrapException(error);
       }
-      return _this;
+      return this;
     },
     get$isEmpty: function(_) {
       return false;
     },
     checkIsList$0: function() {
-      var t1 = P.LinkedHashSet_LinkedHashSet(type$.Location),
-        error = new S.PtlsError("Type Error", t1);
+      var error = new S.PtlsError("Type Error", P.LinkedHashSet_LinkedHashSet(type$.Location));
       error.message = "Expected type 'PtlsList or Empty', got '" + H.getRuntimeType(this).toString$0(0) + "'";
-      t1.add$1(0, this.loc);
-      throw H.wrapException(error);
-    },
-    get$hashCode: function(_) {
-      var t1 = P.LinkedHashSet_LinkedHashSet(type$.Location),
-        error = new S.PtlsError("Type Error", t1);
-      error.message = "Cannot hash type '" + H.getRuntimeType(this).toString$0(0) + "'";
-      t1.add$1(0, this.loc);
       throw H.wrapException(error);
     }
   };
@@ -16347,7 +16879,7 @@
       var t1, _i, filePair, t2, path, chars, lastEOF, _this = this;
       if (_this.tokens == null) {
         _this.set$tokens(H.setRuntimeTypeInfo([], type$.JSArray_Token));
-        for (t1 = $.preludeList, _i = 0; _i < 21; ++_i) {
+        for (t1 = $.preludeList, _i = 0; _i < 20; ++_i) {
           filePair = t1[_i];
           t2 = filePair.length;
           if (0 >= t2)
@@ -16502,23 +17034,22 @@
     _instance_0_u(_, "get$getPair", "getPair$0", 5);
     _instance_0_u(_, "get$getOperation", "getOperation$0", 5);
     _instance_0_u(_, "get$getClause", "getClause$0", 5);
-    _instance_1_u(O.PtlsDict.prototype, "get$delKey", "delKey$1", 0);
-    _instance_1_u(_ = R.PtlsLabel.prototype, "get$getZeros", "getZeros$1", 0);
-    _instance_1_u(_, "get$getDebug", "getDebug$1", 0);
-    _instance_1_u(_, "get$getDebugLoc", "getDebugLoc$1", 0);
-    _instance_0_u(_, "get$getLines", "getLines$0", 1);
-    _instance_1_u(_, "get$getWrap", "getWrap$1", 0);
-    _instance_1_u(_, "get$getWrapTuple", "getWrapTuple$1", 0);
-    _instance_1_u(_, "get$getWrapObject", "getWrapObject$1", 0);
-    _instance_1_u(_ = D.PtlsSet.prototype, "get$addElem", "addElem$1", 0);
-    _instance_1_u(_, "get$delElem", "delElem$1", 0);
+    _instance_1_u(O.PtlsDict.prototype, "get$delKey", "delKey$1", 1);
+    _instance_1_u(_ = R.PtlsLabel.prototype, "get$getZeros", "getZeros$1", 1);
+    _instance_1_u(_, "get$getDebug", "getDebug$1", 1);
+    _instance_0_u(_, "get$getLines", "getLines$0", 0);
+    _instance_1_u(_, "get$getWrap", "getWrap$1", 1);
+    _instance_1_u(_, "get$getWrapTuple", "getWrapTuple$1", 1);
+    _instance_1_u(_, "get$getWrapObject", "getWrapObject$1", 1);
+    _instance_1_u(_ = D.PtlsSet.prototype, "get$addElem", "addElem$1", 1);
+    _instance_1_u(_, "get$delElem", "delElem$1", 1);
   })();
   (function inheritance() {
     var _mixin = hunkHelpers.mixin,
       _inherit = hunkHelpers.inherit,
       _inheritMany = hunkHelpers.inheritMany;
     _inherit(P.Object, null);
-    _inheritMany(P.Object, [H.JS_CONST, J.Interceptor, J.ArrayIterator, P._ListBase_Object_ListMixin, P.Iterable, H.ListIterator, P.Iterator, H.ExpandIterator, H.EmptyIterator, H.FixedLengthListMixin, H.UnmodifiableListMixin, H.Symbol, P.MapView, H.ConstantMap, H.Closure, H.JSInvocationMirror, H.TypeErrorDecoder, P.Error, P.MapMixin, H.LinkedHashMapCell, H.LinkedHashMapKeyIterator, H.JSSyntaxRegExp, H._MatchImplementation, H._AllMatchesIterator, H.StringMatch, H._StringAllMatchesIterator, H.Rti, H._FunctionParameters, H._Type, P._IterationMarker, P._SyncStarIterator, P.Future, P.StreamTransformerBase, P._SetBase, P._LinkedHashSetCell, P._LinkedHashSetIterator, P.ListMixin, P._MapBaseValueIterator, P._UnmodifiableMapMixin, P._ListQueueIterator, P.Codec, P._JsonStringifier, P._Utf8Encoder, P._Utf8Decoder, P.bool, P.DateTime, P.num, P.OutOfMemoryError, P.StackOverflowError, P._Exception, P.FormatException, P.List, P.Map, P.MapEntry, P.Null, P.Match, P.RegExpMatch, P.String, P.RuneIterator, P.StringBuffer, P.Symbol0, P.Type, P._Uri, P.UriData, P._SimpleUri, W.CssStyleDeclarationBase, W.ImmutableListMixin, W.FixedSizeListIterator, P.OSError, P.FileSystemException, P.FileSystemEntity, P.JsObject, P._JSRandom, P._RectangleBase, P.Uint8List, G.Semigroup, G.Eq, G.IHashMap, G.IList, G.IMap, G._IMapAVLNode, G.IVector, G.Option, G.Ordering, G.Tuple2, M.Context, O.Style, X.ParsedPath, U.ASTNode, Q.Env, V.Location, F.Node0, G.Parser, L.PtlsValue, S.PtlsError, L.PtlsException, Z.SourceFile, A.Thunk, L.Token, U.Tok, L.Tokenizer]);
+    _inheritMany(P.Object, [H.JS_CONST, J.Interceptor, J.ArrayIterator, P._ListBase_Object_ListMixin, P.Iterable, H.ListIterator, P.Iterator, H.ExpandIterator, H.EmptyIterator, H.FixedLengthListMixin, H.UnmodifiableListMixin, H.Symbol, P.MapView, H.ConstantMap, H.Closure, H.JSInvocationMirror, H.TypeErrorDecoder, P.Error, P.MapMixin, H.LinkedHashMapCell, H.LinkedHashMapKeyIterator, H.JSSyntaxRegExp, H._MatchImplementation, H._AllMatchesIterator, H.StringMatch, H._StringAllMatchesIterator, H.Rti, H._FunctionParameters, H._Type, P._IterationMarker, P._SyncStarIterator, P.Future, P.StreamTransformerBase, P._HashMapKeyIterator, P._SetBase, P._LinkedHashSetCell, P._LinkedHashSetIterator, P.ListMixin, P._MapBaseValueIterator, P._UnmodifiableMapMixin, P._ListQueueIterator, P.Codec, P._JsonStringifier, P._Utf8Encoder, P._Utf8Decoder, P.bool, P.DateTime, P.num, P.OutOfMemoryError, P.StackOverflowError, P._Exception, P.FormatException, P.List, P.Map, P.MapEntry, P.Null, P.Match, P.RegExpMatch, P.String, P.RuneIterator, P.StringBuffer, P.Symbol0, P.Type, P._Uri, P.UriData, P._SimpleUri, W.CssStyleDeclarationBase, W.ImmutableListMixin, W.FixedSizeListIterator, P.OSError, P.FileSystemException, P.FileSystemEntity, P.JsObject, P._JSRandom, P._RectangleBase, P.Uint8List, U.DefaultEquality, U.ListEquality, U._MapEntry, U.MapEquality, G.Semigroup, G.Eq, G.IHashMap, G.IList, G.IMap, G._IMapAVLNode, G.IVector, G.Option, G.Ordering, G.Tuple2, M.Context, O.Style, X.ParsedPath, U.ASTNode, Q.Env, V.Location, F.Node0, G.Parser, L.PtlsValue, S.PtlsError, L.PtlsException, Z.SourceFile, A.Thunk, L.Token, U.Tok, L.Tokenizer]);
     _inheritMany(J.Interceptor, [J.JSBool, J.JSNull, J.JavaScriptObject, J.JSArray, J.JSNumber, J.JSString, H.NativeTypedData, W.EventTarget, W.AccessibleNodeList, W.Blob, W.CssTransformComponent, W.CssRule, W._CssStyleDeclaration_Interceptor_CssStyleDeclarationBase, W.CssStyleValue, W.DataTransferItemList, W.DomException, W._DomRectList_Interceptor_ListMixin, W.DomRectReadOnly, W._DomStringList_Interceptor_ListMixin, W.DomTokenList, W.Event, W._FileList_Interceptor_ListMixin, W.Gamepad, W.History, W._HtmlCollection_Interceptor_ListMixin, W.ImageData, W.Location0, W.MediaList, W._MidiInputMap_Interceptor_MapMixin, W._MidiOutputMap_Interceptor_MapMixin, W.MimeType, W._MimeTypeArray_Interceptor_ListMixin, W._NodeList_Interceptor_ListMixin, W.Plugin, W._PluginArray_Interceptor_ListMixin, W._RtcStatsReport_Interceptor_MapMixin, W.SpeechGrammar, W._SpeechGrammarList_Interceptor_ListMixin, W.SpeechRecognitionResult, W._Storage_Interceptor_MapMixin, W.StyleSheet, W._TextTrackCueList_Interceptor_ListMixin, W.TimeRanges, W.Touch, W._TouchList_Interceptor_ListMixin, W.TrackDefaultList, W.Url, W.__CssRuleList_Interceptor_ListMixin, W.__GamepadList_Interceptor_ListMixin, W.__NamedNodeMap_Interceptor_ListMixin, W.__SpeechRecognitionResultList_Interceptor_ListMixin, W.__StyleSheetList_Interceptor_ListMixin, P.KeyRange, P.Length, P._LengthList_Interceptor_ListMixin, P.Number, P._NumberList_Interceptor_ListMixin, P.PointList, P._StringList_Interceptor_ListMixin, P.Transform, P._TransformList_Interceptor_ListMixin, P.AudioBuffer, P._AudioParamMap_Interceptor_MapMixin, P._SqlResultSetRowList_Interceptor_ListMixin]);
     _inheritMany(J.JavaScriptObject, [J.PlainJavaScriptObject, J.UnknownJavaScriptObject, J.JavaScriptFunction]);
     _inherit(J.JSUnmodifiableArray, J.JSArray);
@@ -16526,8 +17057,8 @@
     _inherit(P.ListBase, P._ListBase_Object_ListMixin);
     _inherit(H.UnmodifiableListBase, P.ListBase);
     _inherit(H.CodeUnits, H.UnmodifiableListBase);
-    _inheritMany(P.Iterable, [H.EfficientLengthIterable, H.MappedIterable, H.WhereIterable, H.ExpandIterable, P.IterableBase, H._StringAllMatchesIterable, P.Runes, G._IListIterable, G._IMapIterable, G._SingletonIterable]);
-    _inheritMany(H.EfficientLengthIterable, [H.ListIterable, H.EmptyIterable, H.LinkedHashMapKeyIterable, P._MapBaseValueIterable]);
+    _inheritMany(P.Iterable, [H.EfficientLengthIterable, H.MappedIterable, H.WhereIterable, H.ExpandIterable, H._ConstantMapKeyIterable, P.IterableBase, H._StringAllMatchesIterable, P.Runes, G._IListIterable, G._IMapIterable, G._SingletonIterable]);
+    _inheritMany(H.EfficientLengthIterable, [H.ListIterable, H.EmptyIterable, H.LinkedHashMapKeyIterable, P._HashMapKeyIterable, P._MapBaseValueIterable]);
     _inheritMany(H.ListIterable, [H.SubListIterable, H.MappedListIterable, H.ReversedListIterable, P.ListQueue]);
     _inherit(H.EfficientLengthMappedIterable, H.MappedIterable);
     _inheritMany(P.Iterator, [H.MappedIterator, H.WhereIterator, G._IListIterator, G._IMapAVLNodeIterator, G._SingletonIterator]);
@@ -16535,13 +17066,13 @@
     _inherit(P.UnmodifiableMapView, P._UnmodifiableMapView_MapView__UnmodifiableMapMixin);
     _inherit(H.ConstantMapView, P.UnmodifiableMapView);
     _inherit(H.ConstantStringMap, H.ConstantMap);
-    _inheritMany(H.Closure, [H.ConstantStringMap_values_closure, H.Instantiation, H.Primitives_functionNoSuchMethod_closure, H.unwrapException_saveStackTrace, H.TearOffClosure, H.JsLinkedHashMap_values_closure, H.initHooks_closure, H.initHooks_closure0, H.initHooks_closure1, P.MapBase_mapToString_closure, P.MapMixin_entries_closure, P._JsonStringifier_writeMap_closure, P.NoSuchMethodError_toString_closure, P.Uri__parseIPv4Address_error, P.Uri_parseIPv6Address_error, P.Uri_parseIPv6Address_parseHex, P._Uri__Uri$notSimple_closure, P._Uri__checkNonWindowsPathReservedCharacters_closure, P._createTables_closure, P._createTables_build, P._createTables_setChars, P._createTables_setRange, W.MidiInputMap_keys_closure, W.MidiInputMap_values_closure, W.MidiOutputMap_keys_closure, W.MidiOutputMap_values_closure, W.RtcStatsReport_keys_closure, W.RtcStatsReport_values_closure, W.Storage_keys_closure, W.Storage_values_closure, P._File_length_closure, P._convertToJS_closure, P._convertToJS_closure0, P._wrapToDart_closure, P._wrapToDart_closure0, P._wrapToDart_closure1, P.AudioParamMap_keys_closure, P.AudioParamMap_values_closure, G.closure, G.IHashMap_IHashMap$from_closure, G.IHashMap_get_closure, G.IHashMap_get__closure, G.IHashMap_get__closure0, G.IHashMap_put_closure, G.IHashMap_put__closure, G.IHashMap_remove_closure, G.IHashMap_remove__closure, G.IHashMap_foldLeft_closure, G.IHashMap_foldLeft__closure, G.IHashMap_toString_closure, G.IHashMap_toString__closure, G.IHashMap_length_closure, G.IHashMap_pairIterable_closure, G.IHashMap_keyIterable_closure, G.IHashMap_valueIterable_closure, G.IList_foldRight_closure, G.IList_reverse_closure, G.IList_plus_closure, G.IList_toString_closure, G.IList_hashCode_closure, G.IList_intercalate_closure, G.IList_length_closure, G.IMap_values_closure, G.IMap_foldMapKV_closure, G.IMap_pairs_closure, G.IMap_foldMap_closure, G.IMap_foldLeft_closure, G.IMap_foldRight_closure, G.IMap_toString_closure, G.IMap_length_closure, G.IVector_IVector$from_closure, G.IVector_toString_closure, G.IVector_intercalate_closure, G.Option_getOrElse_closure, G.Option_operator$or_closure, G.Option_map_closure, G.Option_length_closure, G.Option_length_closure0, G.Option_isSome_closure, G.Option_isSome_closure0, G.Option_toString_closure, G.Option_toString_closure0, G.Option_toIterable_closure, G.Option_toIterable_closure0, G.Semigroup_appendC_closure, M.Context_join_closure, M.Context_joinAll_closure, M._validateArgList_closure, X.ParsedPath_normalize_closure, U.ASTNode_toString_closure, D.checkArity_closure, Q.Env_addDefName_closure, Q.Env_addDefTuple_func, Q.Env_addDefTuple_closure, A.dispatch_closure, A.dispatch_closure0, A.dispatch_closure1, A.dispatch_closure2, R.PtlsLabel_closure, X.PtlsList_concat_closure, X.PtlsList_concat_closure0, X.PtlsString_getField_closure, G.WebPreludeFile_getTokens_closure, G.main_closure, G.main_closure0, G.main_closure1]);
+    _inheritMany(H.Closure, [H.ConstantStringMap_values_closure, H.Instantiation, H.Primitives_functionNoSuchMethod_closure, H.unwrapException_saveStackTrace, H.TearOffClosure, H.JsLinkedHashMap_values_closure, H.initHooks_closure, H.initHooks_closure0, H.initHooks_closure1, P._HashMap_values_closure, P.MapBase_mapToString_closure, P.MapMixin_entries_closure, P._JsonStringifier_writeMap_closure, P.NoSuchMethodError_toString_closure, P.Uri__parseIPv4Address_error, P.Uri_parseIPv6Address_error, P.Uri_parseIPv6Address_parseHex, P._Uri__Uri$notSimple_closure, P._Uri__checkNonWindowsPathReservedCharacters_closure, P._createTables_closure, P._createTables_build, P._createTables_setChars, P._createTables_setRange, W.MidiInputMap_keys_closure, W.MidiInputMap_values_closure, W.MidiOutputMap_keys_closure, W.MidiOutputMap_values_closure, W.RtcStatsReport_keys_closure, W.RtcStatsReport_values_closure, W.Storage_keys_closure, W.Storage_values_closure, P._File_length_closure, P._convertToJS_closure, P._convertToJS_closure0, P._wrapToDart_closure, P._wrapToDart_closure0, P._wrapToDart_closure1, P.AudioParamMap_keys_closure, P.AudioParamMap_values_closure, G.closure, G.IHashMap_IHashMap$from_closure, G.IHashMap_get_closure, G.IHashMap_get__closure, G.IHashMap_get__closure0, G.IHashMap_put_closure, G.IHashMap_put__closure, G.IHashMap_remove_closure, G.IHashMap_remove__closure, G.IHashMap_toMap_closure, G.IHashMap_foldLeftKV_closure, G.IHashMap_foldLeftKV__closure, G.IHashMap_foldLeft_closure, G.IHashMap_foldLeft__closure, G.IHashMap_toString_closure, G.IHashMap_toString__closure, G.IHashMap_length_closure, G.IHashMap_pairIterable_closure, G.IHashMap_keyIterable_closure, G.IHashMap_valueIterable_closure, G.IList_foldRight_closure, G.IList_reverse_closure, G.IList_plus_closure, G.IList_toString_closure, G.IList_hashCode_closure, G.IList_intercalate_closure, G.IList_length_closure, G.IMap_values_closure, G.IMap_foldMapKV_closure, G.IMap_pairs_closure, G.IMap_foldMap_closure, G.IMap_foldLeft_closure, G.IMap_foldRight_closure, G.IMap_toString_closure, G.IMap_length_closure, G.IVector_IVector$from_closure, G.IVector_toString_closure, G.IVector_intercalate_closure, G.Option_getOrElse_closure, G.Option_operator$or_closure, G.Option_map_closure, G.Option_length_closure, G.Option_length_closure0, G.Option_isSome_closure, G.Option_isSome_closure0, G.Option_toString_closure, G.Option_toString_closure0, G.Option_toIterable_closure, G.Option_toIterable_closure0, G.Semigroup_appendC_closure, M.Context_join_closure, M.Context_joinAll_closure, M._validateArgList_closure, X.ParsedPath_normalize_closure, U.ASTNode_toString_closure, D.checkArity_closure, Q.Env_addDefName_closure, Q.Env_addDefTuple_func, Q.Env_addDefTuple_closure, A.dispatch_closure, A.dispatch_closure0, A.dispatch_closure1, A.dispatch_closure2, R.PtlsLabel_closure, X.PtlsList_concat_closure, X.PtlsList_concat_closure0, X.PtlsString_getField_closure, G.WebPreludeFile_getTokens_closure, G.main_closure, G.main_closure0, G.main_closure1]);
     _inherit(H.Instantiation1, H.Instantiation);
     _inheritMany(P.Error, [H.NullError, H.JsNoSuchMethodError, H.UnknownJsTypeError, H.RuntimeError, P.AssertionError, H._Error, P.JsonUnsupportedObjectError, P.NullThrownError, P.ArgumentError, P.NoSuchMethodError, P.UnsupportedError, P.UnimplementedError, P.StateError, P.ConcurrentModificationError, P.CyclicInitializationError]);
     _inheritMany(H.TearOffClosure, [H.StaticClosure, H.BoundClosure]);
     _inherit(H._AssertionError, P.AssertionError);
     _inherit(P.MapBase, P.MapMixin);
-    _inherit(H.JsLinkedHashMap, P.MapBase);
+    _inheritMany(P.MapBase, [H.JsLinkedHashMap, P._HashMap]);
     _inheritMany(P.IterableBase, [H._AllMatchesIterable, P._SyncStarIterable]);
     _inherit(H.NativeTypedArray, H.NativeTypedData);
     _inheritMany(H.NativeTypedArray, [H._NativeTypedArrayOfDouble_NativeTypedArray_ListMixin, H._NativeTypedArrayOfInt_NativeTypedArray_ListMixin]);
@@ -16704,12 +17235,12 @@
     mangledNames: {},
     getTypeFromName: getGlobalFromName,
     metadata: [],
-    types: ["PtlsValue(PtlsValue)", "PtlsValue()", "~(String,@)", "@(@)", "int()", "ASTNode()", "Null(String)", "bool(String)", "@(String)", "Null(@,@)", "~(Uint8List,String,int)", "~(String,String)", "String()", "bool()", "String(String)", "~(String,int)", "int/(@)", "JsFunction(@)", "JsArray<@>(@)", "JsObject(@)", "int(int,int)", "bool(Object,Object)", "Null(Symbol0,@)", "Uint8List(int)", "Option<0^>()<Object>", "Uint8List(@,@)", "Null(String,@)", "String(int)", "String(@)", "Type(PtlsValue)", "@(@,String)", "PtlsTuple()", "~(String[@])", "Future<int>()", "PtlsString(int)", "bool(Token)", "Object(@)", "Iterable<Null>()"],
+    types: ["PtlsValue()", "PtlsValue(PtlsValue)", "~(String,@)", "@(@)", "int()", "ASTNode()", "Null(String)", "bool(String)", "@(String)", "Null(@,@)", "~(Uint8List,String,int)", "~(String,String)", "String()", "bool()", "String(String)", "~(String,int)", "int/(@)", "JsFunction(@)", "JsArray<@>(@)", "JsObject(@)", "int(int,int)", "bool(Object,Object)", "Null(Symbol0,@)", "Uint8List(int)", "Option<0^>()<Object>", "Uint8List(@,@)", "Null(String,@)", "String(int)", "String(@)", "Type(PtlsValue)", "@(@,String)", "PtlsTuple()", "~(String[@])", "Future<int>()", "PtlsString(int)", "bool(Token)", "Object(@)", "Iterable<Null>()"],
     interceptorsByTag: null,
     leafTags: null,
     arrayRti: typeof Symbol == "function" && typeof Symbol() == "symbol" ? Symbol("$ti") : "$ti"
   };
-  H._Universe_addRules(init.typeUniverse, JSON.parse('{"JavaScriptFunction":"JavaScriptObject","PlainJavaScriptObject":"JavaScriptObject","UnknownJavaScriptObject":"JavaScriptObject","AbortPaymentEvent":"Event","ExtendableEvent":"Event","AElement":"SvgElement","GraphicsElement":"SvgElement","AudioElement":"HtmlElement","MediaElement":"HtmlElement","HtmlDocument":"Node","Document":"Node","VttCue":"TextTrackCue","DedicatedWorkerGlobalScope":"WorkerGlobalScope","CDataSection":"CharacterData","Text":"CharacterData","HtmlFormControlsCollection":"HtmlCollection","CssCharsetRule":"CssRule","CssStyleSheet":"StyleSheet","NativeFloat32List":"NativeTypedArrayOfDouble","NativeByteData":"NativeTypedData","JSBool":{"bool":[]},"JSNull":{"Null":[]},"JavaScriptObject":{"Function":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"double":[],"num":[]},"JSInt":{"int":[],"double":[],"num":[]},"JSDouble":{"double":[],"num":[]},"JSString":{"String":[],"Pattern":[]},"CodeUnits":{"UnmodifiableListMixin":["int"],"ListMixin":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"ListMixin.E":"int","UnmodifiableListMixin.E":"int"},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"SubListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereIterator":{"Iterator":["1"]},"ExpandIterable":{"Iterable":["2"],"Iterable.E":"2"},"ExpandIterator":{"Iterator":["2"]},"EmptyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"EmptyIterator":{"Iterator":["1"]},"UnmodifiableListBase":{"UnmodifiableListMixin":["1"],"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"Instantiation":{"Closure":[],"Function":[]},"Instantiation1":{"Closure":[],"Function":[]},"JSInvocationMirror":{"Invocation":[]},"NullError":{"Error":[]},"JsNoSuchMethodError":{"Error":[]},"UnknownJsTypeError":{"Error":[]},"Closure":{"Function":[]},"TearOffClosure":{"Closure":[],"Function":[]},"StaticClosure":{"Closure":[],"Function":[]},"BoundClosure":{"Closure":[],"Function":[]},"RuntimeError":{"Error":[]},"_AssertionError":{"Error":[]},"JsLinkedHashMap":{"LinkedHashMap":["1","2"],"MapMixin":["1","2"],"Map":["1","2"],"MapMixin.K":"1","MapMixin.V":"2"},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"_MatchImplementation":{"RegExpMatch":[],"Match":[]},"_AllMatchesIterable":{"Iterable":["RegExpMatch"],"Iterable.E":"RegExpMatch"},"_AllMatchesIterator":{"Iterator":["RegExpMatch"]},"StringMatch":{"Match":[]},"_StringAllMatchesIterable":{"Iterable":["Match"],"Iterable.E":"Match"},"_StringAllMatchesIterator":{"Iterator":["Match"]},"NativeTypedData":{"TypedData":[]},"NativeTypedArray":{"JavaScriptIndexingBehavior":["@"],"TypedData":[]},"NativeTypedArrayOfDouble":{"NativeTypedArray":[],"ListMixin":["double"],"JavaScriptIndexingBehavior":["@"],"List":["double"],"EfficientLengthIterable":["double"],"FixedLengthListMixin":["double"],"TypedData":[],"Iterable":["double"],"ListMixin.E":"double"},"NativeTypedArrayOfInt":{"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"]},"NativeInt16List":{"NativeTypedArrayOfInt":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"NativeInt32List":{"NativeTypedArrayOfInt":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"NativeInt8List":{"NativeTypedArrayOfInt":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint16List":{"NativeTypedArrayOfInt":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint32List":{"NativeTypedArrayOfInt":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint8ClampedList":{"NativeTypedArrayOfInt":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint8List":{"NativeTypedArrayOfInt":[],"Uint8List":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"_Type":{"Type":[]},"_Error":{"Error":[]},"_TypeError":{"Error":[]},"_SyncStarIterator":{"Iterator":["1"]},"_SyncStarIterable":{"Iterable":["1"],"Iterable.E":"1"},"_LinkedHashSet":{"_SetBase":["1"],"LinkedHashSet":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"IterableBase":{"Iterable":["1"]},"ListBase":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"MapBase":{"MapMixin":["1","2"],"Map":["1","2"]},"MapMixin":{"Map":["1","2"]},"_MapBaseValueIterable":{"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"_MapBaseValueIterator":{"Iterator":["2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ListQueue":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"_ListQueueIterator":{"Iterator":["1"]},"_SetBase":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"Base64Codec":{"Codec":["List<int>","String"],"Codec.S":"List<int>"},"Base64Encoder":{"Converter":["List<int>","String"]},"Encoding":{"Codec":["String","List<int>"]},"JsonUnsupportedObjectError":{"Error":[]},"JsonCyclicError":{"Error":[]},"JsonCodec":{"Codec":["Object","String"],"Codec.S":"Object"},"JsonEncoder":{"Converter":["Object","String"]},"Utf8Codec":{"Encoding":[],"Codec":["String","List<int>"],"Codec.S":"String"},"Utf8Encoder":{"Converter":["String","List<int>"]},"Utf8Decoder":{"Converter":["List<int>","String"]},"double":{"num":[]},"AssertionError":{"Error":[]},"NullThrownError":{"Error":[]},"ArgumentError":{"Error":[]},"RangeError":{"Error":[]},"IndexError":{"Error":[]},"NoSuchMethodError":{"Error":[]},"UnsupportedError":{"Error":[]},"UnimplementedError":{"Error":[]},"StateError":{"Error":[]},"ConcurrentModificationError":{"Error":[]},"OutOfMemoryError":{"Error":[]},"StackOverflowError":{"Error":[]},"CyclicInitializationError":{"Error":[]},"_Exception":{"Exception":[]},"FormatException":{"Exception":[]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"RegExpMatch":{"Match":[]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"StringBuffer":{"StringSink":[]},"_Uri":{"Uri":[]},"_SimpleUri":{"Uri":[]},"_DataUri":{"Uri":[]},"HtmlElement":{"Node":[]},"AnchorElement":{"Node":[]},"AreaElement":{"Node":[]},"CharacterData":{"Node":[]},"DomRectList":{"ImmutableListMixin":["Rectangle<num>"],"ListMixin":["Rectangle<num>"],"JavaScriptIndexingBehavior":["Rectangle<num>"],"List":["Rectangle<num>"],"EfficientLengthIterable":["Rectangle<num>"],"Iterable":["Rectangle<num>"],"ImmutableListMixin.E":"Rectangle<num>","ListMixin.E":"Rectangle<num>"},"DomRectReadOnly":{"Rectangle":["num"]},"DomStringList":{"ImmutableListMixin":["String"],"ListMixin":["String"],"List":["String"],"JavaScriptIndexingBehavior":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"ImmutableListMixin.E":"String","ListMixin.E":"String"},"Element":{"Node":[]},"File":{"Blob":[]},"FileList":{"ImmutableListMixin":["File"],"ListMixin":["File"],"JavaScriptIndexingBehavior":["File"],"List":["File"],"EfficientLengthIterable":["File"],"Iterable":["File"],"ImmutableListMixin.E":"File","ListMixin.E":"File"},"FormElement":{"Node":[]},"HtmlCollection":{"ImmutableListMixin":["Node"],"ListMixin":["Node"],"List":["Node"],"JavaScriptIndexingBehavior":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"ImmutableListMixin.E":"Node","ListMixin.E":"Node"},"MidiInputMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.K":"String","MapMixin.V":"@"},"MidiOutputMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.K":"String","MapMixin.V":"@"},"MimeTypeArray":{"ImmutableListMixin":["MimeType"],"ListMixin":["MimeType"],"JavaScriptIndexingBehavior":["MimeType"],"List":["MimeType"],"EfficientLengthIterable":["MimeType"],"Iterable":["MimeType"],"ImmutableListMixin.E":"MimeType","ListMixin.E":"MimeType"},"NodeList":{"ImmutableListMixin":["Node"],"ListMixin":["Node"],"List":["Node"],"JavaScriptIndexingBehavior":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"ImmutableListMixin.E":"Node","ListMixin.E":"Node"},"OListElement":{"Node":[]},"PluginArray":{"ImmutableListMixin":["Plugin"],"ListMixin":["Plugin"],"List":["Plugin"],"JavaScriptIndexingBehavior":["Plugin"],"EfficientLengthIterable":["Plugin"],"Iterable":["Plugin"],"ImmutableListMixin.E":"Plugin","ListMixin.E":"Plugin"},"RtcStatsReport":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.K":"String","MapMixin.V":"@"},"SelectElement":{"Node":[]},"SourceBufferList":{"ImmutableListMixin":["SourceBuffer"],"ListMixin":["SourceBuffer"],"List":["SourceBuffer"],"JavaScriptIndexingBehavior":["SourceBuffer"],"EfficientLengthIterable":["SourceBuffer"],"Iterable":["SourceBuffer"],"ImmutableListMixin.E":"SourceBuffer","ListMixin.E":"SourceBuffer"},"SpeechGrammarList":{"ImmutableListMixin":["SpeechGrammar"],"ListMixin":["SpeechGrammar"],"List":["SpeechGrammar"],"JavaScriptIndexingBehavior":["SpeechGrammar"],"EfficientLengthIterable":["SpeechGrammar"],"Iterable":["SpeechGrammar"],"ImmutableListMixin.E":"SpeechGrammar","ListMixin.E":"SpeechGrammar"},"Storage":{"MapMixin":["String","String"],"Map":["String","String"],"MapMixin.K":"String","MapMixin.V":"String"},"TextTrackCueList":{"ImmutableListMixin":["TextTrackCue"],"ListMixin":["TextTrackCue"],"JavaScriptIndexingBehavior":["TextTrackCue"],"List":["TextTrackCue"],"EfficientLengthIterable":["TextTrackCue"],"Iterable":["TextTrackCue"],"ImmutableListMixin.E":"TextTrackCue","ListMixin.E":"TextTrackCue"},"TextTrackList":{"ImmutableListMixin":["TextTrack"],"ListMixin":["TextTrack"],"JavaScriptIndexingBehavior":["TextTrack"],"List":["TextTrack"],"EfficientLengthIterable":["TextTrack"],"Iterable":["TextTrack"],"ImmutableListMixin.E":"TextTrack","ListMixin.E":"TextTrack"},"TouchList":{"ImmutableListMixin":["Touch"],"ListMixin":["Touch"],"List":["Touch"],"JavaScriptIndexingBehavior":["Touch"],"EfficientLengthIterable":["Touch"],"Iterable":["Touch"],"ImmutableListMixin.E":"Touch","ListMixin.E":"Touch"},"_CssRuleList":{"ImmutableListMixin":["CssRule"],"ListMixin":["CssRule"],"List":["CssRule"],"JavaScriptIndexingBehavior":["CssRule"],"EfficientLengthIterable":["CssRule"],"Iterable":["CssRule"],"ImmutableListMixin.E":"CssRule","ListMixin.E":"CssRule"},"_DomRect":{"Rectangle":["num"]},"_GamepadList":{"ImmutableListMixin":["Gamepad"],"ListMixin":["Gamepad"],"JavaScriptIndexingBehavior":["Gamepad"],"List":["Gamepad"],"EfficientLengthIterable":["Gamepad"],"Iterable":["Gamepad"],"ImmutableListMixin.E":"Gamepad","ListMixin.E":"Gamepad"},"_NamedNodeMap":{"ImmutableListMixin":["Node"],"ListMixin":["Node"],"List":["Node"],"JavaScriptIndexingBehavior":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"ImmutableListMixin.E":"Node","ListMixin.E":"Node"},"_SpeechRecognitionResultList":{"ImmutableListMixin":["SpeechRecognitionResult"],"ListMixin":["SpeechRecognitionResult"],"List":["SpeechRecognitionResult"],"JavaScriptIndexingBehavior":["SpeechRecognitionResult"],"EfficientLengthIterable":["SpeechRecognitionResult"],"Iterable":["SpeechRecognitionResult"],"ImmutableListMixin.E":"SpeechRecognitionResult","ListMixin.E":"SpeechRecognitionResult"},"_StyleSheetList":{"ImmutableListMixin":["StyleSheet"],"ListMixin":["StyleSheet"],"JavaScriptIndexingBehavior":["StyleSheet"],"List":["StyleSheet"],"EfficientLengthIterable":["StyleSheet"],"Iterable":["StyleSheet"],"ImmutableListMixin.E":"StyleSheet","ListMixin.E":"StyleSheet"},"FixedSizeListIterator":{"Iterator":["1"]},"FileSystemException":{"Exception":[]},"JsFunction":{"JsObject":[]},"JsArray":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"JsObject":[],"Iterable":["1"],"ListMixin.E":"1"},"FEColorMatrixElement":{"Node":[]},"LengthList":{"ImmutableListMixin":["Length"],"ListMixin":["Length"],"List":["Length"],"EfficientLengthIterable":["Length"],"Iterable":["Length"],"ImmutableListMixin.E":"Length","ListMixin.E":"Length"},"NumberList":{"ImmutableListMixin":["Number"],"ListMixin":["Number"],"List":["Number"],"EfficientLengthIterable":["Number"],"Iterable":["Number"],"ImmutableListMixin.E":"Number","ListMixin.E":"Number"},"StringList":{"ImmutableListMixin":["String"],"ListMixin":["String"],"List":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"ImmutableListMixin.E":"String","ListMixin.E":"String"},"SvgElement":{"Node":[]},"TransformList":{"ImmutableListMixin":["Transform"],"ListMixin":["Transform"],"List":["Transform"],"EfficientLengthIterable":["Transform"],"Iterable":["Transform"],"ImmutableListMixin.E":"Transform","ListMixin.E":"Transform"},"Uint8List":{"List":["int"],"EfficientLengthIterable":["int"],"TypedData":[],"Iterable":["int"]},"AudioParamMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.K":"String","MapMixin.V":"@"},"SqlResultSetRowList":{"ImmutableListMixin":["Map<@,@>"],"ListMixin":["Map<@,@>"],"List":["Map<@,@>"],"EfficientLengthIterable":["Map<@,@>"],"Iterable":["Map<@,@>"],"ImmutableListMixin.E":"Map<@,@>","ListMixin.E":"Map<@,@>"},"StringMonoid":{"Monoid":["String"],"Semigroup":["String"],"Semigroup.A":"String"},"_IntOrder":{"Order":["int"],"Eq":["int"],"Eq.A":"int"},"IteratorEq":{"Eq":["Iterator<1>"],"Eq.A":"Iterator<1>"},"_AnonymousEq":{"Eq":["1"],"Eq.A":"1"},"Cons":{"IList":["1"]},"Nil":{"IList":["1"]},"IListMonoid":{"Monoid":["IList<1>"],"Semigroup":["IList<1>"],"Semigroup.A":"IList<1>"},"_IListIterable":{"Iterable":["1"],"Iterable.E":"1"},"_IListIterator":{"Iterator":["1"]},"_NonEmptyIMapAVLNode":{"_IMapAVLNode":["1","2"]},"_EmptyIMapAVLNode":{"_IMapAVLNode":["1","2"]},"_IMapIterable":{"Iterable":["3"]},"_IMapPairIterable":{"_IMapIterable":["1","2","Tuple2<1,2>"],"Iterable":["Tuple2<1,2>"],"Iterable.E":"Tuple2<1,2>","_IMapIterable.K":"1","_IMapIterable.V":"2"},"_IMapValueIterable":{"_IMapIterable":["1","2","2"],"Iterable":["2"],"Iterable.E":"2","_IMapIterable.K":"1","_IMapIterable.V":"2"},"_IMapAVLNodeIterator":{"Iterator":["3"]},"_IMapPairIterator":{"_IMapAVLNodeIterator":["1","2","Tuple2<1,2>"],"Iterator":["Tuple2<1,2>"],"_IMapAVLNodeIterator.K":"1","_IMapAVLNodeIterator.V":"2"},"_IMapValueIterator":{"_IMapAVLNodeIterator":["1","2","2"],"Iterator":["2"],"_IMapAVLNodeIterator.K":"1","_IMapAVLNodeIterator.V":"2"},"Monoid":{"Semigroup":["1"]},"Some":{"Option":["1"]},"None":{"Option":["1"]},"_SingletonIterable":{"Iterable":["1"],"Iterable.E":"1"},"_SingletonIterator":{"Iterator":["1"]},"Order":{"Eq":["1"]},"PosixStyle":{"InternalStyle":[]},"UrlStyle":{"InternalStyle":[]},"WindowsStyle":{"InternalStyle":[]},"PtlsArray":{"PtlsValue":[]},"PtlsBool":{"PtlsValue":[]},"PtlsBuiltIn":{"PtlsValue":[]},"PtlsDict":{"PtlsValue":[]},"PtlsError":{"Exception":[]},"PtlsException":{"Exception":[]},"PtlsFunc":{"PtlsValue":[]},"PtlsLabel":{"PtlsValue":[]},"PtlsList":{"PtlsValue":[]},"PtlsNumber":{"PtlsValue":[]},"PtlsObject":{"PtlsValue":[]},"PtlsSet":{"PtlsValue":[]},"PtlsString":{"PtlsValue":[]},"PtlsTuple":{"PtlsValue":[]},"PreludeFile":{"SourceFile":[]},"WebSourceFile":{"SourceFile":[]},"WebPreludeFile":{"SourceFile":[]}}'));
+  H._Universe_addRules(init.typeUniverse, JSON.parse('{"JavaScriptFunction":"JavaScriptObject","PlainJavaScriptObject":"JavaScriptObject","UnknownJavaScriptObject":"JavaScriptObject","AbortPaymentEvent":"Event","ExtendableEvent":"Event","AElement":"SvgElement","GraphicsElement":"SvgElement","AudioElement":"HtmlElement","MediaElement":"HtmlElement","HtmlDocument":"Node","Document":"Node","VttCue":"TextTrackCue","DedicatedWorkerGlobalScope":"WorkerGlobalScope","CDataSection":"CharacterData","Text":"CharacterData","HtmlFormControlsCollection":"HtmlCollection","CssCharsetRule":"CssRule","CssStyleSheet":"StyleSheet","NativeFloat32List":"NativeTypedArrayOfDouble","NativeByteData":"NativeTypedData","JSBool":{"bool":[]},"JSNull":{"Null":[]},"JavaScriptObject":{"Function":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"double":[],"num":[]},"JSInt":{"int":[],"double":[],"num":[]},"JSDouble":{"double":[],"num":[]},"JSString":{"String":[],"Pattern":[]},"CodeUnits":{"UnmodifiableListMixin":["int"],"ListMixin":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"ListMixin.E":"int","UnmodifiableListMixin.E":"int"},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"SubListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereIterator":{"Iterator":["1"]},"ExpandIterable":{"Iterable":["2"],"Iterable.E":"2"},"ExpandIterator":{"Iterator":["2"]},"EmptyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"EmptyIterator":{"Iterator":["1"]},"UnmodifiableListBase":{"UnmodifiableListMixin":["1"],"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"_ConstantMapKeyIterable":{"Iterable":["1"],"Iterable.E":"1"},"Instantiation":{"Closure":[],"Function":[]},"Instantiation1":{"Closure":[],"Function":[]},"JSInvocationMirror":{"Invocation":[]},"NullError":{"Error":[]},"JsNoSuchMethodError":{"Error":[]},"UnknownJsTypeError":{"Error":[]},"Closure":{"Function":[]},"TearOffClosure":{"Closure":[],"Function":[]},"StaticClosure":{"Closure":[],"Function":[]},"BoundClosure":{"Closure":[],"Function":[]},"RuntimeError":{"Error":[]},"_AssertionError":{"Error":[]},"JsLinkedHashMap":{"LinkedHashMap":["1","2"],"MapMixin":["1","2"],"Map":["1","2"],"MapMixin.K":"1","MapMixin.V":"2"},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"_MatchImplementation":{"RegExpMatch":[],"Match":[]},"_AllMatchesIterable":{"Iterable":["RegExpMatch"],"Iterable.E":"RegExpMatch"},"_AllMatchesIterator":{"Iterator":["RegExpMatch"]},"StringMatch":{"Match":[]},"_StringAllMatchesIterable":{"Iterable":["Match"],"Iterable.E":"Match"},"_StringAllMatchesIterator":{"Iterator":["Match"]},"NativeTypedData":{"TypedData":[]},"NativeTypedArray":{"JavaScriptIndexingBehavior":["@"],"TypedData":[]},"NativeTypedArrayOfDouble":{"NativeTypedArray":[],"ListMixin":["double"],"JavaScriptIndexingBehavior":["@"],"List":["double"],"EfficientLengthIterable":["double"],"FixedLengthListMixin":["double"],"TypedData":[],"Iterable":["double"],"ListMixin.E":"double"},"NativeTypedArrayOfInt":{"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"]},"NativeInt16List":{"NativeTypedArrayOfInt":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"NativeInt32List":{"NativeTypedArrayOfInt":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"NativeInt8List":{"NativeTypedArrayOfInt":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint16List":{"NativeTypedArrayOfInt":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint32List":{"NativeTypedArrayOfInt":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint8ClampedList":{"NativeTypedArrayOfInt":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"NativeUint8List":{"NativeTypedArrayOfInt":[],"Uint8List":[],"NativeTypedArray":[],"ListMixin":["int"],"List":["int"],"JavaScriptIndexingBehavior":["@"],"EfficientLengthIterable":["int"],"FixedLengthListMixin":["int"],"TypedData":[],"Iterable":["int"],"ListMixin.E":"int"},"_Type":{"Type":[]},"_Error":{"Error":[]},"_TypeError":{"Error":[]},"_SyncStarIterator":{"Iterator":["1"]},"_SyncStarIterable":{"Iterable":["1"],"Iterable.E":"1"},"_HashMap":{"MapMixin":["1","2"],"Map":["1","2"],"MapMixin.K":"1","MapMixin.V":"2"},"_HashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"_HashMapKeyIterator":{"Iterator":["1"]},"_LinkedHashSet":{"_SetBase":["1"],"LinkedHashSet":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"IterableBase":{"Iterable":["1"]},"ListBase":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"MapBase":{"MapMixin":["1","2"],"Map":["1","2"]},"MapMixin":{"Map":["1","2"]},"_MapBaseValueIterable":{"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"_MapBaseValueIterator":{"Iterator":["2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ListQueue":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"_ListQueueIterator":{"Iterator":["1"]},"_SetBase":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"Base64Codec":{"Codec":["List<int>","String"],"Codec.S":"List<int>"},"Base64Encoder":{"Converter":["List<int>","String"]},"Encoding":{"Codec":["String","List<int>"]},"JsonUnsupportedObjectError":{"Error":[]},"JsonCyclicError":{"Error":[]},"JsonCodec":{"Codec":["Object","String"],"Codec.S":"Object"},"JsonEncoder":{"Converter":["Object","String"]},"Utf8Codec":{"Encoding":[],"Codec":["String","List<int>"],"Codec.S":"String"},"Utf8Encoder":{"Converter":["String","List<int>"]},"Utf8Decoder":{"Converter":["List<int>","String"]},"double":{"num":[]},"AssertionError":{"Error":[]},"NullThrownError":{"Error":[]},"ArgumentError":{"Error":[]},"RangeError":{"Error":[]},"IndexError":{"Error":[]},"NoSuchMethodError":{"Error":[]},"UnsupportedError":{"Error":[]},"UnimplementedError":{"Error":[]},"StateError":{"Error":[]},"ConcurrentModificationError":{"Error":[]},"OutOfMemoryError":{"Error":[]},"StackOverflowError":{"Error":[]},"CyclicInitializationError":{"Error":[]},"_Exception":{"Exception":[]},"FormatException":{"Exception":[]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"RegExpMatch":{"Match":[]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"StringBuffer":{"StringSink":[]},"_Uri":{"Uri":[]},"_SimpleUri":{"Uri":[]},"_DataUri":{"Uri":[]},"HtmlElement":{"Node":[]},"AnchorElement":{"Node":[]},"AreaElement":{"Node":[]},"CharacterData":{"Node":[]},"DomRectList":{"ImmutableListMixin":["Rectangle<num>"],"ListMixin":["Rectangle<num>"],"JavaScriptIndexingBehavior":["Rectangle<num>"],"List":["Rectangle<num>"],"EfficientLengthIterable":["Rectangle<num>"],"Iterable":["Rectangle<num>"],"ImmutableListMixin.E":"Rectangle<num>","ListMixin.E":"Rectangle<num>"},"DomRectReadOnly":{"Rectangle":["num"]},"DomStringList":{"ImmutableListMixin":["String"],"ListMixin":["String"],"List":["String"],"JavaScriptIndexingBehavior":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"ImmutableListMixin.E":"String","ListMixin.E":"String"},"Element":{"Node":[]},"File":{"Blob":[]},"FileList":{"ImmutableListMixin":["File"],"ListMixin":["File"],"JavaScriptIndexingBehavior":["File"],"List":["File"],"EfficientLengthIterable":["File"],"Iterable":["File"],"ImmutableListMixin.E":"File","ListMixin.E":"File"},"FormElement":{"Node":[]},"HtmlCollection":{"ImmutableListMixin":["Node"],"ListMixin":["Node"],"List":["Node"],"JavaScriptIndexingBehavior":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"ImmutableListMixin.E":"Node","ListMixin.E":"Node"},"MidiInputMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.K":"String","MapMixin.V":"@"},"MidiOutputMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.K":"String","MapMixin.V":"@"},"MimeTypeArray":{"ImmutableListMixin":["MimeType"],"ListMixin":["MimeType"],"JavaScriptIndexingBehavior":["MimeType"],"List":["MimeType"],"EfficientLengthIterable":["MimeType"],"Iterable":["MimeType"],"ImmutableListMixin.E":"MimeType","ListMixin.E":"MimeType"},"NodeList":{"ImmutableListMixin":["Node"],"ListMixin":["Node"],"List":["Node"],"JavaScriptIndexingBehavior":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"ImmutableListMixin.E":"Node","ListMixin.E":"Node"},"OListElement":{"Node":[]},"PluginArray":{"ImmutableListMixin":["Plugin"],"ListMixin":["Plugin"],"List":["Plugin"],"JavaScriptIndexingBehavior":["Plugin"],"EfficientLengthIterable":["Plugin"],"Iterable":["Plugin"],"ImmutableListMixin.E":"Plugin","ListMixin.E":"Plugin"},"RtcStatsReport":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.K":"String","MapMixin.V":"@"},"SelectElement":{"Node":[]},"SourceBufferList":{"ImmutableListMixin":["SourceBuffer"],"ListMixin":["SourceBuffer"],"List":["SourceBuffer"],"JavaScriptIndexingBehavior":["SourceBuffer"],"EfficientLengthIterable":["SourceBuffer"],"Iterable":["SourceBuffer"],"ImmutableListMixin.E":"SourceBuffer","ListMixin.E":"SourceBuffer"},"SpeechGrammarList":{"ImmutableListMixin":["SpeechGrammar"],"ListMixin":["SpeechGrammar"],"List":["SpeechGrammar"],"JavaScriptIndexingBehavior":["SpeechGrammar"],"EfficientLengthIterable":["SpeechGrammar"],"Iterable":["SpeechGrammar"],"ImmutableListMixin.E":"SpeechGrammar","ListMixin.E":"SpeechGrammar"},"Storage":{"MapMixin":["String","String"],"Map":["String","String"],"MapMixin.K":"String","MapMixin.V":"String"},"TextTrackCueList":{"ImmutableListMixin":["TextTrackCue"],"ListMixin":["TextTrackCue"],"JavaScriptIndexingBehavior":["TextTrackCue"],"List":["TextTrackCue"],"EfficientLengthIterable":["TextTrackCue"],"Iterable":["TextTrackCue"],"ImmutableListMixin.E":"TextTrackCue","ListMixin.E":"TextTrackCue"},"TextTrackList":{"ImmutableListMixin":["TextTrack"],"ListMixin":["TextTrack"],"JavaScriptIndexingBehavior":["TextTrack"],"List":["TextTrack"],"EfficientLengthIterable":["TextTrack"],"Iterable":["TextTrack"],"ImmutableListMixin.E":"TextTrack","ListMixin.E":"TextTrack"},"TouchList":{"ImmutableListMixin":["Touch"],"ListMixin":["Touch"],"List":["Touch"],"JavaScriptIndexingBehavior":["Touch"],"EfficientLengthIterable":["Touch"],"Iterable":["Touch"],"ImmutableListMixin.E":"Touch","ListMixin.E":"Touch"},"_CssRuleList":{"ImmutableListMixin":["CssRule"],"ListMixin":["CssRule"],"List":["CssRule"],"JavaScriptIndexingBehavior":["CssRule"],"EfficientLengthIterable":["CssRule"],"Iterable":["CssRule"],"ImmutableListMixin.E":"CssRule","ListMixin.E":"CssRule"},"_DomRect":{"Rectangle":["num"]},"_GamepadList":{"ImmutableListMixin":["Gamepad"],"ListMixin":["Gamepad"],"JavaScriptIndexingBehavior":["Gamepad"],"List":["Gamepad"],"EfficientLengthIterable":["Gamepad"],"Iterable":["Gamepad"],"ImmutableListMixin.E":"Gamepad","ListMixin.E":"Gamepad"},"_NamedNodeMap":{"ImmutableListMixin":["Node"],"ListMixin":["Node"],"List":["Node"],"JavaScriptIndexingBehavior":["Node"],"EfficientLengthIterable":["Node"],"Iterable":["Node"],"ImmutableListMixin.E":"Node","ListMixin.E":"Node"},"_SpeechRecognitionResultList":{"ImmutableListMixin":["SpeechRecognitionResult"],"ListMixin":["SpeechRecognitionResult"],"List":["SpeechRecognitionResult"],"JavaScriptIndexingBehavior":["SpeechRecognitionResult"],"EfficientLengthIterable":["SpeechRecognitionResult"],"Iterable":["SpeechRecognitionResult"],"ImmutableListMixin.E":"SpeechRecognitionResult","ListMixin.E":"SpeechRecognitionResult"},"_StyleSheetList":{"ImmutableListMixin":["StyleSheet"],"ListMixin":["StyleSheet"],"JavaScriptIndexingBehavior":["StyleSheet"],"List":["StyleSheet"],"EfficientLengthIterable":["StyleSheet"],"Iterable":["StyleSheet"],"ImmutableListMixin.E":"StyleSheet","ListMixin.E":"StyleSheet"},"FixedSizeListIterator":{"Iterator":["1"]},"FileSystemException":{"Exception":[]},"JsFunction":{"JsObject":[]},"JsArray":{"ListMixin":["1"],"List":["1"],"EfficientLengthIterable":["1"],"JsObject":[],"Iterable":["1"],"ListMixin.E":"1"},"FEColorMatrixElement":{"Node":[]},"LengthList":{"ImmutableListMixin":["Length"],"ListMixin":["Length"],"List":["Length"],"EfficientLengthIterable":["Length"],"Iterable":["Length"],"ImmutableListMixin.E":"Length","ListMixin.E":"Length"},"NumberList":{"ImmutableListMixin":["Number"],"ListMixin":["Number"],"List":["Number"],"EfficientLengthIterable":["Number"],"Iterable":["Number"],"ImmutableListMixin.E":"Number","ListMixin.E":"Number"},"StringList":{"ImmutableListMixin":["String"],"ListMixin":["String"],"List":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"ImmutableListMixin.E":"String","ListMixin.E":"String"},"SvgElement":{"Node":[]},"TransformList":{"ImmutableListMixin":["Transform"],"ListMixin":["Transform"],"List":["Transform"],"EfficientLengthIterable":["Transform"],"Iterable":["Transform"],"ImmutableListMixin.E":"Transform","ListMixin.E":"Transform"},"Uint8List":{"List":["int"],"EfficientLengthIterable":["int"],"TypedData":[],"Iterable":["int"]},"AudioParamMap":{"MapMixin":["String","@"],"Map":["String","@"],"MapMixin.K":"String","MapMixin.V":"@"},"SqlResultSetRowList":{"ImmutableListMixin":["Map<@,@>"],"ListMixin":["Map<@,@>"],"List":["Map<@,@>"],"EfficientLengthIterable":["Map<@,@>"],"Iterable":["Map<@,@>"],"ImmutableListMixin.E":"Map<@,@>","ListMixin.E":"Map<@,@>"},"StringMonoid":{"Monoid":["String"],"Semigroup":["String"],"Semigroup.A":"String"},"_IntOrder":{"Order":["int"],"Eq":["int"],"Eq.A":"int"},"IteratorEq":{"Eq":["Iterator<1>"],"Eq.A":"Iterator<1>"},"_AnonymousEq":{"Eq":["1"],"Eq.A":"1"},"Cons":{"IList":["1"]},"Nil":{"IList":["1"]},"IListMonoid":{"Monoid":["IList<1>"],"Semigroup":["IList<1>"],"Semigroup.A":"IList<1>"},"_IListIterable":{"Iterable":["1"],"Iterable.E":"1"},"_IListIterator":{"Iterator":["1"]},"_NonEmptyIMapAVLNode":{"_IMapAVLNode":["1","2"]},"_EmptyIMapAVLNode":{"_IMapAVLNode":["1","2"]},"_IMapIterable":{"Iterable":["3"]},"_IMapPairIterable":{"_IMapIterable":["1","2","Tuple2<1,2>"],"Iterable":["Tuple2<1,2>"],"Iterable.E":"Tuple2<1,2>","_IMapIterable.K":"1","_IMapIterable.V":"2"},"_IMapValueIterable":{"_IMapIterable":["1","2","2"],"Iterable":["2"],"Iterable.E":"2","_IMapIterable.K":"1","_IMapIterable.V":"2"},"_IMapAVLNodeIterator":{"Iterator":["3"]},"_IMapPairIterator":{"_IMapAVLNodeIterator":["1","2","Tuple2<1,2>"],"Iterator":["Tuple2<1,2>"],"_IMapAVLNodeIterator.K":"1","_IMapAVLNodeIterator.V":"2"},"_IMapValueIterator":{"_IMapAVLNodeIterator":["1","2","2"],"Iterator":["2"],"_IMapAVLNodeIterator.K":"1","_IMapAVLNodeIterator.V":"2"},"Monoid":{"Semigroup":["1"]},"Some":{"Option":["1"]},"None":{"Option":["1"]},"_SingletonIterable":{"Iterable":["1"],"Iterable.E":"1"},"_SingletonIterator":{"Iterator":["1"]},"Order":{"Eq":["1"]},"PosixStyle":{"InternalStyle":[]},"UrlStyle":{"InternalStyle":[]},"WindowsStyle":{"InternalStyle":[]},"PtlsArray":{"PtlsValue":[]},"PtlsBool":{"PtlsValue":[]},"PtlsBuiltIn":{"PtlsValue":[]},"PtlsDict":{"PtlsValue":[]},"PtlsError":{"Exception":[]},"PtlsException":{"Exception":[]},"PtlsFunc":{"PtlsValue":[]},"PtlsLabel":{"PtlsValue":[]},"PtlsList":{"PtlsValue":[]},"PtlsNumber":{"PtlsValue":[]},"PtlsObject":{"PtlsValue":[]},"PtlsSet":{"PtlsValue":[]},"PtlsString":{"PtlsValue":[]},"PtlsTuple":{"PtlsValue":[]},"PreludeFile":{"SourceFile":[]},"WebSourceFile":{"SourceFile":[]},"WebPreludeFile":{"SourceFile":[]}}'));
   H._Universe_addErasedTypes(init.typeUniverse, JSON.parse('{"EfficientLengthIterable":1,"UnmodifiableListBase":1,"StreamTransformerBase":2,"IterableBase":1,"ListBase":1,"MapBase":2,"_ListBase_Object_ListMixin":1,"_JsArray_JsObject_ListMixin":1,"_RectangleBase":1}'));
   var type$ = (function rtii() {
     var findType = H.findType;
@@ -16757,6 +17288,7 @@
       JsLinkedHashMap_Symbol_dynamic: findType("JsLinkedHashMap<Symbol0,@>"),
       KeyRange: findType("KeyRange"),
       Length: findType("Length"),
+      ListEquality_dynamic: findType("ListEquality<@>"),
       ListQueue_Tok: findType("ListQueue<Tok>"),
       List_ASTNode: findType("List<ASTNode>"),
       List_String: findType("List<String>"),
@@ -16813,6 +17345,7 @@
       Window: findType("Window"),
       WorkerGlobalScope: findType("WorkerGlobalScope"),
       _LinkedHashSetCell: findType("_LinkedHashSetCell"),
+      _MapEntry: findType("_MapEntry"),
       bool: findType("bool"),
       bool_Function_String: findType("bool(String)"),
       double: findType("double"),
@@ -16838,6 +17371,7 @@
     C.UnknownJavaScriptObject_methods = J.UnknownJavaScriptObject.prototype;
     C.C_Base64Encoder = new P.Base64Encoder();
     C.C_Base64Codec = new P.Base64Codec();
+    C.C_DefaultEquality = new U.DefaultEquality(H.findType("DefaultEquality<Null>"));
     C.C_EmptyIterable = new H.EmptyIterable(H.findType("EmptyIterable<Null>"));
     C.C_EmptyIterator = new H.EmptyIterator(H.findType("EmptyIterator<Null>"));
     C.C_JS_CONST6 = function getTagFallback(o) {
@@ -17116,7 +17650,7 @@
     $.separators = P.LinkedHashMap_LinkedHashMap$_literal([";", C.Tok_53, ":", C.Tok_9, ",", C.Tok_10], type$.String, type$.Tok);
     $.preludeList = function() {
       var t1 = type$.JSArray_String;
-      return H.setRuntimeTypeInfo([H.setRuntimeTypeInfo(["pointless/prelude/exports.ptls", "\nexport {\n  assert,\n  toArray,\n  toNDArray,\n  lessEq,\n  lessThan,\n  greaterEq,\n  greaterThan,\n  notFunc,\n  notEq,\n  eq,\n  orFunc,\n  andFunc,\n  inFunc,\n  any,\n  all,\n  lowers,\n  uppers,\n  alphas,\n  digits,\n  alNums,\n  delKey,\n  toDict,\n  keys,\n  vals,\n  items,\n  getDefault,\n  format,\n  compose,\n  id,\n  const,\n  iterate,\n  print,\n  println,\n  printFrame,\n  printFrames,\n  printLines,\n  debug,\n  readLines,\n  randFloat,\n  randRange,\n  randChoice,\n  getIndex,\n  length,\n  hasPrefix,\n  getLabel,\n  hasLabel,\n  unwrap,\n  wrap,\n  wrapTuple,\n  wrapObject,\n  head,\n  tail,\n  at,\n  last,\n  slice,\n  concat,\n  concatMap,\n  intersperse,\n  repeat,\n  take,\n  drop,\n  takeWhile,\n  takeUntil,\n  dropWhile,\n  dropUntil,\n  find,\n  span,\n  groupBy,\n  map,\n  filter,\n  reduce,\n  reduceFirst,\n  scan,\n  reverse,\n  zip,\n  zipN,\n  eager,\n  isEmpty,\n  toList,\n  enumerate,\n  sum,\n  range,\n  toInt,\n  floor,\n  ceil,\n  toFloat,\n  round,\n  pi,\n  euler,\n  abs,\n  pow,\n  mul,\n  div,\n  mod,\n  add,\n  sub,\n  max,\n  min,\n  minimum,\n  maximum,\n  toSet,\n  addElem,\n  delElem,\n  union,\n  intersection,\n  difference,\n  symDifference,\n  repr,\n  show,\n  sort,\n  join,\n  concatStrings,\n  split,\n  toTuple,\n  getType,\n  hasType,\n  is,\n  shuffle,\n  product,\n  asin,\n  acos,\n  atan,\n  atan2,\n  sin,\n  cos,\n  tan,\n  ln,\n  logBase,\n  argmin,\n  argmax,\n  unwrapTuple,\n  unwrapObject,\n  zeroArray,\n  notIs,\n  deepEq,\n  deepNotEq,\n}\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/array.ptls", '\n-------------------------------------------------------------------------------\n\nzeroArray(n) = PtlsArray.!getZeros(n)\n\n-------------------------------------------------------------------------------\n-- Convert a collection (a list, array, set, or tuple) to an array\n\ntoArray(collection) =\n  zeroArray(length(collection))\n  |> insert(0, toList(collection))\n\ninsert(index, list, array) =\n  if isEmpty(list) then array\n  else insert(index + 1, tail(list), newArray)\n  where newArray = array with $[index] = head(list)\n\n-------------------------------------------------------------------------------\n-- Make an N-dimensional array from the values in a list\n\ntoNDArray(dims, elems) =\n  head(wrappedArray)\n\n  requires assert(\n    reduceFirst(mul, dimsList) == length(elems),\n    format(\n      "invalid dinemsions {} for elems length {}",\n      [dims, length(elems)]\n    )\n  )\n\n  where {\n    dimsList = toList(dims)\n    wrappedArray = toNDHelper(dimsList, elems, length(dims))\n  }\n\n-------------------------------------------------------------------------------\n\ntoNDHelper(dimsList, elems, depth) =\n  if depth == 0 then elems\n  else chunks(head(dimsList), subArrays)\n  where {\n    subArrays = toNDHelper(tail(dimsList), elems, depth - 1)\n  }\n\n-------------------------------------------------------------------------------\n\nchunks(n, list) =\n  if isEmpty(list) then []\n  else [toArray(take(n, list))] ++ tailChunks\n  where tailChunks = chunks(n, drop(n, list))\n'], t1), H.setRuntimeTypeInfo(["pointless/prelude/boolean.ptls", "\n------------------------------------------------------------------------------\n-- lessEq(b, a) = a <= b\n\nlessEq(b, a) = a <= b\n\n------------------------------------------------------------------------------\n-- lessThan(b, a) = a < b\n\nlessThan(b, a) = a < b\n\n------------------------------------------------------------------------------\n-- greaterEq(b, a) = a >= b\n\ngreaterEq(b, a) = a >= b\n\n------------------------------------------------------------------------------\n-- greaterThan(b, a) = a > b\n\ngreaterThan(b, a) = a > b\n\n------------------------------------------------------------------------------\n-- notFunc(x) = not x\n\nnotFunc(x) = not x\n\n------------------------------------------------------------------------------\n-- notEq(a, b) = a != b\n\nnotEq(a, b) = a != b\n\n------------------------------------------------------------------------------\n-- eq(a, b) = a == b\n\neq(a, b) = a == b\n\n------------------------------------------------------------------------------\n-- orFunc(a, b) = a or b\n\norFunc(a, b) = a or b\n\n------------------------------------------------------------------------------\n-- andFunc(a, b) = a and b\n\nandFunc(a, b) = a and b\n\n------------------------------------------------------------------------------\n-- inFunc(b, a) = a in b\n\ninFunc(b, a) = a in b\n\n------------------------------------------------------------------------------\n-- Takes a list of boolean values, returns true if any list value is true\n\nany(values) =\n  values\n  |> toList\n  |> reduce(orFunc, false)\n\n------------------------------------------------------------------------------\n-- Takes a list of boolean values, returns true if all list values are true\n\nall(values) =\n  values\n  |> toList\n  |> reduce(andFunc, true)\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/chars.ptls", '\n-------------------------------------------------------------------------------\n-- lowers = toSet("abcdefghijklmnopqrstuvwxyz")\n\nlowers = toSet("abcdefghijklmnopqrstuvwxyz")\n\n-------------------------------------------------------------------------------\n-- uppers = toSet("ABCDEFGHIJKLMNOPQRSTUVWXYZ")\n\nuppers = toSet("ABCDEFGHIJKLMNOPQRSTUVWXYZ")\n\n-------------------------------------------------------------------------------\n-- Set of uppercase and lowercase letters\n\nalphas = union(lowers, uppers)\n\n-------------------------------------------------------------------------------\n-- digits = toSet("0123456789")\n\ndigits = toSet("0123456789")\n\n-------------------------------------------------------------------------------\n-- Set of uppercase and lowercase letters and digits 0 through 9\n\nalNums = union(alphas, digits)\n'], t1), H.setRuntimeTypeInfo(["pointless/prelude/deepEq.ptls", "\n-------------------------------------------------------------------------------\n-- preform deep equality check on two data structure\n\ndeepEq(a, b) = cond {\n  case is(PtlsNumber, a)  a == b\n  case is(PtlsString, a)  a == b\n  case is(PtlsBool, a)    a == b\n  case is(PtlsLabel, a)   a == b\n  case is(PtlsFunc, a)    a == b\n  case is(PtlsBuiltIn, a) a == b\n  case is(PtlsSet, a)     is(PtlsSet, b) and equalsSet(a, b)\n  case is(PtlsDict, a)    is(PtlsDict, b) and equalsDict(a, b)\n  case is(PtlsList, a)    is(PtlsList, b) and equalsList(a, b)\n  case is(PtlsArray, a)   is(PtlsArray, b) and equalsArray(a, b)\n  case is(PtlsObject, a)  is(PtlsObject, b) and equalsObject(a, b)\n  case is(PtlsTuple, a)   is(PtlsTuple, b) and equalsTuple(a, b)\n}\n\n-------------------------------------------------------------------------------\n\n-- deepNotEq(a, b) = not deepEq(a, b)\n\ndeepNotEq(a, b) = not deepEq(a, b)\n\n-------------------------------------------------------------------------------\n\nequalsSet(a, b) =\n  length(a) == length(b) and length(a) == length(union(a, b))\n\n-------------------------------------------------------------------------------\n\nequalsDict(a, b) =\n  equalsSet(toSet(keys(a)), toSet(keys(b)))\n  and all(for key in keys(a) yield deepEq(a[key], b[key]))\n\n-------------------------------------------------------------------------------\n\nequalsList(a, b) =\n  if isEmpty(a) then isEmpty(b)\n  else deepEq(head(a), head(b)) and equalsList(tail(a), tail(b))\n\n-------------------------------------------------------------------------------\n\nequalsArray(a, b) =\n  length(a) == length(b)\n  and all(for i in range(length(a)) yield deepEq(a[i], b[i]))\n\n-------------------------------------------------------------------------------\n\nequalsObject(a, b) =\n  getLabel(a) == getLabel(b)\n  and equalsDict(toDict(a), toDict(b))\n\n-------------------------------------------------------------------------------\n\nequalsTuple(a, b) =\n  getLabel(a) == getLabel(b)\n  and equalsArray(toArray(a), toArray(b))\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/dict.ptls", "\n-------------------------------------------------------------------------------\n-- Remove an entry from a dict\n\ndelKey(dict, key) = dict.!getDelKey(key)\n\n-------------------------------------------------------------------------------\n-- Convert an object to a dict of strings (field names) to values (field values)\n\ntoDict(object) = object.!getDict\n\n-------------------------------------------------------------------------------\n-- Get a list of the keys in a dict\n\nkeys(dict) = dict.!getKeys\n\n-------------------------------------------------------------------------------\n-- Get a list of the values in a dict\n\nvals(dict) = dict.!getVals\n\n-------------------------------------------------------------------------------\n-- Get (key, value) tuples for each entry in a dict\n\nitems(dict) = keys(dict) |> map(key => (key, dict[key])) \n\n-------------------------------------------------------------------------------\n-- Get value for a given key if present in dict, otherwise default\n\ngetDefault(dict, default, key) =\n  if key in dict then dict[key] else default\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/err.ptls", "\n------------------------------------------------------------------------------\n-- Throw AssertionError(message) if condition is not true\n\nassert(condition, message) =\n  if condition then true\n  else throw AssertionError(message)\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/format.ptls", '\n-------------------------------------------------------------------------------\n-- Use a format pattern to build a string with inserted values\n--\n-- example:\n--\n-- >> format("{} {}!", ["Hello", "world"])\n-- "Hello world!"\n-- \n-- example:\n--\n-- >> pairs  = [("dolor", 5), ("sit", 3), ("amet", 4)]\n-- >> output = pairs |> map(format("[{<5} {}]")) |> printLines\n-- [dolor 5]\n-- [sit   3]\n-- [amet  4]\n\nformat(fmtString, values) =\n  formatList(toList(fmtString), toList(values))\n  \n-------------------------------------------------------------------------------\n\nformatList(fmt, values) = cond {\n  -- return remaining format chars without value substitutions\n  case isEmpty(values) join("", fmt)\n\n  -- lead contains the rest of the format string if there\'s no new pattern\n  -- convert from char list back to string\n  case isEmpty(pat) join("", lead)\n\n  else join("", lead) + pattStr + formatList(rest, tail(values))\n    where pattStr = processPattern(pat, head(values))\n\n  } where (lead, pat, rest) = nextPat(fmt)\n\n-------------------------------------------------------------------------------\n\n-- Leading   trailing\n--         pattern rest\n-- ....... {.....} ....\n\nspanUntil(func, list) = (takeUntil(func, list), dropUntil(func, list))\n\nnextPat(fmt) = (leading, pattern, rest) where {\n  (leading, trailing) = span(notEq("{"), fmt)\n  (pattern, rest) = spanUntil(eq("}"), trailing)\n}\n\n-------------------------------------------------------------------------------\n\nprocessPattern(pat, value) = cond {\n  case at(1, pat) == ">"\n    show(value) |> padLeft(getPadding(pat))\n\n  case at(1, pat) == "<"\n    show(value) |> padRight(getPadding(pat))\n\n  else show(value)\n}\n\n-------------------------------------------------------------------------------\n\ngetPadding(pat) =\n  pat\n  |> slice(2, -1)\n  |> join("")\n  |> toInt\n'], t1), H.setRuntimeTypeInfo(["pointless/prelude/function.ptls", "\n-------------------------------------------------------------------------------\n-- compose(a, b) = x => b(a(x))\n\ncompose(a, b) = x => b(a(x))\n\n-------------------------------------------------------------------------------\n-- id(a) = a\n\nid(a) = a\n\n-------------------------------------------------------------------------------\n-- const(a, b) = a\n--\n-- example: length(list) = list |> map(const(1)) |> sum\n\nconst(a, b) = a\n\n-------------------------------------------------------------------------------\n-- Get an infinte list [init, func(init), func(func(init)) ...]\n\niterate(func, init) = [init] ++ iterate(func, func(init))\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/io.ptls", '\n------------------------------------------------------------------------------\n-- Generate command sequence to print the string rep for value\n\nprint(value) = [IOPrint(show(value))]\n\n------------------------------------------------------------------------------\n-- Generate command sequence to print value with a newline\n\nprintln(value) = print(show(value) + "\\n")\n\n------------------------------------------------------------------------------\n-- Print each element in a sequence on a separate line\n\nprintLines(iter) = iter |> toList |> concatMap(println)\n\n------------------------------------------------------------------------------\n-- Generate command sequence to clear console and print value with newline\n\nprintFrame(value) = [IOClearConsole] ++ println(value)\n\n------------------------------------------------------------------------------\n-- Print each element in a sequence in a separate frame\n\nprintFrames = concatMap(printFrame)\n\n------------------------------------------------------------------------------\n-- An identity function which logs its argument\n-- Useful for debugging\n\ndebug(value) = const(value, const(debugRaw(show(value)), debugLoc(value)))\n\n------------------------------------------------------------------------------\n\ndebugRaw(value) = IO.!getDebug(value)\n\ndebugLoc(value) = IO.!getDebugLoc(value)\n\n------------------------------------------------------------------------------\n-- Read lines of input lazily\n\nreadLines = IO.!getLines\n'], t1), H.setRuntimeTypeInfo(["pointless/prelude/iter.ptls", "\n-------------------------------------------------------------------------------\n-- getIndex(lhs, rhs) = lhs[rhs]\n\ngetIndex(lhs, rhs) = lhs[rhs]\n\n-------------------------------------------------------------------------------\n-- Get the number of elements in a list, set, dict, array, or tuple\n\nlength(iter) = cond {\n  case isEmpty(iter) 0\n  case is(PtlsList, iter) lengthList(iter)\n  else iter.!getLength\n}\n\nlengthList(list) =\n  list\n  |> map(const(1))\n  |> sum\n\n-------------------------------------------------------------------------------\n-- Get the cartesian product of a list of iterables\n\nproduct(iters) = map(toList, iters) |> productLists |> map(toTuple)\n\nproductLists(lists) =\n  if isEmpty(lists) then [[]]\n  else\n    for tailProd in tailProds\n    for elem in head(lists)\n    yield [elem] ++ tailProd\n    where tailProds = productLists(tail(lists))\n\n-------------------------------------------------------------------------------\n-- Returns the nth element in a tuple, array, or list\n-- (must have at least n elements)\n\nat(n, iter) = cond {\n  case is(PtlsList, iter) iter |> drop(n) |> head\n  case is(PtlsTuple, iter) iter |> toList |> drop(n) |> head\n  case is(PtlsArray, iter) iter[n]\n}\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/label.ptls", "\n-------------------------------------------------------------------------------\n-- Get the label of a labelled tuple or object, or a label\n\n-- need hasType instead of is to avoid infinite recursion\n\ngetLabel(value) = cond {\n  case hasType(PtlsLabel, value) value\n  case hasType(PtlsTuple, value) value.!getLabel\n  case hasType(PtlsObject, value) value.!getLabel\n}\n\n-------------------------------------------------------------------------------\n-- Does a labelled tuple or object have the given labelled\n\nhasLabel(label, value) = getLabel(value) == label\n\n-------------------------------------------------------------------------------\n-- Get the single value in a single-value tuple\n\nunwrap(wrapped) = value where (value) = wrapped\n\n-------------------------------------------------------------------------------\n\nunwrapTuple(tuple) = wrapTuple(PtlsTuple, tuple)\n\n-------------------------------------------------------------------------------\n\nunwrapObject(object) = wrapObject(PtlsObject, object)\n\n-------------------------------------------------------------------------------\n-- Get a single-value tuple with the given label containing value\n-- Foo(123) is syntactic sugar for wrap(Foo, 123) \n\nwrap(label, value) = label.!getWrap(value)\n\n-------------------------------------------------------------------------------\n-- Given a tuple, return the tuple labelled with label\n-- Foo(1, 2, 3) is syntactic sugar for wrapTuple(Foo, (1, 2, 3)) \n\nwrapTuple(label, tuple) = label.!getWrapTuple(tuple)\n\n-------------------------------------------------------------------------------\n-- Given an object, return the object labelled with label\n-- Foo {value = 123} is syntactic sugar for wrapObject(Foo, {value = 123}) \n\nwrapObject(label, object) = label.!getWrapObject(object)\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/list.ptls", "\n-------------------------------------------------------------------------------\n-- Get the first element in a list\n\nhead(list) = list.!getHead\n\n-------------------------------------------------------------------------------\n-- Get all elements in a list after the first\n\ntail(list) = list.!getTail\n\n------------------------------------------------------------------------------\n-- Get the last element in a non-empty list\n\nlast(list) =\n  if isEmpty(tail(list))\n  then head(list)\n  else last(tail(list))\n\n------------------------------------------------------------------------------\n-- Get a sublist of indices [start ... (end - 1)]\n\nslice(start, end, list) =\n  slicePos(start, posEnd, list)\n  where\n    posEnd = if end > 0 then end else length(list) + end\n\nslicePos(start, end, list) =\n  list\n  |> drop(start)\n  |> take(end - start)\n\n-------------------------------------------------------------------------------\n-- Lazily concatenate a list of lists into a single list\n\nconcat(lists) = \n  if isEmpty(lists) then []\n  else head(lists) ++ concat(tail(lists))\n\n-------------------------------------------------------------------------------\n-- Map a list-generating function over a list and concatenate output lists\n\nconcatMap(func, lists) = lists |> map(func) |> concat\n\n-------------------------------------------------------------------------------\n-- Make a new list with sep element interted between each pervious element\n\nintersperse(sep, list) =\n  if isEmpty(list) then []\n  else [head(list)] ++ prependToAll(sep, tail(list))\n\nprependToAll(sep, list) =\n  if isEmpty(list) then []\n  else [sep, head(list)] ++ prependToAll(sep, tail(list))\n\n-------------------------------------------------------------------------------\n-- Make an infinite list of a value, repeated\n\nrepeat(elem) = [elem] ++ repeat(elem)\n\n-------------------------------------------------------------------------------\n-- Get the first n elements in an list, or the whole list of length < n\n\ntake(n, list) = \n  if n < 1 then []\n  else if isEmpty(list) then []\n  else [head(list)] ++ take(n - 1, tail(list))\n\n-------------------------------------------------------------------------------\n-- Get the elems after the first n elems in an list or empty if length < n\n\ndrop(n, list) = \n  if n < 1 then list\n  else if isEmpty(list) then []\n  else drop(n - 1, tail(list))\n\n-------------------------------------------------------------------------------\n-- Take from a list the leading elements for which func returns true\n\ntakeWhile(func, list) =\n  if isEmpty(list) then []\n\n  else if func(head(list))\n    then [head(list)] ++ takeWhile(func, tail(list))\n\n  else []\n\n-------------------------------------------------------------------------------\n-- Take elements up to (including) the first for which func returns true\n\ntakeUntil(func, list) =\n  if isEmpty(list) then []\n\n  else if func(head(list))\n    then [head(list)]\n\n  else [head(list)] ++ takeUntil(func, tail(list))\n\n-------------------------------------------------------------------------------\n-- Drop the leading elements for which func returns true\n\ndropWhile(func, list) =\n  drop(length(takeWhile(func, list)), list)\n\n-------------------------------------------------------------------------------\n-- Drop elements up to (including) the first for which func returns true\n\ndropUntil(func, list) =\n  drop(length(takeUntil(func, list)), list)\n\n-------------------------------------------------------------------------------\n-- Find the first element for which func return true, or None if none exists \n\nfind(func, list) =\n  if isEmpty(list) then None\n\n  else if func(head(list))\n    then head(list)\n\n  else find(func, tail(list))\n\n-------------------------------------------------------------------------------\n-- span(...) = (takewhile(...), dropWhile(...)) \n\nspan(func, list) = (head, tail)\n  where {\n    head = takeWhile(func, list)\n    tail = dropWhile(func, list)\n  }\n\n-------------------------------------------------------------------------------\n-- Return the list of lists of consecutive values for which func(a, b) == true\n\ngroupBy(func, list) =\n  if isEmpty(list) then []\n  else [groupList] ++ groupBy(func, spanTail)\n  where {\n    groupList = [[head(list)]] ++ spanHead\n    (spanHead, spanTail) = tail(list) |> span(func(head(list)))\n  }\n\n-------------------------------------------------------------------------------\n-- Get the reverse of list\n\nreverse(list) = reverseAcc([], list)\n\nreverseAcc(acc, list) =\n  if isEmpty(list) then acc\n  else reverseAcc([head(list)] ++ acc, tail(list))\n\n-------------------------------------------------------------------------------\n-- From two lists, get a list of tuple pairs of elems from each list in order \n--\n-- For lists [a0, a1, a2, ...], [b0, b1, b2, ...], return the list\n-- [(a0, b0), (a1, b1), (a2, b2) ...], with length limited by the length\n-- of the shorter input list\n\n-- alternively\n-- zip(a, b) = zipN([a, b]) -- shorter, but a lot slower\n\nzip(a, b) = cond {\n  case isEmpty(a) []\n  case isEmpty(b) []\n  else [pair] ++ zip(tail(a), tail(b))\n  where pair = (head(a), head(b))\n}\n\n-------------------------------------------------------------------------------\n-- Like zip, but for an arbitrary number of input lists\n\nzipN(lists) =\n  if any(map(isEmpty, lists)) then []\n  else [toTuple(map(head, lists))] ++ zipN(map(tail, lists))\n\n-------------------------------------------------------------------------------\n-- Evaluate each value in a list\n-- Useful for catching errors early\n\neager(list) = list |> reverse |> reverse\n\n-------------------------------------------------------------------------------\n-- isEmpty(list) = list == Empty\n\nisEmpty(list) = list == Empty\n\n-------------------------------------------------------------------------------\n-- Convert iter (a list, array, set, or tuple) to a list\n\ntoList(iter) =\n  if isEmpty(iter) then []\n  else iter.!getList\n\n-------------------------------------------------------------------------------\n-- For a list [a, b, c, ...] return [(0, a), (1, b), (2, c), ...]\n\nenumerate(list) =\n  list |> zip(nats) where nats = iterate(add(1), 0)\n\n-------------------------------------------------------------------------------\n-- Return true if list starts with the given prefix of elements\n\nhasPrefix(prefix, list) =\n  if isEmpty(prefix) then true\n  else if isEmpty(list) then false\n  else matchHead and matchTail\n  where {\n    matchHead = head(list) == head(prefix)\n    matchTail = hasPrefix(tail(prefix), tail(list))\n  }\n\n-------------------------------------------------------------------------------\n-- Apply a function to each list element, make a list of the results\n\nmap(func, list) =\n  if isEmpty(list) then []\n  else [func(head(list))] ++ map(func, tail(list))\n\n-------------------------------------------------------------------------------\n-- Apply a test to each list element, make new list of passing elements\n\nfilter(func, list) =\n  if isEmpty(list) then []\n\n  else if func(head(list))\n    then [head(list)] ++ filter(func, tail(list))\n\n  else filter(func, tail(list))\n\n-------------------------------------------------------------------------------\n-- Get a single value given a list, starting value, and accumulator function\n--\n-- Starting with accumulator value acc, update acc <- func(acc, elem)\n-- for each element elem in the list\n--\n-- example: sum(list) = reduce(0, add, list)\n\nreduce(func, acc, list) = \n  if isEmpty(list) then acc \n  else reduce(func, func(acc, head(list)), tail(list))\n\n-------------------------------------------------------------------------------\n-- Reduce a non-empty list with first element set as accumulator\n\nreduceFirst(func, list) = reduce(func, head(list), tail(list))\n\n-------------------------------------------------------------------------------\n-- Reduce a list with a given function and accumulator, returning a list of\n-- the intermediate accumulator values, including the initial value\n\nscan(func, acc, list) = \n  if isEmpty(list) then [] \n  else [acc] ++ scan(func, func(acc, head(list)), tail(list))\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/numerical.ptls", "\n------------------------------------------------------------------------------\n-- Get the sum of a list of numbers\n\nsum(list) = reduce(add, 0, list)\n\n------------------------------------------------------------------------------\n-- Get a list of numbers:\n--   [a, a + 1, a + 2, ... b] if a < b\n--   [a, a - 1, a - 2, ... b] if a > b\n--   [a]                      if a == b\n\nrange(a, b) =\n  if a < b then minToMax else reverse(minToMax)\n  where minToMax = rangeUp(min(a, b), max(a, b))\n\nrangeUp(a, b) =\n  iterate(add(1), a)\n  |> takeWhile(lessEq(b))\n\n------------------------------------------------------------------------------\n-- Convert a number or a string to a float\n\ntoFloat(val) = val.!getFloat\n\n------------------------------------------------------------------------------\n-- Convert a number or a string to an integer (truncates floats)\n\ntoInt(val) = val.!getInt\n\n------------------------------------------------------------------------------\n-- Round number down\n\nfloor(n) =\n  if n > 0 then toInt(n)\n  else toInt(n - 1)\n\n------------------------------------------------------------------------------\n-- Round number up\n\nceil(n) = floor(n + 1)\n\n------------------------------------------------------------------------------\n-- Round a number to the nearest int value\n\nround(n) = sign * (base + correction) where {\n  sign = if n < 0 then -1 else 1\n  base = toInt(abs(n))\n  frac = abs(n) - base\n  correction = if frac < .5 then 0 else 1\n}\n\n------------------------------------------------------------------------------\n\nasin(n) = n.!getAsin\n\n------------------------------------------------------------------------------\n\nacos(n) = n.!getAcos\n\n------------------------------------------------------------------------------\n\natan(n) = n.!getAtan\n\n------------------------------------------------------------------------------\n-- https://en.wikipedia.org/wiki/Atan2#Definition_and_computation\n\natan2(y, x) = cond {\n  case x < 0  and y >= 0 atan(y / x) + pi \n  case x < 0  and y < 0  atan(y / x) - pi \n  case x == 0 and y > 0  pi / 2\n  case x == 0 and y < 0  -pi / 2\n  else                   atan(y / x)\n}\n\n------------------------------------------------------------------------------\n\nsin(n) = n.!getSin\n\n------------------------------------------------------------------------------\n\ncos(n) = n.!getCos\n\n------------------------------------------------------------------------------\n\ntan(n) = n.!getTan\n\n------------------------------------------------------------------------------\n\nln(n) = n.!getLn\n\n------------------------------------------------------------------------------\n\nlogBase(b, a) = ln(a) / ln(b)\n\n------------------------------------------------------------------------------\n-- pi, to as many digits as I could remember\n\npi = 3.14159265358979323846264338327950\n\n------------------------------------------------------------------------------\n-- e, to as many digits as I could remember\n\neuler = 2.71828\n\n------------------------------------------------------------------------------\n-- Get the absolute-value of a number \n\nabs(n) = if n < 0 then -n else n\n\n------------------------------------------------------------------------------\n-- pow(b, a) = a ** b\n\npow(b, a) = a ** b\n\n------------------------------------------------------------------------------\n-- mul(b, a) = a * b\n\nmul(b, a) = a * b\n\n------------------------------------------------------------------------------\n-- div(b, a) = a / b\n\ndiv(b, a) = a / b\n\n------------------------------------------------------------------------------\n-- mod(b, a) = a % b\n\nmod(b, a) = a % b\n\n------------------------------------------------------------------------------\n-- add(b, a) = b + a\n\nadd(b, a) = b + a\n\n------------------------------------------------------------------------------\n-- sub(b, a) = b - a\n\nsub(b, a) = b - a\n\n------------------------------------------------------------------------------\n-- Get the larger of two numbers\n\nmax(a, b) = if a > b then a else b\n\n------------------------------------------------------------------------------\n-- Get the smaller of two numbers\n\nmin(a, b) = if a < b then a else b\n\n------------------------------------------------------------------------------\n-- Get the smallest number in a non-empty collection\n\nminimum(values) =\n  values\n  |> toList\n  |> reduceFirst(min)\n\n------------------------------------------------------------------------------\n-- Get the largest number in a non-empty collection\n\nmaximum(values) =\n  values\n  |> toList\n  |> reduceFirst(max)\n\n------------------------------------------------------------------------------\n\nargmin(func, values) =\n  map(func, values)\n  |> zip(values)\n  |> reduceFirst((a, b) => if at(1, a) < at(1, b) then a else b)\n  |> at(0)\n\n------------------------------------------------------------------------------\n\nargmax(func, values) =\n  map(func, values)\n  |> zip(values)\n  |> reduceFirst((a, b) => if at(1, a) > at(1, b) then a else b)\n  |> at(0)\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/random.ptls", "\n------------------------------------------------------------------------------\n-- Get random float in 0 <= result <= n\n\nrandFloat(n) = IO.!getRand * n\n\n------------------------------------------------------------------------------\n-- Get random entry from range(a, b)\n\nrandRange(a, b) = randRangeUp(min(a, b), max(a, b))\n\nrandRangeUp(a, b) = floor(a + randFloat(b - a + 1))\n\n------------------------------------------------------------------------------\n-- Get random elem from collection\n\nrandChoice(elems) =\n  elems\n  |> toList\n  |> at(randRange(length(elems)))\n\n-------------------------------------------------------------------------------\n-- Shuffle an iterable of values\n-- https://www.rosettacode.org/wiki/Knuth_shuffle\n\nshuffle(iter) =\n  range(length(array) - 1, 1)\n  |> reverse\n  |> reduce(shuffleStep, array)\n  |> toList\n  where array = toArray(iter)\n\nshuffleStep(array, i) = array with {\n  $[i] = array[j]\n  $[j] = array[i]\n} where j = randRange(0, i)\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/set.ptls", "\n-------------------------------------------------------------------------------\n-- Convert a collection (a list, array, set, or tuple) to a set\n\ntoSet(collection) = reduce(addElem, Empty.!getSet, toList(collection))\n\n-------------------------------------------------------------------------------\n-- Add an element to a set\n\naddElem(set, elem) = set.!getAddElem(elem)\n\n-------------------------------------------------------------------------------\n-- Remove an element from a set\n\ndelElem(set, elem) = set.!getDelElem(elem)\n\n-------------------------------------------------------------------------------\n-- Get the union of two sets\n\nunion(a, b) =\n  toSet(toList(a) ++ toList(b))\n\n-------------------------------------------------------------------------------\n-- Get the intersection of two sets\n\nintersection(a, b) = toSet(interElems)\n  where interElems =\n    for elem in a\n    when elem in b\n    yield elem\n\n-------------------------------------------------------------------------------\n-- Get the difference of two sets\n\ndifference(a, b) = toSet(diffElems)\n  where diffElems =\n    for elem in a\n    when not (elem in b)\n    yield elem\n\n-------------------------------------------------------------------------------\n-- Get the symmetric difference of two sets\n\nsymDifference(a, b) = difference(union(a, b), intersection(a, b))\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/show.ptls", '\n-------------------------------------------------------------------------------\n-- Get the string rep of a value, keeping quotes if value is a string\n\nrepr(value) =\n  if is(PtlsString, value)\n  then "\\"" + value + "\\""\n  else show(value) \n\n-------------------------------------------------------------------------------\n-- Get the string representation of a value\n\nshow(value) = cond {\n  case is(PtlsNumber, value)  toString(value)\n  case is(PtlsString, value)  toString(value)\n  case is(PtlsBool, value)    toString(value)\n  case is(PtlsLabel, value)   toString(value)\n  case is(PtlsSet, value)     showSet(value)\n  case is(PtlsDict, value)    showDict(value)\n  case is(PtlsList, value)    showList(value)\n  case is(PtlsArray, value)   showArray(value)\n  case is(PtlsObject, value)  showObject(value)\n  case is(PtlsTuple, value)   showTuple(value)\n  case is(PtlsFunc, value)    "PtlsFunc"\n  case is(PtlsBuiltIn, value) "PtlsBuiltIn"\n}\n\n-------------------------------------------------------------------------------\n\nshowElems(start, end, sep, iter) =\n  start + elemStr + end\n  where elemStr = iter |> toList |> map(repr) |> join(sep)\n\n-------------------------------------------------------------------------------\n\nshowSet   = showElems("{", "}", ", ")\nshowList  = showElems("[", "]", ", ")\nshowArray = showElems("[", "]", " ")\n\n-------------------------------------------------------------------------------\n\ngetLabelStrTuple(value) =\n  if getLabel(value) == PtlsTuple then "" else show(getLabel(value))\n\nshowTuple(tuple) = \n  getLabelStrTuple(tuple) + showElems("(", ")", ", ", tuple)\n\n-------------------------------------------------------------------------------\n\nshowDict = showPairs(repr, format("{}: {}"), ", ")\n\n-------------------------------------------------------------------------------\n\ngetLabelStrObject(value) =\n  if getLabel(value) == PtlsObject then "" else show(getLabel(value)) + " "\n\nshowObject(object) = getLabelStrObject(object) + showDefs(object)\n\nshowDefs(object) =\n  object\n  |> toDict\n  |> showPairs(show, format("{} = {}"), "; ")\n\n-------------------------------------------------------------------------------\n\nshowPairs(keyFunc, pairFmt, sep, dict) = "{" + pairStr + "}"\n  where pairStr =\n    dict\n    |> items\n    |> map(reprPair(keyFunc))\n    |> map(pairFmt)\n    |> join(sep)\n\n-------------------------------------------------------------------------------\n\nreprPair(keyFunc, pair) = (keyFunc(a), repr(b)) where (a, b) = pair\n'], t1), H.setRuntimeTypeInfo(["pointless/prelude/sort.ptls", "\n-------------------------------------------------------------------------------\n-- Sort an iterable of numbers\n\nsort(iter) = sortList(toList(iter))\n\nsortList(list) = \n  if list == Empty then []\n  else sortList(left) ++ center ++ sortList(right)\n  where {\n    left   = filter(lessThan(pivot), list)\n    center = filter(eq(pivot), list)\n    right  = filter(greaterThan(pivot), list)\n    pivot  = randChoice(list)\n  }\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/string.ptls", '\n-------------------------------------------------------------------------------\n-- Convert a value to a string (works for number, bool, string, and label)\n\ntoString(value) = value.!getString\n\n-------------------------------------------------------------------------------\n-- Map a iterabel to strings, and join with a seperator string\n\njoin(sep, iter) =\n  iter\n  |> toList\n  |> map(show)\n  |> intersperse(sep)\n  |> concatStrings\n\n-- this could be optimized\nconcatStrings(strings) = reduce(add, "", strings)\n\n-------------------------------------------------------------------------------\n-- Return the list of substrings of a string, split by a delimiter\n\nsplit(delimStr, string) =\n  if delimStr == ""\n    then toList(string)\n\n  else splitChars("", delim, chars) where {\n    delim = toList(delimStr)\n    chars = toList(string)\n  }\n\n-------------------------------------------------------------------------------\n\nsplitChars(result, delim, chars) =\n  if isEmpty(chars)\n    then [result]\n\n  else if hasPrefix(delim, chars)\n    then [result] ++ splitChars("", delim, drop(length(delim), chars))\n\n  else splitChars(result + head(chars), delim, tail(chars))\n\n-------------------------------------------------------------------------------\n-- Left-pad a string with spaces to make its length >= n\n\npadLeft(n, string) = getPad(n, string) + string\n\ngetPad(n, string) =\n  repeat(" ")\n  |> take(n - length(string))\n  |> join("")\n\n-------------------------------------------------------------------------------\n-- Right-pad a string with spaces to make its length >= n\n\npadRight(n, string) = string + getPad(n, string)\n'], t1), H.setRuntimeTypeInfo(["pointless/prelude/tuple.ptls", "\n-------------------------------------------------------------------------------\n-- Convert an iterable to a tuple\n\n-- (can't go straight from list to tuple since interpreter can't easily eval list)\n\ntoTuple(iter) = toArray(iter).!getTuple\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/types.ptls", '\n-------------------------------------------------------------------------------\n-- Get a label representing the type of a value\n\ngetType(value) = value.!getType\n\n-------------------------------------------------------------------------------\n-- Does value have the type given by label\n\nhasType(label, value) = getType(value) == label\n\n-------------------------------------------------------------------------------\n-- Does value have the type given by label or is value a labelled tuple\n-- or object with a label matching label\n\nis(label, value) =\n  (hasType(label, value) or isLabelled and hasLabel(label, value)\n    where isLabelled =\n      hasType(PtlsLabel, value) or\n      hasType(PtlsTuple, value) or\n      hasType(PtlsObject, value))\n  requires hasType(PtlsLabel, label)\n\n-------------------------------------------------------------------------------\n\nnotIs(label, value) = not is(label, value)\n\n-------------------------------------------------------------------------------\n-- experimental\n-------------------------------------------------------------------------------\n-- Not working yet - circular definition issues\n\ncheckTypes(types, value) =\n  types\n  |> map(type => is(type, value))\n  |> any\n  |> (result => if result then true else throw TypeError(message))\n  where {\n    message  = format("Expected {}, got {} ({})", [expected, got, value])\n    expected = join(" or ", types)\n    got      = getType(value)\n  } requires is(PtlsList, types) and all(map(is(PtlsLabel), types))\n\n-------------------------------------------------------------------------------\n-- (doesn\'t call head() through checkTypes(), avoid infinite recursion)\n\ncheckType(type, value) =\n  if is(type, value) then true else throw TypeError(message)\n  where {\n    message = format("Expected {}, got {} ({})", [type, got, value])\n    got     = getType(value)\n  } requires is(PtlsLabel, type)\n'], t1)], H.findType("JSArray<List<String>>"));
+      return H.setRuntimeTypeInfo([H.setRuntimeTypeInfo(["pointless/prelude/exports.ptls", "\nexport {\n  assert,\n  toArray,\n  toNDArray,\n  lessEq,\n  lessThan,\n  greaterEq,\n  greaterThan,\n  notFunc,\n  notEq,\n  eq,\n  orFunc,\n  andFunc,\n  inFunc,\n  any,\n  all,\n  lowers,\n  uppers,\n  alphas,\n  digits,\n  alNums,\n  delKey,\n  toDict,\n  keys,\n  vals,\n  items,\n  getDefault,\n  format,\n  compose,\n  id,\n  const,\n  iterate,\n  print,\n  println,\n  printFrame,\n  printFrames,\n  printLines,\n  debug,\n  readLines,\n  randFloat,\n  randRange,\n  randChoice,\n  getIndex,\n  length,\n  hasPrefix,\n  getLabel,\n  hasLabel,\n  unwrap,\n  wrap,\n  wrapTuple,\n  wrapObject,\n  head,\n  tail,\n  at,\n  last,\n  slice,\n  concat,\n  concatMap,\n  intersperse,\n  repeat,\n  take,\n  drop,\n  takeWhile,\n  takeUntil,\n  dropWhile,\n  dropUntil,\n  find,\n  span,\n  groupBy,\n  map,\n  filter,\n  reduce,\n  reduceFirst,\n  scan,\n  reverse,\n  zip,\n  zipN,\n  eager,\n  isEmpty,\n  toList,\n  enumerate,\n  sum,\n  range,\n  toInt,\n  floor,\n  ceil,\n  toFloat,\n  round,\n  pi,\n  euler,\n  abs,\n  pow,\n  mul,\n  div,\n  mod,\n  add,\n  sub,\n  max,\n  min,\n  minimum,\n  maximum,\n  toSet,\n  addElem,\n  delElem,\n  union,\n  intersection,\n  difference,\n  symDifference,\n  repr,\n  show,\n  sort,\n  join,\n  concatStrings,\n  split,\n  toTuple,\n  getType,\n  hasType,\n  is,\n  shuffle,\n  product,\n  asin,\n  acos,\n  atan,\n  atan2,\n  sin,\n  cos,\n  tan,\n  ln,\n  logBase,\n  argmin,\n  argmax,\n  unwrapTuple,\n  unwrapObject,\n  zeroArray,\n  notIs,\n  deepEq,\n  deepNotEq,\n  count,\n}\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/array.ptls", '\n-------------------------------------------------------------------------------\n\nzeroArray(n) = PtlsArray.!getZeros(n)\n\n-------------------------------------------------------------------------------\n-- Convert a collection (a list, array, set, or tuple) to an array\n\ntoArray(collection) =\n  zeroArray(length(collection))\n  |> insert(0, toList(collection))\n\ninsert(index, list, array) =\n  if isEmpty(list) then array\n  else insert(index + 1, tail(list), newArray)\n  where newArray = array with $[index] = head(list)\n\n-------------------------------------------------------------------------------\n-- Make an N-dimensional array from the values in a list\n\ntoNDArray(dims, elems) =\n  head(wrappedArray)\n\n  requires assert(\n    reduceFirst(mul, dimsList) == length(elems),\n    format(\n      "invalid dinemsions {} for elems length {}",\n      [dims, length(elems)]\n    )\n  )\n\n  where {\n    dimsList = toList(dims)\n    wrappedArray = toNDHelper(dimsList, elems, length(dims))\n  }\n\n-------------------------------------------------------------------------------\n\ntoNDHelper(dimsList, elems, depth) =\n  if depth == 0 then elems\n  else chunks(head(dimsList), subArrays)\n  where {\n    subArrays = toNDHelper(tail(dimsList), elems, depth - 1)\n  }\n\n-------------------------------------------------------------------------------\n\nchunks(n, list) =\n  if isEmpty(list) then []\n  else [toArray(take(n, list))] ++ tailChunks\n  where tailChunks = chunks(n, drop(n, list))\n'], t1), H.setRuntimeTypeInfo(["pointless/prelude/boolean.ptls", "\n------------------------------------------------------------------------------\n-- lessEq(b, a) = a <= b\n\nlessEq(b, a) = a <= b\n\n------------------------------------------------------------------------------\n-- lessThan(b, a) = a < b\n\nlessThan(b, a) = a < b\n\n------------------------------------------------------------------------------\n-- greaterEq(b, a) = a >= b\n\ngreaterEq(b, a) = a >= b\n\n------------------------------------------------------------------------------\n-- greaterThan(b, a) = a > b\n\ngreaterThan(b, a) = a > b\n\n------------------------------------------------------------------------------\n-- notFunc(x) = not x\n\nnotFunc(x) = not x\n\n------------------------------------------------------------------------------\n-- notEq(a, b) = a != b\n\nnotEq(a, b) = a != b\n\n------------------------------------------------------------------------------\n-- eq(a, b) = a == b\n\neq(a, b) = a == b\n\n------------------------------------------------------------------------------\n-- orFunc(a, b) = a or b\n\norFunc(a, b) = a or b\n\n------------------------------------------------------------------------------\n-- andFunc(a, b) = a and b\n\nandFunc(a, b) = a and b\n\n------------------------------------------------------------------------------\n-- inFunc(b, a) = a in b\n\ninFunc(b, a) = a in b\n\n------------------------------------------------------------------------------\n-- Takes a list of boolean values, returns true if any list value is true\n\nany(values) =\n  values\n  |> toList\n  |> reduce(orFunc, false)\n\n------------------------------------------------------------------------------\n-- Takes a list of boolean values, returns true if all list values are true\n\nall(values) =\n  values\n  |> toList\n  |> reduce(andFunc, true)\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/chars.ptls", '\n-------------------------------------------------------------------------------\n-- lowers = toSet("abcdefghijklmnopqrstuvwxyz")\n\nlowers = toSet("abcdefghijklmnopqrstuvwxyz")\n\n-------------------------------------------------------------------------------\n-- uppers = toSet("ABCDEFGHIJKLMNOPQRSTUVWXYZ")\n\nuppers = toSet("ABCDEFGHIJKLMNOPQRSTUVWXYZ")\n\n-------------------------------------------------------------------------------\n-- Set of uppercase and lowercase letters\n\nalphas = union(lowers, uppers)\n\n-------------------------------------------------------------------------------\n-- digits = toSet("0123456789")\n\ndigits = toSet("0123456789")\n\n-------------------------------------------------------------------------------\n-- Set of uppercase and lowercase letters and digits 0 through 9\n\nalNums = union(alphas, digits)\n'], t1), H.setRuntimeTypeInfo(["pointless/prelude/dict.ptls", "\n-------------------------------------------------------------------------------\n-- Remove an entry from a dict\n\ndelKey(dict, key) = dict.!getDelKey(key)\n\n-------------------------------------------------------------------------------\n-- Convert an object to a dict of strings (field names) to values (field values)\n\ntoDict(object) = object.!getDict\n\n-------------------------------------------------------------------------------\n-- Get a list of the keys in a dict\n\nkeys(dict) = dict.!getKeys\n\n-------------------------------------------------------------------------------\n-- Get a list of the values in a dict\n\nvals(dict) = dict.!getVals\n\n-------------------------------------------------------------------------------\n-- Get (key, value) tuples for each entry in a dict\n\nitems(dict) = keys(dict) |> map(key => (key, dict[key])) \n\n-------------------------------------------------------------------------------\n-- Get value for a given key if present in dict, otherwise default\n\ngetDefault(dict, default, key) =\n  if key in dict then dict[key] else default\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/err.ptls", "\n------------------------------------------------------------------------------\n-- Throw AssertionError(message) if condition is not true\n\nassert(condition, message) =\n  if condition then true\n  else throw AssertionError(message)\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/format.ptls", '\n-------------------------------------------------------------------------------\n-- Use a format pattern to build a string with inserted values\n--\n-- example:\n--\n-- >> format("{} {}!", ["Hello", "world"])\n-- "Hello world!"\n-- \n-- example:\n--\n-- >> pairs  = [("dolor", 5), ("sit", 3), ("amet", 4)]\n-- >> output = pairs |> map(format("[{<5} {}]")) |> printLines\n-- [dolor 5]\n-- [sit   3]\n-- [amet  4]\n\nformat(fmtString, values) =\n  formatList(toList(fmtString), toList(values))\n  \n-------------------------------------------------------------------------------\n\nformatList(fmt, values) = cond {\n  -- return remaining format chars without value substitutions\n  case isEmpty(values) join("", fmt)\n\n  -- lead contains the rest of the format string if there\'s no new pattern\n  -- convert from char list back to string\n  case isEmpty(pat) join("", lead)\n\n  else join("", lead) + pattStr + formatList(rest, tail(values))\n    where pattStr = processPattern(pat, head(values))\n\n  } where (lead, pat, rest) = nextPat(fmt)\n\n-------------------------------------------------------------------------------\n\n-- Leading   trailing\n--         pattern rest\n-- ....... {.....} ....\n\nspanUntil(func, list) = (takeUntil(func, list), dropUntil(func, list))\n\nnextPat(fmt) = (leading, pattern, rest) where {\n  (leading, trailing) = span(notEq("{"), fmt)\n  (pattern, rest) = spanUntil(eq("}"), trailing)\n}\n\n-------------------------------------------------------------------------------\n\nprocessPattern(pat, value) = cond {\n  case at(1, pat) == ">"\n    show(value) |> padLeft(getPadding(pat))\n\n  case at(1, pat) == "<"\n    show(value) |> padRight(getPadding(pat))\n\n  else show(value)\n}\n\n-------------------------------------------------------------------------------\n\ngetPadding(pat) =\n  pat\n  |> slice(2, -1)\n  |> join("")\n  |> toInt\n'], t1), H.setRuntimeTypeInfo(["pointless/prelude/function.ptls", "\n-------------------------------------------------------------------------------\n-- compose(a, b) = x => b(a(x))\n\ncompose(a, b) = x => b(a(x))\n\n-------------------------------------------------------------------------------\n-- id(a) = a\n\nid(a) = a\n\n-------------------------------------------------------------------------------\n-- const(a, b) = a\n--\n-- example: length(list) = list |> map(const(1)) |> sum\n\nconst(a, b) = a\n\n-------------------------------------------------------------------------------\n-- Get an infinte list [init, func(init), func(func(init)) ...]\n\niterate(func, init) = [init] ++ iterate(func, func(init))\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/io.ptls", '\n------------------------------------------------------------------------------\n-- Generate command sequence to print the string rep for value\n\nprint(value) = [IOPrint(show(value))]\n\n------------------------------------------------------------------------------\n-- Generate command sequence to print value with a newline\n\nprintln(value) = print(show(value) + "\\n")\n\n------------------------------------------------------------------------------\n-- Print each element in a sequence on a separate line\n\nprintLines(iter) = iter |> toList |> concatMap(println)\n\n------------------------------------------------------------------------------\n-- Generate command sequence to clear console and print value with newline\n\nprintFrame(value) = [IOClearConsole] ++ println(value)\n\n------------------------------------------------------------------------------\n-- Print each element in a sequence in a separate frame\n\nprintFrames = concatMap(printFrame)\n\n------------------------------------------------------------------------------\n-- An identity function which logs its argument\n-- Useful for debugging\n\ndebug(value) = IO.!getDebug(value)\n\n------------------------------------------------------------------------------\n-- Read lines of input lazily\n\nreadLines = IO.!getLines\n'], t1), H.setRuntimeTypeInfo(["pointless/prelude/iter.ptls", "\n-------------------------------------------------------------------------------\n-- getIndex(lhs, rhs) = lhs[rhs]\n\ngetIndex(lhs, rhs) = lhs[rhs]\n\n-------------------------------------------------------------------------------\n-- Get the number of elements in a list, set, dict, array, or tuple\n\nlength(iter) = cond {\n  case isEmpty(iter) 0\n  case is(PtlsList, iter) lengthList(iter)\n  else iter.!getLength\n}\n\nlengthList(list) =\n  list\n  |> map(const(1))\n  |> sum\n\n-------------------------------------------------------------------------------\n-- Get the cartesian product of a list of iterables\n\nproduct(iters) = map(toList, iters) |> productLists |> map(toTuple)\n\nproductLists(lists) =\n  if isEmpty(lists) then [[]]\n  else\n    for tailProd in tailProds\n    for elem in head(lists)\n    yield [elem] ++ tailProd\n    where tailProds = productLists(tail(lists))\n\n-------------------------------------------------------------------------------\n-- Returns the nth element in a tuple, array, or list\n-- (must have at least n elements)\n\nat(n, iter) = cond {\n  case is(PtlsList, iter) iter |> drop(n) |> head\n  case is(PtlsTuple, iter) iter |> toList |> drop(n) |> head\n  case is(PtlsArray, iter) iter[n]\n}\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/label.ptls", "\n-------------------------------------------------------------------------------\n-- Get the label of a labelled tuple or object, or a label\n\n-- need hasType instead of is to avoid infinite recursion\n\ngetLabel(value) = cond {\n  case hasType(PtlsLabel, value) value\n  case hasType(PtlsTuple, value) value.!getLabel\n  case hasType(PtlsObject, value) value.!getLabel\n}\n\n-------------------------------------------------------------------------------\n-- Does a labelled tuple or object have the given labelled\n\nhasLabel(label, value) = getLabel(value) == label\n\n-------------------------------------------------------------------------------\n-- Get the single value in a single-value tuple\n\nunwrap(wrapped) = value where (value) = wrapped\n\n-------------------------------------------------------------------------------\n\nunwrapTuple(tuple) = wrapTuple(PtlsTuple, tuple)\n\n-------------------------------------------------------------------------------\n\nunwrapObject(object) = wrapObject(PtlsObject, object)\n\n-------------------------------------------------------------------------------\n-- Get a single-value tuple with the given label containing value\n-- Foo(123) is syntactic sugar for wrap(Foo, 123) \n\nwrap(label, value) = label.!getWrap(value)\n\n-------------------------------------------------------------------------------\n-- Given a tuple, return the tuple labelled with label\n-- Foo(1, 2, 3) is syntactic sugar for wrapTuple(Foo, (1, 2, 3)) \n\nwrapTuple(label, tuple) = label.!getWrapTuple(tuple)\n\n-------------------------------------------------------------------------------\n-- Given an object, return the object labelled with label\n-- Foo {value = 123} is syntactic sugar for wrapObject(Foo, {value = 123}) \n\nwrapObject(label, object) = label.!getWrapObject(object)\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/list.ptls", "\n-------------------------------------------------------------------------------\n-- Get the first element in a list\n\nhead(list) = list.!getHead\n\n-------------------------------------------------------------------------------\n-- Get all elements in a list after the first\n\ntail(list) = list.!getTail\n\n------------------------------------------------------------------------------\n-- Get the last element in a non-empty list\n\nlast(list) =\n  if isEmpty(tail(list))\n  then head(list)\n  else last(tail(list))\n\n------------------------------------------------------------------------------\n-- Get a sublist of indices [start ... (end - 1)]\n\nslice(start, end, list) =\n  slicePos(start, posEnd, list)\n  where\n    posEnd = if end > 0 then end else length(list) + end\n\nslicePos(start, end, list) =\n  list\n  |> drop(start)\n  |> take(end - start)\n\n-------------------------------------------------------------------------------\n-- Lazily concatenate a list of lists into a single list\n\nconcat(lists) = \n  if isEmpty(lists) then []\n  else head(lists) ++ concat(tail(lists))\n\n-------------------------------------------------------------------------------\n-- Map a list-generating function over a list and concatenate output lists\n\nconcatMap(func, lists) = lists |> map(func) |> concat\n\n-------------------------------------------------------------------------------\n-- Make a new list with sep element interted between each pervious element\n\nintersperse(sep, list) =\n  if isEmpty(list) then []\n  else [head(list)] ++ prependToAll(sep, tail(list))\n\nprependToAll(sep, list) =\n  if isEmpty(list) then []\n  else [sep, head(list)] ++ prependToAll(sep, tail(list))\n\n-------------------------------------------------------------------------------\n-- Make an infinite list of a value, repeated\n\nrepeat(elem) = [elem] ++ repeat(elem)\n\n-------------------------------------------------------------------------------\n-- Get the first n elements in an list, or the whole list of length < n\n\ntake(n, list) = \n  if n < 1 then []\n  else if isEmpty(list) then []\n  else [head(list)] ++ take(n - 1, tail(list))\n\n-------------------------------------------------------------------------------\n-- Get the elems after the first n elems in an list or empty if length < n\n\ndrop(n, list) = \n  if n < 1 then list\n  else if isEmpty(list) then []\n  else drop(n - 1, tail(list))\n\n-------------------------------------------------------------------------------\n-- Take from a list the leading elements for which func returns true\n\ntakeWhile(func, list) =\n  if isEmpty(list) then []\n\n  else if func(head(list))\n    then [head(list)] ++ takeWhile(func, tail(list))\n\n  else []\n\n-------------------------------------------------------------------------------\n-- Take elements up to (including) the first for which func returns true\n\ntakeUntil(func, list) =\n  if isEmpty(list) then []\n\n  else if func(head(list))\n    then [head(list)]\n\n  else [head(list)] ++ takeUntil(func, tail(list))\n\n-------------------------------------------------------------------------------\n-- Drop the leading elements for which func returns true\n\ndropWhile(func, list) =\n  drop(length(takeWhile(func, list)), list)\n\n-------------------------------------------------------------------------------\n-- Drop elements up to (including) the first for which func returns true\n\ndropUntil(func, list) =\n  drop(length(takeUntil(func, list)), list)\n\n-------------------------------------------------------------------------------\n-- Find the first element for which func return true, or None if none exists \n\nfind(func, list) =\n  if isEmpty(list) then None\n\n  else if func(head(list))\n    then head(list)\n\n  else find(func, tail(list))\n\n-------------------------------------------------------------------------------\n-- span(...) = (takewhile(...), dropWhile(...)) \n\nspan(func, list) = (head, tail)\n  where {\n    head = takeWhile(func, list)\n    tail = dropWhile(func, list)\n  }\n\n-------------------------------------------------------------------------------\n-- Return the list of lists of consecutive values for which func(a, b) == true\n\ngroupBy(func, list) =\n  if isEmpty(list) then []\n  else [groupList] ++ groupBy(func, spanTail)\n  where {\n    groupList = [[head(list)]] ++ spanHead\n    (spanHead, spanTail) = tail(list) |> span(func(head(list)))\n  }\n\n-------------------------------------------------------------------------------\n-- Get the reverse of list\n\nreverse(list) = reverseAcc([], list)\n\nreverseAcc(acc, list) =\n  if isEmpty(list) then acc\n  else reverseAcc([head(list)] ++ acc, tail(list))\n\n-------------------------------------------------------------------------------\n-- From two lists, get a list of tuple pairs of elems from each list in order \n--\n-- For lists [a0, a1, a2, ...], [b0, b1, b2, ...], return the list\n-- [(a0, b0), (a1, b1), (a2, b2) ...], with length limited by the length\n-- of the shorter input list\n\n-- alternively\n-- zip(a, b) = zipN([a, b]) -- shorter, but a lot slower\n\nzip(a, b) = cond {\n  case isEmpty(a) []\n  case isEmpty(b) []\n  else [pair] ++ zip(tail(a), tail(b))\n  where pair = (head(a), head(b))\n}\n\n-------------------------------------------------------------------------------\n-- Like zip, but for an arbitrary number of input lists\n\nzipN(lists) =\n  if any(map(isEmpty, lists)) then []\n  else [toTuple(map(head, lists))] ++ zipN(map(tail, lists))\n\n-------------------------------------------------------------------------------\n-- Evaluate each value in a list\n-- Useful for catching errors early\n\neager(list) = list |> reverse |> reverse\n\n-------------------------------------------------------------------------------\n-- isEmpty(list) = list == Empty\n\nisEmpty(list) = list == Empty\n\n-------------------------------------------------------------------------------\n-- Convert iter (a list, array, set, or tuple) to a list\n\ntoList(iter) =\n  if isEmpty(iter) then []\n  else iter.!getList\n\n-------------------------------------------------------------------------------\n-- For a list [a, b, c, ...] return [(0, a), (1, b), (2, c), ...]\n\nenumerate(list) =\n  list |> zip(nats) where nats = iterate(add(1), 0)\n\n-------------------------------------------------------------------------------\n-- Return true if list starts with the given prefix of elements\n\nhasPrefix(prefix, list) =\n  if isEmpty(prefix) then true\n  else if isEmpty(list) then false\n  else matchHead and matchTail\n  where {\n    matchHead = head(list) == head(prefix)\n    matchTail = hasPrefix(tail(prefix), tail(list))\n  }\n\n-------------------------------------------------------------------------------\n-- Apply a function to each list element, make a list of the results\n\nmap(func, list) =\n  if isEmpty(list) then []\n  else [func(head(list))] ++ map(func, tail(list))\n\n-------------------------------------------------------------------------------\n-- Apply a test to each list element, make new list of passing elements\n\nfilter(func, list) =\n  if isEmpty(list) then []\n\n  else if func(head(list))\n    then [head(list)] ++ filter(func, tail(list))\n\n  else filter(func, tail(list))\n\n-------------------------------------------------------------------------------\n-- Get a single value given a list, starting value, and accumulator function\n--\n-- Starting with accumulator value acc, update acc <- func(acc, elem)\n-- for each element elem in the list\n--\n-- example: sum(list) = reduce(0, add, list)\n\nreduce(func, acc, list) = \n  if isEmpty(list) then acc \n  else reduce(func, func(acc, head(list)), tail(list))\n\n-------------------------------------------------------------------------------\n-- Reduce a non-empty list with first element set as accumulator\n\nreduceFirst(func, list) = reduce(func, head(list), tail(list))\n\n-------------------------------------------------------------------------------\n-- Reduce a list with a given function and accumulator, returning a list of\n-- the intermediate accumulator values, including the initial value\n\nscan(func, acc, list) = \n  if isEmpty(list) then [] \n  else [acc] ++ scan(func, func(acc, head(list)), tail(list))\n\n-------------------------------------------------------------------------------\n\ncount(elem, list) =\n  list\n  |> filter(eq(elem))\n  |> length\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/numerical.ptls", "\n------------------------------------------------------------------------------\n-- Get the sum of a list of numbers\n\nsum(list) = reduce(add, 0, list)\n\n------------------------------------------------------------------------------\n-- Get a list of numbers:\n--   [a, a + 1, a + 2, ... b] if a < b\n--   [a, a - 1, a - 2, ... b] if a > b\n--   [a]                      if a == b\n\nrange(a, b) =\n  if a < b then minToMax else reverse(minToMax)\n  where minToMax = rangeUp(min(a, b), max(a, b))\n\nrangeUp(a, b) =\n  iterate(add(1), a)\n  |> takeWhile(lessEq(b))\n\n------------------------------------------------------------------------------\n-- Convert a number or a string to a float\n\ntoFloat(val) = val.!getFloat\n\n------------------------------------------------------------------------------\n-- Convert a number or a string to an integer (truncates floats)\n\ntoInt(val) = val.!getInt\n\n------------------------------------------------------------------------------\n-- Round number down\n\nfloor(n) =\n  if n > 0 then toInt(n)\n  else toInt(n - 1)\n\n------------------------------------------------------------------------------\n-- Round number up\n\nceil(n) = floor(n + 1)\n\n------------------------------------------------------------------------------\n-- Round a number to the nearest int value\n\nround(n) = sign * (base + correction) where {\n  sign = if n < 0 then -1 else 1\n  base = toInt(abs(n))\n  frac = abs(n) - base\n  correction = if frac < .5 then 0 else 1\n}\n\n------------------------------------------------------------------------------\n\nasin(n) = n.!getAsin\n\n------------------------------------------------------------------------------\n\nacos(n) = n.!getAcos\n\n------------------------------------------------------------------------------\n\natan(n) = n.!getAtan\n\n------------------------------------------------------------------------------\n-- https://en.wikipedia.org/wiki/Atan2#Definition_and_computation\n\natan2(y, x) = cond {\n  case x < 0  and y >= 0 atan(y / x) + pi \n  case x < 0  and y < 0  atan(y / x) - pi \n  case x == 0 and y > 0  pi / 2\n  case x == 0 and y < 0  -pi / 2\n  else                   atan(y / x)\n}\n\n------------------------------------------------------------------------------\n\nsin(n) = n.!getSin\n\n------------------------------------------------------------------------------\n\ncos(n) = n.!getCos\n\n------------------------------------------------------------------------------\n\ntan(n) = n.!getTan\n\n------------------------------------------------------------------------------\n\nln(n) = n.!getLn\n\n------------------------------------------------------------------------------\n\nlogBase(b, a) = ln(a) / ln(b)\n\n------------------------------------------------------------------------------\n-- pi, to as many digits as I could remember\n\npi = 3.14159265358979323846264338327950\n\n------------------------------------------------------------------------------\n-- e, to as many digits as I could remember\n\neuler = 2.71828\n\n------------------------------------------------------------------------------\n-- Get the absolute-value of a number \n\nabs(n) = if n < 0 then -n else n\n\n------------------------------------------------------------------------------\n-- pow(b, a) = a ** b\n\npow(b, a) = a ** b\n\n------------------------------------------------------------------------------\n-- mul(b, a) = a * b\n\nmul(b, a) = a * b\n\n------------------------------------------------------------------------------\n-- div(b, a) = a / b\n\ndiv(b, a) = a / b\n\n------------------------------------------------------------------------------\n-- mod(b, a) = a % b\n\nmod(b, a) = a % b\n\n------------------------------------------------------------------------------\n-- add(b, a) = b + a\n\nadd(b, a) = b + a\n\n------------------------------------------------------------------------------\n-- sub(b, a) = b - a\n\nsub(b, a) = b - a\n\n------------------------------------------------------------------------------\n-- Get the larger of two numbers\n\nmax(a, b) = if a > b then a else b\n\n------------------------------------------------------------------------------\n-- Get the smaller of two numbers\n\nmin(a, b) = if a < b then a else b\n\n------------------------------------------------------------------------------\n-- Get the smallest number in a non-empty collection\n\nminimum(values) =\n  values\n  |> toList\n  |> reduceFirst(min)\n\n------------------------------------------------------------------------------\n-- Get the largest number in a non-empty collection\n\nmaximum(values) =\n  values\n  |> toList\n  |> reduceFirst(max)\n\n------------------------------------------------------------------------------\n\nargmin(func, values) =\n  map(func, values)\n  |> zip(values)\n  |> reduceFirst((a, b) => if at(1, a) < at(1, b) then a else b)\n  |> at(0)\n\n------------------------------------------------------------------------------\n\nargmax(func, values) =\n  map(func, values)\n  |> zip(values)\n  |> reduceFirst((a, b) => if at(1, a) > at(1, b) then a else b)\n  |> at(0)\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/random.ptls", "\n------------------------------------------------------------------------------\n-- Get random float in 0 <= result <= n\n\nrandFloat(n) = IO.!getRand * n\n\n------------------------------------------------------------------------------\n-- Get random entry from range(a, b)\n\nrandRange(a, b) = randRangeUp(min(a, b), max(a, b))\n\nrandRangeUp(a, b) = floor(a + randFloat(b - a + 1))\n\n------------------------------------------------------------------------------\n-- Get random elem from collection\n\nrandChoice(elems) =\n  elems\n  |> toList\n  |> at(randRange(length(elems)))\n\n-------------------------------------------------------------------------------\n-- Shuffle an iterable of values\n-- https://www.rosettacode.org/wiki/Knuth_shuffle\n\nshuffle(iter) =\n  range(length(array) - 1, 1)\n  |> reverse\n  |> reduce(shuffleStep, array)\n  |> toList\n  where array = toArray(iter)\n\nshuffleStep(array, i) = array with {\n  $[i] = array[j]\n  $[j] = array[i]\n} where j = randRange(0, i)\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/set.ptls", "\n-------------------------------------------------------------------------------\n-- Convert a collection (a list, array, set, or tuple) to a set\n\ntoSet(collection) = reduce(addElem, Empty.!getSet, toList(collection))\n\n-------------------------------------------------------------------------------\n-- Add an element to a set\n\naddElem(set, elem) = set.!getAddElem(elem)\n\n-------------------------------------------------------------------------------\n-- Remove an element from a set\n\ndelElem(set, elem) = set.!getDelElem(elem)\n\n-------------------------------------------------------------------------------\n-- Get the union of two sets\n\nunion(a, b) =\n  toSet(toList(a) ++ toList(b))\n\n-------------------------------------------------------------------------------\n-- Get the intersection of two sets\n\nintersection(a, b) = toSet(interElems)\n  where interElems =\n    for elem in a\n    when elem in b\n    yield elem\n\n-------------------------------------------------------------------------------\n-- Get the difference of two sets\n\ndifference(a, b) = toSet(diffElems)\n  where diffElems =\n    for elem in a\n    when not (elem in b)\n    yield elem\n\n-------------------------------------------------------------------------------\n-- Get the symmetric difference of two sets\n\nsymDifference(a, b) = difference(union(a, b), intersection(a, b))\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/show.ptls", '\n-------------------------------------------------------------------------------\n-- Get the string rep of a value, keeping quotes if value is a string\n\nrepr(value) =\n  if is(PtlsString, value)\n  then "\\"" + value + "\\""\n  else show(value) \n\n-------------------------------------------------------------------------------\n-- Get the string representation of a value\n\nshow(value) = cond {\n  case is(Empty, value)       "[]" -- special case for empty list\n  case is(PtlsNumber, value)  toString(value)\n  case is(PtlsString, value)  toString(value)\n  case is(PtlsBool, value)    toString(value)\n  case is(PtlsLabel, value)   toString(value)\n  case is(PtlsSet, value)     showSet(value)\n  case is(PtlsDict, value)    showDict(value)\n  case is(PtlsList, value)    showList(value)\n  case is(PtlsArray, value)   showArray(value)\n  case is(PtlsObject, value)  showObject(value)\n  case is(PtlsTuple, value)   showTuple(value)\n  case is(PtlsFunc, value)    "PtlsFunc"\n  case is(PtlsBuiltIn, value) "PtlsBuiltIn"\n}\n\n-------------------------------------------------------------------------------\n\nshowElems(start, end, sep, iter) =\n  start + elemStr + end\n  where elemStr = iter |> toList |> map(repr) |> join(sep)\n\n-------------------------------------------------------------------------------\n\nshowSet   = showElems("{", "}", ", ")\nshowList  = showElems("[", "]", ", ")\nshowArray = showElems("[", "]", " ")\n\n-------------------------------------------------------------------------------\n\ngetLabelStrTuple(value) =\n  if getLabel(value) == PtlsTuple then "" else show(getLabel(value))\n\nshowTuple(tuple) = \n  getLabelStrTuple(tuple) + showElems("(", ")", ", ", tuple)\n\n-------------------------------------------------------------------------------\n\nshowDict = showPairs(repr, format("{}: {}"), ", ")\n\n-------------------------------------------------------------------------------\n\ngetLabelStrObject(value) =\n  if getLabel(value) == PtlsObject then "" else show(getLabel(value)) + " "\n\nshowObject(object) = getLabelStrObject(object) + showDefs(object)\n\nshowDefs(object) =\n  object\n  |> toDict\n  |> showPairs(show, format("{} = {}"), "; ")\n\n-------------------------------------------------------------------------------\n\nshowPairs(keyFunc, pairFmt, sep, dict) = "{" + pairStr + "}"\n  where pairStr =\n    dict\n    |> items\n    |> map(reprPair(keyFunc))\n    |> map(pairFmt)\n    |> join(sep)\n\n-------------------------------------------------------------------------------\n\nreprPair(keyFunc, pair) = (keyFunc(a), repr(b)) where (a, b) = pair\n'], t1), H.setRuntimeTypeInfo(["pointless/prelude/sort.ptls", "\n-------------------------------------------------------------------------------\n-- Sort an iterable of numbers\n\nsort(iter) = sortList(toList(iter))\n\nsortList(list) = \n  if list == Empty then []\n  else sortList(left) ++ center ++ sortList(right)\n  where {\n    left   = filter(lessThan(pivot), list)\n    center = filter(eq(pivot), list)\n    right  = filter(greaterThan(pivot), list)\n    pivot  = randChoice(list)\n  }\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/string.ptls", '\n-------------------------------------------------------------------------------\n-- Convert a value to a string (works for number, bool, string, and label)\n\ntoString(value) = value.!getString\n\n-------------------------------------------------------------------------------\n-- Map a iterabel to strings, and join with a seperator string\n\njoin(sep, iter) =\n  iter\n  |> toList\n  |> map(show)\n  |> intersperse(sep)\n  |> concatStrings\n\n-- this could be optimized\nconcatStrings(strings) = reduce(add, "", strings)\n\n-------------------------------------------------------------------------------\n-- Return the list of substrings of a string, split by a delimiter\n\nsplit(delimStr, string) =\n  if delimStr == ""\n    then toList(string)\n\n  else splitChars("", delim, chars) where {\n    delim = toList(delimStr)\n    chars = toList(string)\n  }\n\n-------------------------------------------------------------------------------\n\nsplitChars(result, delim, chars) =\n  if isEmpty(chars)\n    then [result]\n\n  else if hasPrefix(delim, chars)\n    then [result] ++ splitChars("", delim, drop(length(delim), chars))\n\n  else splitChars(result + head(chars), delim, tail(chars))\n\n-------------------------------------------------------------------------------\n-- Left-pad a string with spaces to make its length >= n\n\npadLeft(n, string) = getPad(n, string) + string\n\ngetPad(n, string) =\n  repeat(" ")\n  |> take(n - length(string))\n  |> join("")\n\n-------------------------------------------------------------------------------\n-- Right-pad a string with spaces to make its length >= n\n\npadRight(n, string) = string + getPad(n, string)\n'], t1), H.setRuntimeTypeInfo(["pointless/prelude/tuple.ptls", "\n-------------------------------------------------------------------------------\n-- Convert an iterable to a tuple\n\n-- (can't go straight from list to tuple since interpreter can't easily eval list)\n\ntoTuple(iter) = toArray(iter).!getTuple\n"], t1), H.setRuntimeTypeInfo(["pointless/prelude/types.ptls", '\n-------------------------------------------------------------------------------\n-- Get a label representing the type of a value\n\ngetType(value) = value.!getType\n\n-------------------------------------------------------------------------------\n-- Does value have the type given by label\n\nhasType(label, value) = getType(value) == label\n\n-------------------------------------------------------------------------------\n-- Does value have the type given by label or is value a labelled tuple\n-- or object with a label matching label\n\nis(label, value) =\n  (hasType(label, value) or isLabelled and hasLabel(label, value)\n    where isLabelled =\n      hasType(PtlsLabel, value) or\n      hasType(PtlsTuple, value) or\n      hasType(PtlsObject, value))\n  requires hasType(PtlsLabel, label)\n\n-------------------------------------------------------------------------------\n\nnotIs(label, value) = not is(label, value)\n\n-------------------------------------------------------------------------------\n-- experimental\n-------------------------------------------------------------------------------\n-- Not working yet - circular definition issues\n\ncheckTypes(types, value) =\n  types\n  |> map(type => is(type, value))\n  |> any\n  |> (result => if result then true else throw TypeError(message))\n  where {\n    message  = format("Expected {}, got {} ({})", [expected, got, value])\n    expected = join(" or ", types)\n    got      = getType(value)\n  } requires is(PtlsList, types) and all(map(is(PtlsLabel), types))\n\n-------------------------------------------------------------------------------\n-- (doesn\'t call head() through checkTypes(), avoid infinite recursion)\n\ncheckType(type, value) =\n  if is(type, value) then true else throw TypeError(message)\n  where {\n    message = format("Expected {}, got {} ({})", [type, got, value])\n    got     = getType(value)\n  } requires is(PtlsLabel, type)\n'], t1)], H.findType("JSArray<List<String>>"));
     }();
   })();
   (function lazyInitializers() {
