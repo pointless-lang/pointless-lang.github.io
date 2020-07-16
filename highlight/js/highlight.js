@@ -53,7 +53,7 @@ $(".highlight").forEach((elem) => {
     return;
   }
 
-  let b = H("textarea", {spellcheck: false})(initText);
+  let b = H("textarea", {spellcheck: false, autofocus: true})(initText);
   elem.appendChild(b);
 
   let storeid = elem.dataset.storeid;
