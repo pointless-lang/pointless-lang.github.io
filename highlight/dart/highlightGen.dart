@@ -32,9 +32,6 @@ String highlight(String chars) {
     } else if (token.tokType == Tok.Neg) {
       color = "#F97B58";
 
-    } else if (token.tokType == Tok.Label) {
-      color = "#c594c5";
-
     } else if (token.tokType == Tok.Number) {
       color = "#F9AE58";
 
