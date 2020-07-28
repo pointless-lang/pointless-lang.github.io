@@ -1262,7 +1262,7 @@ output =
     |> eager
     |> printLines
 
-  catch const(TokenizerError)
+  catch is(TokenizerError)
     err => println(unwrap(err))</pre>
 
         <pre class="result">$ cat examples/tokenizer/tokenizer.ptls | bin/pointless examples/tokenizer/tokenizer.ptls 
