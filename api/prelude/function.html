@@ -35,6 +35,17 @@ example: length(list) = list |> map(const(1)) |> sum
 <a href='#iterate' class='anchor'>link</a>
 <pre class='doc'>Get an infinte list [init, func(init), func(func(init)) ...]
 </pre>
+<hr>
+<strong id='apply'>apply(args, func)</strong>
+<a href='#apply' class='anchor'>link</a>
+<pre class='doc'>call a function with the values in a given list as arguments
+</pre>
+<hr>
+<strong id='composeAll'>composeAll(funcs)</strong>
+<a href='#composeAll' class='anchor'>link</a>
+<pre class='doc'>compose a list of functions
+example: composeAll([a, b, c]) = x => x |> a |> b |> c
+</pre>
     </main>
   </body>
 </html>
