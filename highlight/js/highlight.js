@@ -40,15 +40,14 @@ $(".highlight").forEach((elem) => {
   elem.appendChild(a);
 
   if (elem.dataset.edit === undefined) {
-    let b = H("code", {spellcheck: false})(initText);
-    elem.appendChild(b);
+    a.style.position = "static";
 
     try {
-      a.innerHTML = highlight(b.innerText);
+      a.innerHTML = highlight(initText);
 
     } catch (err) {
       console.log(err.message);
-      a.innerHTML = b.innerText;
+      a.innerHTML = initText;
     }
     return;
   }
