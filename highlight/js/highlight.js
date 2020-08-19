@@ -41,6 +41,7 @@ $(".highlight").forEach((elem) => {
 
   if (elem.dataset.edit === undefined) {
     a.style.position = "static";
+    a.style.userSelect = "auto";
 
     try {
       a.innerHTML = highlight(initText);
