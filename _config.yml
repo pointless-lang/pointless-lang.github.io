@@ -4,3 +4,7 @@ description: >
   Pointless: A Scripting Language for Learning and Fun
 # Build settings
 markdown: kramdown
+
+kramdown:
+  smart_quotes: ["apos", "apos", "quot", "quot"]
+  
