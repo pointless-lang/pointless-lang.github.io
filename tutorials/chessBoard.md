@@ -20,7 +20,7 @@ description: >-
   .board {
     margin: 10px 0px;
     font-family: "merida";
-    font-size: 50px;
+    font-size: 40px;
     line-height: 1.0;
     border: 1px solid #ccc;
     display: inline-block;
@@ -367,7 +367,7 @@ styles = """&lt;style&gt;
 
   .board {
     font-family: "merida";
-    font-size: 50px;
+    font-size: 40px;
     border: 1px solid #ccc;
     display: inline-block;
     padding: 3px;
@@ -403,7 +403,7 @@ $ ./bin/pointless render.ptls
 
   .board {
     font-family: &quot;merida&quot;;
-    font-size: 50px;
+    font-size: 40px;
     border: 1px solid #ccc;
     display: inline-block;
     padding: 3px;
@@ -544,7 +544,7 @@ styles = """&lt;style&gt;
 
   .board {
     font-family: "merida";
-    font-size: 50px;
+    font-size: 40px;
     border: 1px solid #ccc;
     display: inline-block;
     padding: 3px;
