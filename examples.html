@@ -30,6 +30,9 @@ A handful of example programs demonstrating various features of Pointless. Some 
     <a href="#echoLines">Echo Lines</a>
   </li>
   <li>
+    <a href="#FEN-to-HTML">FEN to HTML</a>
+  </li>
+  <li>
     <a href="#guess">Number Guessing</a>
   </li>
   <li>
@@ -306,6 +309,155 @@ output =
  20:   "click here to learn all of ES6 in 20 seconds!
  21:   http://obliterating.the.coding.interview.io/"</pre>
       </div>
+
+      <hr>
+
+      <div class="exampleTitle">
+        <span id="FEN-to-HTML"><a href="#FEN-to-HTML">FEN to HTML</a></span>
+        <a href="https://github.com/pointless-lang/pointless/tree/master/examples/FEN-to-HTML/">
+          (source)
+        </a>
+      </div>
+
+      <div class="sample">
+        <pre class="fileName">render.ptls</pre>
+
+        <pre class="highlight">
+fen = "1Q6/5pk1/2p3p1/1p2N2p/1b5P/1bn5/2r3P1/2K5"
+
+output =
+  fen
+  |> showBoard
+  |> renderHTML
+  |> println
+
+------------------------------------------------------------------------------
+
+showBoard(fen) =
+  fen
+  |> split("/")
+  |> map(expandRow)
+  |> join("\n")
+
+------------------------------------------------------------------------------
+
+expandRow(row) =
+  row
+  |> toList
+  |> map(expandChar)
+  |> join("")
+
+expandChar(char) =
+  getDefault(spaceDict, char, char)
+
+spaceDict = {
+  "8": "        ",
+  "7": "       ",
+  "6": "      ",
+  "5": "     ",
+  "4": "    ",
+  "3": "   ",
+  "2": "  ",
+  "1": " ",
+}
+
+------------------------------------------------------------------------------
+
+colors =
+  [Light, Dark] |> repeat |> concat
+
+renderHTML(boardStr) =
+  boardStr
+  |> toList
+  |> zip(colors)
+  |> map(getIndex(renderSyms))
+  |> join("")
+  |> formatTemplate
+
+------------------------------------------------------------------------------
+
+renderSyms = {
+  (Dark,  "R" ): "",
+  (Dark,  "r" ): "",
+  (Dark,  "N" ): "",
+  (Dark,  "n" ): "",
+  (Dark,  "B" ): "",
+  (Dark,  "b" ): "",
+  (Dark,  "Q" ): "",
+  (Dark,  "q" ): "",
+  (Dark,  "K" ): "",
+  (Dark,  "k" ): "",
+  (Dark,  "P" ): "",
+  (Dark,  "p" ): "",
+  (Dark,  " " ): "",
+  (Dark,  "\n"): "\n",
+  (Light, "R" ): "♖",
+  (Light, "r" ): "♜",
+  (Light, "N" ): "♘",
+  (Light, "n" ): "♞",
+  (Light, "B" ): "♗",
+  (Light, "b" ): "♝",
+  (Light, "Q" ): "♕",
+  (Light, "q" ): "♛",
+  (Light, "K" ): "♔",
+  (Light, "k" ): "♚",
+  (Light, "P" ): "♙",
+  (Light, "p" ): "♟︎",
+  (Light, " " ): " ",
+  (Light, "\n"): "\n",
+}
+
+------------------------------------------------------------------------------
+
+styles = """&lt;style&gt;
+  @font-face {
+    font-family: "merida";
+    src: url("merida.woff2") format("woff2");
+  }
+
+  .board {
+    font-family: "merida";
+    font-size: 50px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 3px;
+  }
+&lt;/style&gt;
+"""
+
+formatTemplate(boardChars) =
+  format("{}\n&lt;pre class='board'&gt;{}&lt;/pre&gt;", [styles, boardChars])
+</pre>
+      </div>
+
+<pre>Rendered result:</pre>
+
+<style>
+  @font-face {
+    font-family: "merida";
+    src: url("../tutorials/merida.woff2") format("woff2");
+  }
+
+  .board {
+    margin: 10px 0px;
+    font-family: "merida";
+    font-size: 50px;
+    line-height: 1.0;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 3px;
+  }
+</style>
+<pre class="board">
+    
+  ♟︎ 
+ ♟︎ ♟︎
+♟︎  ♟︎
+    
+♝   
+ ♜ ♙
+    
+</pre>
 
       <hr>
 
