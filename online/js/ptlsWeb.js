@@ -5621,6 +5621,11 @@
     },
     _JsArray_JsObject_ListMixin: function _JsArray_JsObject_ListMixin() {
     },
+    pow: function(x, exponent) {
+      H.checkNum(x);
+      H.checkNum(exponent);
+      return Math.pow(x, exponent);
+    },
     _JSRandom: function _JSRandom() {
     },
     _RectangleBase: function _RectangleBase() {
@@ -6596,7 +6601,7 @@
       }
     },
     handleBinaryOp: function(env, op, lhsNode, rhsNode) {
-      var lhs, t1, t2, rhs, t3, error;
+      var lhs, t1, t2, rhs, t3, error, t4;
       switch (op) {
         case C.Tok_12:
           lhs = A.$eval(env, lhsNode).checkIsList$0();
@@ -6659,13 +6664,19 @@
           lhs = A.$eval(env, lhsNode).checkType$1(t2);
           if (lhs instanceof S.PtlsNumber) {
             t1 = H.setRuntimeTypeInfo([C.Type_PtlsNumber_2Vr], t1);
-            t2 = lhs.value;
-            t1 = type$.legacy_PtlsNumber._as(A.$eval(env, rhsNode).checkType$1(t1)).value;
+            rhs = type$.legacy_PtlsNumber._as(A.$eval(env, rhsNode).checkType$1(t1));
+            t1 = lhs.value;
+            t1.toString;
+            t2 = rhs.value;
             if (typeof t2 !== "number")
-              return t2.$add();
+              return H.iae(t2);
+            t2 = t1 + t2;
+            t1 = $.$get$limit();
             if (typeof t1 !== "number")
               return H.iae(t1);
-            return new S.PtlsNumber(t2 + t1);
+            if (Math.abs(t2) > t1)
+              return new S.PtlsNumber(t2);
+            return new S.PtlsNumber(t2);
           }
           t1 = H.setRuntimeTypeInfo([C.Type_PtlsString_yq7], t1);
           t2 = type$.legacy_PtlsString;
@@ -6677,26 +6688,38 @@
           t3 = type$.legacy_PtlsNumber;
           lhs = t3._as(A.$eval(env, lhsNode).checkType$1(t2));
           t1 = H.setRuntimeTypeInfo([C.Type_PtlsNumber_2Vr], t1);
-          t2 = lhs.value;
-          t1 = t3._as(A.$eval(env, rhsNode).checkType$1(t1)).value;
+          rhs = t3._as(A.$eval(env, rhsNode).checkType$1(t1));
+          t1 = lhs.value;
+          t1.toString;
+          t2 = rhs.value;
           if (typeof t2 !== "number")
-            return t2.$sub();
+            return H.iae(t2);
+          t2 = t1 - t2;
+          t1 = $.$get$limit();
           if (typeof t1 !== "number")
             return H.iae(t1);
-          return new S.PtlsNumber(t2 - t1);
+          if (Math.abs(t2) > t1)
+            return new S.PtlsNumber(t2);
+          return new S.PtlsNumber(t2);
         case C.Tok_37:
           t1 = type$.JSArray_legacy_Type;
           t2 = H.setRuntimeTypeInfo([C.Type_PtlsNumber_2Vr], t1);
           t3 = type$.legacy_PtlsNumber;
           lhs = t3._as(A.$eval(env, lhsNode).checkType$1(t2));
           t1 = H.setRuntimeTypeInfo([C.Type_PtlsNumber_2Vr], t1);
-          t2 = lhs.value;
-          t1 = t3._as(A.$eval(env, rhsNode).checkType$1(t1)).value;
+          rhs = t3._as(A.$eval(env, rhsNode).checkType$1(t1));
+          t1 = lhs.value;
+          t1.toString;
+          t2 = rhs.value;
           if (typeof t2 !== "number")
-            return t2.$mul();
+            return H.iae(t2);
+          t2 = t1 * t2;
+          t1 = $.$get$limit();
           if (typeof t1 !== "number")
             return H.iae(t1);
-          return new S.PtlsNumber(t2 * t1);
+          if (Math.abs(t2) > t1)
+            return new S.PtlsNumber(t2);
+          return new S.PtlsNumber(t2);
         case C.Tok_14:
           t1 = type$.JSArray_legacy_Type;
           t2 = H.setRuntimeTypeInfo([C.Type_PtlsNumber_2Vr], t1);
@@ -6734,11 +6757,21 @@
           t3 = type$.legacy_PtlsNumber;
           lhs = t3._as(A.$eval(env, lhsNode).checkType$1(t2));
           t1 = H.setRuntimeTypeInfo([C.Type_PtlsNumber_2Vr], t1);
-          t2 = lhs.value;
-          t1 = t3._as(A.$eval(env, rhsNode).checkType$1(t1)).value;
+          rhs = t3._as(A.$eval(env, rhsNode).checkType$1(t1));
+          t1 = lhs.value;
+          t1.toString;
+          t2 = rhs.value;
           H.checkNum(t2);
-          H.checkNum(t1);
-          return new S.PtlsNumber(Math.pow(t2, t1));
+          t3 = Math.pow(t1, t2);
+          t4 = $.$get$limit();
+          if (typeof t4 !== "number")
+            return H.iae(t4);
+          if (Math.abs(t3) > t4) {
+            H.checkNum(t2);
+            return new S.PtlsNumber(Math.pow(t1, t2));
+          }
+          H.checkNum(t2);
+          return new S.PtlsNumber(Math.pow(t1, t2));
         default:
           throw H.wrapException(false);
       }
@@ -18075,6 +18108,9 @@
     });
     _lazy($, "Style_platform", "$get$Style_platform", function() {
       return O.Style__getPlatformStyle();
+    });
+    _lazy($, "limit", "$get$limit", function() {
+      return P.pow(2, 62);
     });
     _lazy($, "PtlsLabel_debugHandler", "$get$PtlsLabel_debugHandler", function() {
       return new R.PtlsLabel_closure();
