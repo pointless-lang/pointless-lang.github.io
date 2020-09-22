@@ -16223,17 +16223,7 @@
       return L.PtlsValue_hashCodeIter(this.toList$0(0));
     },
     toString$0: function(_) {
-      var list, t1,
-        memberStrs = H.setRuntimeTypeInfo([], type$.JSArray_legacy_String);
-      for (list = this; list instanceof X.PtlsList;) {
-        t1 = list.headThunk.value;
-        t1 = t1 == null ? null : t1.toString$0(0);
-        C.JSArray_methods.add$1(memberStrs, t1 == null ? "?" : t1);
-        list = list.tailThunk.value;
-      }
-      if (list == null)
-        C.JSArray_methods.add$1(memberStrs, "...");
-      return "[" + C.JSArray_methods.join$1(memberStrs, ", ") + "]";
+      return H.S(this.toList$0(0));
     }
   };
   X.PtlsList_concat_closure.prototype = {
@@ -16369,10 +16359,16 @@
       return L.PtlsValue_hashCodeMap(t1);
     },
     toString$0: function(_) {
-      var _this = this;
-      if (J.$eq$(_this.label, $.$get$PtlsObject_defaultLabel()))
-        return _this.env.defs.toString$0(0);
-      return H.S(_this.label) + " " + _this.env.defs.toString$0(0);
+      var t2, t3, t4, defStr,
+        t1 = H.setRuntimeTypeInfo([], type$.JSArray_legacy_String);
+      for (t2 = this.env, t3 = t2.defs, t3 = new H.LinkedHashMapKeyIterable(t3, H._instanceType(t3)._eval$1("LinkedHashMapKeyIterable<1>")), t3 = t3.get$iterator(t3); t3.moveNext$0();) {
+        t4 = t3.__js_helper$_current;
+        C.JSArray_methods.add$1(t1, H.S(t4) + " = " + H.S(t2.defs.$index(0, t4).getValue$0()));
+      }
+      defStr = C.JSArray_methods.join$1(t1, "; ");
+      if (J.$eq$(this.label, $.$get$PtlsObject_defaultLabel()))
+        return "{" + defStr + "}";
+      return H.S(this.label) + " {" + defStr + "}";
     }
   };
   D.PtlsSet.prototype = {
@@ -16631,9 +16627,7 @@
       return _this.value;
     },
     toString$0: function(_) {
-      var t1 = this.value;
-      t1 = t1 == null ? null : t1.toString$0(0);
-      return t1 == null ? "?" : t1;
+      return J.toString$0$(this.getValue$0());
     }
   };
   L.Token.prototype = {
