@@ -1,7 +1,0 @@
-.git
-.dart_tool
-.gitmodules
-.packages
-pubspec.lock
-_site
-.jekyll-cache
