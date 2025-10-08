@@ -1,12 +1,11 @@
 {
-  "name": "pointless",
-  "version": "0.2.0",
+  "name": "pointless-lang.github.io",
+  "version": "1.0.0",
   "type": "module",
-  "main": "ptls.js",
   "scripts": {
-    "build": "node --watch-path=. site/build-scripts/build.js",
-    "fmt": "deno fmt; node utils/formatStd.js",
-    "lint": "deno lint; stylelint site/static/css/* notebook/*.css",
+    "build": "node --watch-path=. build-scripts/build.js",
+    "fmt": "deno fmt",
+    "lint": "deno lint; stylelint static/css/*",
     "serve": "serve --config site/serve.json"
   },
   "devDependencies": {
@@ -26,10 +25,5 @@
       "font-family-name-quotes": null,
       "no-descending-specificity": null
     }
-  },
-  "dependencies": {
-    "immutable": "file:./immutable/immutable.js",
-    "sharp": "^0.34.4",
-    "ws": "^8.18.3"
   }
 }

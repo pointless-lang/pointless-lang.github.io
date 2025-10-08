@@ -1,4 +1,0 @@
-prompt("Degrees C: ")
-  | parse
-  | arg * 9 / 5 + 32
-  | print("Degrees F: $arg")

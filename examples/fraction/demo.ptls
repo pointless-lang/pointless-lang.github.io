@@ -1,7 +1,0 @@
-fract = import "fraction.ptls"
-
-f = fract.new(5, 9)
-f |= fract.mul(fract.new(3, 4))
-f |= fract.add(fract.new(1, 2))
-
-print(fract.show(f))
