@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "node --watch-path=. build-scripts/build.js",
-    "fmt": "deno fmt",
+    "fmt": "deno fmt --ignore=docs",
     "lint": "deno lint; stylelint static/css/*",
     "serve": "serve --config serve.json"
   },

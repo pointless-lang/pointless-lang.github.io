@@ -55,8 +55,7 @@
           </li>
           <li>
             <a href="#dont-concatenate-to-update">
-              Don&#39;t Concatenate to Update</a
-            >
+              Don&#39;t Concatenate to Update</a>
           </li>
           <li><a href="#omit-string-key-quotes"> Omit String Key Quotes</a></li>
           <li><a href="#use-identifier-keys"> Use Identifier Keys</a></li>
@@ -64,8 +63,7 @@
           <li><a href="#use-dot-syntax"> Use Dot Syntax</a></li>
           <li>
             <a href="#dont-use-lists-as-tables">
-              Don&#39;t Use Lists as Tables</a
-            >
+              Don&#39;t Use Lists as Tables</a>
           </li>
           <li><a href="#use-row-lookups"> Use Row Lookups</a></li>
           <li><a href="#use-column-operations"> Use Column Operations</a></li>
@@ -88,8 +86,7 @@
           <li><a href="#use-raw-strings"> Use Raw Strings</a></li>
           <li>
             <a href="#minimize-raw-string-escapes">
-              Minimize Raw String Escapes</a
-            >
+              Minimize Raw String Escapes</a>
           </li>
           <li><a href="#use-multi-line-strings"> Use Multi-Line Strings</a></li>
           <li>
@@ -113,8 +110,7 @@
           <li><a href="#use-pipelines"> Use Pipelines</a></li>
           <li>
             <a href="#use-map-and-filter-operators">
-              Use Map and Filter Operators</a
-            >
+              Use Map and Filter Operators</a>
           </li>
           <li><a href="#omit-pipe-parentheses"> Omit Pipe Parentheses</a></li>
           <li>
@@ -124,8 +120,7 @@
           <li><a href="#omit-initial-arg"> Omit Initial Arg</a></li>
           <li>
             <a href="#put-primary-parameter-first">
-              Put Primary Parameter First</a
-            >
+              Put Primary Parameter First</a>
           </li>
           <li><a href="#write-pure-functions"> Write Pure Functions</a></li>
           <li>
@@ -141,8 +136,7 @@
           <li><a href="#use-camel-case"> Use Camel Case</a></li>
           <li>
             <a href="#use-leading-zero-for-decimals">
-              Use Leading Zero for Decimals</a
-            >
+              Use Leading Zero for Decimals</a>
           </li>
           <li><a href="#use-trailing-commas"> Use Trailing Commas</a></li>
           <li><a href="#no-import-side-effects"> No Import Side Effects</a></li>
@@ -178,11 +172,13 @@
         <p>Use compound assignment operators when possible.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls">score <span class="operator">+=</span> <span class="number">1</span>
+          <pre>
+<code class="ptls">score <span class="operator">+=</span> <span class="number">1</span>
 price <span class="operator">|=</span> <span class="call">round</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls">score <span class="operator">=</span> score <span class="operator">+</span> <span class="number">1</span>
+          <pre>
+<code class="ptls">score <span class="operator">=</span> score <span class="operator">+</span> <span class="number">1</span>
 price <span class="operator">=</span> <span class="call">round</span>(price)</code></pre>
         </div>
         <hr />
@@ -193,7 +189,8 @@ price <span class="operator">=</span> <span class="call">round</span>(price)</co
         <p>Put statements on separate lines.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls">x <span class="operator">=</span> <span class="number">6</span>
+          <pre>
+<code class="ptls">x <span class="operator">=</span> <span class="number">6</span>
 y <span class="operator">=</span> <span class="number">7</span>
 <span class="call">print</span>(x <span class="operator">*</span> y)</code></pre>
         </div>
@@ -224,18 +221,19 @@ y <span class="operator">=</span> <span class="number">7</span>
         <p>
           Use
           <a href="/language/variables/#structural-updates"
-            >structural updates</a
-          >
+          >structural updates</a>
           instead of setter functions to transform data structures.
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls">evilTwin <span class="operator">=</span> player
+          <pre>
+<code class="ptls">evilTwin <span class="operator">=</span> player
 evilTwin.malice <span class="operator">=</span> <span class="number">100</span>
 player.enemies <span class="operator">+=</span> <span class="number">1</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls">evilTwin <span class="operator">=</span> <span class="std">Obj</span>.<span class="call">set</span>(player, <span class="quotes">&quot;</span><span class="string">malice</span><span class="quotes">&quot;</span>, <span class="number">100</span>)
+          <pre>
+<code class="ptls">evilTwin <span class="operator">=</span> <span class="std">Obj</span>.<span class="call">set</span>(player, <span class="quotes">&quot;</span><span class="string">malice</span><span class="quotes">&quot;</span>, <span class="number">100</span>)
 player <span class="operator">=</span> <span class="std">Obj</span>.<span class="call">set</span>(player, <span class="quotes">&quot;</span><span class="string">enemies</span><span class="quotes">&quot;</span>, player.enemies <span class="operator">+</span> <span class="number">1</span>)</code></pre>
         </div>
         <hr />
@@ -251,19 +249,20 @@ player <span class="operator">=</span> <span class="std">Obj</span>.<span class=
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls">point <span class="operator">=</span> { x: <span class="number">1</span>, y: <span class="number">2</span> }
+          <pre>
+<code class="ptls">point <span class="operator">=</span> { x: <span class="number">1</span>, y: <span class="number">2</span> }
 card <span class="operator">=</span> { value: <span class="number">10</span>, suit: <span class="quotes">&quot;</span><span class="string">hearts</span><span class="quotes">&quot;</span> }</code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls">point <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>]
+          <pre>
+<code class="ptls">point <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>]
 card <span class="operator">=</span> [<span class="number">10</span>, <span class="quotes">&quot;</span><span class="string">hearts</span><span class="quotes">&quot;</span>]</code></pre>
         </div>
         <hr />
 
         <h2 id="dont-concatenate-to-update">
           <a href="#dont-concatenate-to-update"
-            >Don&#39;t Concatenate to Update</a
-          >
+          >Don&#39;t Concatenate to Update</a>
         </h2>
         <p>
           Use variable updates instead of object concatenation to update record
@@ -297,7 +296,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         <p>Use valid identifiers as record object keys and table columns.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls">{ userName: <span class="quotes">&quot;</span><span class="string">Clementine</span><span class="quotes">&quot;</span>, userId: <span class="number">0</span> }
+          <pre>
+<code class="ptls">{ userName: <span class="quotes">&quot;</span><span class="string">Clementine</span><span class="quotes">&quot;</span>, userId: <span class="number">0</span> }
 
 <span class="std">Table</span>.<span class="call">of</span>([
   { userName: <span class="quotes">&quot;</span><span class="string">Clementine</span><span class="quotes">&quot;</span>, userId: <span class="number">0</span> },
@@ -305,7 +305,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
 ])</code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls">{ <span class="quotes">&quot;</span><span class="string">user name</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Clementine</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">user-id</span><span class="quotes">&quot;</span>: <span class="number">0</span> }
+          <pre>
+<code class="ptls">{ <span class="quotes">&quot;</span><span class="string">user name</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Clementine</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">user-id</span><span class="quotes">&quot;</span>: <span class="number">0</span> }
 
 <span class="std">Table</span>.<span class="call">of</span>([
   { <span class="quotes">&quot;</span><span class="string">user name</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Clementine</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">user-id</span><span class="quotes">&quot;</span>: <span class="number">0</span> },
@@ -352,7 +353,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         <p>Use tables to store lists of record objects with matching keys.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="std">Table</span>.<span class="call">of</span>([
+          <pre>
+<code class="ptls"><span class="std">Table</span>.<span class="call">of</span>([
   { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span>, population: <span class="number">8478072</span> },
   { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">3878704</span> },
   { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span>, population: <span class="number">2721308</span> },
@@ -360,7 +362,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
 ])</code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls">[
+          <pre>
+<code class="ptls">[
   { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span>, population: <span class="number">8478072</span> },
   { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">3878704</span> },
   { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span>, population: <span class="number">2721308</span> },
@@ -456,11 +459,13 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">la</span><span class="quotes">&quot;</span> <span class="operator">*</span> <span class="number">5</span>
+          <pre>
+<code class="ptls"><span class="quotes">&quot;</span><span class="string">la</span><span class="quotes">&quot;</span> <span class="operator">*</span> <span class="number">5</span>
 [<span class="number">0</span>] <span class="operator">*</span> <span class="number">10</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">lalalalala</span><span class="quotes">&quot;</span>
+          <pre>
+<code class="ptls"><span class="quotes">&quot;</span><span class="string">lalalalala</span><span class="quotes">&quot;</span>
 [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</code></pre>
         </div>
         <hr />
@@ -523,7 +528,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         <p>Use multi-line strings when they make string contents clearer.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">
+          <pre>
+<code class="ptls"><span class="quotes">&quot;</span><span class="string">
 ▓▓  ▓▓▓ ▓    ▓▓
 ▓ ▓  ▓  ▓   ▓
 ▓▓   ▓  ▓    ▓
@@ -545,7 +551,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">if</span> printPtls <span class="keyword">then</span>
+          <pre>
+<code class="ptls"><span class="keyword">if</span> printPtls <span class="keyword">then</span>
   <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">
   ▓▓  ▓▓▓ ▓    ▓▓
   ▓ ▓  ▓  ▓   ▓
@@ -556,7 +563,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">if</span> printPtls <span class="keyword">then</span>
+          <pre>
+<code class="ptls"><span class="keyword">if</span> printPtls <span class="keyword">then</span>
   <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">▓▓  ▓▓▓ ▓    ▓▓
 ▓ ▓  ▓  ▓   ▓
 ▓▓   ▓  ▓    ▓
@@ -565,12 +573,9 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
 <span class="keyword">end</span></code></pre>
         </div>
         <p>
-          <em
-            >These two strings produce the same output. For details see
+          <em>These two strings produce the same output. For details see
             <a href="/docs/language/strings#multi-line-strings"
-              >multi-line strings</a
-            >.</em
-          >
+            >multi-line strings</a>.</em>
         </p>
 
         <hr />
@@ -584,12 +589,14 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">if</span> item.onSale <span class="keyword">then</span>
+          <pre>
+<code class="ptls"><span class="keyword">if</span> item.onSale <span class="keyword">then</span>
   <span class="call">print</span>(item.price <span class="operator">/</span> <span class="number">2</span>)
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">if</span> item.onSale <span class="operator">==</span> <span class="constant">true</span> <span class="keyword">then</span>
+          <pre>
+<code class="ptls"><span class="keyword">if</span> item.onSale <span class="operator">==</span> <span class="constant">true</span> <span class="keyword">then</span>
   <span class="call">print</span>(item.price <span class="operator">/</span> <span class="number">2</span>)
 <span class="keyword">end</span></code></pre>
         </div>
@@ -601,12 +608,14 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         <p>Use <code>not</code> instead of <code>== false</code>.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">if</span> <span class="operator">not</span> <span class="std">Math</span>.<span class="call">isInt</span>(quantity) <span class="keyword">then</span>
+          <pre>
+<code class="ptls"><span class="keyword">if</span> <span class="operator">not</span> <span class="std">Math</span>.<span class="call">isInt</span>(quantity) <span class="keyword">then</span>
   <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">quantity must be a whole number</span><span class="quotes">&quot;</span>)
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">if</span> <span class="std">Math</span>.<span class="call">isInt</span>(quantity) <span class="operator">==</span> <span class="constant">false</span> <span class="keyword">then</span>
+          <pre>
+<code class="ptls"><span class="keyword">if</span> <span class="std">Math</span>.<span class="call">isInt</span>(quantity) <span class="operator">==</span> <span class="constant">false</span> <span class="keyword">then</span>
   <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">quantity must be a whole number</span><span class="quotes">&quot;</span>)
 <span class="keyword">end</span></code></pre>
         </div>
@@ -637,12 +646,14 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls">scrabbleWords <span class="operator">=</span> <span class="std">Set</span>.<span class="call">of</span>(<span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">lines:scrabble-dict.txt</span><span class="quotes">&quot;</span>)
+          <pre>
+<code class="ptls">scrabbleWords <span class="operator">=</span> <span class="std">Set</span>.<span class="call">of</span>(<span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">lines:scrabble-dict.txt</span><span class="quotes">&quot;</span>)
 
 <span class="call">has</span>(scrabbleWords, <span class="quotes">&quot;</span><span class="string">yeet</span><span class="quotes">&quot;</span>)</code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls">scrabbleWords <span class="operator">=</span> <span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">lines:scrabble-dict.txt</span><span class="quotes">&quot;</span>
+          <pre>
+<code class="ptls">scrabbleWords <span class="operator">=</span> <span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">lines:scrabble-dict.txt</span><span class="quotes">&quot;</span>
 
 <span class="call">has</span>(scrabbleWords, <span class="quotes">&quot;</span><span class="string">yeet</span><span class="quotes">&quot;</span>)</code></pre>
         </div>
@@ -657,7 +668,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">match</span> spin
+          <pre>
+<code class="ptls"><span class="keyword">match</span> spin
   <span class="keyword">case</span> <span class="quotes">&quot;</span><span class="string">gimel</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
     score <span class="operator">+=</span> pot
     pot <span class="operator">=</span> <span class="number">0</span>
@@ -670,7 +682,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">if</span> spin <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">gimel</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
+          <pre>
+<code class="ptls"><span class="keyword">if</span> spin <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">gimel</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
   score <span class="operator">+=</span> pot
   pot <span class="operator">=</span> <span class="number">0</span>
 <span class="keyword">elif</span> spin <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">hei</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
@@ -689,7 +702,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         <p>Flatten nested conditionals when possible.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">if</span> n <span class="operator">&gt;</span> <span class="number">0</span> <span class="keyword">then</span>
+          <pre>
+<code class="ptls"><span class="keyword">if</span> n <span class="operator">&gt;</span> <span class="number">0</span> <span class="keyword">then</span>
   <span class="quotes">&quot;</span><span class="string">positive</span><span class="quotes">&quot;</span>
 <span class="keyword">elif</span> n <span class="operator">&lt;</span> <span class="number">0</span> <span class="keyword">then</span>
   <span class="quotes">&quot;</span><span class="string">negative</span><span class="quotes">&quot;</span>
@@ -698,7 +712,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">if</span> n <span class="operator">&gt;</span> <span class="number">0</span> <span class="keyword">then</span>
+          <pre>
+<code class="ptls"><span class="keyword">if</span> n <span class="operator">&gt;</span> <span class="number">0</span> <span class="keyword">then</span>
   <span class="quotes">&quot;</span><span class="string">positive</span><span class="quotes">&quot;</span>
 <span class="keyword">else</span>
   <span class="keyword">if</span> n <span class="operator">&lt;</span> <span class="number">0</span> <span class="keyword">then</span>
@@ -716,7 +731,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         <p>Lift variable assignments outside of simple conditionals.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls">sweetener <span class="operator">=</span>
+          <pre>
+<code class="ptls">sweetener <span class="operator">=</span>
   <span class="keyword">if</span> diet <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">vegan</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
     <span class="quotes">&quot;</span><span class="string">agave</span><span class="quotes">&quot;</span>
   <span class="keyword">else</span>
@@ -724,7 +740,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
   <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">if</span> diet <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">vegan</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
+          <pre>
+<code class="ptls"><span class="keyword">if</span> diet <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">vegan</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
   sweetener <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">agave</span><span class="quotes">&quot;</span>
 <span class="keyword">else</span>
   sweetener <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">honey</span><span class="quotes">&quot;</span>
@@ -740,7 +757,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls">games
+          <pre>
+<code class="ptls">games
   <span class="operator">|</span> <span class="std">Table</span>.<span class="call">summarize</span>(<span class="quotes">&quot;</span><span class="string">team</span><span class="quotes">&quot;</span>, getStats)
   <span class="operator">|</span> <span class="call">sortDescBy</span>(<span class="quotes">&quot;</span><span class="string">winPct</span><span class="quotes">&quot;</span>)
   <span class="operator">|</span> <span class="call">print</span></code></pre>
@@ -752,8 +770,7 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
 
         <h2 id="use-map-and-filter-operators">
           <a href="#use-map-and-filter-operators"
-            >Use Map and Filter Operators</a
-          >
+          >Use Map and Filter Operators</a>
         </h2>
         <p>
           Use the map <code>$</code> and filter <code>?</code> operators instead
@@ -774,12 +791,14 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         <p>Omit parentheses for single-argument functions in pipelines.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls">numbers
+          <pre>
+<code class="ptls">numbers
   <span class="operator">$</span> <span class="std">Math</span>.<span class="call">sqrt</span>
   <span class="operator">|</span> <span class="call">print</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls">numbers
+          <pre>
+<code class="ptls">numbers
   <span class="operator">$</span> <span class="std">Math</span>.<span class="call">sqrt</span>()
   <span class="operator">|</span> <span class="call">print</span>()</code></pre>
         </div>
@@ -793,7 +812,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">distance</span>(<span class="argument">point</span>, <span class="argument">center</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">distance</span>(<span class="argument">point</span>, <span class="argument">center</span>)
   dx <span class="operator">=</span> point.x <span class="operator">-</span> center.x
   dy <span class="operator">=</span> point.y <span class="operator">-</span> center.y
   <span class="std">Math</span>.<span class="call">sqrt</span>(dx <span class="operator">**</span> <span class="number">2</span> <span class="operator">+</span> dx <span class="operator">**</span> <span class="number">2</span>)
@@ -806,7 +826,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">averageDistance</span>(<span class="argument">points</span>, <span class="argument">center</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">averageDistance</span>(<span class="argument">points</span>, <span class="argument">center</span>)
   distance <span class="operator">=</span> <span class="keyword">fn</span>(<span class="argument">point</span>)
     dx <span class="operator">=</span> point.x <span class="operator">-</span> center.x
     dy <span class="operator">=</span> point.y <span class="operator">-</span> center.y
@@ -851,17 +872,16 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
           <pre><code class="ptls">numbers <span class="operator">$</span> <span class="std">Math</span>.<span class="call">roundTo</span>(<span class="keyword">arg</span>, <span class="number">2</span>)</code></pre>
         </div>
         <p>
-          <em
-            >Note that <code>arg</code> cannot be omitted as the first argument
+          <em>Note that <code>arg</code> cannot be omitted as the first argument
             if subsequent arguments to the function also use <code>arg</code>,
             since using <code>arg</code> stops the first argument to a pipeline
             call from being implicitly passed. Refactor calls like these into
-            new functions to avoid this situation.</em
-          >
+            new functions to avoid this situation.</em>
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="comment">-- Best option: refactor into a new function</span>
+          <pre>
+<code class="ptls"><span class="comment">-- Best option: refactor into a new function</span>
 
 <span class="keyword">fn</span> <span class="function">joinFirst</span>(<span class="argument">strs</span>)
   <span class="call">join</span>(strs, strs[<span class="number">0</span>])
@@ -870,7 +890,8 @@ card <span class="operator">=</span> [<span class="number">10</span>, <span clas
 strings <span class="operator">|</span> <span class="call">joinFirst</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="comment">-- Incorrect: wrong number of arguments, since using `arg` in the second</span>
+          <pre>
+<code class="ptls"><span class="comment">-- Incorrect: wrong number of arguments, since using `arg` in the second</span>
 <span class="comment">-- argument means that the first argument is no longer implicitly passed</span>
 
 strings <span class="operator">|</span> <span class="call">join</span>(<span class="keyword">arg</span>[<span class="number">0</span>])
@@ -892,7 +913,8 @@ strings <span class="operator">|</span> <span class="call">join</span>(<span cla
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">swap</span>(<span class="argument">list</span>, <span class="argument">indexA</span>, <span class="argument">indexB</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">swap</span>(<span class="argument">list</span>, <span class="argument">indexA</span>, <span class="argument">indexB</span>)
   <span class="comment">-- Transform `list` by swapping the values at `indexA` and `indexB`</span>
 <span class="keyword">end</span>
 
@@ -901,7 +923,8 @@ strings <span class="operator">|</span> <span class="call">join</span>(<span cla
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">swap</span>(<span class="argument">indexA</span>, <span class="argument">indexB</span>, <span class="argument">list</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">swap</span>(<span class="argument">indexA</span>, <span class="argument">indexB</span>, <span class="argument">list</span>)
   <span class="comment">-- Transform `list` by swapping the values at `indexA` and `indexB`</span>
 <span class="keyword">end</span>
 
@@ -917,7 +940,8 @@ strings <span class="operator">|</span> <span class="call">join</span>(<span cla
         <p>Write pure (side effect free) functions when possible.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">showTask</span>(<span class="argument">task</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">showTask</span>(<span class="argument">task</span>)
   <span class="keyword">if</span> task.done <span class="keyword">then</span>
     <span class="quotes">&quot;</span><span class="string">[x] </span><span class="interpolated">$task.name</span><span class="quotes">&quot;</span>
   <span class="keyword">else</span>
@@ -930,7 +954,8 @@ tasks
   <span class="operator">$</span> <span class="call">print</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">printTask</span>(<span class="argument">task</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">printTask</span>(<span class="argument">task</span>)
   <span class="keyword">if</span> task.done <span class="keyword">then</span>
     <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">[x] </span><span class="interpolated">$task.name</span><span class="quotes">&quot;</span>)
   <span class="keyword">else</span>
@@ -951,7 +976,8 @@ tasks <span class="operator">$</span> <span class="call">printTask</span></code>
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">sqrt</span>(<span class="argument">n</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">sqrt</span>(<span class="argument">n</span>)
   n <span class="operator">**</span> <span class="number">0.5</span>
 <span class="keyword">end</span>
 
@@ -960,7 +986,8 @@ tasks <span class="operator">$</span> <span class="call">printTask</span></code>
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">sqrt</span>(<span class="argument">n</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">sqrt</span>(<span class="argument">n</span>)
   <span class="keyword">return</span> n <span class="operator">**</span> <span class="number">0.5</span>
 <span class="keyword">end</span>
 
@@ -983,12 +1010,14 @@ tasks <span class="operator">$</span> <span class="call">printTask</span></code>
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">min</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">min</span>(<span class="argument">a</span>, <span class="argument">b</span>)
   <span class="keyword">if</span> a <span class="operator">&lt;</span> b <span class="keyword">then</span> a <span class="keyword">else</span> b <span class="keyword">end</span>
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">min</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">min</span>(<span class="argument">a</span>, <span class="argument">b</span>)
   <span class="keyword">if</span> a <span class="operator">&lt;</span> b <span class="keyword">then</span>
     <span class="keyword">return</span> a
   <span class="keyword">end</span>
@@ -1007,7 +1036,8 @@ tasks <span class="operator">$</span> <span class="call">printTask</span></code>
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">findOdd</span>(<span class="argument">numbers</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">findOdd</span>(<span class="argument">numbers</span>)
   <span class="keyword">for</span> n <span class="keyword">in</span> numbers <span class="keyword">do</span>
     <span class="keyword">if</span> <span class="std">Math</span>.<span class="call">isOdd</span>(n) <span class="keyword">then</span>
       <span class="keyword">return</span> n
@@ -1018,7 +1048,8 @@ tasks <span class="operator">$</span> <span class="call">printTask</span></code>
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">findOdd</span>(<span class="argument">numbers</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">findOdd</span>(<span class="argument">numbers</span>)
   <span class="keyword">for</span> n <span class="keyword">in</span> numbers <span class="keyword">do</span>
     <span class="keyword">if</span> <span class="std">Math</span>.<span class="call">isOdd</span>(n) <span class="keyword">then</span>
       <span class="keyword">return</span> n
@@ -1039,11 +1070,13 @@ tasks <span class="operator">$</span> <span class="call">printTask</span></code>
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="call">chars</span>(<span class="quotes">&quot;</span><span class="string">Hello world!</span><span class="quotes">&quot;</span>)
+          <pre>
+<code class="ptls"><span class="call">chars</span>(<span class="quotes">&quot;</span><span class="string">Hello world!</span><span class="quotes">&quot;</span>)
 <span class="call">pop</span>(items)</code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="call">split</span>(<span class="quotes">&quot;</span><span class="string">Hello world!</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="quotes">&quot;</span>)
+          <pre>
+<code class="ptls"><span class="call">split</span>(<span class="quotes">&quot;</span><span class="string">Hello world!</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="quotes">&quot;</span>)
 <span class="call">dropLast</span>(items, <span class="number">1</span>)</code></pre>
         </div>
         <hr />
@@ -1067,11 +1100,13 @@ tasks <span class="operator">$</span> <span class="call">printTask</span></code>
         <p>Don&#39;t shadow global built-in functions.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls">message <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Enter a rating 1-5: </span><span class="quotes">&quot;</span>
+          <pre>
+<code class="ptls">message <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Enter a rating 1-5: </span><span class="quotes">&quot;</span>
 maximum <span class="operator">=</span> <span class="number">5</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="std">prompt</span> <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Enter a rating 1-5: </span><span class="quotes">&quot;</span>
+          <pre>
+<code class="ptls"><span class="std">prompt</span> <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Enter a rating 1-5: </span><span class="quotes">&quot;</span>
 <span class="std">max</span> <span class="operator">=</span> <span class="number">5</span></code></pre>
         </div>
         <hr />
@@ -1086,7 +1121,8 @@ maximum <span class="operator">=</span> <span class="number">5</span></code></pr
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls">gameState <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">paused</span><span class="quotes">&quot;</span>
+          <pre>
+<code class="ptls">gameState <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">paused</span><span class="quotes">&quot;</span>
 
 <span class="keyword">fn</span> <span class="function">point</span>(<span class="argument">x</span>, <span class="argument">y</span>)
   { x, y }
@@ -1095,7 +1131,8 @@ maximum <span class="operator">=</span> <span class="number">5</span></code></pr
 pi <span class="operator">=</span> <span class="number">3.141592654</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls">gamestate <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">paused</span><span class="quotes">&quot;</span>
+          <pre>
+<code class="ptls">gamestate <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">paused</span><span class="quotes">&quot;</span>
 
 <span class="keyword">fn</span> <span class="function">Point</span>(<span class="argument">x</span>, <span class="argument">y</span>)
   { x, y }
@@ -1104,19 +1141,16 @@ pi <span class="operator">=</span> <span class="number">3.141592654</span></code
 PI <span class="operator">=</span> <span class="number">3.141592654</span></code></pre>
         </div>
         <p>
-          <em
-            >(Yes, the standard library module variables
+          <em>(Yes, the standard library module variables
             <a href="/articles">are capitalized</a>; do as I say, not as I
-            do)</em
-          >
+            do)</em>
         </p>
 
         <hr />
 
         <h2 id="use-leading-zero-for-decimals">
           <a href="#use-leading-zero-for-decimals"
-            >Use Leading Zero for Decimals</a
-          >
+          >Use Leading Zero for Decimals</a>
         </h2>
         <p>
           Include a leading <code>0</code> in decimal literals for numbers
@@ -1141,7 +1175,8 @@ PI <span class="operator">=</span> <span class="number">3.141592654</span></code
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls">days <span class="operator">=</span> [
+          <pre>
+<code class="ptls">days <span class="operator">=</span> [
   <span class="quotes">&quot;</span><span class="string">Lunes</span><span class="quotes">&quot;</span>,
   <span class="quotes">&quot;</span><span class="string">Martes</span><span class="quotes">&quot;</span>,
   <span class="quotes">&quot;</span><span class="string">Miércoles</span><span class="quotes">&quot;</span>,
@@ -1152,7 +1187,8 @@ PI <span class="operator">=</span> <span class="number">3.141592654</span></code
 ]</code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls">days <span class="operator">=</span> [
+          <pre>
+<code class="ptls">days <span class="operator">=</span> [
   <span class="quotes">&quot;</span><span class="string">Lunes</span><span class="quotes">&quot;</span>,
   <span class="quotes">&quot;</span><span class="string">Martes</span><span class="quotes">&quot;</span>,
   <span class="quotes">&quot;</span><span class="string">Miércoles</span><span class="quotes">&quot;</span>,
@@ -1170,7 +1206,8 @@ PI <span class="operator">=</span> <span class="number">3.141592654</span></code
         <p>Library code should never have side effects when imported.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">maximum</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">maximum</span>(<span class="argument">a</span>, <span class="argument">b</span>)
   <span class="keyword">if</span> a <span class="operator">&gt;</span> b <span class="keyword">then</span> a <span class="keyword">else</span> b <span class="keyword">end</span>
 <span class="keyword">end</span>
 
@@ -1181,7 +1218,8 @@ PI <span class="operator">=</span> <span class="number">3.141592654</span></code
 { maximum, showInfo }</code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">maximum</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">maximum</span>(<span class="argument">a</span>, <span class="argument">b</span>)
   <span class="keyword">if</span> a <span class="operator">&gt;</span> b <span class="keyword">then</span> a <span class="keyword">else</span> b <span class="keyword">end</span>
 <span class="keyword">end</span>
 
@@ -1197,14 +1235,16 @@ PI <span class="operator">=</span> <span class="number">3.141592654</span></code
         <p>Export objects instead of individual definitions.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">maximum</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">maximum</span>(<span class="argument">a</span>, <span class="argument">b</span>)
   <span class="keyword">if</span> a <span class="operator">&gt;</span> b <span class="keyword">then</span> a <span class="keyword">else</span> b <span class="keyword">end</span>
 <span class="keyword">end</span>
 
 { maximum }</code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">maximum</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+          <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">maximum</span>(<span class="argument">a</span>, <span class="argument">b</span>)
   <span class="keyword">if</span> a <span class="operator">&gt;</span> b <span class="keyword">then</span> a <span class="keyword">else</span> b <span class="keyword">end</span>
 <span class="keyword">end</span>
 
@@ -1225,7 +1265,8 @@ maximum</code></pre>
           <pre><code class="ptls">story <span class="operator">=</span> <span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">text:alice.txt</span><span class="quotes">&quot;</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="comment">-- Won&#039;t work if script is called outside the source directory</span>
+          <pre>
+<code class="ptls"><span class="comment">-- Won&#039;t work if script is called outside the source directory</span>
 story <span class="operator">=</span> <span class="std">Fs</span>.<span class="call">read</span>(<span class="quotes">&quot;</span><span class="string">alice.txt</span><span class="quotes">&quot;</span>)</code></pre>
         </div>
         <hr />
@@ -1236,12 +1277,14 @@ story <span class="operator">=</span> <span class="std">Fs</span>.<span class="c
         <p>Omit unnecessary loop variables.</p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">for</span> <span class="number">10</span> <span class="keyword">do</span>
+          <pre>
+<code class="ptls"><span class="keyword">for</span> <span class="number">10</span> <span class="keyword">do</span>
   <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">loading</span><span class="quotes">&quot;</span>)
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">for</span> n <span class="keyword">in</span> <span class="call">range</span>(<span class="number">10</span>) <span class="keyword">do</span>
+          <pre>
+<code class="ptls"><span class="keyword">for</span> n <span class="keyword">in</span> <span class="call">range</span>(<span class="number">10</span>) <span class="keyword">do</span>
   <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">loading</span><span class="quotes">&quot;</span>)
 <span class="keyword">end</span></code></pre>
         </div>
@@ -1256,12 +1299,14 @@ story <span class="operator">=</span> <span class="std">Fs</span>.<span class="c
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">for</span> player, index <span class="keyword">in</span> rankings <span class="keyword">do</span>
+          <pre>
+<code class="ptls"><span class="keyword">for</span> player, index <span class="keyword">in</span> rankings <span class="keyword">do</span>
   <span class="call">print</span>(<span class="quotes">&quot;</span><span class="interpolated">$index</span><span class="string"> </span><span class="interpolated">$player</span><span class="quotes">&quot;</span>)
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls">index <span class="operator">=</span> <span class="number">0</span>
+          <pre>
+<code class="ptls">index <span class="operator">=</span> <span class="number">0</span>
 
 <span class="keyword">for</span> player <span class="keyword">in</span> rankings <span class="keyword">do</span>
   <span class="call">print</span>(<span class="quotes">&quot;</span><span class="interpolated">$index</span><span class="string"> </span><span class="interpolated">$player</span><span class="quotes">&quot;</span>)
@@ -1278,12 +1323,14 @@ story <span class="operator">=</span> <span class="std">Fs</span>.<span class="c
         </p>
 
         <div class="snippet yes">
-          <pre><code class="ptls"><span class="keyword">for</span> item, quantity <span class="keyword">in</span> inventory <span class="keyword">do</span>
+          <pre>
+<code class="ptls"><span class="keyword">for</span> item, quantity <span class="keyword">in</span> inventory <span class="keyword">do</span>
   <span class="call">print</span>(<span class="quotes">&quot;</span><span class="interpolated">$item</span><span class="string"> x </span><span class="interpolated">$quantity</span><span class="quotes">&quot;</span>)
 <span class="keyword">end</span></code></pre>
         </div>
         <div class="snippet no">
-          <pre><code class="ptls"><span class="keyword">for</span> item <span class="keyword">in</span> inventory <span class="keyword">do</span>
+          <pre>
+<code class="ptls"><span class="keyword">for</span> item <span class="keyword">in</span> inventory <span class="keyword">do</span>
   quantity <span class="operator">=</span> inventory[item]
   <span class="call">print</span>(<span class="quotes">&quot;</span><span class="interpolated">$item</span><span class="string"> x </span><span class="interpolated">$quantity</span><span class="quotes">&quot;</span>)
 <span class="keyword">end</span></code></pre>

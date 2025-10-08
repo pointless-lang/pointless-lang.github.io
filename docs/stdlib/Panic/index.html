@@ -68,7 +68,11 @@
 
         <div class="snippet undefined">
           <pre><code class="ptls">Panic</code></pre>
-          <pre class="result" style="max-height: 200px"><code>{
+          <pre
+            class="result"
+            style="max-height: 200px"
+          >
+<code>{
   raise: Panic.raise(message),
   unimplemented: Panic.unimplemented(),
   unreachable: Panic.unreachable(),
@@ -86,7 +90,8 @@
           <p>Raise a panic with the given <code>message</code> string.</p>
 
           <div class="snippet undefined">
-            <pre><code class="ptls">score <span class="operator">=</span> <span class="operator">-</span><span class="number">10</span>
+            <pre>
+<code class="ptls">score <span class="operator">=</span> <span class="operator">-</span><span class="number">10</span>
 
 <span class="keyword">if</span> score <span class="operator">&lt;</span> <span class="number">0</span> <span class="keyword">then</span>
   Panic.<span class="call">raise</span>(<span class="quotes">&quot;</span><span class="string">score should never be negative</span><span class="quotes">&quot;</span>)
@@ -94,7 +99,8 @@
 
             <pre
               class="result panic"
-            ><code>panic: score should never be negative
+            >
+<code>panic: score should never be negative
 
   Panic.raise(&quot;score should never be negative&quot;)
              ^
@@ -112,13 +118,17 @@ At Panic:embedded:4:14</code></pre>
           <p>Raise a panic indicating an unfinished implementation.</p>
 
           <div class="snippet undefined">
-            <pre><code class="ptls">score <span class="operator">=</span> <span class="number">101</span>
+            <pre>
+<code class="ptls">score <span class="operator">=</span> <span class="number">101</span>
 
 <span class="keyword">if</span> score <span class="operator">&gt;</span> <span class="number">100</span> <span class="keyword">then</span>
   Panic.<span class="call">unimplemented</span>()
 <span class="keyword">end</span></code></pre>
 
-            <pre class="result panic"><code>panic: not implemented
+            <pre
+              class="result panic"
+            >
+<code>panic: not implemented
 
   Panic.unimplemented()
                      ^
@@ -136,7 +146,8 @@ At Panic:embedded:4:22</code></pre>
           <p>Raise a panic indicating an unexpected program state.</p>
 
           <div class="snippet undefined">
-            <pre><code class="ptls">score <span class="operator">=</span> <span class="operator">-</span><span class="number">10</span>
+            <pre>
+<code class="ptls">score <span class="operator">=</span> <span class="operator">-</span><span class="number">10</span>
 
 <span class="keyword">if</span> score <span class="operator">&gt;=</span> <span class="number">0</span> <span class="keyword">then</span>
   score <span class="operator">/=</span> <span class="number">2</span>
@@ -144,7 +155,10 @@ At Panic:embedded:4:22</code></pre>
   Panic.<span class="call">unreachable</span>()
 <span class="keyword">end</span></code></pre>
 
-            <pre class="result panic"><code>panic: encountered unreachable code
+            <pre
+              class="result panic"
+            >
+<code>panic: encountered unreachable code
 
   Panic.unreachable()
                    ^

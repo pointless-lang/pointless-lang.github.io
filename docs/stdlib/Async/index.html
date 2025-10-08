@@ -66,7 +66,11 @@
       <main>
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="std">Async</span></code></pre>
-          <pre class="result" style="max-height: 200px"><code>{
+          <pre
+            class="result"
+            style="max-height: 200px"
+          >
+<code>{
   getAll: Async.getAll(funcs),
   getFirst: Async.getFirst(funcs),
   sleep: Async.sleep(ms),
@@ -89,7 +93,8 @@
           </p>
 
           <div class="snippet undefined">
-            <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">getA</span>()
+            <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">getA</span>()
   <span class="call">sleep</span>(<span class="number">200</span>)
   <span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>
 <span class="keyword">end</span>
@@ -116,15 +121,14 @@
             one that finishes.
           </p>
           <p>
-            <em
-              >Note: the functions that are still running when the first
+            <em>Note: the functions that are still running when the first
               function finishes should be stopped; however, limitations of JS
-              currently prevent this.</em
-            >
+              currently prevent this.</em>
           </p>
 
           <div class="snippet undefined">
-            <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">getA</span>()
+            <pre>
+<code class="ptls"><span class="keyword">fn</span> <span class="function">getA</span>()
   <span class="call">sleep</span>(<span class="number">200</span>)
   <span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>
 <span class="keyword">end</span>
