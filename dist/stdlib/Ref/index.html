@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>The Standard Library: Ref</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>The Standard Library: Ref</h1>
+        <p>Work with mutable state</p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to The Standard Library</a>
+        <ul class="std">
+          <li>
+            <a href="#get">get</a>
+          </li>
+
+          <li>
+            <a href="#of">of</a>
+          </li>
+
+          <li>
+            <a href="#put">put</a>
+          </li>
+
+          <li>
+            <a href="#set">set</a>
+          </li>
+        </ul>
+      </div>
+
+      <main>
+        <p>
+          The core data structures in Pointless are immutable.
+          <em>References</em> serve as mutable wrappers around these values,
+          allowing programs to leverage mutability. Note that references
+          <strong>must not reference themselves</strong> (they must not contain
+          <em>circular references</em>) as this could cause memory leaks and
+          infinite recursion.
+        </p>
+        <p>
+          An example
+          <a href="https://en.wikipedia.org/wiki/Linear_congruential_generator"
+            >pseudorandom number generator</a
+          >
+          function that uses a reference to store the generator state.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">seed <span class="operator">=</span> <span class="std">Ref</span>.<span class="call">of</span>(<span class="number">0</span>)
+
+<span class="comment">-- Linear congruential generator parameters</span>
+m <span class="operator">=</span> <span class="number">2</span> <span class="operator">**</span> <span class="number">32</span>
+a <span class="operator">=</span> <span class="number">1664525</span>
+c <span class="operator">=</span> <span class="number">1013904223</span>
+
+<span class="keyword">fn</span> <span class="function">random</span>()
+  next <span class="operator">=</span> (a <span class="operator">*</span> <span class="std">Ref</span>.<span class="call">get</span>(seed) <span class="operator">+</span> c) <span class="operator">%</span> m <span class="comment">-- Calculate new seed</span>
+  <span class="std">Ref</span>.<span class="call">set</span>(seed, next) <span class="comment">-- Store new seed</span>
+  next <span class="operator">/</span> m <span class="comment">-- Return scaled value</span>
+<span class="keyword">end</span>
+
+<span class="call">random</span>()
+<span class="call">random</span>()
+<span class="call">random</span>()
+<span class="call">random</span>()</code></pre>
+          <pre class="result" style="undefined"><code>0.23606797284446657
+0.278566908556968
+0.8195337599609047
+0.6678668977692723
+</code></pre>
+        </div>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="std">Ref</span></code></pre>
+          <pre class="result" style="max-height: 200px"><code>{
+  get: Ref.get(ref),
+  of: Ref.of(value),
+  put: Ref.put(value, ref),
+  set: Ref.set(ref, value),
+}
+</code></pre>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="get">
+          <code><a href="#get">Ref.get(ref)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>Get the value stored in <code>ref</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">score <span class="operator">=</span> <span class="std">Ref</span>.<span class="call">of</span>(<span class="number">0</span>)
+<span class="std">Ref</span>.<span class="call">get</span>(score)</code></pre>
+            <pre class="result" style="undefined"><code>0
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="of">
+          <code><a href="#of">Ref.of(value)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>Create a mutable reference containing <code>value</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Ref</span>.<span class="call">of</span>(<span class="number">0</span>)</code></pre>
+            <pre class="result" style="undefined"><code>Ref.of(0)
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="put">
+          <code><a href="#put">Ref.put(value, ref)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Update <code>ref</code> to store <code>value</code>. Return
+            <code>value</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">score <span class="operator">=</span> <span class="std">Ref</span>.<span class="call">of</span>(<span class="number">0</span>)
+<span class="std">Ref</span>.<span class="call">put</span>(<span class="number">1</span>, score)
+score</code></pre>
+            <pre class="result" style="undefined"><code>1
+Ref.of(1)
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="set">
+          <code><a href="#set">Ref.set(ref, value)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Update <code>ref</code> to store <code>value</code>. Return
+            <code>ref</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">score <span class="operator">=</span> <span class="std">Ref</span>.<span class="call">of</span>(<span class="number">0</span>)
+<span class="std">Ref</span>.<span class="call">set</span>(score, <span class="number">1</span>)
+score</code></pre>
+            <pre class="result" style="undefined"><code>Ref.of(1)
+Ref.of(1)
+</code></pre>
+          </div>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/stdlib/Re">
+              <div>< Previous</div>
+              Re
+            </a>
+
+            <a class="next" href="/stdlib/Set">
+              <div>Next ></div>
+              Set
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

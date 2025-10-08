@@ -1,4 +1,4 @@
-import { h } from "../../render/escape.js";
+import { h } from "pointless/render/escape.js";
 
 export function collectionSidebar(node) {
   const links = node.children.map(

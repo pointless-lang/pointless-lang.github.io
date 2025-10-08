@@ -1,7 +1,7 @@
 import { collectionSidebar, genCollection } from "./build-collection.js";
 import { genModule, moduleSidebar } from "./build-module.js";
-import { headerId, renderMarkdown } from "../../render/render-markdown.js";
-import { h, serialize } from "../../render/escape.js";
+import { headerId, renderMarkdown } from "pointless/render/render-markdown.js";
+import { h, serialize } from "pointless/render/escape.js";
 import { cp, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import matter from "gray-matter";
 import { format } from "prettier";
@@ -17,11 +17,11 @@ async function getTree(path, parent = null) {
     files: [],
   };
 
-  const files = await readdir(`site/pages/${path}`, { withFileTypes: true });
+  const files = await readdir(`pages/${path}`, { withFileTypes: true });
 
   for (const file of files) {
     if (file.name === "index.md") {
-      const source = await readFile(`site/pages/${path}/index.md`, "utf8");
+      const source = await readFile(`pages/${path}/index.md`, "utf8");
       const { data, content } = matter(source);
 
       node.content = content;
@@ -91,7 +91,7 @@ async function buildIndex(node) {
   const generated = await makeGenerated(node);
 
   const intro = await renderMarkdown(
-    `site/pages/${node.path}/index.md`,
+    `pages/${node.path}/index.md`,
     node.content,
   );
 
@@ -146,11 +146,11 @@ async function buildIndex(node) {
   });
 
   const result = await format(html, { parser: "html" });
-  await writeFile(`site/dist/${node.path}/index.html`, result);
+  await writeFile(`dist/${node.path}/index.html`, result);
 }
 
 async function buildPage(node) {
-  await mkdir(`site/dist/${node.path}`, { recursive: true });
+  await mkdir(`dist/${node.path}`, { recursive: true });
   await buildIndex(node);
 
   for (const child of node.children.values()) {
@@ -159,14 +159,14 @@ async function buildPage(node) {
 
   for (const file of node.files) {
     await cp(
-      `site/pages/${node.path}/${file}`,
-      `site/dist/${node.path}/${file}`,
+      `pages/${node.path}/${file}`,
+      `dist/${node.path}/${file}`,
     );
   }
 }
 
-await rm("site/dist", { recursive: true, force: true });
-await mkdir("site/dist", { recursive: true });
+await rm("dist", { recursive: true, force: true });
+await mkdir("dist", { recursive: true });
 const tree = await getTree("");
 await buildPage(tree);
-await cp("site/static", "site/dist", { recursive: true });
+await cp("static", "dist", { recursive: true });

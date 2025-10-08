@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>The Pointless Language</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>The Pointless Language</h1>
+        <p>A Language for Learning</p>
+      </div>
+
+      <div id="sidebar"><ol></ol></div>
+
+      <main>
+        <div class="snippet undefined">
+          <pre><code class="ptls">alphabet <span class="operator">=</span> <span class="call">chars</span>(<span class="quotes">&quot;</span><span class="string">abcdefghijklmnopqrstuvwxyz</span><span class="quotes">&quot;</span>)
+
+<span class="keyword">fn</span> <span class="function">shift</span>(<span class="argument">letter</span>)
+  index <span class="operator">=</span> <span class="std">List</span>.<span class="call">indexOf</span>(alphabet, letter)
+
+  <span class="keyword">if</span> index <span class="operator">==</span> <span class="constant">none</span> <span class="keyword">then</span>
+    letter
+  <span class="keyword">else</span>
+    alphabet[(index <span class="operator">+</span> <span class="number">13</span>) <span class="operator">%</span> <span class="number">26</span>]
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">fn</span> <span class="function">cipher</span>(<span class="argument">message</span>)
+  message
+    <span class="operator">|</span> <span class="call">chars</span>
+    <span class="operator">$</span> <span class="call">shift</span>
+    <span class="operator">|</span> <span class="call">join</span>(<span class="quotes">&quot;</span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span>
+
+<span class="call">cipher</span>(<span class="quotes">&quot;</span><span class="string">uryyb jbeyq</span><span class="quotes">&quot;</span>)</code></pre>
+          <pre class="result" style="undefined"><code>&quot;hello world&quot;
+</code></pre>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

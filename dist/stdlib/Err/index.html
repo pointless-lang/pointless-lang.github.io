@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>The Standard Library: Err</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>The Standard Library: Err</h1>
+        <p>Throw and catch recoverable errors</p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to The Standard Library</a>
+        <ul class="std">
+          <li>
+            <a href="#orElse">orElse</a>
+          </li>
+
+          <li>
+            <a href="#throw">throw</a>
+          </li>
+
+          <li>
+            <a href="#try">try</a>
+          </li>
+        </ul>
+      </div>
+
+      <main>
+        <p>
+          The Err module allows programs to signal and respond to anticipated
+          errors using the
+          <a
+            href="https://en.wikipedia.org/wiki/Exception_handling_(programming)"
+            >throw/try</a
+          >
+          style control flow found in other programming languages.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="std">Err</span></code></pre>
+          <pre class="result" style="max-height: 200px"><code>{
+  orElse: Err.orElse(func, default),
+  throw: Err.throw(payload),
+  try: Err.try(func, handler),
+}
+</code></pre>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="orElse">
+          <code><a href="#orElse">Err.orElse(func, default)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Call the zero-argument function <code>func</code>. If
+            <code>func</code> returns a value without throwing an error, return
+            it; otherwise return <code>default</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">inverse</span>(<span class="argument">n</span>)
+  <span class="keyword">if</span> n <span class="operator">==</span> <span class="number">0</span> <span class="keyword">then</span>
+    <span class="std">Err</span>.<span class="call">throw</span>(<span class="quotes">&quot;</span><span class="string">n must not be zero</span><span class="quotes">&quot;</span>)
+  <span class="keyword">end</span>
+
+  <span class="number">1</span> <span class="operator">/</span> n
+<span class="keyword">end</span>
+
+<span class="std">Err</span>.<span class="call">orElse</span>(<span class="keyword">fn</span>() <span class="call">inverse</span>(<span class="number">5</span>) <span class="keyword">end</span>, <span class="constant">none</span>)
+<span class="std">Err</span>.<span class="call">orElse</span>(<span class="keyword">fn</span>() <span class="call">inverse</span>(<span class="number">0</span>) <span class="keyword">end</span>, <span class="constant">none</span>)</code></pre>
+            <pre class="result" style="undefined"><code>0.2
+none
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="throw">
+          <code><a href="#throw">Err.throw(payload)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Throw an error with a <code>payload</code>, which may be any type of
+            value. Functions which throw errors should be called using
+            <code>try</code> to avoid unhandled errors.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">inverse</span>(<span class="argument">n</span>)
+  <span class="keyword">if</span> n <span class="operator">==</span> <span class="number">0</span> <span class="keyword">then</span>
+    <span class="std">Err</span>.<span class="call">throw</span>(<span class="quotes">&quot;</span><span class="string">n must not be zero</span><span class="quotes">&quot;</span>)
+  <span class="keyword">end</span>
+
+  <span class="number">1</span> <span class="operator">/</span> n
+<span class="keyword">end</span>
+
+<span class="call">inverse</span>(<span class="number">0</span>)</code></pre>
+
+            <pre class="result panic"><code>panic: unhandled error
+payload: &quot;n must not be zero&quot;
+
+    Err.throw(&quot;n must not be zero&quot;)
+             ^
+At Err:embedded:3:14 in inverse(n)
+
+inverse(0)
+       ^
+At Err:embedded:9:8</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="try">
+          <code><a href="#try">Err.try(func, handler)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Call the zero-argument function <code>func</code>. If
+            <code>func</code> returns a value without throwing an error, return
+            it; otherwise, call <code>handler</code> with the error payload and
+            return <code>handler(payload)</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">inverse</span>(<span class="argument">n</span>)
+  <span class="keyword">if</span> n <span class="operator">==</span> <span class="number">0</span> <span class="keyword">then</span>
+    <span class="std">Err</span>.<span class="call">throw</span>(<span class="quotes">&quot;</span><span class="string">n must not be zero</span><span class="quotes">&quot;</span>)
+  <span class="keyword">end</span>
+
+  <span class="number">1</span> <span class="operator">/</span> n
+<span class="keyword">end</span>
+
+<span class="keyword">fn</span> <span class="function">showErr</span>(<span class="argument">msg</span>)
+  <span class="quotes">&quot;</span><span class="string">an error occured: </span><span class="interpolated">$msg</span><span class="quotes">&quot;</span>
+<span class="keyword">end</span>
+
+<span class="std">Err</span>.<span class="call">try</span>(<span class="keyword">fn</span>() <span class="call">inverse</span>(<span class="number">5</span>) <span class="keyword">end</span>, showErr)
+<span class="std">Err</span>.<span class="call">try</span>(<span class="keyword">fn</span>() <span class="call">inverse</span>(<span class="number">0</span>) <span class="keyword">end</span>, showErr)</code></pre>
+            <pre class="result" style="undefined"><code>0.2
+&quot;an error occured: n must not be zero&quot;
+</code></pre>
+          </div>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/stdlib/Console">
+              <div>< Previous</div>
+              Console
+            </a>
+
+            <a class="next" href="/stdlib/Fs">
+              <div>Next ></div>
+              Fs
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

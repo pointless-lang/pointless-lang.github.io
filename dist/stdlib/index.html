@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>The Standard Library</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>The Standard Library</h1>
+        <p>Modules containing built-in functionality</p>
+      </div>
+
+      <div id="sidebar">
+        <ul>
+          <li><a href="/stdlib/Async/">Async</a></li>
+          <li><a href="/stdlib/Bool/">Bool</a></li>
+          <li><a href="/stdlib/Char/">Char</a></li>
+          <li><a href="/stdlib/Console/">Console</a></li>
+          <li><a href="/stdlib/Err/">Err</a></li>
+          <li><a href="/stdlib/Fs/">Fs</a></li>
+          <li><a href="/stdlib/List/">List</a></li>
+          <li><a href="/stdlib/Math/">Math</a></li>
+          <li><a href="/stdlib/None/">None</a></li>
+          <li><a href="/stdlib/Obj/">Obj</a></li>
+          <li><a href="/stdlib/Overloads/">Overloads</a></li>
+          <li><a href="/stdlib/Panic/">Panic</a></li>
+          <li><a href="/stdlib/Rand/">Rand</a></li>
+          <li><a href="/stdlib/Re/">Re</a></li>
+          <li><a href="/stdlib/Ref/">Ref</a></li>
+          <li><a href="/stdlib/Set/">Set</a></li>
+          <li><a href="/stdlib/Str/">Str</a></li>
+          <li><a href="/stdlib/Table/">Table</a></li>
+          <li><a href="/stdlib/Test/">Test</a></li>
+        </ul>
+      </div>
+
+      <main>
+        <p>
+          The Pointless standard library contains useful built-in functions and
+          constants. This functionality is split into <em>modules</em>: globally
+          defined objects with definitions based around a common theme. For
+          instance, the <code>Str</code> module contains functions for working
+          with string values.
+        </p>
+        <p>
+          You can access a module&#39;s definitions the <code>.</code> operator.
+          For example, you would access the <code>toLower</code> function from
+          the <code>Str</code> module using <code>Str.toLower</code>. Some
+          commonly used standard library functions like
+          <code>Str.chars</code> are available as globals, and can be called
+          without specifying a module name.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="std">Str</span>.<span class="call">toLower</span>(<span class="quotes">&quot;</span><span class="string">Pointless</span><span class="quotes">&quot;</span>) <span class="comment">-- Call the `toLower` function from the `Str` module</span>
+<span class="call">chars</span>(<span class="quotes">&quot;</span><span class="string">Pointless</span><span class="quotes">&quot;</span>) <span class="comment">-- Call the global `char` function from the `Str` module</span></code></pre>
+          <pre class="result" style="undefined"><code>&quot;pointless&quot;
+[&quot;P&quot;, &quot;o&quot;, &quot;i&quot;, &quot;n&quot;, &quot;t&quot;, &quot;l&quot;, &quot;e&quot;, &quot;s&quot;, &quot;s&quot;]
+</code></pre>
+        </div>
+        <p>
+          See the language reference for
+          <a href="/language#reading-example-code">tips on reading</a> code
+          examples.
+        </p>
+        <p>
+          Along with the <a href="/language">language reference</a>, the
+          standard library documentation is an essential resource for
+          understaning and using the Pointless language. Use the links below to
+          view documentation for each module.
+        </p>
+
+        <hr />
+        <ul class="page-links">
+          <li>
+            <a href="/stdlib/Async/"><strong>Async</strong></a>
+            Manage concurrent operations
+          </li>
+
+          <li>
+            <a href="/stdlib/Bool/"><strong>Bool</strong></a>
+            Work with boolean values
+          </li>
+
+          <li>
+            <a href="/stdlib/Char/"><strong>Char</strong></a>
+            Manage concurrent operations
+          </li>
+
+          <li>
+            <a href="/stdlib/Console/"><strong>Console</strong></a>
+            Printing, prompting, and low-level console interaction
+          </li>
+
+          <li>
+            <a href="/stdlib/Err/"><strong>Err</strong></a>
+            Throw and catch recoverable errors
+          </li>
+
+          <li>
+            <a href="/stdlib/Fs/"><strong>Fs</strong></a>
+            Read and manipulate files and directories
+          </li>
+
+          <li>
+            <a href="/stdlib/List/"><strong>List</strong></a>
+            Work with lists (sequences of values)
+          </li>
+
+          <li>
+            <a href="/stdlib/Math/"><strong>Math</strong></a>
+            Mathematical functions and constants
+          </li>
+
+          <li>
+            <a href="/stdlib/None/"><strong>None</strong></a>
+            Work with none values
+          </li>
+
+          <li>
+            <a href="/stdlib/Obj/"><strong>Obj</strong></a>
+            Work with objects (key-value maps)
+          </li>
+
+          <li>
+            <a href="/stdlib/Overloads/"><strong>Overloads</strong></a>
+            Global wrapper functions combining similar type-specific functions
+          </li>
+
+          <li>
+            <a href="/stdlib/Panic/"><strong>Panic</strong></a>
+            Terminate the program upon an unexpected program state
+          </li>
+
+          <li>
+            <a href="/stdlib/Rand/"><strong>Rand</strong></a>
+            The Generate random values
+          </li>
+
+          <li>
+            <a href="/stdlib/Re/"><strong>Re</strong></a>
+            Use regular expressions to search and manipulate strings
+          </li>
+
+          <li>
+            <a href="/stdlib/Ref/"><strong>Ref</strong></a>
+            Work with mutable state
+          </li>
+
+          <li>
+            <a href="/stdlib/Set/"><strong>Set</strong></a>
+            Work with sets (collections of unique values)
+          </li>
+
+          <li>
+            <a href="/stdlib/Str/"><strong>Str</strong></a>
+            Work with strings (pieces of text)
+          </li>
+
+          <li>
+            <a href="/stdlib/Table/"><strong>Table</strong></a>
+            Work with tables (data-frames)
+          </li>
+
+          <li>
+            <a href="/stdlib/Test/"><strong>Test</strong></a>
+            Write tests and verify program behavior
+          </li>
+        </ul>
+      </main>
+    </article>
+  </body>
+</html>

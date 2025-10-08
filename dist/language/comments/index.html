@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Language Reference: Comments</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>Language Reference: Comments</h1>
+        <p>
+          Comment syntax, comments as documentation, and commenting out code
+        </p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to Language Reference</a>
+        <ol>
+          <li><a href="#comment-syntax"> Comment Syntax</a></li>
+          <li>
+            <a href="#comments-as-documentation"> Comments as Documentation</a>
+          </li>
+          <li><a href="#commenting-out-code"> Commenting Out Code</a></li>
+        </ol>
+      </div>
+
+      <main>
+        <hr />
+
+        <h2 id="comment-syntax">
+          <a href="#comment-syntax">Comment Syntax</a>
+        </h2>
+        <p>
+          Comments in Pointless start with two dashes <code>--</code> an
+          continue until the end of the line.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="comment">-- This is a comment!</span></code></pre>
+        </div>
+        <p>Comments can be placed at the end of a line containing code</p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">avg <span class="operator">=</span> (a <span class="operator">+</span> b) <span class="operator">/</span> <span class="number">2</span> <span class="comment">-- Calculate the average of `a` and `b`</span></code></pre>
+        </div>
+        <p>or on their own line.</p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="comment">-- Calculate the hamonic mean of `a` and `b`</span>
+avg <span class="operator">=</span> <span class="number">2</span> <span class="operator">/</span> (<span class="number">1</span> <span class="operator">/</span> a <span class="operator">+</span> <span class="number">1</span> <span class="operator">/</span> b)</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="comments-as-documentation">
+          <a href="#comments-as-documentation">Comments as Documentation</a>
+        </h2>
+        <p>
+          Comments can be used to describe what a piece of code does and how it
+          works. The example below uses comments to describe the behavior of the
+          function <code>factors</code>, mark what each variable does, and
+          explain the algorithm being implemented.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="comment">-- Calculate the prime factors of a positive integer `num`. Return a list of</span>
+<span class="comment">-- the calculated factors. Requires that `num &gt; 1`.</span>
+
+<span class="keyword">fn</span> <span class="function">factors</span>(<span class="argument">num</span>)
+  div <span class="operator">=</span> <span class="number">2</span> <span class="comment">-- Current factor being tested</span>
+  result <span class="operator">=</span> [] <span class="comment">-- The list of factors found</span>
+
+  <span class="comment">-- Calculate factors using trial division:</span>
+  <span class="comment">--</span>
+  <span class="comment">-- Check if `div` is a factor of `num`. If it is, then add `div` to the list</span>
+  <span class="comment">-- of found factors and divide `num` by the current factor. If not then move</span>
+  <span class="comment">-- on to the next possible factor. Continue until `num == 1`.</span>
+
+  <span class="keyword">while</span> num <span class="operator">&gt;</span> <span class="number">1</span> <span class="keyword">do</span>
+    <span class="keyword">if</span> num <span class="operator">%</span> div <span class="operator">==</span> <span class="number">0</span> <span class="keyword">then</span>
+      result <span class="operator">|=</span> <span class="call">push</span>(div)
+      num <span class="operator">/=</span> div
+    <span class="keyword">else</span>
+      div <span class="operator">+=</span> <span class="number">1</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+
+  result
+<span class="keyword">end</span>
+
+<span class="comment">-- Calculate the prime factors of `60`</span>
+<span class="call">factors</span>(<span class="number">60</span>)</code></pre>
+          <pre class="result" style="undefined"><code>[2, 2, 3, 5]
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="commenting-out-code">
+          <a href="#commenting-out-code">Commenting Out Code</a>
+        </h2>
+        <p>
+          Comment syntax can also be used to temporarily disable lines of code,
+          which comes in handy during development. In the example below, we
+          disable the line of code that gets input from the user in order to
+          test the rest of the program using a hard-coded value.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="comment">-- name = prompt(&quot;Enter a name: &quot;)</span>
+name <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">豆豆</span><span class="quotes">&quot;</span>
+<span class="quotes">&quot;</span><span class="string">Hello </span><span class="interpolated">$name</span><span class="string">!</span><span class="quotes">&quot;</span></code></pre>
+          <pre class="result" style="undefined"><code>&quot;Hello 豆豆!&quot;
+</code></pre>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a class="next" href="/language/variables">
+              <div>Next ></div>
+              Variables
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

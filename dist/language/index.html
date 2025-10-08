@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Language Reference</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>Language Reference</h1>
+        <p>Documentation and examples for the language features of Pointless</p>
+      </div>
+
+      <div id="sidebar">
+        <ul>
+          <li><a href="/language/comments/">Comments</a></li>
+          <li><a href="/language/variables/">Variables</a></li>
+          <li>
+            <a href="/language/printing-and-input/">Printing and User Input</a>
+          </li>
+          <li><a href="/language/numbers/">Numbers</a></li>
+          <li><a href="/language/booleans/">Booleans</a></li>
+          <li><a href="/language/none/">None</a></li>
+          <li><a href="/language/strings/">Strings</a></li>
+          <li><a href="/language/lists/">Lists</a></li>
+          <li><a href="/language/objects/">Objects</a></li>
+          <li><a href="/language/sets/">Sets</a></li>
+          <li><a href="/language/tables/">Tables</a></li>
+          <li><a href="/language/equality/">Equality</a></li>
+          <li><a href="/language/immutability/">Immutability</a></li>
+          <li><a href="/language/conditionals/">Conditionals</a></li>
+          <li><a href="/language/functions/">Function Definitions</a></li>
+          <li><a href="/language/pipelines/">Pipelines</a></li>
+          <li><a href="/language/loops/">Loops</a></li>
+          <li><a href="/language/async/">Async</a></li>
+          <li><a href="/language/imports/">Imports and Exports</a></li>
+          <li><a href="/language/best-practices/">Best Practices</a></li>
+          <li><a href="/language/misc/">Miscellaneous</a></li>
+        </ul>
+      </div>
+
+      <main>
+        <p>
+          The language reference describes the core language features of
+          Pointless. The reference is divided into chapters, each covering the
+          syntax, semantics, and use of a part of the language. Use the links
+          below to view each chapter. For information on the language&#39;s
+          built-in functions, see the
+          <a href="/stdlib">standard library</a> docs.
+        </p>
+
+        <h3 id="reading-example-code">
+          <a href="#reading-example-code">Reading Example Code</a>
+        </h3>
+        <p>
+          Most code samples, like the example below, show the values generated
+          by the code, including:
+        </p>
+        <ul>
+          <li>Any printed values</li>
+          <li>
+            The value of each <a href="/misc#top-level">top-level</a>
+            <a href="/misc#expressions">expression</a> (except for calls to
+            <a href="/stdlib/Console">Console</a> functions)
+          </li>
+          <li>
+            If the final statement is a variable definition, the value of the
+            variable
+          </li>
+        </ul>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">word <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">time</span><span class="quotes">&quot;</span>
+<span class="call">print</span>(word)
+
+<span class="quotes">&quot;</span><span class="string">what </span><span class="interpolated">$word</span><span class="string"> is it?</span><span class="quotes">&quot;</span>
+<span class="quotes">&quot;</span><span class="interpolated">$word</span><span class="string"> to get a watch.</span><span class="quotes">&quot;</span>
+
+backwards <span class="operator">=</span> <span class="call">reverse</span>(word)</code></pre>
+          <pre class="result" style="undefined"><code>time
+&quot;what time is it?&quot;
+&quot;time to get a watch.&quot;
+</code></pre>
+
+          <pre
+            class="result"
+            style="undefined"
+          ><code><div class="var-name">backwards</div>&quot;emit&quot;</code></pre>
+        </div>
+
+        <hr />
+        <ul class="page-links">
+          <li>
+            <a href="/language/comments/"><strong>Comments</strong></a>
+            Comment syntax, comments as documentation, and commenting out code
+          </li>
+
+          <li>
+            <a href="/language/variables/"><strong>Variables</strong></a>
+            Defining, accessing, and updating variables
+          </li>
+
+          <li>
+            <a href="/language/printing-and-input/"
+              ><strong>Printing and User Input</strong></a
+            >
+            Printing values and getting user input in the console
+          </li>
+
+          <li>
+            <a href="/language/numbers/"><strong>Numbers</strong></a>
+            Numbers and numerical operators
+          </li>
+
+          <li>
+            <a href="/language/booleans/"><strong>Booleans</strong></a>
+            Boolean (true and false) values and logical operators
+          </li>
+
+          <li>
+            <a href="/language/none/"><strong>None</strong></a>
+            The none value and its uses
+          </li>
+
+          <li>
+            <a href="/language/strings/"><strong>Strings</strong></a>
+            Strings (pieces of text), string interpolation, and string operators
+          </li>
+
+          <li>
+            <a href="/language/lists/"><strong>Lists</strong></a>
+            null
+          </li>
+
+          <li>
+            <a href="/language/objects/"><strong>Objects</strong></a>
+            null
+          </li>
+
+          <li>
+            <a href="/language/sets/"><strong>Sets</strong></a>
+            null
+          </li>
+
+          <li>
+            <a href="/language/tables/"><strong>Tables</strong></a>
+            null
+          </li>
+
+          <li>
+            <a href="/language/equality/"><strong>Equality</strong></a>
+            When are values considered equal
+          </li>
+
+          <li>
+            <a href="/language/immutability/"><strong>Immutability</strong></a>
+            null
+          </li>
+
+          <li>
+            <a href="/language/conditionals/"><strong>Conditionals</strong></a>
+            If and match expressions, running code based on one or more
+            conditions
+          </li>
+
+          <li>
+            <a href="/language/functions/"
+              ><strong>Function Definitions</strong></a
+            >
+            null
+          </li>
+
+          <li>
+            <a href="/language/pipelines/"><strong>Pipelines</strong></a>
+            null
+          </li>
+
+          <li>
+            <a href="/language/loops/"><strong>Loops</strong></a>
+            For and while loops, running code iteratively (multiple times)
+          </li>
+
+          <li>
+            <a href="/language/async/"><strong>Async</strong></a>
+            Write concurrent code
+          </li>
+
+          <li>
+            <a href="/language/imports/"
+              ><strong>Imports and Exports</strong></a
+            >
+            null
+          </li>
+
+          <li>
+            <a href="/language/best-practices/"
+              ><strong>Best Practices</strong></a
+            >
+            Guidelines for writing clear and concise Pointless code
+          </li>
+
+          <li>
+            <a href="/language/misc/"><strong>Miscellaneous</strong></a>
+            null
+          </li>
+        </ul>
+      </main>
+    </article>
+  </body>
+</html>

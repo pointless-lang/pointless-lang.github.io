@@ -1,7 +1,7 @@
-import { renderMarkdown } from "../../render/render-markdown.js";
-import { h } from "../../render/escape.js";
-import { getType } from "../../src/values.js";
-import { loadMeta } from "../../src/std.js";
+import { renderMarkdown } from "pointless/render/render-markdown.js";
+import { h } from "pointless/render/escape.js";
+import { getType } from "pointless/src/values.js";
+import { loadMeta } from "pointless/src/std.js";
 
 const meta = loadMeta();
 

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Language Reference: Variables</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>Language Reference: Variables</h1>
+        <p>Defining, accessing, and updating variables</p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to Language Reference</a>
+        <ol>
+          <li><a href="#defining-variables"> Defining Variables</a></li>
+          <li><a href="#accessing-variables"> Accessing Variables</a></li>
+          <li><a href="#reassigning-variables"> Reassigning Variables</a></li>
+          <li><a href="#compound-assignment"> Compound Assignment</a></li>
+          <li><a href="#variable-scope"> Variable Scope</a></li>
+          <li><a href="#shadowing"> Shadowing</a></li>
+          <li><a href="#structural-updates"> Structural Updates</a></li>
+        </ol>
+      </div>
+
+      <main>
+        <hr />
+
+        <h2 id="defining-variables">
+          <a href="#defining-variables">Defining Variables</a>
+        </h2>
+        <p>
+          We can use variables to store values. Variables in Pointless are
+          defined using the assignment <code>=</code> operator. Variable names
+          must be valid <a href="misc#identifiers">identifiers</a>, and must not
+          be <a href="misc#keywords">keywords</a>.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="comment">-- Store the string &quot;Lilah&quot; in the variable `name`</span>
+name <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Lilah</span><span class="quotes">&quot;</span></code></pre>
+
+          <pre
+            class="result"
+            style="undefined"
+          ><code><div class="var-name">name</div>&quot;Lilah&quot;</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="accessing-variables">
+          <a href="#accessing-variables">Accessing Variables</a>
+        </h2>
+        <p>
+          After a variable is defined, it can be used by other pieces of code.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">points <span class="operator">=</span> <span class="number">90</span>
+total <span class="operator">=</span> <span class="number">100</span>
+
+points <span class="operator">/</span> total</code></pre>
+          <pre class="result" style="undefined"><code>0.9
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="reassigning-variables">
+          <a href="#reassigning-variables">Reassigning Variables</a>
+        </h2>
+        <p>
+          Variables can updated after being initially defined. The syntax for
+          reassigning an existing variable is the same as for defining a new
+          variable.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">score <span class="operator">=</span> <span class="number">0</span>
+score <span class="operator">=</span> <span class="number">1</span></code></pre>
+
+          <pre
+            class="result"
+            style="undefined"
+          ><code><div class="var-name">score</div>1</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="compound-assignment">
+          <a href="#compound-assignment">Compound Assignment</a>
+        </h2>
+        <p>
+          Sometimes we want to update an existing variable based on its current
+          value, for example incrementing a <code>score</code> variable.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">score <span class="operator">=</span> <span class="number">0</span>
+score <span class="operator">=</span> score <span class="operator">+</span> <span class="number">1</span></code></pre>
+
+          <pre
+            class="result"
+            style="undefined"
+          ><code><div class="var-name">score</div>1</code></pre>
+        </div>
+        <p>
+          We can simplify these sorts of updates using the
+          <em>compound assignment</em> syntax, which combines a binary opeartor
+          like <code>+</code> with the assignment operator <code>=</code>.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">score <span class="operator">=</span> <span class="number">0</span>
+score <span class="operator">+=</span> <span class="number">1</span> <span class="comment">-- Equivalent to score = score + 1</span></code></pre>
+
+          <pre
+            class="result"
+            style="undefined"
+          ><code><div class="var-name">score</div>1</code></pre>
+        </div>
+        <p>
+          Compound assignment also works with
+          <a href="../pipelines">pipeline operators</a>.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">cmpPct <span class="operator">=</span> <span class="number">27</span> <span class="operator">/</span> <span class="number">43</span>
+cmpPct <span class="operator">|=</span> <span class="std">Math</span>.<span class="call">roundTo</span>(<span class="number">3</span>) <span class="comment">-- Equivalent to cmpPct = Math.roundTo(cmpPct, 3)</span></code></pre>
+
+          <pre
+            class="result"
+            style="undefined"
+          ><code><div class="var-name">cmpPct</div>0.628</code></pre>
+        </div>
+        <p>
+          The available compound assignment operators are <code>+=</code>,
+          <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>**=</code>,
+          <code>%=</code>, <code>|=</code>, <code>$=</code>, and
+          <code>?=</code>.
+        </p>
+
+        <hr />
+
+        <h2 id="variable-scope">
+          <a href="#variable-scope">Variable Scope</a>
+        </h2>
+        <p>
+          Pointless is <em>function-scoped</em>, meaning that functions
+          determine the scope of variables.
+        </p>
+        <p>
+          Variables defined outside of functions are <em>globals</em>, and can
+          be accessed both by code within functions and code outside of
+          functions.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">pi <span class="operator">=</span> <span class="number">3.14</span> <span class="comment">-- Close enough</span>
+
+<span class="keyword">fn</span> <span class="function">area</span>(<span class="argument">radius</span>)
+  pi <span class="operator">*</span> radius <span class="operator">**</span> <span class="number">2</span> <span class="comment">-- We can use the global `pi` within the function</span>
+<span class="keyword">end</span>
+
+<span class="call">area</span>(<span class="number">5</span>)</code></pre>
+          <pre class="result" style="undefined"><code>78.5
+</code></pre>
+        </div>
+        <p>
+          Variables defined inside a function, including function parameters,
+          are <em>locals</em>, and are only accessible withing that function.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">distance</span>(<span class="argument">x1</span>, <span class="argument">y1</span>, <span class="argument">x2</span>, <span class="argument">y2</span>)
+  <span class="comment">-- `dx` and `dy` are only defined within the function</span>
+  dx <span class="operator">=</span> x1 <span class="operator">-</span> x2
+  dy <span class="operator">=</span> y1 <span class="operator">-</span> y2
+  <span class="std">Math</span>.<span class="call">sqrt</span>(dx <span class="operator">**</span> <span class="number">2</span> <span class="operator">+</span> dy <span class="operator">**</span> <span class="number">2</span>)
+<span class="keyword">end</span>
+
+<span class="call">distance</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>)
+
+<span class="comment">-- Incorrect, we can&#039;t access `dx` outside of `distance`</span>
+dx</code></pre>
+          <pre class="result" style="undefined"><code>5
+</code></pre>
+
+          <pre class="result panic"><code>panic: variable is not defined
+name: dx
+
+dx
+^
+At pages/language/variables/index.md:embedded:11:1</code></pre>
+        </div>
+        <p>
+          Function-scoping means that control structures like conditionals and
+          loops don&#39;t create new scopes. Variables defined within these
+          control structures (including loop variables) will be accessible
+          outside of the structures.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">numbers <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+total <span class="operator">=</span> <span class="number">0</span>
+
+<span class="keyword">for</span> n <span class="keyword">in</span> numbers <span class="keyword">do</span>
+  total <span class="operator">+=</span> n
+<span class="keyword">end</span>
+
+total
+n</code></pre>
+          <pre class="result" style="undefined"><code>15
+5
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="shadowing">
+          <a href="#shadowing">Shadowing</a>
+        </h2>
+        <p>
+          Local variables with the same names as globals will
+          <em>shadow</em> those globals. Defining a local variable inside a
+          function will not change the value of a global variable with the same
+          name.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">greeting <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>
+
+<span class="keyword">fn</span> <span class="function">sayHi</span>()
+  <span class="comment">-- Changes the value of `greeting` within the function, making a new local</span>
+  <span class="comment">-- definition and leaving the global definition for `greeting` unchanged</span>
+  greeting <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">hi</span><span class="quotes">&quot;</span>
+  <span class="quotes">&quot;</span><span class="interpolated">$greeting</span><span class="string"> world!</span><span class="quotes">&quot;</span>
+<span class="keyword">end</span>
+
+<span class="call">sayHi</span>()
+greeting <span class="comment">-- Value of the global variable hasn&#039;t changed</span></code></pre>
+          <pre class="result" style="undefined"><code>&quot;hi world!&quot;
+&quot;Hello&quot;
+</code></pre>
+        </div>
+        <p>
+          When a function defines a local variable that shadows a global, code
+          in the function won&#39;t have access the global definition, even if
+          the variable access precedes the local definition.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">greeting <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>
+
+<span class="keyword">fn</span> <span class="function">sayHi</span>()
+  <span class="comment">-- Invalid, local variable `greeting` is not yet defined and</span>
+  <span class="comment">-- global `greeting` is shadowed and therefore inaccessible</span>
+  <span class="call">print</span>(greeting)
+  greeting <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">hi</span><span class="quotes">&quot;</span>
+<span class="keyword">end</span>
+
+<span class="call">sayHi</span>()</code></pre>
+
+          <pre
+            class="result panic"
+          ><code>panic: variable has not been defined yet
+name: greeting
+
+  print(greeting)
+        ^
+At pages/language/variables/index.md:embedded:6:9 in sayHi()
+
+sayHi()
+     ^
+At pages/language/variables/index.md:embedded:10:6</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="structural-updates">
+          <a href="#structural-updates">Structural Updates</a>
+        </h2>
+        <p>
+          In Pointless, we can use assignment syntax to update variables
+          containing <a href="/language/lists/#updates">lists</a>,
+          <a href="/language/objects/#updates">objects</a>, and
+          <a href="/language/tables/#updates">tables</a>.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">hero <span class="operator">=</span> { name: <span class="quotes">&quot;</span><span class="string">Lilah</span><span class="quotes">&quot;</span>, score: <span class="number">0</span>, items: [<span class="constant">none</span>] }
+
+hero.score <span class="operator">+=</span> <span class="number">1</span> <span class="comment">-- Increment the `score` value in `hero`</span>
+hero.items[<span class="number">0</span>] <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">food</span><span class="quotes">&quot;</span> <span class="comment">-- Replace the first value in the `items` list in `hero`</span></code></pre>
+
+          <pre
+            class="result"
+            style="undefined"
+          ><code><div class="var-name">hero</div>{ name: &quot;Lilah&quot;, score: 1, items: [&quot;food&quot;] }</code></pre>
+        </div>
+        <p>
+          Note that structural updates like these are still just variable
+          reassignments; they <strong>do not mutate</strong> the underlying data
+          structures like they would in other languages. See the chapter on
+          <a href="../immutability">immutability</a> for more details.
+        </p>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/language/comments">
+              <div>< Previous</div>
+              Comments
+            </a>
+
+            <a class="next" href="/language/printing-and-input">
+              <div>Next ></div>
+              Printing and User Input
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

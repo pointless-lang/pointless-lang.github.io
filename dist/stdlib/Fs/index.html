@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>The Standard Library: Fs</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>The Standard Library: Fs</h1>
+        <p>Read and manipulate files and directories</p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to The Standard Library</a>
+        <ul class="std">
+          <li>
+            <a href="#ls">ls</a>
+          </li>
+
+          <li>
+            <a href="#read">read</a>
+          </li>
+
+          <li>
+            <a href="#readBytes">readBytes</a>
+          </li>
+
+          <li>
+            <a href="#write">write</a>
+          </li>
+
+          <li>
+            <a href="#writeBytes">writeBytes</a>
+          </li>
+        </ul>
+      </div>
+
+      <main>
+        <p>Paths are resolved relative to the current working directory.</p>
+        <p>
+          <em>Tip:</em> To read files from a fixed path, consider using
+          <code>import</code>, which which allows you to load and process file
+          contents from a path relative to a script&#39;s source file.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">text:some-file.txt</span><span class="quotes">&quot;</span> <span class="comment">-- Import text file as a string</span>
+<span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">raw:some-file.png</span><span class="quotes">&quot;</span>  <span class="comment">-- Import file as a list of bytes</span></code></pre>
+        </div>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="std">Fs</span></code></pre>
+          <pre class="result" style="max-height: 200px"><code>{
+  ls: Fs.ls(path),
+  read: Fs.read(path),
+  readBytes: Fs.readBytes(path),
+  write: Fs.write(value, path),
+  writeBytes: Fs.writeBytes(bytes, path),
+}
+</code></pre>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="ls">
+          <code><a href="#ls">Fs.ls(path)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>List the contents of the directory at <code>path</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="call">ls</span>(<span class="quotes">&quot;</span><span class="string">./school</span><span class="quotes">&quot;</span>)</code></pre>
+          </div>
+          <p>Example output:</p>
+          <pre><code>[&quot;classes/&quot;, &quot;notes/&quot;, &quot;to-do.txt&quot;]</code></pre>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="read">
+          <code><a href="#read">Fs.read(path)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>Read the text file at <code>path</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Fs</span>.<span class="call">read</span>(<span class="quotes">&quot;</span><span class="string">lyrics.txt</span><span class="quotes">&quot;</span>)</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="readBytes">
+          <code><a href="#readBytes">Fs.readBytes(path)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>Read the file at <code>path</code> as a list of bytes.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Fs</span>.<span class="call">readBytes</span>(<span class="quotes">&quot;</span><span class="string">icon.png</span><span class="quotes">&quot;</span>)</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="write">
+          <code><a href="#write">Fs.write(value, path)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Convert <code>value</code> to a string and write to the file at
+            <code>path</code>, creating the file if it doesn&#39;t already
+            exist. Return the converted string.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Fs</span>.<span class="call">write</span>(<span class="quotes">&quot;</span><span class="string">I hope you understand, everybody scams</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">lyrics.txt</span><span class="quotes">&quot;</span>)</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="writeBytes">
+          <code><a href="#writeBytes">Fs.writeBytes(bytes, path)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Write a list <code>bytes</code> to the file at <code>path</code>,
+            creating the file if it doesn&#39;t already exist.
+            <code>bytes</code> must be a list of integers, between
+            <code>0</code> and <code>255</code>, inclusive. Return
+            <code>bytes</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Fs</span>.<span class="call">writeBytes</span>([<span class="number">72</span>, <span class="number">101</span>, <span class="number">108</span>, <span class="number">108</span>, <span class="number">111</span>], <span class="quotes">&quot;</span><span class="string">greeting.txt</span><span class="quotes">&quot;</span>)</code></pre>
+          </div>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/stdlib/Err">
+              <div>< Previous</div>
+              Err
+            </a>
+
+            <a class="next" href="/stdlib/List">
+              <div>Next ></div>
+              List
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

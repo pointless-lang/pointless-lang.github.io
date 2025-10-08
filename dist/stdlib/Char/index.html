@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>The Standard Library: Char</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>The Standard Library: Char</h1>
+        <p>Manage concurrent operations</p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to The Standard Library</a>
+        <ul class="std">
+          <li>
+            <a href="#code">code</a>
+          </li>
+
+          <li>
+            <a href="#of">of</a>
+          </li>
+
+          <li>
+            <a href="#span">span</a>
+          </li>
+        </ul>
+      </div>
+
+      <main>
+        <p>
+          For more information on characters see the
+          <a href="/language/strings">language reference</a>.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="std">Char</span></code></pre>
+          <pre
+            class="result"
+            style="max-height: 200px"
+          ><code>{ code: Char.code(char), of: Char.of(code), span: Char.span(from, to) }
+</code></pre>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="code">
+          <code><a href="#code">Char.code(char)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Get the Unicode code point of the single-character string
+            <code>char</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Char</span>.<span class="call">code</span>(<span class="quotes">&quot;</span><span class="string">A</span><span class="quotes">&quot;</span>)
+<span class="std">Char</span>.<span class="call">code</span>(<span class="quotes">&quot;</span><span class="string">🙂</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre class="result" style="undefined"><code>65
+128578
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="of">
+          <code><a href="#of">Char.of(code)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Get a string containing the character with Unicode code point
+            <code>code</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Char</span>.<span class="call">of</span>(<span class="number">65</span>)
+<span class="std">Char</span>.<span class="call">of</span>(<span class="number">128578</span>)</code></pre>
+            <pre class="result" style="undefined"><code>&quot;A&quot;
+&quot;🙂&quot;
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="span">
+          <code><a href="#span">Char.span(from, to)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Return the list of characters between <code>from</code> to
+            <code>to</code>, inclusive.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Char</span>.<span class="call">span</span>(<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">e</span><span class="quotes">&quot;</span>)
+<span class="std">Char</span>.<span class="call">span</span>(<span class="quotes">&quot;</span><span class="string">α</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">ε</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
+[&quot;α&quot;, &quot;β&quot;, &quot;γ&quot;, &quot;δ&quot;, &quot;ε&quot;]
+</code></pre>
+          </div>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/stdlib/Bool">
+              <div>< Previous</div>
+              Bool
+            </a>
+
+            <a class="next" href="/stdlib/Console">
+              <div>Next ></div>
+              Console
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

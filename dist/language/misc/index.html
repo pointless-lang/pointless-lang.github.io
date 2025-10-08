@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Language Reference: Miscellaneous</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>Language Reference: Miscellaneous</h1>
+        <p>null</p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to Language Reference</a>
+        <ol>
+          <li><a href="#in-language-constructs"> In Language Constructs</a></li>
+          <li><a href="#identifier-names"> Identifier Names</a></li>
+        </ol>
+      </div>
+
+      <main>
+        <ul>
+          <li><p>statements expressions</p></li>
+          <li><p>newline statements</p></li>
+          <li><p>semicolons</p></li>
+          <li><p>identifiers</p></li>
+          <li><p>statement blocks</p></li>
+          <li><p>whitespace</p></li>
+          <li><p>name syntax</p></li>
+          <li><p>comments</p></li>
+          <li><p>camel case</p></li>
+          <li><p>no newline index field call</p></li>
+          <li><p>primitives</p></li>
+          <li><p>precedence</p></li>
+          <li><p>operators</p></li>
+          <li><p>pow parens</p></li>
+          <li><p>parens</p></li>
+          <li><p>associativity</p></li>
+        </ul>
+        <p>
+          side effects (like printing a value, setting a variable, or returning
+          from a function)
+        </p>
+
+        <hr />
+
+        <h2 id="in-language-constructs">
+          <a href="#in-language-constructs">In Language Constructs</a>
+        </h2>
+        <p>
+          There are several situations in which language constructs will produce
+          <code>none</code> values, including:
+        </p>
+        <ul>
+          <li>
+            <p>
+              Evaluating an <code>if</code> or <code>match</code> expression
+              with no matching branch and no <code>else</code> branch.
+            </p>
+          </li>
+          <li>
+            <p>
+              Calling a function, evaluating a conditional branch, or importing
+              a script which contains no code, or whose
+              <a href="misc#final-statement-value">final statement</a> is not an
+              expression.
+            </p>
+          </li>
+          <li>
+            <p>
+              Evaluating an <code>if</code> or <code>match</code> expression
+              with no matching branch and no <code>else</code> branch.
+            </p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls">n <span class="operator">=</span> <span class="number">7</span>
+
+<span class="keyword">if</span> n <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span> <span class="keyword">then</span>
+  <span class="quotes">&quot;</span><span class="string">even</span><span class="quotes">&quot;</span>
+<span class="keyword">end</span>
+
+<span class="keyword">match</span> n <span class="operator">%</span> <span class="number">2</span>
+  <span class="keyword">case</span> <span class="number">0</span> <span class="keyword">then</span> <span class="quotes">&quot;</span><span class="string">even</span><span class="quotes">&quot;</span>
+<span class="keyword">end</span></code></pre>
+              <pre class="result" style="undefined"><code>none
+none
+</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>
+              Calling a function, evaluating a conditional branch, or importing
+              a script which contains no code.
+            </p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">nada</span>()
+<span class="keyword">end</span>
+
+<span class="call">nada</span>()
+
+<span class="keyword">if</span> <span class="constant">true</span> <span class="keyword">then</span>
+<span class="keyword">end</span></code></pre>
+              <pre class="result" style="undefined"><code>none
+none
+</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>
+              Calling a function, evaluating a conditional branch, or importing
+              a script whose final statement is a variable assignment or a loop.
+            </p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">justChecking</span>()
+  <span class="keyword">for</span> n <span class="keyword">in</span> <span class="call">span</span>(<span class="number">1</span>, <span class="number">10</span>) <span class="keyword">do</span>
+    <span class="call">assert</span>(n <span class="operator">&gt;</span> <span class="number">0</span>)
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="call">justChecking</span>()
+
+<span class="keyword">if</span> <span class="constant">true</span> <span class="keyword">then</span>
+  n <span class="operator">=</span> <span class="number">100</span>
+<span class="keyword">end</span></code></pre>
+              <pre class="result" style="undefined"><code>none
+none
+</code></pre>
+            </div>
+          </li>
+        </ul>
+
+        <hr />
+
+        <h2 id="identifier-names">
+          <a href="#identifier-names">Identifier Names</a>
+        </h2>
+        <p>
+          An identifier in Pointless is a name that starts with an ASCII letter
+          <code>[a-zA-Z]</code> and is followed by zero or more ASCII letters or
+          digits <code>[a-zA-Z0-9]</code>. Variable names must be valid
+          identifiers, and must not be [keywords].
+        </p>
+        <p><strong>Valid identifier examples:</strong></p>
+        <pre><code>nickname
+highScore
+player2</code></pre>
+        <p><strong>Invalid identifier examples:</strong></p>
+        <pre><code>nick$nam€
+high_score
+2player</code></pre>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/language/best-practices">
+              <div>< Previous</div>
+              Best Practices
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

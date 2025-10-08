@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Language Reference: Equality</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>Language Reference: Equality</h1>
+        <p>When are values considered equal</p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to Language Reference</a>
+        <ol>
+          <li><a href="#operators"> Operators</a></li>
+          <li><a href="#definition"> Definition</a></li>
+        </ol>
+      </div>
+
+      <main>
+        <hr />
+
+        <h2 id="operators">
+          <a href="#operators">Operators</a>
+        </h2>
+        <p>
+          The equals <code>==</code> operator can be used to check if two values
+          are equal.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="number">1</span> <span class="operator">+</span> <span class="number">4</span> <span class="operator">==</span> <span class="number">5</span></code></pre>
+          <pre class="result" style="undefined"><code>true
+</code></pre>
+        </div>
+        <p>
+          The not-equals <code>!=</code> operator can be used to check if two
+          values are not equal.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="number">1</span> <span class="operator">+</span> <span class="number">4</span> <span class="operator">!=</span> <span class="number">14</span></code></pre>
+          <pre class="result" style="undefined"><code>true
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="definition">
+          <a href="#definition">Definition</a>
+        </h2>
+        <p>Equality in Pointless obeys the following rules:</p>
+        <ul>
+          <li>
+            <p>Values of different types are never equal.</p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">0</span><span class="quotes">&quot;</span> <span class="operator">==</span> <span class="number">0</span>
+<span class="constant">true</span> <span class="operator">==</span> <span class="number">1</span></code></pre>
+              <pre class="result" style="undefined"><code>false
+false
+</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>
+              <code>true</code>, <code>false</code>, and <code>none</code> are
+              equal to themselves.
+            </p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls"><span class="constant">true</span> <span class="operator">==</span> <span class="constant">true</span>
+<span class="constant">false</span> <span class="operator">==</span> <span class="constant">false</span>
+<span class="constant">none</span> <span class="operator">==</span> <span class="constant">none</span></code></pre>
+              <pre class="result" style="undefined"><code>true
+true
+true
+</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>Numbers are equal if they have the same value.</p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls"><span class="number">1e2</span> <span class="operator">==</span> <span class="number">100.0</span>
+<span class="number">42</span> <span class="operator">==</span> <span class="number">7</span></code></pre>
+              <pre class="result" style="undefined"><code>true
+false
+</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>
+              Strings are equal if they contain the same characters in the same
+              order.
+            </p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">hello</span><span class="quotes">&quot;</span> <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">hello</span><span class="quotes">&quot;</span>
+<span class="quotes">&quot;</span><span class="string">Hello!</span><span class="quotes">&quot;</span> <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">hello?</span><span class="quotes">&quot;</span></code></pre>
+              <pre class="result" style="undefined"><code>true
+false
+</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>
+              Lists are equal if they contain the same elements in the same
+              order.
+            </p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls">[<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>] <span class="operator">==</span> [<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>]
+[<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>] <span class="operator">==</span> [<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>]</code></pre>
+              <pre class="result" style="undefined"><code>true
+false
+</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>
+              Sets are equal if they contain the same values, regardless of
+              order.
+            </p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls"><span class="std">Set</span>.<span class="call">of</span>([<span class="number">0</span>, <span class="number">1</span>]) <span class="operator">==</span> <span class="std">Set</span>.<span class="call">of</span>([<span class="number">1</span>, <span class="number">0</span>])
+<span class="std">Set</span>.<span class="call">of</span>([<span class="number">0</span>, <span class="number">1</span>]) <span class="operator">==</span> <span class="std">Set</span>.<span class="call">of</span>([<span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>])</code></pre>
+              <pre class="result" style="undefined"><code>true
+false
+</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>
+              Objects are equal if they contain the same key-value pairs,
+              regardless of order.
+            </p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls">{ city: <span class="quotes">&quot;</span><span class="string">Boston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">MA</span><span class="quotes">&quot;</span> } <span class="operator">==</span> { state: <span class="quotes">&quot;</span><span class="string">MA</span><span class="quotes">&quot;</span>, city: <span class="quotes">&quot;</span><span class="string">Boston</span><span class="quotes">&quot;</span> }
+{ county: <span class="quotes">&quot;</span><span class="string">Suffolk</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">MA</span><span class="quotes">&quot;</span> } <span class="operator">==</span> { city: <span class="quotes">&quot;</span><span class="string">Boston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">MA</span><span class="quotes">&quot;</span> }</code></pre>
+              <pre class="result" style="undefined"><code>true
+false
+</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>
+              Tables are equal if their row lists (lists whose elements are row
+              objects) are equal. Equivalently, tables are equal if their column
+              objects (objects whose keys are column names and whose values are
+              lists of each column&#39;s values) are equal.
+            </p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls">t1 <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([{ state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, rank: <span class="number">1</span> }, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, rank: <span class="number">2</span> }])
+t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>({ state: [<span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>], rank: [<span class="number">1</span>, <span class="number">2</span>] })
+t1 <span class="operator">==</span> t2
+
+t3 <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>({ state: [<span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>], rank: [<span class="number">1</span>, <span class="number">2</span>] })
+t4 <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>({ state: [<span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>], ranking: [<span class="number">1</span>, <span class="number">2</span>] })
+t3 <span class="operator">==</span> t4</code></pre>
+              <pre class="result" style="undefined"><code>true
+false
+</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>
+              A function is equal to itself. Two functions which do different
+              things are not equal. Two functions which do the same thing may or
+              may not be equal.
+            </p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">inc</span>(<span class="argument">n</span>)
+  n <span class="operator">+</span> <span class="number">1</span>
+<span class="keyword">end</span>
+
+inc <span class="operator">==</span> inc
+
+inc <span class="operator">==</span> <span class="keyword">fn</span>(<span class="argument">n</span>) n <span class="operator">*</span> <span class="number">3</span> <span class="keyword">end</span>
+
+<span class="keyword">fn</span>(<span class="argument">n</span>) n <span class="operator">*</span> <span class="number">3</span> <span class="keyword">end</span> <span class="operator">==</span> <span class="keyword">fn</span>(<span class="argument">n</span>) n <span class="operator">*</span> <span class="number">3</span> <span class="keyword">end</span> <span class="comment">-- May or may not be equal</span></code></pre>
+              <pre class="result" style="undefined"><code>true
+false
+false
+</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>
+              A ref is only ever equal to itself. Two different refs are not
+              equal, even if they contain the same value.
+            </p>
+
+            <div class="snippet undefined">
+              <pre><code class="ptls">ref <span class="operator">=</span> <span class="std">Ref</span>.<span class="call">of</span>(<span class="number">0</span>)
+ref <span class="operator">==</span> ref
+ref <span class="operator">==</span> <span class="std">Ref</span>.<span class="call">of</span>(<span class="number">0</span>)</code></pre>
+              <pre class="result" style="undefined"><code>true
+false
+</code></pre>
+            </div>
+          </li>
+          <li>
+            <p>
+              Equality is defined recursively for
+              <a href="../misc#data-structures">data structures</a>. Values
+              inside these structures are compared using these same rules.
+            </p>
+          </li>
+        </ul>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/language/tables">
+              <div>< Previous</div>
+              Tables
+            </a>
+
+            <a class="next" href="/language/immutability">
+              <div>Next ></div>
+              Immutability
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Language Reference: None</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>Language Reference: None</h1>
+        <p>The none value and its uses</p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to Language Reference</a>
+        <ol>
+          <li><a href="#syntax"> Syntax</a></li>
+          <li><a href="#as-a-placeholder-value"> As a Placeholder Value</a></li>
+          <li><a href="#in-language-constructs"> In Language Constructs</a></li>
+        </ol>
+      </div>
+
+      <main>
+        <p>
+          Pointless includes a value <code>none</code> which is used to
+          represent values that aren&#39;t defined or which can&#39;t be
+          calculated.
+        </p>
+        <p>
+          See the standard library <a href="/stdlib/None">None module</a> for
+          built-in functions for working with <code>none</code> values.
+        </p>
+
+        <hr />
+
+        <h2 id="syntax">
+          <a href="#syntax">Syntax</a>
+        </h2>
+        <p>
+          In Pointless, the <code>none</code> value is accessible through the
+          <code>none</code> keyword.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="constant">none</span></code></pre>
+          <pre class="result" style="undefined"><code>none
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="as-a-placeholder-value">
+          <a href="#as-a-placeholder-value">As a Placeholder Value</a>
+        </h2>
+        <p>Using <code>none</code> to represent a value that is not defined:</p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="comment">-- Define `state` as `none` for a city that has no state</span>
+{ city: <span class="quotes">&quot;</span><span class="string">Washington</span><span class="quotes">&quot;</span>, state: <span class="constant">none</span>, population: <span class="number">702250</span> }</code></pre>
+          <pre
+            class="result"
+            style="undefined"
+          ><code>{ city: &quot;Washington&quot;, state: none, population: 702250 }
+</code></pre>
+        </div>
+        <p>
+          Using <code>none</code> to represent a value that cannot be
+          calculated:
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="comment">-- Get the first item in `list`, or `none` if list is empty</span>
+<span class="keyword">fn</span> <span class="function">first</span>(<span class="argument">list</span>)
+  <span class="keyword">if</span> <span class="call">isEmpty</span>(list) <span class="keyword">then</span>
+    <span class="constant">none</span>
+  <span class="keyword">else</span>
+    list[<span class="number">0</span>]
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="call">first</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>])
+<span class="call">first</span>([])</code></pre>
+          <pre class="result" style="undefined"><code>&quot;a&quot;
+none
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="in-language-constructs">
+          <a href="#in-language-constructs">In Language Constructs</a>
+        </h2>
+        <p>
+          Sometimes language constructs will produce <code>none</code> values.
+          For example, a function that contains no code will return
+          <code>none</code> when called.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">nada</span>()
+<span class="keyword">end</span>
+
+<span class="call">nada</span>()</code></pre>
+          <pre class="result" style="undefined"><code>none
+</code></pre>
+        </div>
+        <p>
+          You can find more information on situations where language produces
+          <code>none</code> values in the other chapters of the language
+          reference.
+        </p>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/language/booleans">
+              <div>< Previous</div>
+              Booleans
+            </a>
+
+            <a class="next" href="/language/strings">
+              <div>Next ></div>
+              Strings
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

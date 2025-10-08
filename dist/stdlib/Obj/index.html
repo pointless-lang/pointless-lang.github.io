@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>The Standard Library: Obj</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>The Standard Library: Obj</h1>
+        <p>Work with objects (key-value maps)</p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to The Standard Library</a>
+        <ul class="std">
+          <li>
+            <a href="#focus">focus</a>
+          </li>
+
+          <li>
+            <a href="#get">get</a>
+          </li>
+
+          <li>
+            <a href="#getDefault">getDefault</a>
+          </li>
+
+          <li>
+            <a href="#has">has</a>
+          </li>
+
+          <li>
+            <a href="#isEmpty">isEmpty</a>
+            <span class="tag" title="Global"></span>
+          </li>
+
+          <li>
+            <a href="#keys">keys</a>
+          </li>
+
+          <li>
+            <a href="#len">len</a>
+            <span class="tag" title="Global"></span>
+          </li>
+
+          <li>
+            <a href="#matches">matches</a>
+          </li>
+
+          <li>
+            <a href="#merge">merge</a>
+          </li>
+
+          <li>
+            <a href="#of">of</a>
+          </li>
+
+          <li>
+            <a href="#put">put</a>
+          </li>
+
+          <li>
+            <a href="#remove">remove</a>
+            <span class="tag" title="Global"></span>
+          </li>
+
+          <li>
+            <a href="#removeAll">removeAll</a>
+          </li>
+
+          <li>
+            <a href="#rename">rename</a>
+          </li>
+
+          <li>
+            <a href="#select">select</a>
+            <span class="tag" title="Global"></span>
+          </li>
+
+          <li>
+            <a href="#set">set</a>
+          </li>
+
+          <li>
+            <a href="#setDefault">setDefault</a>
+          </li>
+
+          <li>
+            <a href="#values">values</a>
+          </li>
+        </ul>
+      </div>
+
+      <main>
+        <p>
+          For more information on objects see the
+          <a href="/language/objects">language reference</a>.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="std">Obj</span></code></pre>
+          <pre class="result" style="max-height: 200px"><code>{
+  focus: Obj.focus(object, keys),
+  get: Obj.get(object, key),
+  getDefault: Obj.getDefault(object, key, default),
+  has: Obj.has(object, key),
+  isEmpty: Obj.isEmpty(object),
+  keys: Obj.keys(object),
+  len: Obj.len(object),
+  matches: Obj.matches(object, matcher),
+  merge: Obj.merge(objects),
+  of: Obj.of(value),
+  put: Obj.put(value, object, key),
+  remove: Obj.remove(object, key),
+  removeAll: Obj.removeAll(object, keys),
+  rename: Obj.rename(object, old, new),
+  select: Obj.select(object, keys),
+  set: Obj.set(object, key, value),
+  setDefault: Obj.setDefault(object, key, value),
+  values: Obj.values(object),
+}
+</code></pre>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="focus">
+          <code><a href="#focus">Obj.focus(object, keys)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Reorder the entries in <code>object</code> so that the given
+            <code>keys</code> appear first, in the given order.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Obj</span>.<span class="call">focus</span>({ name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span>, tds: <span class="number">41</span>, ints: <span class="number">4</span> }, [<span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">tds</span><span class="quotes">&quot;</span>])</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>{ name: &quot;Lamar&quot;, tds: 41, yards: 4172, ints: 4 }
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="get">
+          <code><a href="#get">Obj.get(object, key)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Get the value corresponding to <code>key</code> in
+            <code>object</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Obj</span>.<span class="call">get</span>({ q: <span class="number">9</span>, r: <span class="number">5</span>, b: <span class="number">3</span>, n: <span class="number">3</span>, p: <span class="number">1</span> }, <span class="quotes">&quot;</span><span class="string">q</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre class="result" style="undefined"><code>9
+</code></pre>
+          </div>
+          <p>
+            <em
+              >Note that this can also be accomplished using the index
+              <code>[]</code> operator</em
+            >:
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">{ q: <span class="number">9</span>, r: <span class="number">5</span>, b: <span class="number">3</span>, n: <span class="number">3</span>, p: <span class="number">1</span> }[<span class="quotes">&quot;</span><span class="string">q</span><span class="quotes">&quot;</span>]</code></pre>
+            <pre class="result" style="undefined"><code>9
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="getDefault">
+          <code
+            ><a href="#getDefault"
+              >Obj.getDefault(object, key, default)</a
+            ></code
+          >
+        </h2>
+
+        <div class="contents">
+          <p>
+            Get the value corresponding to <code>key</code> in
+            <code>object</code>, or <code>default</code> if
+            <code>object</code> does not have <code>key</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">capitals <span class="operator">=</span> { Maine: <span class="quotes">&quot;</span><span class="string">Augusta</span><span class="quotes">&quot;</span>, Maryland: <span class="quotes">&quot;</span><span class="string">Annapolis</span><span class="quotes">&quot;</span>, Massachusetts: <span class="quotes">&quot;</span><span class="string">Boston</span><span class="quotes">&quot;</span> }
+<span class="std">Obj</span>.<span class="call">getDefault</span>(capitals, <span class="quotes">&quot;</span><span class="string">Massachusetts</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">idk</span><span class="quotes">&quot;</span>)
+<span class="std">Obj</span>.<span class="call">getDefault</span>(capitals, <span class="quotes">&quot;</span><span class="string">Massocheichei</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">idk</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre class="result" style="undefined"><code>&quot;Boston&quot;
+&quot;idk&quot;
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="has">
+          <code><a href="#has">Obj.has(object, key)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>Check whether <code>object</code> contains <code>key</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Obj</span>.<span class="call">has</span>({ q: <span class="number">9</span>, r: <span class="number">5</span>, b: <span class="number">3</span>, n: <span class="number">3</span>, p: <span class="number">1</span> }, <span class="quotes">&quot;</span><span class="string">q</span><span class="quotes">&quot;</span>)
+<span class="std">Obj</span>.<span class="call">has</span>({ q: <span class="number">9</span>, r: <span class="number">5</span>, b: <span class="number">3</span>, n: <span class="number">3</span>, p: <span class="number">1</span> }, <span class="quotes">&quot;</span><span class="string">k</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre class="result" style="undefined"><code>true
+false
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="isEmpty">
+          <code><a href="#isEmpty">Obj.isEmpty(object)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="contents">
+          <p>Check whether <code>object</code> is empty.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="call">len</span>({ q: <span class="number">9</span>, r: <span class="number">5</span>, b: <span class="number">3</span>, n: <span class="number">3</span>, p: <span class="number">1</span> })
+<span class="call">len</span>({})</code></pre>
+            <pre class="result" style="undefined"><code>5
+0
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#isEmpty">Overloads.isEmpty</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="keys">
+          <code><a href="#keys">Obj.keys(object)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>Get the keys in <code>object</code> as a list.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Obj</span>.<span class="call">keys</span>({ q: <span class="number">9</span>, r: <span class="number">5</span>, b: <span class="number">3</span>, n: <span class="number">3</span>, p: <span class="number">1</span> })</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>[&quot;q&quot;, &quot;r&quot;, &quot;b&quot;, &quot;n&quot;, &quot;p&quot;]
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="len">
+          <code><a href="#len">Obj.len(object)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="contents">
+          <p>Return the number of entries in <code>object</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="call">len</span>({ q: <span class="number">9</span>, r: <span class="number">5</span>, b: <span class="number">3</span>, n: <span class="number">3</span>, p: <span class="number">1</span> })</code></pre>
+            <pre class="result" style="undefined"><code>5
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#len">Overloads.len</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="matches">
+          <code><a href="#matches">Obj.matches(object, matcher)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Check whether <code>object</code>
+            <a href="/language/objects#object-matching">matches</a> the object
+            <code>matcher</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">ducky <span class="operator">=</span> { name: <span class="quotes">&quot;</span><span class="string">Ducky</span><span class="quotes">&quot;</span>, type: <span class="quotes">&quot;</span><span class="string">dog</span><span class="quotes">&quot;</span>, age: <span class="number">9</span> }
+<span class="std">Obj</span>.<span class="call">matches</span>(ducky, { name: <span class="quotes">&quot;</span><span class="string">Ducky</span><span class="quotes">&quot;</span>, age: <span class="number">9</span> })
+<span class="std">Obj</span>.<span class="call">matches</span>(ducky, { name: <span class="quotes">&quot;</span><span class="string">Ducky</span><span class="quotes">&quot;</span>, type: <span class="quotes">&quot;</span><span class="string">cat</span><span class="quotes">&quot;</span> })
+
+route <span class="operator">=</span> { from: { city: <span class="quotes">&quot;</span><span class="string">philadelphia</span><span class="quotes">&quot;</span> }, to: { city: <span class="quotes">&quot;</span><span class="string">baltimore</span><span class="quotes">&quot;</span> } }
+<span class="std">Obj</span>.<span class="call">matches</span>(route, { from: { city: <span class="quotes">&quot;</span><span class="string">philadelphia</span><span class="quotes">&quot;</span> } })
+<span class="std">Obj</span>.<span class="call">matches</span>(route, { from: { city: <span class="quotes">&quot;</span><span class="string">pittsburg</span><span class="quotes">&quot;</span> } })</code></pre>
+            <pre class="result" style="undefined"><code>true
+false
+true
+false
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="merge">
+          <code><a href="#merge">Obj.merge(objects)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Merge (flatten) a list of <code>objects</code> into a single object.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Obj</span>.<span class="call">merge</span>([
+  { <span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Ola</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Good afternoon</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Boa tarde</span><span class="quotes">&quot;</span> },
+  { <span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">E aí?</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Good night</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Boa noite</span><span class="quotes">&quot;</span> },
+])</code></pre>
+            <pre class="result" style="undefined"><code>{
+  &quot;Hello&quot;: &quot;E aí?&quot;,
+  &quot;Good afternoon&quot;: &quot;Boa tarde&quot;,
+  &quot;Good night&quot;: &quot;Boa noite&quot;,
+}
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="of">
+          <code><a href="#of">Obj.of(value)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Convert <code>value</code> to an object, where <code>value</code> is
+            either a table or an object. If <code>value</code> is a table,
+            return an object whose keys are column names and values are lists of
+            the column values in <code>table</code>. If <code>value</code> is an
+            object then return it.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Obj</span>.<span class="call">of</span>(cities)</code></pre>
+            <pre class="result" style="undefined"><code>{
+  city: [&quot;New York&quot;, &quot;Los Angeles&quot;, &quot;Chicago&quot;, &quot;Houston&quot;],
+  state: [&quot;NY&quot;, &quot;CA&quot;, &quot;IL&quot;, &quot;TX&quot;],
+}
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="put">
+          <code><a href="#put">Obj.put(value, object, key)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Assign <code>key</code> to <code>value</code> in
+            <code>object</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">phrases <span class="operator">=</span> { <span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Ola</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Good afternoon</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Boa tarde</span><span class="quotes">&quot;</span> }
+<span class="std">Obj</span>.<span class="call">put</span>(<span class="quotes">&quot;</span><span class="string">Good night</span><span class="quotes">&quot;</span>, phrases, <span class="quotes">&quot;</span><span class="string">Boa noite</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>{ &quot;Hello&quot;: &quot;Ola&quot;, &quot;Good afternoon&quot;: &quot;Boa tarde&quot;, &quot;Boa noite&quot;: &quot;Good night&quot; }
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="remove">
+          <code><a href="#remove">Obj.remove(object, key)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Remove the entry with <code>key</code> from <code>object</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="call">remove</span>(
+  { name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span>, tds: <span class="number">41</span>, ints: <span class="number">4</span>, fumbles: <span class="number">10</span> },
+  <span class="quotes">&quot;</span><span class="string">fumbles</span><span class="quotes">&quot;</span>
+)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>{ name: &quot;Lamar&quot;, yards: 4172, tds: 41, ints: 4 }
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#remove">Overloads.remove</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="removeAll">
+          <code><a href="#removeAll">Obj.removeAll(object, keys)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Remove the entries with the given <code>keys</code> from
+            <code>object</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Obj</span>.<span class="call">removeAll</span>(
+  { name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span>, tds: <span class="number">41</span>, ints: <span class="number">4</span>, fumbles: <span class="number">10</span> },
+  [<span class="quotes">&quot;</span><span class="string">ints</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">fumbles</span><span class="quotes">&quot;</span>]
+)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>{ name: &quot;Lamar&quot;, yards: 4172, tds: 41 }
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="rename">
+          <code><a href="#rename">Obj.rename(object, old, new)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Update the entry in <code>object</code> with key <code>old</code> to
+            have key <code>new</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Obj</span>.<span class="call">rename</span>(
+  { name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span>, tds: <span class="number">41</span>, ints: <span class="number">4</span> },
+  <span class="quotes">&quot;</span><span class="string">tds</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">touchdowns</span><span class="quotes">&quot;</span>
+)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>{ name: &quot;Lamar&quot;, yards: 4172, touchdowns: 41, ints: 4 }
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="select">
+          <code><a href="#select">Obj.select(object, keys)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Get a subset of the entries in <code>object</code> with the given
+            <code>keys</code>. Entries will appear in the order given in
+            <code>keys</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="call">select</span>({ name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span>, tds: <span class="number">41</span>, ints: <span class="number">4</span> }, [<span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">tds</span><span class="quotes">&quot;</span>])</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>{ name: &quot;Lamar&quot;, tds: 41 }
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#select">Overloads.select</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="set">
+          <code><a href="#set">Obj.set(object, key, value)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>
+            Assign <code>key</code> to <code>value</code> in
+            <code>object</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">phrases <span class="operator">=</span> { <span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Ola</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Good afternoon</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Boa tarde</span><span class="quotes">&quot;</span> }
+<span class="std">Obj</span>.<span class="call">set</span>(phrases, <span class="quotes">&quot;</span><span class="string">Good night</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Boa noite</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>{ &quot;Hello&quot;: &quot;Ola&quot;, &quot;Good afternoon&quot;: &quot;Boa tarde&quot;, &quot;Good night&quot;: &quot;Boa noite&quot; }
+</code></pre>
+          </div>
+          <p>
+            <em
+              >Note that if you want to update an existing variable, you could
+              also use variable assignment</em
+            >:
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">phrases <span class="operator">=</span> { <span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Ola</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Good afternoon</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Boa tarde</span><span class="quotes">&quot;</span> }
+phrases[<span class="quotes">&quot;</span><span class="string">Good night</span><span class="quotes">&quot;</span>] <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Boa noite</span><span class="quotes">&quot;</span></code></pre>
+
+            <pre
+              class="result"
+              style="undefined"
+            ><code><div class="var-name">phrases</div>{ &quot;Hello&quot;: &quot;Ola&quot;, &quot;Good afternoon&quot;: &quot;Boa tarde&quot;, &quot;Good night&quot;: &quot;Boa noite&quot; }</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="setDefault">
+          <code
+            ><a href="#setDefault">Obj.setDefault(object, key, value)</a></code
+          >
+        </h2>
+
+        <div class="contents">
+          <p>
+            Assign <code>key</code> to <code>value</code> in
+            <code>object</code> only if <code>key</code> is not already present.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">phrases <span class="operator">=</span> { <span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Ola</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Good afternoon</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Boa tarde</span><span class="quotes">&quot;</span> }
+<span class="std">Obj</span>.<span class="call">setDefault</span>(phrases, <span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">E aí</span><span class="quotes">&quot;</span>)
+<span class="std">Obj</span>.<span class="call">setDefault</span>(phrases, <span class="quotes">&quot;</span><span class="string">Good night</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Boa noite</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>{ &quot;Hello&quot;: &quot;Ola&quot;, &quot;Good afternoon&quot;: &quot;Boa tarde&quot; }
+{ &quot;Hello&quot;: &quot;Ola&quot;, &quot;Good afternoon&quot;: &quot;Boa tarde&quot;, &quot;Good night&quot;: &quot;Boa noite&quot; }
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="values">
+          <code><a href="#values">Obj.values(object)</a></code>
+        </h2>
+
+        <div class="contents">
+          <p>Get the values in <code>object</code> as a list.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Obj</span>.<span class="call">values</span>({ q: <span class="number">9</span>, r: <span class="number">5</span>, b: <span class="number">3</span>, n: <span class="number">3</span>, p: <span class="number">1</span> })</code></pre>
+            <pre class="result" style="undefined"><code>[9, 5, 3, 3, 1]
+</code></pre>
+          </div>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/stdlib/None">
+              <div>< Previous</div>
+              None
+            </a>
+
+            <a class="next" href="/stdlib/Overloads">
+              <div>Next ></div>
+              Overloads
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

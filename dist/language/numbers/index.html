@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Language Reference: Numbers</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>Language Reference: Numbers</h1>
+        <p>Numbers and numerical operators</p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to Language Reference</a>
+        <ol>
+          <li><a href="#syntax"> Syntax</a></li>
+          <li><a href="#operators"> Operators</a></li>
+          <li><a href="#modulus-behavior"> Modulus Behavior</a></li>
+          <li><a href="#comparison"> Comparison</a></li>
+          <li><a href="#floating-point-error"> Floating-point Error</a></li>
+          <li><a href="#strictness"> Strictness</a></li>
+        </ol>
+      </div>
+
+      <main>
+        <p>
+          Pointless uses a single number type for integers and decimal numbers,
+          which it stores using
+          <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic"
+            >floating-point</a
+          >
+          representation.
+        </p>
+        <p>Important numerical functions include:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Function</th>
+              <th>Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="/stdlib/Math#abs">Math.abs</a></td>
+              <td>Get the absolute value of a number</td>
+            </tr>
+            <tr>
+              <td><a href="/stdlib/Math#ceil">Math.ceil</a></td>
+              <td>Round a number up</td>
+            </tr>
+            <tr>
+              <td><a href="/stdlib/Math#floor">Math.floor</a></td>
+              <td>Round a number down</td>
+            </tr>
+            <tr>
+              <td><a href="/stdlib/Math#max">Math.max</a></td>
+              <td>Get the maximum of two numbers</td>
+            </tr>
+            <tr>
+              <td><a href="/stdlib/Math#min">Math.min</a></td>
+              <td>Get the minimum of two numbers</td>
+            </tr>
+            <tr>
+              <td><a href="/stdlib/Math#round">Math.round</a></td>
+              <td>Round a number</td>
+            </tr>
+            <tr>
+              <td><a href="/stdlib/Math#roundTo">Math.roundTo</a></td>
+              <td>Round a number to a given precision</td>
+            </tr>
+            <tr>
+              <td><a href="/stdlib/Math#sqrt">Math.sqrt</a></td>
+              <td>Get the square root of a number</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          See the standard library <a href="/stdlib/Math">Math module</a> for
+          more built-in functions for working with numbers.
+        </p>
+
+        <hr />
+
+        <h2 id="syntax">
+          <a href="#syntax">Syntax</a>
+        </h2>
+        <p>Numbers use familiar mathematical syntax.</p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="number">120</span>
+<span class="number">3.14</span>
+<span class="operator">-</span><span class="number">0.5</span></code></pre>
+          <pre class="result" style="undefined"><code>120
+3.14
+-0.5
+</code></pre>
+        </div>
+        <p>
+          Numbers can also use
+          <a href="https://en.wikipedia.org/wiki/Engineering_notation"
+            >engineering notation</a
+          >.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="number">1e-4</span>
+<span class="number">6.022e23</span></code></pre>
+          <pre class="result" style="undefined"><code>0.0001
+6.022e+23
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="operators">
+          <a href="#operators">Operators</a>
+        </h2>
+        <p>Mathematical operations use the following operators.</p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="operator">-</span><span class="number">8</span> <span class="comment">-- Negation</span>
+<span class="number">5</span> <span class="operator">+</span> <span class="number">5</span> <span class="comment">-- Addition</span>
+<span class="number">20</span> <span class="operator">-</span> <span class="number">4</span> <span class="comment">-- Subtraction</span>
+<span class="number">6</span> <span class="operator">*</span> <span class="number">7</span> <span class="comment">-- Multiplication</span>
+<span class="number">3</span> <span class="operator">/</span> <span class="number">12</span> <span class="comment">-- Division</span>
+<span class="number">2</span> <span class="operator">**</span> <span class="number">4</span> <span class="comment">-- Exponentiation</span>
+<span class="number">10</span> <span class="operator">%</span> <span class="number">7</span> <span class="comment">-- Modulus</span></code></pre>
+          <pre class="result" style="undefined"><code>-8
+10
+16
+42
+0.25
+16
+3
+</code></pre>
+        </div>
+        <p>
+          These operators obey the standard
+          <a href="https://en.wikipedia.org/wiki/Order_of_operations"
+            >order of operations</a
+          >.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="number">2</span> <span class="operator">+</span> <span class="number">3</span> <span class="operator">*</span> (<span class="number">4</span> <span class="operator">+</span> <span class="number">1</span>)</code></pre>
+          <pre class="result" style="undefined"><code>17
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="modulus-behavior">
+          <a href="#modulus-behavior">Modulus Behavior</a>
+        </h2>
+        <p>
+          The modulus operator <code>%</code> uses the
+          <a
+            href="https://en.wikipedia.org/wiki/Modulo#Variants_of_the_definition"
+            >floor mod</a
+          >
+          variant when operating on negative values, meaning that the result of
+          a modulus operation will have the same sign as the divisor (the second
+          operand).
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="number">10</span> <span class="operator">%</span> <span class="number">7</span>
+<span class="operator">-</span><span class="number">10</span> <span class="operator">%</span> <span class="number">7</span>
+<span class="number">10</span> <span class="operator">%</span> <span class="operator">-</span><span class="number">7</span>
+<span class="operator">-</span><span class="number">10</span> <span class="operator">%</span> <span class="operator">-</span><span class="number">7</span></code></pre>
+          <pre class="result" style="undefined"><code>3
+4
+-4
+-3
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="comparison">
+          <a href="#comparison">Comparison</a>
+        </h2>
+        <p>
+          Numbers can be compared for equality using the equals
+          <code>==</code> and not-equals <code>!=</code> operators.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="number">1</span> <span class="operator">+</span> <span class="number">1</span> <span class="operator">==</span> <span class="number">2</span>
+<span class="number">2</span> <span class="operator">+</span> <span class="number">2</span> <span class="operator">!=</span> <span class="number">4</span></code></pre>
+          <pre class="result" style="undefined"><code>true
+false
+</code></pre>
+        </div>
+        <p>Numbers can also be compared using the inequality operators:</p>
+        <ul>
+          <li><code>&lt;</code> less-than</li>
+          <li><code>&gt;</code> greater-than</li>
+          <li><code>&lt;=</code> less-than-or-equal-to</li>
+          <li><code>&gt;=</code> greater-than-or-equal-to</li>
+        </ul>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="number">1</span> <span class="operator">&lt;</span> <span class="number">2</span>
+<span class="number">1</span> <span class="operator">&gt;</span> <span class="number">2</span>
+<span class="number">5</span> <span class="operator">&gt;</span> <span class="number">5</span>
+<span class="number">5</span> <span class="operator">&gt;=</span> <span class="number">5</span></code></pre>
+          <pre class="result" style="undefined"><code>true
+false
+false
+true
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="floating-point-error">
+          <a href="#floating-point-error">Floating-point Error</a>
+        </h2>
+        <p>
+          Like any system based on floating-point arithmetic, the results of
+          some numerical operations in Pointless involving non-integer values
+          <a
+            href="https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems"
+            >will be inexact</a
+          >. Watch out for this behavior when comparing non-integer values.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">n <span class="operator">=</span> (<span class="std">Math</span>.<span class="call">sqrt</span>(<span class="number">5</span>) <span class="operator">*</span> <span class="number">2</span>) <span class="operator">**</span> <span class="number">2</span>
+n
+
+n <span class="operator">==</span> <span class="number">20</span></code></pre>
+          <pre class="result" style="undefined"><code>20.000000000000004
+false
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="strictness">
+          <a href="#strictness">Strictness</a>
+        </h2>
+        <p>
+          Pointless is stricter than many other languges when it comes to
+          numerical operations. Calculations that would produce a
+          <a href="https://en.wikipedia.org/wiki/IEEE_754#NaNs">NaN</a> or
+          <a href="https://en.wikipedia.org/wiki/IEEE_754#Infinities"
+            >infinity</a
+          >
+          value in other languages will cause errors in Pointless.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="comment">-- Cannot take square root of a negative number</span>
+(<span class="operator">-</span><span class="number">1</span>) <span class="operator">**</span> <span class="number">0.5</span></code></pre>
+
+          <pre class="result panic"><code>panic: invalid arguments
+
+(-1) ** 0.5
+     ^
+At pages/language/numbers/index.md:embedded:2:6</code></pre>
+        </div>
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="comment">-- Numerical overflow</span>
+<span class="number">10</span> <span class="operator">**</span> <span class="number">1000</span></code></pre>
+
+          <pre class="result panic"><code>panic: result out of range
+
+10 ** 1000
+   ^
+At pages/language/numbers/index.md:embedded:2:4</code></pre>
+        </div>
+        <p>
+          Note that NaN and infinity values can be accessed via
+          <code>Math.nan</code> and <code>Math.inf</code>.
+        </p>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/language/printing-and-input">
+              <div>< Previous</div>
+              Printing and User Input
+            </a>
+
+            <a class="next" href="/language/booleans">
+              <div>Next ></div>
+              Booleans
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

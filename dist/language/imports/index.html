@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Language Reference: Imports and Exports</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>Language Reference: Imports and Exports</h1>
+        <p>null</p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to Language Reference</a>
+        <ol>
+          <li><a href="#exports"> Exports</a></li>
+          <li><a href="#imports"> Imports</a></li>
+          <li><a href="#import-specifiers"> Import Specifiers</a></li>
+        </ol>
+      </div>
+
+      <main>
+        <hr />
+
+        <h2 id="exports">
+          <a href="#exports">Exports</a>
+        </h2>
+        <p><strong>binary.ptls:</strong></p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="comment">-- Parse a binary string as a number</span>
+
+<span class="keyword">fn</span> <span class="function">parse</span>(<span class="argument">string</span>)
+  result <span class="operator">=</span> <span class="number">0</span>
+
+  <span class="keyword">for</span> bit <span class="keyword">in</span> <span class="call">chars</span>(string) <span class="keyword">do</span>
+    result <span class="operator">*=</span> <span class="number">2</span>
+    result <span class="operator">+=</span> <span class="std">Bool</span>.<span class="call">toNum</span>(bit <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">1</span><span class="quotes">&quot;</span>)
+  <span class="keyword">end</span>
+
+  result
+<span class="keyword">end</span>
+
+<span class="comment">-- Convert a positive integer to a binary string</span>
+
+<span class="keyword">fn</span> <span class="function">of</span>(<span class="argument">n</span>)
+  digits <span class="operator">=</span> []
+
+  <span class="keyword">while</span> n <span class="operator">&gt;</span> <span class="number">0</span> <span class="operator">or</span> digits <span class="operator">==</span> <span class="quotes">&quot;</span><span class="quotes">&quot;</span> <span class="keyword">do</span>
+    digits <span class="operator">|=</span> <span class="call">push</span>(n <span class="operator">%</span> <span class="number">2</span>)
+    n <span class="operator">=</span> <span class="std">Math</span>.<span class="call">floor</span>(n <span class="operator">/</span> <span class="number">2</span>)
+  <span class="keyword">end</span>
+
+  digits
+    <span class="operator">|</span> <span class="call">reverse</span>
+    <span class="operator">|</span> <span class="call">join</span>(<span class="quotes">&quot;</span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span>
+
+{ parse, of }</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="imports">
+          <a href="#imports">Imports</a>
+        </h2>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">bin <span class="operator">=</span> <span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">binary.ptls</span><span class="quotes">&quot;</span>
+
+bin.<span class="call">parse</span>(<span class="quotes">&quot;</span><span class="string">1101</span><span class="quotes">&quot;</span>)
+bin.<span class="call">of</span>(<span class="number">13</span>)</code></pre>
+          <pre class="result" style="undefined"><code>13
+&quot;1101&quot;
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="import-specifiers">
+          <a href="#import-specifiers">Import Specifiers</a>
+        </h2>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">text:lyrics.txt</span><span class="quotes">&quot;</span></code></pre>
+          <pre
+            class="result"
+            style="undefined"
+          ><code>&quot;I said Rock\nWhat&#39;s a matter with you Rock\nDon&#39;t you see I need you Rock\nLord Lord Lord\nAll on that day&quot;
+</code></pre>
+        </div>
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">lines:lyrics.txt</span><span class="quotes">&quot;</span></code></pre>
+          <pre class="result" style="undefined"><code>[
+  &quot;I said Rock&quot;,
+  &quot;What&#39;s a matter with you Rock&quot;,
+  &quot;Don&#39;t you see I need you Rock&quot;,
+  &quot;Lord Lord Lord&quot;,
+  &quot;All on that day&quot;,
+]
+</code></pre>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/language/async">
+              <div>< Previous</div>
+              Async
+            </a>
+
+            <a class="next" href="/language/best-practices">
+              <div>Next ></div>
+              Best Practices
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

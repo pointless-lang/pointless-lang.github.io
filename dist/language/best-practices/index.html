@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Language Reference: Best Practices</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>Language Reference: Best Practices</h1>
+        <p>Guidelines for writing clear and concise Pointless code</p>
+      </div>
+
+      <div id="sidebar">
+        <a id="back" href="..">< Back to Language Reference</a>
+        <ol>
+          <li>
+            <a href="#use-compound-assignment"> Use Compound Assignment</a>
+          </li>
+          <li><a href="#separate-statements"> Separate Statements</a></li>
+          <li><a href="#avoid-getter-functions"> Avoid Getter Functions</a></li>
+          <li><a href="#avoid-setter-functions"> Avoid Setter Functions</a></li>
+          <li>
+            <a href="#use-objects-for-records"> Use Objects for Records</a>
+          </li>
+          <li>
+            <a href="#dont-concatenate-to-update">
+              Don&#39;t Concatenate to Update</a
+            >
+          </li>
+          <li><a href="#omit-string-key-quotes"> Omit String Key Quotes</a></li>
+          <li><a href="#use-identifier-keys"> Use Identifier Keys</a></li>
+          <li><a href="#use-key-punning"> Use Key Punning</a></li>
+          <li><a href="#use-dot-syntax"> Use Dot Syntax</a></li>
+          <li>
+            <a href="#dont-use-lists-as-tables">
+              Don&#39;t Use Lists as Tables</a
+            >
+          </li>
+          <li><a href="#use-row-lookups"> Use Row Lookups</a></li>
+          <li><a href="#use-column-operations"> Use Column Operations</a></li>
+          <li>
+            <a href="#avoid-zero-length-check"> Avoid Zero Length Check</a>
+          </li>
+          <li>
+            <a href="#use-push-for-single-items"> Use Push for Single Items</a>
+          </li>
+          <li><a href="#use-negative-indices"> Use Negative Indices</a></li>
+          <li>
+            <a href="#use-star-to-repeat-values"> Use Star to Repeat Values</a>
+          </li>
+          <li>
+            <a href="#use-string-interpolation"> Use String Interpolation</a>
+          </li>
+          <li>
+            <a href="#omit-interpolation-parens"> Omit Interpolation Parens</a>
+          </li>
+          <li><a href="#use-raw-strings"> Use Raw Strings</a></li>
+          <li>
+            <a href="#minimize-raw-string-escapes">
+              Minimize Raw String Escapes</a
+            >
+          </li>
+          <li><a href="#use-multi-line-strings"> Use Multi-Line Strings</a></li>
+          <li>
+            <a href="#leverage-string-alignment"> Leverage String Alignment</a>
+          </li>
+          <li>
+            <a href="#avoid-redundant-booleans"> Avoid Redundant Booleans</a>
+          </li>
+          <li><a href="#use-not"> Use Not</a></li>
+          <li>
+            <a href="#use-boolean-parentheses"> Use Boolean Parentheses</a>
+          </li>
+          <li><a href="#use-set-membership"> Use Set Membership</a></li>
+          <li><a href="#use-match"> Use Match</a></li>
+          <li>
+            <a href="#avoid-nested-conditionals"> Avoid Nested Conditionals</a>
+          </li>
+          <li>
+            <a href="#refactor-conditional-defs"> Refactor Conditional Defs</a>
+          </li>
+          <li><a href="#use-pipelines"> Use Pipelines</a></li>
+          <li>
+            <a href="#use-map-and-filter-operators">
+              Use Map and Filter Operators</a
+            >
+          </li>
+          <li><a href="#omit-pipe-parentheses"> Omit Pipe Parentheses</a></li>
+          <li>
+            <a href="#avoid-anonymous-functions"> Avoid Anonymous Functions</a>
+          </li>
+          <li><a href="#use-arg-in-pipelines"> Use Arg in Pipelines</a></li>
+          <li><a href="#omit-initial-arg"> Omit Initial Arg</a></li>
+          <li>
+            <a href="#put-primary-parameter-first">
+              Put Primary Parameter First</a
+            >
+          </li>
+          <li><a href="#write-pure-functions"> Write Pure Functions</a></li>
+          <li>
+            <a href="#avoid-unnecessary-returns"> Avoid Unnecessary Returns</a>
+          </li>
+          <li><a href="#avoid-early-returns"> Avoid Early Returns</a></li>
+          <li>
+            <a href="#avoid-else-after-return"> Avoid Else After Return</a>
+          </li>
+          <li><a href="#use-specific-functions"> Use Specific Functions</a></li>
+          <li><a href="#omit-module-prefixes"> Omit Module Prefixes</a></li>
+          <li><a href="#dont-shadow-globals"> Don&#39;t Shadow Globals</a></li>
+          <li><a href="#use-camel-case"> Use Camel Case</a></li>
+          <li>
+            <a href="#use-leading-zero-for-decimals">
+              Use Leading Zero for Decimals</a
+            >
+          </li>
+          <li><a href="#use-trailing-commas"> Use Trailing Commas</a></li>
+          <li><a href="#no-import-side-effects"> No Import Side Effects</a></li>
+          <li><a href="#export-objects"> Export Objects</a></li>
+          <li><a href="#use-fixed-path-imports"> Use Fixed-Path Imports</a></li>
+          <li><a href="#use-anonymous-loops"> Use Anonymous Loops</a></li>
+          <li>
+            <a href="#use-loop-index-variables"> Use Loop Index Variables</a>
+          </li>
+          <li>
+            <a href="#use-loop-value-variables"> Use Loop Value Variables</a>
+          </li>
+        </ol>
+      </div>
+
+      <main>
+        <p>
+          These best-practices are meant to help you make effective use of the
+          language features of Pointless. They are recommendations, not strict
+          rules. You can find detailed descriptions of the language features
+          covered here in the <a href="/language">language reference</a>.
+        </p>
+        <p>
+          Note that this guide focuses on recommendations relating to the core
+          language, rather than <a href="/stdlib">the standard library</a>.
+        </p>
+
+        <hr />
+
+        <h2 id="use-compound-assignment">
+          <a href="#use-compound-assignment">Use Compound Assignment</a>
+        </h2>
+        <p>Use compound assignment operators when possible.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">score <span class="operator">+=</span> <span class="number">1</span>
+price <span class="operator">|=</span> <span class="call">round</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">score <span class="operator">=</span> score <span class="operator">+</span> <span class="number">1</span>
+price <span class="operator">=</span> <span class="call">round</span>(price)</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="separate-statements">
+          <a href="#separate-statements">Separate Statements</a>
+        </h2>
+        <p>Put statements on separate lines.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">x <span class="operator">=</span> <span class="number">6</span>
+y <span class="operator">=</span> <span class="number">7</span>
+<span class="call">print</span>(x <span class="operator">*</span> y)</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">x <span class="operator">=</span> <span class="number">6</span>; y <span class="operator">=</span> <span class="number">7</span>; <span class="call">print</span>(x <span class="operator">*</span> y)</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="avoid-getter-functions">
+          <a href="#avoid-getter-functions">Avoid Getter Functions</a>
+        </h2>
+        <p>
+          Use built-in syntax to access list elements, object values, and table
+          rows and columns.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">games[<span class="number">0</span>].score</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="std">Obj</span>.<span class="call">get</span>(<span class="std">Table</span>.<span class="call">get</span>(games, <span class="number">0</span>), <span class="quotes">&quot;</span><span class="string">score</span><span class="quotes">&quot;</span>)</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="avoid-setter-functions">
+          <a href="#avoid-setter-functions">Avoid Setter Functions</a>
+        </h2>
+        <p>
+          Use
+          <a href="/language/variables/#structural-updates"
+            >structural updates</a
+          >
+          instead of setter functions to transform data structures.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">evilTwin <span class="operator">=</span> player
+evilTwin.malice <span class="operator">=</span> <span class="number">100</span>
+player.enemies <span class="operator">+=</span> <span class="number">1</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">evilTwin <span class="operator">=</span> <span class="std">Obj</span>.<span class="call">set</span>(player, <span class="quotes">&quot;</span><span class="string">malice</span><span class="quotes">&quot;</span>, <span class="number">100</span>)
+player <span class="operator">=</span> <span class="std">Obj</span>.<span class="call">set</span>(player, <span class="quotes">&quot;</span><span class="string">enemies</span><span class="quotes">&quot;</span>, player.enemies <span class="operator">+</span> <span class="number">1</span>)</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-objects-for-records">
+          <a href="#use-objects-for-records">Use Objects for Records</a>
+        </h2>
+        <p>
+          Use objects to represent
+          <a href="/language/Objects#records">records</a> (structures with a
+          fixed number of entries that each have a distinct role). Do not use
+          lists as records.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">point <span class="operator">=</span> { x: <span class="number">1</span>, y: <span class="number">2</span> }
+card <span class="operator">=</span> { value: <span class="number">10</span>, suit: <span class="quotes">&quot;</span><span class="string">hearts</span><span class="quotes">&quot;</span> }</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">point <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>]
+card <span class="operator">=</span> [<span class="number">10</span>, <span class="quotes">&quot;</span><span class="string">hearts</span><span class="quotes">&quot;</span>]</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="dont-concatenate-to-update">
+          <a href="#dont-concatenate-to-update"
+            >Don&#39;t Concatenate to Update</a
+          >
+        </h2>
+        <p>
+          Use variable updates instead of object concatenation to update record
+          objects.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">player.health <span class="operator">+=</span> <span class="number">1</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">player <span class="operator">+=</span> { health: player.health <span class="operator">+</span> <span class="number">1</span> }</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="omit-string-key-quotes">
+          <a href="#omit-string-key-quotes">Omit String Key Quotes</a>
+        </h2>
+        <p>Omit quotes for keys in record objects.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">{ city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span>, population: <span class="number">2721308</span> }</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">{ <span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>: <span class="number">2721308</span> }</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-identifier-keys">
+          <a href="#use-identifier-keys">Use Identifier Keys</a>
+        </h2>
+        <p>Use valid identifiers as record object keys and table columns.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">{ userName: <span class="quotes">&quot;</span><span class="string">Clementine</span><span class="quotes">&quot;</span>, userId: <span class="number">0</span> }
+
+<span class="std">Table</span>.<span class="call">of</span>([
+  { userName: <span class="quotes">&quot;</span><span class="string">Clementine</span><span class="quotes">&quot;</span>, userId: <span class="number">0</span> },
+  { userName: <span class="quotes">&quot;</span><span class="string">Ducky</span><span class="quotes">&quot;</span>, userId: <span class="number">1</span> },
+])</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">{ <span class="quotes">&quot;</span><span class="string">user name</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Clementine</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">user-id</span><span class="quotes">&quot;</span>: <span class="number">0</span> }
+
+<span class="std">Table</span>.<span class="call">of</span>([
+  { <span class="quotes">&quot;</span><span class="string">user name</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Clementine</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">user-id</span><span class="quotes">&quot;</span>: <span class="number">0</span> },
+  { <span class="quotes">&quot;</span><span class="string">user name</span><span class="quotes">&quot;</span>: <span class="quotes">&quot;</span><span class="string">Ducky</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">user-id</span><span class="quotes">&quot;</span>: <span class="number">1</span> },
+])</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-key-punning">
+          <a href="#use-key-punning">Use Key Punning</a>
+        </h2>
+        <p>
+          Use object key punning when setting an object key to a variable of the
+          same name.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">point <span class="operator">=</span> { x, y }</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">point <span class="operator">=</span> { x: x, y: y }</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-dot-syntax">
+          <a href="#use-dot-syntax">Use Dot Syntax</a>
+        </h2>
+        <p>
+          Use <code>.</code> syntax to access and update object keys and table
+          columns when possible.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">city.name</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">city[<span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>]</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="dont-use-lists-as-tables">
+          <a href="#dont-use-lists-as-tables">Don&#39;t Use Lists as Tables</a>
+        </h2>
+        <p>Use tables to store lists of record objects with matching keys.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span>, population: <span class="number">8478072</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">3878704</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span>, population: <span class="number">2721308</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">2390125</span> },
+])</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">[
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span>, population: <span class="number">8478072</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">3878704</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span>, population: <span class="number">2721308</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">2390125</span> },
+]</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-row-lookups">
+          <a href="#use-row-lookups">Use Row Lookups</a>
+        </h2>
+        <p>
+          Use the row lookup feature of tables to find individual rows based on
+          unique field values.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">philly <span class="operator">=</span> cities[{ name: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span> }]</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">philly <span class="operator">=</span> (cities <span class="operator">?</span> <span class="keyword">arg</span>.name <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>)[<span class="number">0</span>]</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-column-operations">
+          <a href="#use-column-operations">Use Column Operations</a>
+        </h2>
+        <p>
+          When possible, structure table operations around columns rather than
+          rows.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">products.price <span class="operator">$=</span> <span class="keyword">arg</span> <span class="operator">-</span> <span class="number">1</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">products <span class="operator">$=</span> <span class="keyword">arg</span> <span class="operator">+</span> { price: <span class="keyword">arg</span>.price <span class="operator">-</span> <span class="number">1</span> }</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="avoid-zero-length-check">
+          <a href="#avoid-zero-length-check">Avoid Zero Length Check</a>
+        </h2>
+        <p>
+          Use <code>isEmpty</code> instead of <code>len(...) == 0</code> to
+          check for empty data structures.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="call">isEmpty</span>(playlist)</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="call">len</span>(playlist) <span class="operator">==</span> <span class="number">0</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-push-for-single-items">
+          <a href="#use-push-for-single-items">Use Push for Single Items</a>
+        </h2>
+        <p>
+          Use <code>push</code> to append a single item to a list or table
+          instead of concatenation.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">numbers <span class="operator">|=</span> <span class="call">push</span>(n)</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">numbers <span class="operator">+=</span> [n]</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-negative-indices">
+          <a href="#use-negative-indices">Use Negative Indices</a>
+        </h2>
+        <p>
+          Use negative indices to access items from the end of a list or table.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">items[<span class="operator">-</span><span class="number">1</span>]</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">items[<span class="call">len</span>(items) <span class="operator">-</span> <span class="number">1</span>]</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-star-to-repeat-values">
+          <a href="#use-star-to-repeat-values">Use Star to Repeat Values</a>
+        </h2>
+        <p>
+          Use the <code>*</code> operator to repeat strings and list elements.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">la</span><span class="quotes">&quot;</span> <span class="operator">*</span> <span class="number">5</span>
+[<span class="number">0</span>] <span class="operator">*</span> <span class="number">10</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">lalalalala</span><span class="quotes">&quot;</span>
+[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-string-interpolation">
+          <a href="#use-string-interpolation">Use String Interpolation</a>
+        </h2>
+        <p>Use string interpolation instead of concatenation.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">Hello </span><span class="interpolated">$person.name</span><span class="string">!</span><span class="quotes">&quot;</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">Hello </span><span class="quotes">&quot;</span> <span class="operator">+</span> person.name <span class="operator">+</span> <span class="quotes">&quot;</span><span class="string">!</span><span class="quotes">&quot;</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="omit-interpolation-parens">
+          <a href="#omit-interpolation-parens">Omit Interpolation Parens</a>
+        </h2>
+        <p>Omit unnecessary parentheses around interpolated variables.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="quotes">&quot;</span><span class="interpolated">$price</span><span class="string"> dollars for a pair of socks!?</span><span class="quotes">&quot;</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="quotes">&quot;</span><span class="interpolated">$(price)</span><span class="string"> dollars for a pair of socks!?</span><span class="quotes">&quot;</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-raw-strings">
+          <a href="#use-raw-strings">Use Raw Strings</a>
+        </h2>
+        <p>Use raw strings to avoid excessive escape sequences.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="quotes">r&quot;</span><span class="string">C:\Users\Ducky\Documents</span><span class="quotes">&quot;</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">C:</span><span class="escape">\\</span><span class="string">Users</span><span class="escape">\\</span><span class="string">Ducky</span><span class="escape">\\</span><span class="string">Documents</span><span class="quotes">&quot;</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="minimize-raw-string-escapes">
+          <a href="#minimize-raw-string-escapes">Minimize Raw String Escapes</a>
+        </h2>
+        <p>Omit unnecessary levels of raw string quote escaping.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="quotes">r#&quot;</span><span class="string">Hello &quot;world!&quot;</span><span class="quotes">&quot;#</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="quotes">r##&quot;</span><span class="string">Hello &quot;world!&quot;</span><span class="quotes">&quot;##</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-multi-line-strings">
+          <a href="#use-multi-line-strings">Use Multi-Line Strings</a>
+        </h2>
+        <p>Use multi-line strings when they make string contents clearer.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">
+▓▓  ▓▓▓ ▓    ▓▓
+▓ ▓  ▓  ▓   ▓
+▓▓   ▓  ▓    ▓
+▓    ▓  ▓     ▓
+▓    ▓  ▓▓▓ ▓▓
+</span><span class="quotes">&quot;</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">▓▓  ▓▓▓ ▓    ▓▓</span><span class="escape">\n</span><span class="string">▓ ▓  ▓  ▓   ▓</span><span class="escape">\n</span><span class="string">▓▓   ▓  ▓    ▓</span><span class="escape">\n</span><span class="string">▓    ▓  ▓     ▓</span><span class="escape">\n</span><span class="string">▓    ▓  ▓▓▓ ▓▓</span><span class="quotes">&quot;</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="leverage-string-alignment">
+          <a href="#leverage-string-alignment">Leverage String Alignment</a>
+        </h2>
+        <p>
+          Leverage the automatic trimming and alignment behavior of multi-line
+          strings to format code more legibly.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">if</span> printPtls <span class="keyword">then</span>
+  <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">
+  ▓▓  ▓▓▓ ▓    ▓▓
+  ▓ ▓  ▓  ▓   ▓
+  ▓▓   ▓  ▓    ▓
+  ▓    ▓  ▓     ▓
+  ▓    ▓  ▓▓▓ ▓▓
+  </span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">if</span> printPtls <span class="keyword">then</span>
+  <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">▓▓  ▓▓▓ ▓    ▓▓
+▓ ▓  ▓  ▓   ▓
+▓▓   ▓  ▓    ▓
+▓    ▓  ▓     ▓
+▓    ▓  ▓▓▓ ▓▓</span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span></code></pre>
+        </div>
+        <p>
+          <em
+            >These two strings produce the same output. For details see
+            <a href="/docs/language/strings#multi-line-strings"
+              >multi-line strings</a
+            >.</em
+          >
+        </p>
+
+        <hr />
+
+        <h2 id="avoid-redundant-booleans">
+          <a href="#avoid-redundant-booleans">Avoid Redundant Booleans</a>
+        </h2>
+        <p>
+          Don&#39;t include redundant boolean comparisons in logical
+          expressions.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">if</span> item.onSale <span class="keyword">then</span>
+  <span class="call">print</span>(item.price <span class="operator">/</span> <span class="number">2</span>)
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">if</span> item.onSale <span class="operator">==</span> <span class="constant">true</span> <span class="keyword">then</span>
+  <span class="call">print</span>(item.price <span class="operator">/</span> <span class="number">2</span>)
+<span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-not">
+          <a href="#use-not">Use Not</a>
+        </h2>
+        <p>Use <code>not</code> instead of <code>== false</code>.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">if</span> <span class="operator">not</span> <span class="std">Math</span>.<span class="call">isInt</span>(quantity) <span class="keyword">then</span>
+  <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">quantity must be a whole number</span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">if</span> <span class="std">Math</span>.<span class="call">isInt</span>(quantity) <span class="operator">==</span> <span class="constant">false</span> <span class="keyword">then</span>
+  <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">quantity must be a whole number</span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-boolean-parentheses">
+          <a href="#use-boolean-parentheses">Use Boolean Parentheses</a>
+        </h2>
+        <p>
+          Use parentheses in expressions that mix different boolean operators
+          (<code>and</code>, <code>or</code>, or <code>not</code>).
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">isGood <span class="operator">and</span> (isFast <span class="operator">or</span> isCheap)</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">isGood <span class="operator">and</span> isFast <span class="operator">or</span> isCheap</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-set-membership">
+          <a href="#use-set-membership">Use Set Membership</a>
+        </h2>
+        <p>
+          Use sets instead of lists to store a large number of values on which
+          you will be calling <code>has</code>.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">scrabbleWords <span class="operator">=</span> <span class="std">Set</span>.<span class="call">of</span>(<span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">lines:scrabble-dict.txt</span><span class="quotes">&quot;</span>)
+
+<span class="call">has</span>(scrabbleWords, <span class="quotes">&quot;</span><span class="string">yeet</span><span class="quotes">&quot;</span>)</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">scrabbleWords <span class="operator">=</span> <span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">lines:scrabble-dict.txt</span><span class="quotes">&quot;</span>
+
+<span class="call">has</span>(scrabbleWords, <span class="quotes">&quot;</span><span class="string">yeet</span><span class="quotes">&quot;</span>)</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-match">
+          <a href="#use-match">Use Match</a>
+        </h2>
+        <p>
+          Use <code>match</code> instead of <code>if</code> when matching an
+          expression with three or more possible values.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">match</span> spin
+  <span class="keyword">case</span> <span class="quotes">&quot;</span><span class="string">gimel</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
+    score <span class="operator">+=</span> pot
+    pot <span class="operator">=</span> <span class="number">0</span>
+  <span class="keyword">case</span> <span class="quotes">&quot;</span><span class="string">hei</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
+    score <span class="operator">+=</span> pot <span class="operator">/</span> <span class="number">2</span>
+    pot <span class="operator">/=</span> <span class="number">2</span>
+  <span class="keyword">case</span> <span class="quotes">&quot;</span><span class="string">shin</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
+    score <span class="operator">-=</span> <span class="number">1</span>
+    pot <span class="operator">+=</span> <span class="number">1</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">if</span> spin <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">gimel</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
+  score <span class="operator">+=</span> pot
+  pot <span class="operator">=</span> <span class="number">0</span>
+<span class="keyword">elif</span> spin <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">hei</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
+  score <span class="operator">+=</span> pot <span class="operator">/</span> <span class="number">2</span>
+  pot <span class="operator">/=</span> <span class="number">2</span>
+<span class="keyword">elif</span> spin <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">shin</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
+  score <span class="operator">-=</span> <span class="number">1</span>
+  pot <span class="operator">+=</span> <span class="number">1</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="avoid-nested-conditionals">
+          <a href="#avoid-nested-conditionals">Avoid Nested Conditionals</a>
+        </h2>
+        <p>Flatten nested conditionals when possible.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">if</span> n <span class="operator">&gt;</span> <span class="number">0</span> <span class="keyword">then</span>
+  <span class="quotes">&quot;</span><span class="string">positive</span><span class="quotes">&quot;</span>
+<span class="keyword">elif</span> n <span class="operator">&lt;</span> <span class="number">0</span> <span class="keyword">then</span>
+  <span class="quotes">&quot;</span><span class="string">negative</span><span class="quotes">&quot;</span>
+<span class="keyword">else</span>
+  <span class="quotes">&quot;</span><span class="string">zero</span><span class="quotes">&quot;</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">if</span> n <span class="operator">&gt;</span> <span class="number">0</span> <span class="keyword">then</span>
+  <span class="quotes">&quot;</span><span class="string">positive</span><span class="quotes">&quot;</span>
+<span class="keyword">else</span>
+  <span class="keyword">if</span> n <span class="operator">&lt;</span> <span class="number">0</span> <span class="keyword">then</span>
+    <span class="quotes">&quot;</span><span class="string">negative</span><span class="quotes">&quot;</span>
+  <span class="keyword">else</span>
+    <span class="quotes">&quot;</span><span class="string">zero</span><span class="quotes">&quot;</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="refactor-conditional-defs">
+          <a href="#refactor-conditional-defs">Refactor Conditional Defs</a>
+        </h2>
+        <p>Lift variable assignments outside of simple conditionals.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">sweetener <span class="operator">=</span>
+  <span class="keyword">if</span> diet <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">vegan</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
+    <span class="quotes">&quot;</span><span class="string">agave</span><span class="quotes">&quot;</span>
+  <span class="keyword">else</span>
+    <span class="quotes">&quot;</span><span class="string">honey</span><span class="quotes">&quot;</span>
+  <span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">if</span> diet <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">vegan</span><span class="quotes">&quot;</span> <span class="keyword">then</span>
+  sweetener <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">agave</span><span class="quotes">&quot;</span>
+<span class="keyword">else</span>
+  sweetener <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">honey</span><span class="quotes">&quot;</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-pipelines">
+          <a href="#use-pipelines">Use Pipelines</a>
+        </h2>
+        <p>
+          Refactor nested function calls into pipeline syntax when possible.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">games
+  <span class="operator">|</span> <span class="std">Table</span>.<span class="call">summarize</span>(<span class="quotes">&quot;</span><span class="string">team</span><span class="quotes">&quot;</span>, getStats)
+  <span class="operator">|</span> <span class="call">sortDescBy</span>(<span class="quotes">&quot;</span><span class="string">winPct</span><span class="quotes">&quot;</span>)
+  <span class="operator">|</span> <span class="call">print</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="call">print</span>(<span class="call">sortDescBy</span>(<span class="std">Table</span>.<span class="call">summarize</span>(games, <span class="quotes">&quot;</span><span class="string">team</span><span class="quotes">&quot;</span>, getStats), <span class="quotes">&quot;</span><span class="string">winPct</span><span class="quotes">&quot;</span>))</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-map-and-filter-operators">
+          <a href="#use-map-and-filter-operators"
+            >Use Map and Filter Operators</a
+          >
+        </h2>
+        <p>
+          Use the map <code>$</code> and filter <code>?</code> operators instead
+          of <code>map</code> and <code>filter</code> functions.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">numbers <span class="operator">?</span> <span class="std">Math</span>.<span class="call">isEven</span> <span class="operator">$</span> <span class="keyword">arg</span> <span class="operator">/</span> <span class="number">2</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="std">List</span>.<span class="call">map</span>(<span class="std">List</span>.<span class="call">filter</span>(numbers, <span class="std">Math</span>.isEven), <span class="keyword">fn</span>(<span class="argument">n</span>) n <span class="operator">*</span> <span class="number">2</span> <span class="keyword">end</span>)</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="omit-pipe-parentheses">
+          <a href="#omit-pipe-parentheses">Omit Pipe Parentheses</a>
+        </h2>
+        <p>Omit parentheses for single-argument functions in pipelines.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">numbers
+  <span class="operator">$</span> <span class="std">Math</span>.<span class="call">sqrt</span>
+  <span class="operator">|</span> <span class="call">print</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">numbers
+  <span class="operator">$</span> <span class="std">Math</span>.<span class="call">sqrt</span>()
+  <span class="operator">|</span> <span class="call">print</span>()</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="avoid-anonymous-functions">
+          <a href="#avoid-anonymous-functions">Avoid Anonymous Functions</a>
+        </h2>
+        <p>
+          Use top-level function definitions instead of anonymous functions.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">distance</span>(<span class="argument">point</span>, <span class="argument">center</span>)
+  dx <span class="operator">=</span> point.x <span class="operator">-</span> center.x
+  dy <span class="operator">=</span> point.y <span class="operator">-</span> center.y
+  <span class="std">Math</span>.<span class="call">sqrt</span>(dx <span class="operator">**</span> <span class="number">2</span> <span class="operator">+</span> dx <span class="operator">**</span> <span class="number">2</span>)
+<span class="keyword">end</span>
+
+<span class="keyword">fn</span> <span class="function">averageDistance</span>(<span class="argument">points</span>, <span class="argument">center</span>)
+  points
+    <span class="operator">$</span> <span class="call">distance</span>(center)
+    <span class="operator">|</span> <span class="std">List</span>.<span class="call">average</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">averageDistance</span>(<span class="argument">points</span>, <span class="argument">center</span>)
+  distance <span class="operator">=</span> <span class="keyword">fn</span>(<span class="argument">point</span>)
+    dx <span class="operator">=</span> point.x <span class="operator">-</span> center.x
+    dy <span class="operator">=</span> point.y <span class="operator">-</span> center.y
+    <span class="std">Math</span>.<span class="call">sqrt</span>(dx <span class="operator">**</span> <span class="number">2</span> <span class="operator">+</span> dx <span class="operator">**</span> <span class="number">2</span>)
+  <span class="keyword">end</span>
+
+  points
+    <span class="operator">$</span> <span class="call">distance</span>
+    <span class="operator">|</span> <span class="std">List</span>.<span class="call">average</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-arg-in-pipelines">
+          <a href="#use-arg-in-pipelines">Use Arg in Pipelines</a>
+        </h2>
+        <p>
+          Use <code>arg</code> in function pipelines instead of anonymous
+          functions.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">words <span class="operator">$</span> translations[<span class="keyword">arg</span>]</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">words <span class="operator">$</span> <span class="keyword">fn</span>(<span class="argument">word</span>) translations[word] <span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="omit-initial-arg">
+          <a href="#omit-initial-arg">Omit Initial Arg</a>
+        </h2>
+        <p>
+          Omit <code>arg</code> that would otherwise be the first argument in a
+          pipeline function call.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">numbers <span class="operator">$</span> <span class="std">Math</span>.<span class="call">roundTo</span>(<span class="number">2</span>)</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">numbers <span class="operator">$</span> <span class="std">Math</span>.<span class="call">roundTo</span>(<span class="keyword">arg</span>, <span class="number">2</span>)</code></pre>
+        </div>
+        <p>
+          <em
+            >Note that <code>arg</code> cannot be omitted as the first argument
+            if subsequent arguments to the function also use <code>arg</code>,
+            since using <code>arg</code> stops the first argument to a pipeline
+            call from being implicitly passed. Refactor calls like these into
+            new functions to avoid this situation.</em
+          >
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="comment">-- Best option: refactor into a new function</span>
+
+<span class="keyword">fn</span> <span class="function">joinFirst</span>(<span class="argument">strs</span>)
+  <span class="call">join</span>(strs, strs[<span class="number">0</span>])
+<span class="keyword">end</span>
+
+strings <span class="operator">|</span> <span class="call">joinFirst</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="comment">-- Incorrect: wrong number of arguments, since using `arg` in the second</span>
+<span class="comment">-- argument means that the first argument is no longer implicitly passed</span>
+
+strings <span class="operator">|</span> <span class="call">join</span>(<span class="keyword">arg</span>[<span class="number">0</span>])
+
+<span class="comment">-- Correct, but confusing</span>
+
+strings <span class="operator">|</span> <span class="call">join</span>(<span class="keyword">arg</span>, <span class="keyword">arg</span>[<span class="number">0</span>])</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="put-primary-parameter-first">
+          <a href="#put-primary-parameter-first">Put Primary Parameter First</a>
+        </h2>
+        <p>
+          Put the most important parameter first in a function definition. If a
+          function could be described as transforming, accessing, or analyzing
+          one of its arguments, then that argument is probably the most
+          important.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">swap</span>(<span class="argument">list</span>, <span class="argument">indexA</span>, <span class="argument">indexB</span>)
+  <span class="comment">-- Transform `list` by swapping the values at `indexA` and `indexB`</span>
+<span class="keyword">end</span>
+
+<span class="keyword">fn</span> <span class="function">startsWith</span>(<span class="argument">string</span>, <span class="argument">prefix</span>)
+  <span class="comment">-- Check if `string` starts with `prefix`</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">swap</span>(<span class="argument">indexA</span>, <span class="argument">indexB</span>, <span class="argument">list</span>)
+  <span class="comment">-- Transform `list` by swapping the values at `indexA` and `indexB`</span>
+<span class="keyword">end</span>
+
+<span class="keyword">fn</span> <span class="function">startsWith</span>(<span class="argument">prefix</span>, <span class="argument">string</span>)
+  <span class="comment">-- Check if `string` starts with `prefix`</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="write-pure-functions">
+          <a href="#write-pure-functions">Write Pure Functions</a>
+        </h2>
+        <p>Write pure (side effect free) functions when possible.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">showTask</span>(<span class="argument">task</span>)
+  <span class="keyword">if</span> task.done <span class="keyword">then</span>
+    <span class="quotes">&quot;</span><span class="string">[x] </span><span class="interpolated">$task.name</span><span class="quotes">&quot;</span>
+  <span class="keyword">else</span>
+    <span class="quotes">&quot;</span><span class="string">[ ] </span><span class="interpolated">$task.name</span><span class="quotes">&quot;</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+tasks
+  <span class="operator">$</span> <span class="call">showTask</span>
+  <span class="operator">$</span> <span class="call">print</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">printTask</span>(<span class="argument">task</span>)
+  <span class="keyword">if</span> task.done <span class="keyword">then</span>
+    <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">[x] </span><span class="interpolated">$task.name</span><span class="quotes">&quot;</span>)
+  <span class="keyword">else</span>
+    <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">[ ] </span><span class="interpolated">$task.name</span><span class="quotes">&quot;</span>)
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+tasks <span class="operator">$</span> <span class="call">printTask</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="avoid-unnecessary-returns">
+          <a href="#avoid-unnecessary-returns">Avoid Unnecessary Returns</a>
+        </h2>
+        <p>
+          Don&#39;t use <code>return</code> for the final expression in a
+          function.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">sqrt</span>(<span class="argument">n</span>)
+  n <span class="operator">**</span> <span class="number">0.5</span>
+<span class="keyword">end</span>
+
+<span class="keyword">fn</span> <span class="function">min</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+  <span class="keyword">if</span> a <span class="operator">&lt;</span> b <span class="keyword">then</span> a <span class="keyword">else</span> b <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">sqrt</span>(<span class="argument">n</span>)
+  <span class="keyword">return</span> n <span class="operator">**</span> <span class="number">0.5</span>
+<span class="keyword">end</span>
+
+<span class="keyword">fn</span> <span class="function">min</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+  <span class="keyword">if</span> a <span class="operator">&lt;</span> b <span class="keyword">then</span>
+    <span class="keyword">return</span> a
+  <span class="keyword">else</span>
+    <span class="keyword">return</span> b
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="avoid-early-returns">
+          <a href="#avoid-early-returns">Avoid Early Returns</a>
+        </h2>
+        <p>
+          Don&#39;t use early <code>return</code> statements that don&#39;t
+          simplify your code.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">min</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+  <span class="keyword">if</span> a <span class="operator">&lt;</span> b <span class="keyword">then</span> a <span class="keyword">else</span> b <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">min</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+  <span class="keyword">if</span> a <span class="operator">&lt;</span> b <span class="keyword">then</span>
+    <span class="keyword">return</span> a
+  <span class="keyword">end</span>
+
+  b
+<span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="avoid-else-after-return">
+          <a href="#avoid-else-after-return">Avoid Else After Return</a>
+        </h2>
+        <p>
+          Refactor code to avoid using <code>elif</code> or
+          <code>else</code> after a return statement.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">findOdd</span>(<span class="argument">numbers</span>)
+  <span class="keyword">for</span> n <span class="keyword">in</span> numbers <span class="keyword">do</span>
+    <span class="keyword">if</span> <span class="std">Math</span>.<span class="call">isOdd</span>(n) <span class="keyword">then</span>
+      <span class="keyword">return</span> n
+    <span class="keyword">end</span>
+
+    <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">Skipped </span><span class="interpolated">$n</span><span class="quotes">&quot;</span>)
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">findOdd</span>(<span class="argument">numbers</span>)
+  <span class="keyword">for</span> n <span class="keyword">in</span> numbers <span class="keyword">do</span>
+    <span class="keyword">if</span> <span class="std">Math</span>.<span class="call">isOdd</span>(n) <span class="keyword">then</span>
+      <span class="keyword">return</span> n
+    <span class="keyword">else</span>
+      <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">Skipped </span><span class="interpolated">$n</span><span class="quotes">&quot;</span>)
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-specific-functions">
+          <a href="#use-specific-functions">Use Specific Functions</a>
+        </h2>
+        <p>
+          If a function exists that specifically accomplishes a desired task,
+          choose it over more general functions.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="call">chars</span>(<span class="quotes">&quot;</span><span class="string">Hello world!</span><span class="quotes">&quot;</span>)
+<span class="call">pop</span>(items)</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="call">split</span>(<span class="quotes">&quot;</span><span class="string">Hello world!</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="quotes">&quot;</span>)
+<span class="call">dropLast</span>(items, <span class="number">1</span>)</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="omit-module-prefixes">
+          <a href="#omit-module-prefixes">Omit Module Prefixes</a>
+        </h2>
+        <p>Omit module prefixes when calling global functions.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">Hello world!</span><span class="quotes">&quot;</span>)</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="std">Console</span>.<span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">Hello world!</span><span class="quotes">&quot;</span>)</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="dont-shadow-globals">
+          <a href="#dont-shadow-globals">Don&#39;t Shadow Globals</a>
+        </h2>
+        <p>Don&#39;t shadow global built-in functions.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">message <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Enter a rating 1-5: </span><span class="quotes">&quot;</span>
+maximum <span class="operator">=</span> <span class="number">5</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="std">prompt</span> <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Enter a rating 1-5: </span><span class="quotes">&quot;</span>
+<span class="std">max</span> <span class="operator">=</span> <span class="number">5</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-camel-case">
+          <a href="#use-camel-case">Use Camel Case</a>
+        </h2>
+        <p>
+          Use camel case for multi-word variable, function, table column, and
+          record object key names. Don&#39;t capitalize single-word names.
+          Don&#39;t capitalize the names of constants.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">gameState <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">paused</span><span class="quotes">&quot;</span>
+
+<span class="keyword">fn</span> <span class="function">point</span>(<span class="argument">x</span>, <span class="argument">y</span>)
+  { x, y }
+<span class="keyword">end</span>
+
+pi <span class="operator">=</span> <span class="number">3.141592654</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">gamestate <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">paused</span><span class="quotes">&quot;</span>
+
+<span class="keyword">fn</span> <span class="function">Point</span>(<span class="argument">x</span>, <span class="argument">y</span>)
+  { x, y }
+<span class="keyword">end</span>
+
+PI <span class="operator">=</span> <span class="number">3.141592654</span></code></pre>
+        </div>
+        <p>
+          <em
+            >(Yes, the standard library module variables
+            <a href="/articles">are capitalized</a>; do as I say, not as I
+            do)</em
+          >
+        </p>
+
+        <hr />
+
+        <h2 id="use-leading-zero-for-decimals">
+          <a href="#use-leading-zero-for-decimals"
+            >Use Leading Zero for Decimals</a
+          >
+        </h2>
+        <p>
+          Include a leading <code>0</code> in decimal literals for numbers
+          between <code>0</code> and <code>1</code>.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">n <span class="operator">=</span> <span class="number">0.1</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">n <span class="operator">=</span> <span class="number">.1</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-trailing-commas">
+          <a href="#use-trailing-commas">Use Trailing Commas</a>
+        </h2>
+        <p>
+          When splitting a piece of comma-separated code across multiple lines,
+          include a trailing comma on the last line before the closing
+          delimeter.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">days <span class="operator">=</span> [
+  <span class="quotes">&quot;</span><span class="string">Lunes</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">Martes</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">Miércoles</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">Jueves</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">Viernes</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">Sábado</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">Domingo</span><span class="quotes">&quot;</span>,
+]</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">days <span class="operator">=</span> [
+  <span class="quotes">&quot;</span><span class="string">Lunes</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">Martes</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">Miércoles</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">Jueves</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">Viernes</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">Sábado</span><span class="quotes">&quot;</span>,
+  <span class="quotes">&quot;</span><span class="string">Domingo</span><span class="quotes">&quot;</span>
+]</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="no-import-side-effects">
+          <a href="#no-import-side-effects">No Import Side Effects</a>
+        </h2>
+        <p>Library code should never have side effects when imported.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">maximum</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+  <span class="keyword">if</span> a <span class="operator">&gt;</span> b <span class="keyword">then</span> a <span class="keyword">else</span> b <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">fn</span> <span class="function">showInfo</span>()
+  <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">Maximum™ Version 1.0, patent pending</span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span>
+
+{ maximum, showInfo }</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">maximum</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+  <span class="keyword">if</span> a <span class="operator">&gt;</span> b <span class="keyword">then</span> a <span class="keyword">else</span> b <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">Maximum™ Version 1.0, patent pending</span><span class="quotes">&quot;</span>)
+
+{ maximum }</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="export-objects">
+          <a href="#export-objects">Export Objects</a>
+        </h2>
+        <p>Export objects instead of individual definitions.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">maximum</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+  <span class="keyword">if</span> a <span class="operator">&gt;</span> b <span class="keyword">then</span> a <span class="keyword">else</span> b <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+{ maximum }</code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">maximum</span>(<span class="argument">a</span>, <span class="argument">b</span>)
+  <span class="keyword">if</span> a <span class="operator">&gt;</span> b <span class="keyword">then</span> a <span class="keyword">else</span> b <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+maximum</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-fixed-path-imports">
+          <a href="#use-fixed-path-imports">Use Fixed-Path Imports</a>
+        </h2>
+        <p>
+          Use <code>import</code> with the appropriate
+          <a href="/language/import/#specifiers">specifier</a> to load files
+          from a fixed path relative to your source file.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls">story <span class="operator">=</span> <span class="keyword">import</span> <span class="quotes">&quot;</span><span class="string">text:alice.txt</span><span class="quotes">&quot;</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="comment">-- Won&#039;t work if script is called outside the source directory</span>
+story <span class="operator">=</span> <span class="std">Fs</span>.<span class="call">read</span>(<span class="quotes">&quot;</span><span class="string">alice.txt</span><span class="quotes">&quot;</span>)</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-anonymous-loops">
+          <a href="#use-anonymous-loops">Use Anonymous Loops</a>
+        </h2>
+        <p>Omit unnecessary loop variables.</p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">for</span> <span class="number">10</span> <span class="keyword">do</span>
+  <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">loading</span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">for</span> n <span class="keyword">in</span> <span class="call">range</span>(<span class="number">10</span>) <span class="keyword">do</span>
+  <span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">loading</span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-loop-index-variables">
+          <a href="#use-loop-index-variables">Use Loop Index Variables</a>
+        </h2>
+        <p>
+          Use a second loop variable to track indices when looping over lists or
+          tables.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">for</span> player, index <span class="keyword">in</span> rankings <span class="keyword">do</span>
+  <span class="call">print</span>(<span class="quotes">&quot;</span><span class="interpolated">$index</span><span class="string"> </span><span class="interpolated">$player</span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls">index <span class="operator">=</span> <span class="number">0</span>
+
+<span class="keyword">for</span> player <span class="keyword">in</span> rankings <span class="keyword">do</span>
+  <span class="call">print</span>(<span class="quotes">&quot;</span><span class="interpolated">$index</span><span class="string"> </span><span class="interpolated">$player</span><span class="quotes">&quot;</span>)
+  index <span class="operator">+=</span> <span class="number">1</span>
+<span class="keyword">end</span></code></pre>
+        </div>
+        <hr />
+
+        <h2 id="use-loop-value-variables">
+          <a href="#use-loop-value-variables">Use Loop Value Variables</a>
+        </h2>
+        <p>
+          Use a second loop variable to track values when looping over objects.
+        </p>
+
+        <div class="snippet yes">
+          <pre><code class="ptls"><span class="keyword">for</span> item, quantity <span class="keyword">in</span> inventory <span class="keyword">do</span>
+  <span class="call">print</span>(<span class="quotes">&quot;</span><span class="interpolated">$item</span><span class="string"> x </span><span class="interpolated">$quantity</span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span></code></pre>
+        </div>
+        <div class="snippet no">
+          <pre><code class="ptls"><span class="keyword">for</span> item <span class="keyword">in</span> inventory <span class="keyword">do</span>
+  quantity <span class="operator">=</span> inventory[item]
+  <span class="call">print</span>(<span class="quotes">&quot;</span><span class="interpolated">$item</span><span class="string"> x </span><span class="interpolated">$quantity</span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span></code></pre>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/language/imports">
+              <div>< Previous</div>
+              Imports and Exports
+            </a>
+
+            <a class="next" href="/language/misc">
+              <div>Next ></div>
+              Miscellaneous
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>
