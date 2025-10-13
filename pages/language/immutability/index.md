@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Immutability"
+title: "Immutability"
 subtitle:
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Best Practices"
+title: "Best Practices"
 subtitle: Guidelines for writing clear and concise Pointless code
 ---
 
@@ -10,6 +10,8 @@ detailed descriptions of the language features covered here in the
 
 Note that this guide focuses on recommendations relating to the core language,
 rather than [the standard library](/stdlib).
+
+[[_TOC_]]
 
 ## Use Compound Assignment
 

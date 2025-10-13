@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Conditionals"
+title: "Conditionals"
 subtitle: If and match expressions, running code based on one or more conditions
 ---
 

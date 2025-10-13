@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Printing and User Input"
+title: "Printing and User Input"
 subtitle: Printing values and getting user input in the console
 ---
 

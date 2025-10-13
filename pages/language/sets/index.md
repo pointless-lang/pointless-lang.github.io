@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Sets"
+title: "Sets"
 subtitle:
 ---
 

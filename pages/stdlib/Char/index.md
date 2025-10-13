@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Char"
+title: "Char"
 type: module
 subtitle: Manage concurrent operations
 ---

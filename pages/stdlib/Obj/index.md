@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Obj"
+title: "Obj"
 type: module
 subtitle: Work with objects (key-value maps)
 ---

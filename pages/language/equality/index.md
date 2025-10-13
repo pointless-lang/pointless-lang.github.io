@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Equality"
+title: "Equality"
 subtitle: When are values considered equal
 ---
 

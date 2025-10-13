@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Async"
+title: "Async"
 type: module
 subtitle: Manage concurrent operations
 ---

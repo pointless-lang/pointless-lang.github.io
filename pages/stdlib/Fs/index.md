@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Fs"
+title: "Fs"
 type: module
 subtitle: Read and manipulate files and directories
 ---

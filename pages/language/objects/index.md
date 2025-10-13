@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Objects"
+title: "Objects"
 subtitle:
 ---
 

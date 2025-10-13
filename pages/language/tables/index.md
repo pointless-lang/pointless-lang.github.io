@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Tables"
+title: "Tables"
 subtitle:
 ---
 

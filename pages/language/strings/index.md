@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Strings"
+title: "Strings"
 subtitle: Strings (pieces of text), string interpolation, and string operators
 ---
 

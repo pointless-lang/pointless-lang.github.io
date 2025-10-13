@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Ref"
+title: "Ref"
 type: module
 subtitle: Work with mutable state
 ---

@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Str"
+title: "Str"
 type: module
 subtitle: Work with strings (pieces of text)
 ---

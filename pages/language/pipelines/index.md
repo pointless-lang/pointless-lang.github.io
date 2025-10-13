@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Pipelines"
+title: "Pipelines"
 subtitle:
 ---
 

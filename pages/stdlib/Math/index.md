@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Math"
+title: "Math"
 type: module
 subtitle: Mathematical functions and constants
 consts:

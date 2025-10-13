@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Booleans"
+title: "Booleans"
 subtitle: Boolean (true and false) values and logical operators
 ---
 

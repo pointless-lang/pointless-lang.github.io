@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Numbers"
+title: "Numbers"
 subtitle: Numbers and numerical operators
 ---
 

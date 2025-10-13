@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: None"
+title: "None"
 type: module
 subtitle: Work with none values
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Miscellaneous"
+title: "Miscellaneous"
 subtitle:
 ---
 

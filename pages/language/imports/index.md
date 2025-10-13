@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Imports and Exports"
+title: "Imports and Exports"
 subtitle:
 ---
 

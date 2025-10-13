@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Function Definitions"
+title: "Function Definitions"
 subtitle:
 ---
 

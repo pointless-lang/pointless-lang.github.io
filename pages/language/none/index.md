@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: None"
+title: "None"
 subtitle: The none value and its uses
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Re"
+title: "Re"
 type: module
 subtitle: Use regular expressions to search and manipulate strings
 ---

@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Table"
+title: "Table"
 type: module
 subtitle: Work with tables (data-frames)
 ---

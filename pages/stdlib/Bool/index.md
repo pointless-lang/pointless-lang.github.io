@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Bool"
+title: "Bool"
 type: module
 subtitle: Work with boolean values
 ---

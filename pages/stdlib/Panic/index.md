@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Panic"
+title: "Panic"
 type: module
 subtitle: Terminate the program upon an unexpected program state
 ---

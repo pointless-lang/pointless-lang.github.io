@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Overloads"
+title: "Overloads"
 type: module
 subtitle: Global wrapper functions combining similar type-specific functions
 ---

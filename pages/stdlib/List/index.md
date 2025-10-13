@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: List"
+title: "List"
 type: module
 subtitle: Work with lists (sequences of values)
 ---

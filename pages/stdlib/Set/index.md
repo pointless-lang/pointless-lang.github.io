@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Set"
+title: "Set"
 type: module
 subtitle: Work with sets (collections of unique values)
 consts:

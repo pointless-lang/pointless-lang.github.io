@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Variables"
+title: "Variables"
 subtitle: Defining, accessing, and updating variables
 ---
 

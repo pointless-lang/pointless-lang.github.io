@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Err"
+title: "Err"
 type: module
 subtitle: Throw and catch recoverable errors
 ---

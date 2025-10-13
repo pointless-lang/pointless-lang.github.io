@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Async"
+title: "Async"
 subtitle: Write concurrent code
 ---
 

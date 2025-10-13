@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Comments"
+title: "Comments"
 subtitle: Comment syntax, comments as documentation, and commenting out code
 ---
 

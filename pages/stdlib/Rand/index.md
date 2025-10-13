@@ -1,5 +1,5 @@
 ---
-title: "The Standard Library: Rand"
+title: "Rand"
 type: module
 subtitle: The Generate random values
 ---

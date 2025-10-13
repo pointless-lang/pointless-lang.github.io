@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Loops"
+title: "Loops"
 subtitle: For and while loops, running code iteratively (multiple times)
 ---
 

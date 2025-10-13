@@ -1,5 +1,5 @@
 ---
-title: "Language Reference: Lists"
+title: "Lists"
 subtitle:
 ---
 
