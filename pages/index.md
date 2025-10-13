@@ -4,24 +4,35 @@ subtitle: A Language for Learning
 ---
 
 ```ptls
-alphabet = chars("abcdefghijklmnopqrstuvwxyz")
-
-fn shift(letter)
-  index = List.indexOf(alphabet, letter)
-
-  if index == none then
-    letter
-  else
-    alphabet[(index + 13) % 26]
-  end
+fn step(n)
+  if n % 2 == 0 then n / 2 else n * 3 + 1 end
 end
 
-fn cipher(message)
-  message
-    | chars
-    $ shift
+fn hailstone(n)
+  values = [n]
+
+  while n > 1 do
+    n |= step
+    values |= push(n)
+  end
+
+  values
+end
+
+bars = chars("▁▂▃▄▅▆▇█")
+
+fn getBar(n, maxVal)
+  scaled = 8 * (n - 1) / (maxVal - 1)
+  bars[Math.min(Math.floor(scaled), 7)]
+end
+
+fn chart(values)
+  values
+    $ getBar(max(values))
     | join("")
 end
 
-cipher("uryyb jbeyq")
+hailstone(78)
+  | chart
+  | print
 ```

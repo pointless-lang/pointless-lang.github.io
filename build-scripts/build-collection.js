@@ -1,20 +1,15 @@
 import { h } from "pointless/render/escape.js";
 
-export function collectionSidebar(node) {
-  const links = node.children.map(
-    (child) => h`<li><a href="/${child.path}/">${child.label}</a></li>`,
-  );
-  return h`<ul>$${links}</ul>`;
-}
-
-export function genCollection(node) {
+export function buildCollection(node) {
   const main = node.children.map(
     (child) =>
       h`
-      <li>
-        <a href="/${child.path}/"><strong>${child.label}</strong></a>
-        ${child.subtitle}
-      </li>
+      <a href="/${child.path}/">
+        <li>
+          <strong>${child.label}</strong>
+          ${child.subtitle}
+        </li>
+      </a>
     `,
   );
 

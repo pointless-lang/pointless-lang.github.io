@@ -1,5 +1,5 @@
-import { collectionSidebar, genCollection } from "./build-collection.js";
-import { genModule, moduleSidebar } from "./build-module.js";
+import { buildCollection } from "./build-collection.js";
+import { buildModule } from "./build-module.js";
 import { headerId, renderMarkdown } from "pointless/render/render-markdown.js";
 import { h, serialize } from "pointless/render/escape.js";
 import { cp, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
@@ -54,31 +54,12 @@ async function getTree(path, parent = null) {
   return node;
 }
 
-function defaultSidebar(node) {
-  const links = node.content
-    .matchAll(/^##(.*)/gm)
-    .map(([, title]) => h`<li><a href="#${headerId(title)}">${title}</a></li>`);
-
-  return h`<ol>$${links}</ol>`;
-}
-
-async function makeSidebar(node) {
+export async function buildGenerated(node) {
   switch (node.type) {
     case "module":
-      return await moduleSidebar(node);
+      return await buildModule(node);
     case "collection":
-      return collectionSidebar(node);
-    case undefined:
-      return defaultSidebar(node);
-  }
-}
-
-export async function makeGenerated(node) {
-  switch (node.type) {
-    case "module":
-      return await genModule(node);
-    case "collection":
-      return genCollection(node);
+      return buildCollection(node);
     case undefined:
       return "";
   }
@@ -87,12 +68,20 @@ export async function makeGenerated(node) {
 let template;
 
 async function buildIndex(node) {
-  const sidebar = await makeSidebar(node);
-  const generated = await makeGenerated(node);
+  const generated = await buildGenerated(node);
+
+  const contents = node.content
+    .matchAll(/^##(.*)/gm)
+    .map(([, title]) => h`<li><a href="#${headerId(title)}">${title}</a></li>`);
+
+  const withTOC = node.content.replace(
+    "[[_TOC_]]",
+    h`<ol class="contents">$${contents}</ol>`,
+  );
 
   const intro = await renderMarkdown(
     `pages/${node.path}/index.md`,
-    node.content,
+    withTOC,
   );
 
   const main = h`
@@ -100,8 +89,9 @@ async function buildIndex(node) {
     $${generated}
   `;
 
-  const backlink = node.depth >= 2 &&
-    `<a id="back" href="..">< Back to ${node.parent.title}</a>`;
+  const header = node.depth >= 2
+    ? h`<a href=".." id="parent">${node.parent.title}:</a> <a href=".">${node.title}</a>`
+    : h`<a href=".">${node.title}</a>`;
 
   let sequencer;
 
@@ -109,7 +99,7 @@ async function buildIndex(node) {
     const prev = node.prev &&
       h`
         <a href="/${node.prev.path}">
-          <div>< Previous</div>
+          <div>Previous</div>
           ${node.prev.label}
         </a>
       `;
@@ -117,7 +107,7 @@ async function buildIndex(node) {
     const next = node.next &&
       h`
         <a class="next" href="/${node.next.path}">
-          <div>Next ></div>
+          <div>Next</div>
           ${node.next.label}
         </a>
       `;
@@ -132,9 +122,8 @@ async function buildIndex(node) {
 
   const values = {
     title: node.title,
+    header,
     subtitle: node.subtitle,
-    backlink,
-    sidebar,
     main,
     sequencer,
   };

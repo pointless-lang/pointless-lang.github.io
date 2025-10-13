@@ -3,11 +3,13 @@
 }
 
 :root {
+  --border: 2px solid #e1e1e1;
   --font-mono: "DejaVu Sans Mono", monospace;
-  --margin: 28px;
-  --text: #222;
   --gray: #eee;
   --link: #346bed;
+  --margin: 30px;
+  --text: #222;
+  --radius: 3px;
 }
 
 @font-face {
@@ -54,9 +56,7 @@
 
 html {
   font-size: 16px;
-  height: 100%;
   scroll-padding-top: 20px;
-  overflow-y: auto;
   scrollbar-gutter: stable;
 }
 
@@ -64,25 +64,19 @@ body {
   margin: 0;
   color: var(--text);
   font-family: "Ubuntu", sans-serif;
-  max-width: 1100px;
+  max-width: 900px;
   min-height: 100vh;
   margin-inline: auto;
-  padding: 24px;
+  padding: 40px;
   display: grid;
-  grid-template:
-    "header header header" auto
-    "title title sidebar" auto
-    "main main sidebar" 1fr
-    / auto 1fr 250px;
-  gap: 28px 30px;
+  grid-template-rows: auto auto 1fr;
+  gap: 40px 20px;
 }
 
 header {
   display: grid;
-  grid-template-columns: subgrid;
-  grid-template-rows: subgrid;
-  background-color: white;
-  grid-area: header;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
 }
 
 header a {
@@ -105,7 +99,6 @@ header a {
 }
 
 nav {
-  all: unset;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -119,71 +112,81 @@ nav li {
 }
 
 #title {
-  grid-area: title;
-}
-
-#title h1 {
-  display: inline-block;
-  font-size: 1.55rem;
-  margin: 0;
+  border-left: var(--border);
+  padding-left: 20px;
 }
 
 #title p {
   font-size: 0.95rem;
-  margin: 5px 1px 0;
+  margin: 5px 2px 0;
+}
+
+#parent {
+  color: inherit;
+}
+
+h1 {
+  display: inline-block;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  break-after: avoid;
   color: #444;
 }
 
-#title code {
+h1 a[href^="#"], h1 a[href^="."], h2 a[href^="#"], h3 a[href^="#"] {
+  color: inherit;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-block: var(--margin);
+}
+
+h3 {
+  font-size: 1.0rem;
+  margin-block: var(--margin);
+}
+
+h2 code,
+h3 code {
   padding: 0;
-  background: none;
-  font-weight: bold;
+  background-color: transparent;
+  font-size: 0.9em;
 }
 
-#sidebar {
-  grid-area: sidebar;
-  border-left: 2px solid #eee;
-  padding: 4px 0 4px 18px;
-  height: min-content;
-  font-size: 0.9rem;
+.contents {
   font-weight: bold;
-  color: #555;
-}
-
-#back {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-#sidebar ol,
-#sidebar ul {
   padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 4px;
-}
-
-#sidebar li {
   list-style: none;
-  margin: 0;
+}
+
+.std {
+  font-family: var(--font-mono);
+}
+
+.std .tag {
   padding: 0;
-}
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  margin-top: 3px;
 
-#sidebar a[href^="#"] {
-  color: var(--text);
-  font-weight: normal;
-}
+  &::before {
+    display: none;
+  }
 
-#sidebar li:has(a[href^="#"])::before {
-  content: "-";
-  color: var(--text);
-  font-weight: normal;
-  margin-right: 2px;
-}
+  &[title="Global"] {
+    background-color: #d4b0ff;
+  }
 
-#sidebar li:has(a[href^=".."])::before {
-  content: "<";
+  &[title="Constant"] {
+    background-color: #a1d2fb;
+  }
 }
 
 .page-links {
@@ -195,18 +198,23 @@ nav li {
   margin: 0;
 }
 
-.page-links li + li {
-  margin-top: 30px;
+.page-links a {
+  color: var(--text);
+  display: block;
+  margin-block: calc(var(--margin) / 2) 0;
+}
+
+.page-links li {
+  border: var(--border);
+  padding: 12px 16px;
+  border-radius: var(--radius);
 }
 
 .page-links strong {
   margin-bottom: 8px;
-  display: inline-block;
-  font-size: 1.1rem;
-}
-
-.page-links a {
   display: block;
+  font-size: 1.1rem;
+  color: var(--link);
 }
 
 article {
@@ -215,7 +223,6 @@ article {
 
 main {
   min-width: 0; /* Don't let wide code blocks overflow */
-  grid-area: main;
 }
 
 main > hr:first-child {
@@ -227,8 +234,11 @@ main > :first-child {
   margin-top: 0;
 }
 
+p, li {
+  line-height: 1.6;
+}
+
 p {
-  line-height: 1.5;
   margin-block: var(--margin);
 }
 
@@ -239,60 +249,6 @@ ol {
 
 li {
   margin-block: calc(var(--margin) / 3) 0;
-  line-height: 1.5;
-}
-
-code,
-pre,
-kbd {
-  font-family: var(--font-mono);
-}
-
-a {
-  text-decoration: none;
-  color: var(--link);
-}
-
-h1,
-h2,
-h3 {
-  break-after: avoid;
-  color: #444;
-}
-
-h1 a[href^="#"],
-h2 a[href^="#"],
-h3 a[href^="#"] {
-  color: inherit;
-}
-
-h2 {
-  font-size: 1.3rem;
-  margin-block: var(--margin);
-}
-
-h3 {
-  font-size: 1.1rem;
-  margin-block: var(--margin);
-}
-
-h2 code,
-h3 code {
-  padding: 0;
-  background-color: transparent;
-  font-size: 0.9em;
-}
-
-/* https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/kbd */
-
-kbd {
-  background-color: var(--gray);
-  border: 1px solid #ccc;
-  display: inline-block;
-  font-size: 0.9em;
-  font-weight: bold;
-  line-height: 1;
-  padding: 2px 4px;
 }
 
 hr {
@@ -322,7 +278,7 @@ td {
 
 blockquote {
   padding: 20px;
-  border: 2px solid var(--gray);
+  border: var(--border);
   margin: var(--margin) 0;
   background-color: #f7f7f7;
 }
@@ -335,11 +291,35 @@ blockquote > :last-child {
   margin-bottom: 0;
 }
 
+code,
+pre,
+kbd,
+.snippet {
+  font-family: var(--font-mono);
+}
+
+a {
+  text-decoration: none;
+  color: var(--link);
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/kbd */
+
+kbd {
+  background-color: var(--gray);
+  border: 1px solid #ccc;
+  display: inline-block;
+  font-size: 0.9em;
+  font-weight: bold;
+  line-height: 1;
+  padding: 2px 4px;
+}
+
 pre {
   padding: 14px;
   overflow: auto;
   background-color: #f1f1f1;
-  border: 2px solid #e1e1e1;
+  border: var(--border);
   margin-block: var(--margin);
   font-size: 0.9rem;
 }
@@ -367,6 +347,25 @@ pre.wrap code {
   white-space: pre-wrap;
 }
 
+kbd,
+code {
+  white-space: nowrap;
+}
+
+pre,
+blockquote,
+table,
+.snippet {
+  break-inside: avoid;
+}
+
+pre,
+code,
+blockquote,
+kbd {
+  border-radius: var(--radius);
+}
+
 .snippet {
   margin-block: var(--margin);
 }
@@ -377,19 +376,18 @@ pre.wrap code {
   color: #aaa;
   font-size: 0.9rem;
   white-space: pre;
-  font-family: var(--font-mono);
 }
 
 .snippet.yes::after {
   content: "yes";
 }
 
-.snippet.no {
-  margin-top: -16px;
-}
-
 .snippet.no::after {
   content: "no ";
+}
+
+.snippet.no {
+  margin-top: -16px;
 }
 
 .snippet.yes,
@@ -407,57 +405,24 @@ pre.wrap code {
   margin-top: 8px;
 }
 
-.var-name {
-  font-size: 0.8rem;
-  font-family: var(--font-mono);
-  color: #777;
-  font-weight: bold;
-  margin: -10px -10px -6px;
-  padding: 10px 10px 14px;
-}
-
-.panic {
+.snippet .panic {
   background-color: #fee4e4;
   border-color: #f1c1c1;
-}
-
-kbd,
-code {
-  white-space: nowrap;
-}
-
-pre,
-blockquote,
-table,
-.snippet {
-  break-inside: avoid;
-}
-
-pre,
-code,
-blockquote,
-kbd {
-  border-radius: 3px;
-}
-
-.contents {
-  margin-left: 24px;
 }
 
 .def-name {
   font-size: 1.16rem;
 }
 
-#sidebar .std li::before {
-  display: none;
+.def-info {
+  margin-left: 24px;
 }
 
 .tag {
   font-weight: bold;
-  font-size: 0.95rem;
-  padding: 1px 4px;
-  margin-inline: 1px;
-  border-radius: 3px;
+  font-size: 0.8em;
+  padding: 2px 4px;
+  border-radius: var(--radius);
   cursor: help;
   display: inline-block;
 
@@ -477,26 +442,6 @@ kbd {
     &::before {
       content: "Constant";
     }
-  }
-}
-
-#sidebar .tag {
-  padding: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 4px;
-  margin-top: 5px;
-
-  &::before {
-    display: none;
-  }
-
-  &[title="Global"] {
-    background-color: #d4b0ff;
-  }
-
-  &[title="Constant"] {
-    background-color: #a1d2fb;
   }
 }
 
@@ -521,49 +466,15 @@ kbd {
   text-align: right;
 }
 
-@media (width <= 1100px) {
+@media (width < 800px) {
   body {
-    grid-template-columns: auto 5fr 2fr;
-  }
-}
-
-@media (width <= 950px) {
-  body {
-    grid-template:
-      "header header" auto
-      "title title" auto
-      "sidebar sidebar" auto
-      "main main" 1fr
-      / auto 1fr;
+    padding: 20px;
+    gap: 30px;
   }
 
   header {
     padding: 0;
-  }
-
-  nav {
-    justify-content: left;
-  }
-}
-
-@media (width <= 700px) {
-  html {
-    scroll-padding-top: 20px;
-  }
-
-  body {
-    grid-template:
-      "header" auto
-      "header" auto
-      "title" auto
-      "sidebar" auto
-      "main" 1fr
-      / 1fr;
-  }
-
-  header {
-    padding: 0;
-    gap: 20px;
+    grid-template-columns: auto;
   }
 
   #logo {
@@ -572,10 +483,6 @@ kbd {
 
   nav {
     justify-content: center;
-  }
-
-  #sidebar {
-    margin-left: 0;
   }
 
   kbd,

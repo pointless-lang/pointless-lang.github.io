@@ -17,22 +17,6 @@ export function showTags(name, value) {
   return "";
 }
 
-export function moduleSidebar(node) {
-  const modName = node.path.split("/").at(-1);
-
-  const links = Object.entries(meta.modules[modName]).map(
-    ([name, value]) =>
-      h`
-      <li>
-        <a href="#${name}">${name}</a>
-        $${showTags(name, value)}
-      </li>
-    `,
-  );
-
-  return h`<ul class="std">$${links}</ul>`;
-}
-
 function getDocStr(func) {
   const comment = func.handler
     .toString()
@@ -81,7 +65,7 @@ async function showDocs(modName, name, value, consts) {
   );
 }
 
-export async function genModule(node) {
+export async function buildModule(node) {
   const modName = node.path.split("/").at(-1);
   const defs = [];
 
@@ -97,17 +81,16 @@ export async function genModule(node) {
         $${showTags(name, value)}
       </h2>
 
-      <div class="contents">$${docs}</div>
+      <div class="def-info">$${docs}</div>
     `);
   }
 
-  const object = await renderMarkdown(
-    modName,
-    `\`\`\`ptls --max-height 200\n${modName}\n\`\`\``,
+  const contents = Object.keys(meta.modules[modName]).map(
+    (name) => h`<li><a href="#${name}">${name}</a></li>`,
   );
 
   return h`
-    $${object}
+    <ol class="contents std">$${contents}</ol>
     $${defs}
   `;
 }
