@@ -1,5 +1,3 @@
-import { buildCollection } from "./build-collection.js";
-import { buildModule } from "./build-module.js";
 import { headerId, renderMarkdown } from "pointless/render/render-markdown.js";
 import { h, serialize } from "pointless/render/escape.js";
 import { cp, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
@@ -30,7 +28,7 @@ async function getTree(path, parent = null) {
       // subtitle
       // consts
       // links
-      // type
+      // layout
       Object.assign(node, data);
 
       node.label = data.title?.split(": ").at(-1);
@@ -54,21 +52,16 @@ async function getTree(path, parent = null) {
   return node;
 }
 
-export async function buildGenerated(node) {
-  switch (node.type) {
-    case "module":
-      return await buildModule(node);
-    case "collection":
-      return buildCollection(node);
-    case undefined:
-      return "";
-  }
-}
+const layouts = {
+  collection: (await import("./layouts/collection.js")).build,
+  module: (await import("./layouts/module.js")).build,
+  editor: (await import("./layouts/editor.js")).build,
+};
 
 let template;
 
 async function buildIndex(node) {
-  const generated = await buildGenerated(node);
+  const generated = await layouts[node.layout]?.(node) ?? "";
 
   const contents = node.content
     .matchAll(/^##(.*)/gm)

@@ -5,7 +5,7 @@ import { loadMeta } from "pointless/src/std.js";
 
 const meta = loadMeta();
 
-export function showTags(name, value) {
+function showTags(name, value) {
   if (meta.globals[name] === value || meta.variants[name]) {
     return `<span class="tag" title="Global"></span>`;
   }
@@ -65,7 +65,7 @@ async function showDocs(modName, name, value, consts) {
   );
 }
 
-export async function buildModule(node) {
+export async function build(node) {
   const modName = node.path.split("/").at(-1);
   const defs = [];
 

@@ -1,6 +1,6 @@
 import { h } from "pointless/render/escape.js";
 
-export function buildCollection(node) {
+export function build(node) {
   const main = node.children.map(
     (child) =>
       h`
