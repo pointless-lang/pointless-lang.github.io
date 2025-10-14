@@ -1,6 +1,6 @@
 ---
 title: Articles
-type: collection
+layout: collection
 subtitle: Tutorials, development notes, and software essays
 ---
 

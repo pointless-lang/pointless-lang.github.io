@@ -1,6 +1,6 @@
 ---
 title: "Ref"
-type: module
+layout: module
 subtitle: Work with mutable state
 ---
 

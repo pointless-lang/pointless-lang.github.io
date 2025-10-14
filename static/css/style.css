@@ -247,8 +247,8 @@ ol {
   margin-block: var(--margin);
 }
 
-li {
-  margin-block: calc(var(--margin) / 3) 0;
+li + li {
+  margin-block: calc(var(--margin) / 4) 0;
 }
 
 hr {

@@ -1,6 +1,6 @@
 ---
 title: "Overloads"
-type: module
+layout: module
 subtitle: Global wrapper functions combining similar type-specific functions
 ---
 

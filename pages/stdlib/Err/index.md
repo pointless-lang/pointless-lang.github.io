@@ -1,6 +1,6 @@
 ---
 title: "Err"
-type: module
+layout: module
 subtitle: Throw and catch recoverable errors
 ---
 

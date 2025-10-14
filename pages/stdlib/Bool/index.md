@@ -1,6 +1,6 @@
 ---
 title: "Bool"
-type: module
+layout: module
 subtitle: Work with boolean values
 ---
 

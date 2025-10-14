@@ -1,6 +1,6 @@
 ---
 title: "Fs"
-type: module
+layout: module
 subtitle: Read and manipulate files and directories
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Math"
-type: module
+layout: module
 subtitle: Mathematical functions and constants
 consts:
   e: "Euler's number."

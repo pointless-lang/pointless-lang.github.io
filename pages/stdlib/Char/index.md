@@ -1,6 +1,6 @@
 ---
 title: "Char"
-type: module
+layout: module
 subtitle: Manage concurrent operations
 ---
 

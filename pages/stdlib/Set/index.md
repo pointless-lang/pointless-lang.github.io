@@ -1,6 +1,6 @@
 ---
 title: "Set"
-type: module
+layout: module
 subtitle: Work with sets (collections of unique values)
 consts:
   empty: "The empty set."

@@ -1,6 +1,6 @@
 ---
 title: "Re"
-type: module
+layout: module
 subtitle: Use regular expressions to search and manipulate strings
 ---
 

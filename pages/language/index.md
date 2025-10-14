@@ -1,7 +1,7 @@
 ---
 title: Language Reference
 subtitle: Documentation and examples for the language features of Pointless
-type: collection
+layout: collection
 links:
   - comments
   - variables

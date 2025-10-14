@@ -1,5 +1,5 @@
 ---
 title: "Console"
-type: module
+layout: module
 subtitle: Printing, prompting, and low-level console interaction
 ---

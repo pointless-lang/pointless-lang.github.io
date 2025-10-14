@@ -1,6 +1,6 @@
 ---
 title: "Table"
-type: module
+layout: module
 subtitle: Work with tables (data-frames)
 ---
 

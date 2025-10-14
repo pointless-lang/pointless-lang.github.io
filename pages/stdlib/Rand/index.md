@@ -1,5 +1,5 @@
 ---
 title: "Rand"
-type: module
+layout: module
 subtitle: The Generate random values
 ---

@@ -1,6 +1,6 @@
 ---
 title: Standard Library
-type: collection
+layout: collection
 subtitle: Modules containing built-in functionality
 ---
 

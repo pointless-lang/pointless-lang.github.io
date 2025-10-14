@@ -1,5 +1,5 @@
 ---
 title: "Test"
-type: module
+layout: module
 subtitle: Write tests and verify program behavior
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Str"
-type: module
+layout: module
 subtitle: Work with strings (pieces of text)
 ---
 

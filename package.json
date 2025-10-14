@@ -8,14 +8,6 @@
     "lint": "deno lint; stylelint static/css/*",
     "serve": "serve --config serve.json"
   },
-  "devDependencies": {
-    "@prettier/sync": "^0.6.1",
-    "gray-matter": "^4.0.3",
-    "marked": ">=15",
-    "serve": "^14.2.4",
-    "stylelint": "^16.23.0",
-    "stylelint-config-standard": "^39.0.0"
-  },
   "stylelint": {
     "extends": "stylelint-config-standard",
     "rules": {
@@ -24,6 +16,12 @@
     }
   },
   "dependencies": {
-    "pointless": "github:pointless-lang/pointless"
+    "gray-matter": "^4.0.3",
+    "marked": ">=15",
+    "pointless": "github:pointless-lang/pointless",
+    "prettier": "^3.6.2",
+    "serve": "^14.2.4",
+    "stylelint": "^16.23.0",
+    "stylelint-config-standard": "^39.0.0"
   }
 }

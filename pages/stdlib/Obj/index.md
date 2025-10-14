@@ -1,6 +1,6 @@
 ---
 title: "Obj"
-type: module
+layout: module
 subtitle: Work with objects (key-value maps)
 ---
 

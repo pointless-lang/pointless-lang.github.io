@@ -1,6 +1,6 @@
 ---
 title: "None"
-type: module
+layout: module
 subtitle: Work with none values
 ---
 

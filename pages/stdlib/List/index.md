@@ -1,6 +1,6 @@
 ---
 title: "List"
-type: module
+layout: module
 subtitle: Work with lists (sequences of values)
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Panic"
-type: module
+layout: module
 subtitle: Terminate the program upon an unexpected program state
 ---
 
