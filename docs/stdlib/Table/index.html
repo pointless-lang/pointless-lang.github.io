@@ -118,10 +118,7 @@
 ])
 
 <span class="std">Table</span>.<span class="call">bottom</span>(cities, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>, <span class="number">4</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌──────────────┬───────┬────────────┐
+            <pre class="result"><code>┌──────────────┬───────┬────────────┐
 │ city         │ state │ population │ x 4
 ├──────────────┼───────┼────────────┤
 │ Philadelphia │ PA    │    1573916 │
@@ -151,10 +148,7 @@
 ])
 
 <span class="std">Table</span>.<span class="call">columns</span>(cities)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>[&quot;city&quot;, &quot;state&quot;]
+            <pre class="result"><code>[&quot;city&quot;, &quot;state&quot;]
 </code></pre>
           </div>
         </div>
@@ -188,10 +182,7 @@
 ])
 
 <span class="std">Table</span>.<span class="call">counts</span>(locations)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌─────────────┬───────┬───────┬───────┐
+            <pre class="result"><code>┌─────────────┬───────┬───────┬───────┐
 │ city        │ state │ count │ share │ x 4
 ├─────────────┼───────┼───────┼───────┤
 │ New York    │ NY    │     3 │ 0.375 │
@@ -234,7 +225,7 @@
 
 players <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([])
 <span class="std">Table</span>.<span class="call">defaultCols</span>(players, [<span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">yards</span><span class="quotes">&quot;</span>])</code></pre>
-            <pre class="result" style="undefined"><code>┌───────┬───────┐
+            <pre class="result"><code>┌───────┬───────┐
 │ name  │ yards │ x 2
 ├───────┼───────┤
 │ Lamar │  4172 │
@@ -269,7 +260,7 @@ players <span class="operator">=</span> <span class="std">Table</span>.<span cla
 ])
 
 <span class="call">drop</span>(cities, <span class="number">3</span>)</code></pre>
-            <pre class="result" style="undefined"><code>┌─────────┬───────┐
+            <pre class="result"><code>┌─────────┬───────┐
 │ city    │ state │ x 2
 ├─────────┼───────┤
 │ Houston │ TX    │
@@ -305,7 +296,7 @@ players <span class="operator">=</span> <span class="std">Table</span>.<span cla
 ])
 
 <span class="call">dropLast</span>(cities, <span class="number">3</span>)</code></pre>
-            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+            <pre class="result"><code>┌─────────────┬───────┐
 │ city        │ state │ x 2
 ├─────────────┼───────┤
 │ New York    │ NY    │
@@ -342,7 +333,7 @@ players <span class="operator">=</span> <span class="std">Table</span>.<span cla
 ])
 
 <span class="std">Table</span>.<span class="call">filter</span>(cities, <span class="keyword">fn</span>(<span class="argument">city</span>) city.state <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> <span class="keyword">end</span>)</code></pre>
-            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+            <pre class="result"><code>┌─────────────┬───────┐
 │ city        │ state │ x 3
 ├─────────────┼───────┤
 │ Houston     │ TX    │
@@ -360,7 +351,7 @@ players <span class="operator">=</span> <span class="std">Table</span>.<span cla
 
           <div class="snippet undefined">
             <pre><code class="ptls">cities <span class="operator">?</span> <span class="keyword">arg</span>.state <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span></code></pre>
-            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+            <pre class="result"><code>┌─────────────┬───────┐
 │ city        │ state │ x 3
 ├─────────────┼───────┤
 │ Houston     │ TX    │
@@ -393,10 +384,7 @@ players <span class="operator">=</span> <span class="std">Table</span>.<span cla
 
 <span class="std">Table</span>.<span class="call">focus</span>(players, [<span class="quotes">&quot;</span><span class="string">yards</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>])
 <span class="std">Table</span>.<span class="call">focus</span>(players, <span class="quotes">&quot;</span><span class="string">ints</span><span class="quotes">&quot;</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌───────┬───────┬─────┬──────┐
+            <pre class="result"><code>┌───────┬───────┬─────┬──────┐
 │ yards │ name  │ tds │ ints │ x 2
 ├───────┼───────┼─────┼──────┤
 │  4172 │ Lamar │  41 │    4 │
@@ -454,7 +442,6 @@ players <span class="operator">=</span> <span class="std">Table</span>.<span cla
 <span class="std">Table</span>.<span class="call">get</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> })</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>{ city: &quot;Los Angeles&quot;, state: &quot;CA&quot; }
 [&quot;New York&quot;, &quot;Los Angeles&quot;, &quot;Chicago&quot;, &quot;Houston&quot;]
 { city: &quot;Houston&quot;, state: &quot;TX&quot; }
@@ -474,7 +461,6 @@ cities[<span class="quotes">&quot;</span><span class="string">city</span><span c
 cities[{ state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> }]</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>{ city: &quot;Los Angeles&quot;, state: &quot;CA&quot; }
 [&quot;New York&quot;, &quot;Los Angeles&quot;, &quot;Chicago&quot;, &quot;Houston&quot;]
 [&quot;New York&quot;, &quot;Los Angeles&quot;, &quot;Chicago&quot;, &quot;Houston&quot;]
@@ -514,7 +500,7 @@ cities[{ state: <span class="quotes">&quot;</span><span class="string">TX</span>
 ])
 
 <span class="std">Table</span>.<span class="call">group</span>(cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>)</code></pre>
-            <pre class="result" style="undefined"><code>[
+            <pre class="result"><code>[
   ┌─────────────┬───────┐
   │ city        │ state │ x 2
   ├─────────────┼───────┤
@@ -586,7 +572,7 @@ cities[{ state: <span class="quotes">&quot;</span><span class="string">TX</span>
 
 <span class="std">Table</span>.<span class="call">has</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> })
 <span class="std">Table</span>.<span class="call">has</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">VT</span><span class="quotes">&quot;</span> })</code></pre>
-            <pre class="result" style="undefined"><code>true
+            <pre class="result"><code>true
 false
 true
 false
@@ -598,7 +584,7 @@ false
 
 { state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> } <span class="keyword">in</span> cities
 { state: <span class="quotes">&quot;</span><span class="string">VT</span><span class="quotes">&quot;</span> } <span class="keyword">in</span> cities</code></pre>
-            <pre class="result" style="undefined"><code>true
+            <pre class="result"><code>true
 false
 true
 false
@@ -629,7 +615,7 @@ false
 
 <span class="std">Table</span>.<span class="call">indexOf</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> })
 <span class="std">Table</span>.<span class="call">indexOf</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">FL</span><span class="quotes">&quot;</span> })</code></pre>
-            <pre class="result" style="undefined"><code>0
+            <pre class="result"><code>0
 none
 </code></pre>
           </div>
@@ -658,7 +644,7 @@ none
 
 players <span class="operator">=</span> <span class="std">Table</span>.<span class="call">new</span>([<span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">yards</span><span class="quotes">&quot;</span>])
 <span class="call">isEmpty</span>(players)</code></pre>
-            <pre class="result" style="undefined"><code>false
+            <pre class="result"><code>false
 true
 </code></pre>
           </div>
@@ -685,7 +671,7 @@ true
 ])
 
 <span class="call">len</span>(players)</code></pre>
-            <pre class="result" style="undefined"><code>2
+            <pre class="result"><code>2
 </code></pre>
           </div>
           <p class="overloads">
@@ -717,10 +703,7 @@ true
 <span class="keyword">end</span>
 
 <span class="std">Table</span>.<span class="call">map</span>(players, addTD)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌───────┬───────┬─────┬──────┐
+            <pre class="result"><code>┌───────┬───────┬─────┬──────┐
 │ name  │ yards │ tds │ ints │ x 2
 ├───────┼───────┼─────┼──────┤
 │ Lamar │  4172 │  42 │    4 │
@@ -737,10 +720,7 @@ true
 
           <div class="snippet undefined">
             <pre><code class="ptls">players <span class="operator">$</span> <span class="call">addTD</span> <span class="operator">|</span> <span class="std">Table</span>.<span class="call">of</span></code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌───────┬───────┬─────┬──────┐
+            <pre class="result"><code>┌───────┬───────┬─────┬──────┐
 │ name  │ yards │ tds │ ints │ x 2
 ├───────┼───────┼─────┼──────┤
 │ Lamar │  4172 │  42 │    4 │
@@ -772,7 +752,7 @@ true
 ])
 
 <span class="std">Table</span>.<span class="call">match</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> })</code></pre>
-            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+            <pre class="result"><code>┌─────────────┬───────┐
 │ city        │ state │ x 2
 ├─────────────┼───────┤
 │ Houston     │ TX    │
@@ -807,10 +787,7 @@ true
 ])
 
 <span class="std">Table</span>.<span class="call">maxAll</span>(cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌─────────────┬───────┬────────────┐
+            <pre class="result"><code>┌─────────────┬───────┬────────────┐
 │ city        │ state │ population │ x 3
 ├─────────────┼───────┼────────────┤
 │ Houston     │ TX    │    2390125 │
@@ -854,7 +831,6 @@ true
 <span class="std">Table</span>.<span class="call">maxBy</span>(cities, [<span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>])</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>{ city: &quot;Houston&quot;, state: &quot;TX&quot;, population: 2390125 }
 { city: &quot;San Antonio&quot;, state: &quot;TX&quot;, population: 1526656 }
 </code></pre>
@@ -884,7 +860,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 ])
 
 <span class="std">Table</span>.<span class="call">merge</span>([t1, t2])</code></pre>
-            <pre class="result" style="undefined"><code>┌──────────────┬───────┐
+            <pre class="result"><code>┌──────────────┬───────┐
 │ city         │ state │ x 4
 ├──────────────┼───────┤
 │ Houston      │ TX    │
@@ -921,10 +897,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 ])
 
 <span class="std">Table</span>.<span class="call">minAll</span>(cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌─────────┬───────┬────────────┐
+            <pre class="result"><code>┌─────────┬───────┬────────────┐
 │ city    │ state │ population │ x 1
 ├─────────┼───────┼────────────┤
 │ Phoenix │ AZ    │    1673164 │
@@ -966,7 +939,6 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 <span class="std">Table</span>.<span class="call">minBy</span>(cities, [<span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>])</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>{ city: &quot;Dallas&quot;, state: &quot;TX&quot;, population: 1326087 }
 { city: &quot;Phoenix&quot;, state: &quot;AZ&quot;, population: 1673164 }
 </code></pre>
@@ -984,10 +956,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">Table</span>.<span class="call">new</span>([<span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">yards</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">tds</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">ints</span><span class="quotes">&quot;</span>])</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌──────┬───────┬─────┬──────┐
+            <pre class="result"><code>┌──────┬───────┬─────┬──────┐
 │ name │ yards │ tds │ ints │ x 0
 └──────┴───────┴─────┴──────┘
 </code></pre>
@@ -1045,10 +1014,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
   { name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, pos: <span class="quotes">&quot;</span><span class="string">qb</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span>, tds: <span class="number">41</span>, ints: <span class="number">4</span> },
   { name: <span class="quotes">&quot;</span><span class="string">Josh</span><span class="quotes">&quot;</span>, pos: <span class="quotes">&quot;</span><span class="string">qb</span><span class="quotes">&quot;</span>, yards: <span class="number">3731</span>, tds: <span class="number">28</span>, ints: <span class="number">6</span> }
 ])</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌───────┬─────┬───────┬─────┬──────┐
+            <pre class="result"><code>┌───────┬─────┬───────┬─────┬──────┐
 │ name  │ pos │ yards │ tds │ ints │ x 2
 ├───────┼─────┼───────┼─────┼──────┤
 │ Lamar │ qb  │  4172 │  41 │    4 │
@@ -1082,7 +1048,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 ])
 
 <span class="std">Table</span>.<span class="call">pop</span>(cities)</code></pre>
-            <pre class="result" style="undefined"><code>┌──────────────┬───────┐
+            <pre class="result"><code>┌──────────────┬───────┐
 │ city         │ state │ x 3
 ├──────────────┼───────┤
 │ Houston      │ TX    │
@@ -1114,7 +1080,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 ])
 
 <span class="call">push</span>(cities, { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> })</code></pre>
-            <pre class="result" style="undefined"><code>┌──────────────┬───────┐
+            <pre class="result"><code>┌──────────────┬───────┐
 │ city         │ state │ x 4
 ├──────────────┼───────┤
 │ Houston      │ TX    │
@@ -1157,7 +1123,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 <span class="std">Table</span>.<span class="call">put</span>([<span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Cali</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Illinois</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Texas</span><span class="quotes">&quot;</span>], cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>)
 <span class="std">Table</span>.<span class="call">put</span>(<span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>)
 <span class="std">Table</span>.<span class="call">put</span>({ city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> }, cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> })</code></pre>
-            <pre class="result" style="undefined"><code>┌─────────────┬────────┐
+            <pre class="result"><code>┌─────────────┬────────┐
 │ city        │ state  │ x 4
 ├─────────────┼────────┤
 │ Big Apple   │ Empire │
@@ -1248,7 +1214,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 <span class="call">remove</span>(cities, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>)
 <span class="call">remove</span>(cities, [<span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>])
 <span class="call">remove</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> })</code></pre>
-            <pre class="result" style="undefined"><code>┌──────────────┬───────┐
+            <pre class="result"><code>┌──────────────┬───────┐
 │ city         │ state │ x 6
 ├──────────────┼───────┤
 │ Houston      │ TX    │
@@ -1302,10 +1268,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 ])
 
 <span class="std">Table</span>.<span class="call">rename</span>(players, <span class="quotes">&quot;</span><span class="string">tds</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">touchdowns</span><span class="quotes">&quot;</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌───────┬───────┬────────────┬──────┐
+            <pre class="result"><code>┌───────┬───────┬────────────┬──────┐
 │ name  │ yards │ touchdowns │ ints │ x 2
 ├───────┼───────┼────────────┼──────┤
 │ Lamar │  4172 │         41 │    4 │
@@ -1334,7 +1297,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 ])
 
 <span class="call">reverse</span>(cities)</code></pre>
-            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+            <pre class="result"><code>┌─────────────┬───────┐
 │ city        │ state │ x 4
 ├─────────────┼───────┤
 │ Houston     │ TX    │
@@ -1368,7 +1331,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 })
 
 <span class="std">Table</span>.<span class="call">rows</span>(players)</code></pre>
-            <pre class="result" style="undefined"><code>[
+            <pre class="result"><code>[
   { name: &quot;Lamar&quot;, yards: 4172, tds: 41, ints: 4 },
   { name: &quot;Josh&quot;, yards: 3731, tds: 28, ints: 6 },
 ]
@@ -1399,7 +1362,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 
 <span class="call">select</span>(players, [<span class="quotes">&quot;</span><span class="string">yards</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>])
 <span class="call">select</span>(players, <span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>)</code></pre>
-            <pre class="result" style="undefined"><code>┌───────┬───────┐
+            <pre class="result"><code>┌───────┬───────┐
 │ yards │ name  │ x 2
 ├───────┼───────┤
 │  4172 │ Lamar │
@@ -1482,7 +1445,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
 <span class="std">Table</span>.<span class="call">set</span>(cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>)
 <span class="std">Table</span>.<span class="call">set</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },  { city: <span class="quotes">&quot;</span><span class="string">Austin</span><span class="quotes">&quot;</span> })
 <span class="std">Table</span>.<span class="call">set</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> })</code></pre>
-            <pre class="result" style="undefined"><code>┌─────────────┬────────┐
+            <pre class="result"><code>┌─────────────┬────────┐
 │ city        │ state  │ x 4
 ├─────────────┼────────┤
 │ Big Apple   │ Empire │
@@ -1535,7 +1498,7 @@ t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="c
             <pre><code class="ptls">citiesCopy <span class="operator">=</span> cities
 citiesCopy[<span class="number">0</span>] <span class="operator">=</span> { city: <span class="quotes">&quot;</span><span class="string">Big Apple</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">Empire</span><span class="quotes">&quot;</span> }</code></pre>
 
-            <pre class="result" style="undefined"><code>citiesCopy =
+            <pre class="result"><code>citiesCopy =
 ┌─────────────┬────────┐
 │ city        │ state  │ x 4
 ├─────────────┼────────┤
@@ -1549,7 +1512,7 @@ citiesCopy[<span class="number">0</span>] <span class="operator">=</span> { city
             <pre><code class="ptls">citiesCopy <span class="operator">=</span> cities
 citiesCopy.state <span class="operator">=</span> [<span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Cali</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Illinois</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Texas</span><span class="quotes">&quot;</span>]</code></pre>
 
-            <pre class="result" style="undefined"><code>citiesCopy =
+            <pre class="result"><code>citiesCopy =
 ┌─────────────┬──────────┐
 │ city        │ state    │ x 4
 ├─────────────┼──────────┤
@@ -1563,7 +1526,7 @@ citiesCopy.state <span class="operator">=</span> [<span class="quotes">&quot;</s
             <pre><code class="ptls">citiesCopy <span class="operator">=</span> cities
 citiesCopy.state <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span></code></pre>
 
-            <pre class="result" style="undefined"><code>citiesCopy =
+            <pre class="result"><code>citiesCopy =
 ┌─────────────┬───────┐
 │ city        │ state │ x 4
 ├─────────────┼───────┤
@@ -1577,7 +1540,7 @@ citiesCopy.state <span class="operator">=</span> <span class="quotes">&quot;</sp
             <pre><code class="ptls">citiesCopy <span class="operator">=</span> cities
 citiesCopy[{ state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> }].city <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Austin</span><span class="quotes">&quot;</span></code></pre>
 
-            <pre class="result" style="undefined"><code>citiesCopy =
+            <pre class="result"><code>citiesCopy =
 ┌─────────────┬───────┐
 │ city        │ state │ x 4
 ├─────────────┼───────┤
@@ -1591,7 +1554,7 @@ citiesCopy[{ state: <span class="quotes">&quot;</span><span class="string">TX</s
             <pre><code class="ptls">citiesCopy <span class="operator">=</span> cities
 citiesCopy[{ state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> }] <span class="operator">=</span> { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> }</code></pre>
 
-            <pre class="result" style="undefined"><code>citiesCopy =
+            <pre class="result"><code>citiesCopy =
 ┌─────────────┬───────┐
 │ city        │ state │ x 4
 ├─────────────┼───────┤
@@ -1642,10 +1605,7 @@ citiesCopy[{ state: <span class="quotes">&quot;</span><span class="string">TX</s
 
 <span class="call">sortBy</span>(cities, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>)
 <span class="call">sortBy</span>(cities, [<span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>])</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌──────────────┬───────┬────────────┐
+            <pre class="result"><code>┌──────────────┬───────┬────────────┐
 │ city         │ state │ population │ x 7
 ├──────────────┼───────┼────────────┤
 │ DC           │       │     702250 │
@@ -1705,10 +1665,7 @@ citiesCopy[{ state: <span class="quotes">&quot;</span><span class="string">TX</s
 
 <span class="call">sortDescBy</span>(cities, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>)
 <span class="call">sortDescBy</span>(cities, [<span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>])</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌──────────────┬───────┬────────────┐
+            <pre class="result"><code>┌──────────────┬───────┬────────────┐
 │ city         │ state │ population │ x 7
 ├──────────────┼───────┼────────────┤
 │ Houston      │ TX    │    2390125 │
@@ -1768,7 +1725,7 @@ newRows <span class="operator">=</span> <span class="std">Table</span>.<span cla
 ])
 
 <span class="std">Table</span>.<span class="call">splice</span>(cities, <span class="number">1</span>, <span class="number">2</span>, newRows)</code></pre>
-            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+            <pre class="result"><code>┌─────────────┬───────┐
 │ city        │ state │ x 5
 ├─────────────┼───────┤
 │ Houston     │ TX    │
@@ -1830,7 +1787,6 @@ newRows <span class="operator">=</span> <span class="std">Table</span>.<span cla
 <span class="std">Table</span>.<span class="call">summarize</span>(cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, calcStateStats)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>┌───────┬──────────┬──────────────┬───────────┐
 │ state │ totalPop │ biggestCity  │ numCities │ x 5
 ├───────┼──────────┼──────────────┼───────────┤
@@ -1864,7 +1820,7 @@ newRows <span class="operator">=</span> <span class="std">Table</span>.<span cla
 ])
 
 <span class="call">take</span>(cities, <span class="number">3</span>)</code></pre>
-            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+            <pre class="result"><code>┌─────────────┬───────┐
 │ city        │ state │ x 3
 ├─────────────┼───────┤
 │ New York    │ NY    │
@@ -1899,7 +1855,7 @@ newRows <span class="operator">=</span> <span class="std">Table</span>.<span cla
 ])
 
 <span class="call">takeLast</span>(cities, <span class="number">3</span>)</code></pre>
-            <pre class="result" style="undefined"><code>┌─────────┬───────┐
+            <pre class="result"><code>┌─────────┬───────┐
 │ city    │ state │ x 3
 ├─────────┼───────┤
 │ Chicago │ IL    │
@@ -1941,10 +1897,7 @@ newRows <span class="operator">=</span> <span class="std">Table</span>.<span cla
 ])
 
 <span class="std">Table</span>.<span class="call">top</span>(cities, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>, <span class="number">4</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌─────────────┬───────┬────────────┐
+            <pre class="result"><code>┌─────────────┬───────┬────────────┐
 │ city        │ state │ population │ x 4
 ├─────────────┼───────┼────────────┤
 │ New York    │ NY    │    8478072 │
@@ -1979,7 +1932,7 @@ newRows <span class="operator">=</span> <span class="std">Table</span>.<span cla
 ])
 
 <span class="std">Table</span>.<span class="call">unique</span>(cities)</code></pre>
-            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+            <pre class="result"><code>┌─────────────┬───────┐
 │ city        │ state │ x 4
 ├─────────────┼───────┤
 │ New York    │ NY    │

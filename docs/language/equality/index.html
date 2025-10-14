@@ -58,7 +58,7 @@
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="number">1</span> <span class="operator">+</span> <span class="number">4</span> <span class="operator">==</span> <span class="number">5</span></code></pre>
-          <pre class="result" style="undefined"><code>true
+          <pre class="result"><code>true
 </code></pre>
         </div>
         <p>
@@ -68,7 +68,7 @@
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="number">1</span> <span class="operator">+</span> <span class="number">4</span> <span class="operator">!=</span> <span class="number">14</span></code></pre>
-          <pre class="result" style="undefined"><code>true
+          <pre class="result"><code>true
 </code></pre>
         </div>
         <hr />
@@ -84,7 +84,7 @@
             <div class="snippet undefined">
               <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">0</span><span class="quotes">&quot;</span> <span class="operator">==</span> <span class="number">0</span>
 <span class="constant">true</span> <span class="operator">==</span> <span class="number">1</span></code></pre>
-              <pre class="result" style="undefined"><code>false
+              <pre class="result"><code>false
 false
 </code></pre>
             </div>
@@ -99,7 +99,7 @@ false
               <pre><code class="ptls"><span class="constant">true</span> <span class="operator">==</span> <span class="constant">true</span>
 <span class="constant">false</span> <span class="operator">==</span> <span class="constant">false</span>
 <span class="constant">none</span> <span class="operator">==</span> <span class="constant">none</span></code></pre>
-              <pre class="result" style="undefined"><code>true
+              <pre class="result"><code>true
 true
 true
 </code></pre>
@@ -111,7 +111,7 @@ true
             <div class="snippet undefined">
               <pre><code class="ptls"><span class="number">1e2</span> <span class="operator">==</span> <span class="number">100.0</span>
 <span class="number">42</span> <span class="operator">==</span> <span class="number">7</span></code></pre>
-              <pre class="result" style="undefined"><code>true
+              <pre class="result"><code>true
 false
 </code></pre>
             </div>
@@ -125,7 +125,7 @@ false
             <div class="snippet undefined">
               <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">hello</span><span class="quotes">&quot;</span> <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">hello</span><span class="quotes">&quot;</span>
 <span class="quotes">&quot;</span><span class="string">Hello!</span><span class="quotes">&quot;</span> <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">hello?</span><span class="quotes">&quot;</span></code></pre>
-              <pre class="result" style="undefined"><code>true
+              <pre class="result"><code>true
 false
 </code></pre>
             </div>
@@ -139,7 +139,7 @@ false
             <div class="snippet undefined">
               <pre><code class="ptls">[<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>] <span class="operator">==</span> [<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>]
 [<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>] <span class="operator">==</span> [<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>]</code></pre>
-              <pre class="result" style="undefined"><code>true
+              <pre class="result"><code>true
 false
 </code></pre>
             </div>
@@ -153,7 +153,7 @@ false
             <div class="snippet undefined">
               <pre><code class="ptls"><span class="std">Set</span>.<span class="call">of</span>([<span class="number">0</span>, <span class="number">1</span>]) <span class="operator">==</span> <span class="std">Set</span>.<span class="call">of</span>([<span class="number">1</span>, <span class="number">0</span>])
 <span class="std">Set</span>.<span class="call">of</span>([<span class="number">0</span>, <span class="number">1</span>]) <span class="operator">==</span> <span class="std">Set</span>.<span class="call">of</span>([<span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>])</code></pre>
-              <pre class="result" style="undefined"><code>true
+              <pre class="result"><code>true
 false
 </code></pre>
             </div>
@@ -167,7 +167,7 @@ false
             <div class="snippet undefined">
               <pre><code class="ptls">{ city: <span class="quotes">&quot;</span><span class="string">Boston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">MA</span><span class="quotes">&quot;</span> } <span class="operator">==</span> { state: <span class="quotes">&quot;</span><span class="string">MA</span><span class="quotes">&quot;</span>, city: <span class="quotes">&quot;</span><span class="string">Boston</span><span class="quotes">&quot;</span> }
 { county: <span class="quotes">&quot;</span><span class="string">Suffolk</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">MA</span><span class="quotes">&quot;</span> } <span class="operator">==</span> { city: <span class="quotes">&quot;</span><span class="string">Boston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">MA</span><span class="quotes">&quot;</span> }</code></pre>
-              <pre class="result" style="undefined"><code>true
+              <pre class="result"><code>true
 false
 </code></pre>
             </div>
@@ -188,7 +188,7 @@ t1 <span class="operator">==</span> t2
 t3 <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>({ state: [<span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>], rank: [<span class="number">1</span>, <span class="number">2</span>] })
 t4 <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>({ state: [<span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>], ranking: [<span class="number">1</span>, <span class="number">2</span>] })
 t3 <span class="operator">==</span> t4</code></pre>
-              <pre class="result" style="undefined"><code>true
+              <pre class="result"><code>true
 false
 </code></pre>
             </div>
@@ -210,7 +210,7 @@ inc <span class="operator">==</span> inc
 inc <span class="operator">==</span> <span class="keyword">fn</span>(<span class="argument">n</span>) n <span class="operator">*</span> <span class="number">3</span> <span class="keyword">end</span>
 
 <span class="keyword">fn</span>(<span class="argument">n</span>) n <span class="operator">*</span> <span class="number">3</span> <span class="keyword">end</span> <span class="operator">==</span> <span class="keyword">fn</span>(<span class="argument">n</span>) n <span class="operator">*</span> <span class="number">3</span> <span class="keyword">end</span> <span class="comment">-- May or may not be equal</span></code></pre>
-              <pre class="result" style="undefined"><code>true
+              <pre class="result"><code>true
 false
 false
 </code></pre>
@@ -226,7 +226,7 @@ false
               <pre><code class="ptls">ref <span class="operator">=</span> <span class="std">Ref</span>.<span class="call">of</span>(<span class="number">0</span>)
 ref <span class="operator">==</span> ref
 ref <span class="operator">==</span> <span class="std">Ref</span>.<span class="call">of</span>(<span class="number">0</span>)</code></pre>
-              <pre class="result" style="undefined"><code>true
+              <pre class="result"><code>true
 false
 </code></pre>
             </div>

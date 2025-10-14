@@ -67,7 +67,7 @@
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="call">assert</span>(<span class="number">1</span> <span class="operator">+</span> <span class="number">1</span> <span class="operator">==</span> <span class="number">2</span>)</code></pre>
-            <pre class="result" style="undefined"><code>none
+            <pre class="result"><code>none
 </code></pre>
           </div>
           <div class="snippet undefined">
@@ -93,10 +93,7 @@ At Test:embedded:1:7</code></pre>
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">Test</span>.<span class="call">equals</span>(<span class="number">2</span> <span class="operator">+</span> <span class="number">2</span>, <span class="number">4</span>)
 <span class="std">Test</span>.<span class="call">equals</span>(<span class="number">1</span> <span class="operator">+</span> <span class="number">1</span>, <span class="number">11</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>{ status: &quot;pass&quot; }
+            <pre class="result"><code>{ status: &quot;pass&quot; }
 { status: &quot;fail&quot;, expected: 11, got: 2 }
 </code></pre>
           </div>
@@ -115,10 +112,7 @@ At Test:embedded:1:7</code></pre>
             <pre><code class="ptls"><span class="std">Test</span>.<span class="call">returns</span>(<span class="keyword">fn</span>() <span class="number">2</span> <span class="operator">+</span> <span class="number">2</span> <span class="keyword">end</span>, <span class="number">4</span>)
 <span class="std">Test</span>.<span class="call">returns</span>(<span class="keyword">fn</span>() <span class="number">1</span> <span class="operator">+</span> <span class="number">1</span> <span class="keyword">end</span>, <span class="number">11</span>)
 <span class="std">Test</span>.<span class="call">returns</span>(<span class="keyword">fn</span>() <span class="number">0</span> <span class="operator">/</span> <span class="number">0</span> <span class="keyword">end</span>, <span class="number">0</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>{ status: &quot;pass&quot; }
+            <pre class="result"><code>{ status: &quot;pass&quot; }
 { status: &quot;fail&quot;, expected: 11, got: 2 }
 {
   status: &quot;fail&quot;,
@@ -148,10 +142,7 @@ At Test:embedded:1:7</code></pre>
 
 <span class="std">Test</span>.<span class="call">runs</span>(<span class="keyword">fn</span>() <span class="call">inverse</span>(<span class="number">10</span>) <span class="keyword">end</span>)
 <span class="std">Test</span>.<span class="call">runs</span>(<span class="keyword">fn</span>() <span class="call">inverse</span>(<span class="number">0</span>) <span class="keyword">end</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>{ status: &quot;pass&quot; }
+            <pre class="result"><code>{ status: &quot;pass&quot; }
 {
   status: &quot;fail&quot;,
   panic: &quot;panic: assertion error\n\n  assert(n != 0)\n        ^\nAt Test:embedded:2:9 in inverse(n)\n\nTest.runs(fn() inverse(0) end)\n                      ^\nAt Test:embedded:7:23 in fn()&quot;,
@@ -185,10 +176,7 @@ At Test:embedded:1:7</code></pre>
 <span class="std">Test</span>.<span class="call">throws</span>(<span class="keyword">fn</span>() <span class="call">inverse</span>(<span class="number">0</span>) <span class="keyword">end</span>, <span class="quotes">&quot;</span><span class="string">wrong!</span><span class="quotes">&quot;</span>)
 <span class="std">Test</span>.<span class="call">throws</span>(<span class="keyword">fn</span>() <span class="call">inverse</span>(<span class="number">10</span>) <span class="keyword">end</span>, <span class="quotes">&quot;</span><span class="string">n must not be zero</span><span class="quotes">&quot;</span>)
 <span class="std">Test</span>.<span class="call">throws</span>(<span class="keyword">fn</span>() <span class="call">inverse</span>(<span class="quotes">&quot;</span><span class="string">0</span><span class="quotes">&quot;</span>) <span class="keyword">end</span>, <span class="quotes">&quot;</span><span class="string">n must not be zero</span><span class="quotes">&quot;</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>{ status: &quot;pass&quot; }
+            <pre class="result"><code>{ status: &quot;pass&quot; }
 { status: &quot;fail&quot;, expected: &quot;wrong!&quot;, actual: &quot;n must not be zero&quot; }
 { status: &quot;fail&quot;, returned: 0.1 }
 {

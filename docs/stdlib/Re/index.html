@@ -58,7 +58,7 @@
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="std">Re</span>.<span class="call">test</span>(<span class="quotes">&quot;</span><span class="string">☺</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">^.$</span><span class="quotes">&quot;</span>) <span class="comment">-- &#039;.&#039; matches BMP character U+263A</span>
 <span class="std">Re</span>.<span class="call">test</span>(<span class="quotes">&quot;</span><span class="string">😀</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">^.$</span><span class="quotes">&quot;</span>) <span class="comment">-- &#039;.&#039; doesn&#039;t match SMP character U+1F600</span></code></pre>
-          <pre class="result" style="undefined"><code>true
+          <pre class="result"><code>true
 false
 </code></pre>
         </div>
@@ -88,7 +88,6 @@ false
             <pre><code class="ptls"><span class="std">Re</span>.<span class="call">escape</span>(<span class="quotes">&quot;</span><span class="string">Hello? Can you *hear* me??</span><span class="quotes">&quot;</span>)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>&quot;Hello\\? Can you \\*hear\\* me\\?\\?&quot;
 </code></pre>
           </div>
@@ -119,7 +118,6 @@ false
             <pre><code class="ptls"><span class="std">Re</span>.<span class="call">match</span>(<span class="quotes">&quot;</span><span class="string">nessa@example.com, megan@xkcd.com</span><span class="quotes">&quot;</span>, <span class="quotes">r&quot;</span><span class="string">(?&lt;name&gt;\w+)@(\w+\.\w+)</span><span class="quotes">&quot;</span>)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>┌───────────────────┬───────┬──────────────────────────┬───────────────────┐
 │ value             │ index │ groups                   │ named             │ x 2
 ├───────────────────┼───────┼──────────────────────────┼───────────────────┤
@@ -148,7 +146,7 @@ false
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">Re</span>.<span class="call">replace</span>(<span class="quotes">&quot;</span><span class="string">2025  07 22</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string"> +</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">.</span><span class="quotes">&quot;</span>)</code></pre>
-            <pre class="result" style="undefined"><code>&quot;2025.07.22&quot;
+            <pre class="result"><code>&quot;2025.07.22&quot;
 </code></pre>
           </div>
         </div>
@@ -171,10 +169,7 @@ false
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">Re</span>.<span class="call">replaceBy</span>(<span class="quotes">&quot;</span><span class="string">a catalog of cats</span><span class="quotes">&quot;</span>, <span class="quotes">r&quot;</span><span class="string">cat\w*</span><span class="quotes">&quot;</span>, <span class="std">Str</span>.toUpper)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>&quot;a CATALOG of CATS&quot;
+            <pre class="result"><code>&quot;a CATALOG of CATS&quot;
 </code></pre>
           </div>
         </div>
@@ -196,7 +191,6 @@ false
             <pre><code class="ptls"><span class="std">Re</span>.<span class="call">split</span>(<span class="quotes">&quot;</span><span class="string">NYC NY  USA</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string"> +</span><span class="quotes">&quot;</span>)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;NYC&quot;, &quot;NY&quot;, &quot;USA&quot;]
 </code></pre>
           </div>
@@ -217,7 +211,7 @@ false
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">Re</span>.<span class="call">test</span>(<span class="quotes">&quot;</span><span class="string">nessa@example.com</span><span class="quotes">&quot;</span>, <span class="quotes">r&quot;</span><span class="string">.+@.+\..+</span><span class="quotes">&quot;</span>)
 <span class="std">Re</span>.<span class="call">test</span>(<span class="quotes">&quot;</span><span class="string">nessa at example dot com</span><span class="quotes">&quot;</span>, <span class="quotes">r&quot;</span><span class="string">.+@.+\..+</span><span class="quotes">&quot;</span>)</code></pre>
-            <pre class="result" style="undefined"><code>true
+            <pre class="result"><code>true
 false
 </code></pre>
           </div>

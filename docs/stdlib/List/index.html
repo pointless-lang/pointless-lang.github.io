@@ -122,7 +122,7 @@
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">all</span>([])
 <span class="std">List</span>.<span class="call">all</span>([<span class="constant">true</span>, <span class="constant">true</span>, <span class="constant">true</span>])
 <span class="std">List</span>.<span class="call">all</span>([<span class="constant">true</span>, <span class="constant">true</span>, <span class="constant">false</span>])</code></pre>
-            <pre class="result" style="undefined"><code>true
+            <pre class="result"><code>true
 true
 false
 </code></pre>
@@ -145,7 +145,7 @@ false
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">any</span>([])
 <span class="std">List</span>.<span class="call">any</span>([<span class="constant">false</span>, <span class="constant">false</span>, <span class="constant">false</span>])
 <span class="std">List</span>.<span class="call">any</span>([<span class="constant">false</span>, <span class="constant">false</span>, <span class="constant">true</span>])</code></pre>
-            <pre class="result" style="undefined"><code>false
+            <pre class="result"><code>false
 false
 true
 </code></pre>
@@ -163,7 +163,7 @@ true
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">average</span>([<span class="number">10</span>, <span class="number">50</span>, <span class="number">60</span>])</code></pre>
-            <pre class="result" style="undefined"><code>40
+            <pre class="result"><code>40
 </code></pre>
           </div>
         </div>
@@ -182,7 +182,7 @@ true
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">bottom</span>([<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>], <span class="number">5</span>)</code></pre>
-            <pre class="result" style="undefined"><code>[1, 1, 2, 3, 4]
+            <pre class="result"><code>[1, 1, 2, 3, 4]
 </code></pre>
           </div>
         </div>
@@ -201,10 +201,7 @@ true
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">chunks</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>], <span class="number">3</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>[[1, 2, 3], [4, 5, 6], [7, 8]]
+            <pre class="result"><code>[[1, 2, 3], [4, 5, 6], [7, 8]]
 </code></pre>
           </div>
         </div>
@@ -223,7 +220,7 @@ true
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">count</span>([<span class="number">1</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">6</span>], <span class="number">9</span>)</code></pre>
-            <pre class="result" style="undefined"><code>2
+            <pre class="result"><code>2
 </code></pre>
           </div>
         </div>
@@ -243,10 +240,7 @@ true
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">counts</span>([<span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">FL</span><span class="quotes">&quot;</span>])</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>┌───────┬───────┬───────┐
+            <pre class="result"><code>┌───────┬───────┬───────┐
 │ value │ count │ share │ x 7
 ├───────┼───────┼───────┤
 │ TX    │     3 │   0.3 │
@@ -275,10 +269,7 @@ true
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="call">drop</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">e</span><span class="quotes">&quot;</span>], <span class="number">3</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>[&quot;d&quot;, &quot;e&quot;]
+            <pre class="result"><code>[&quot;d&quot;, &quot;e&quot;]
 </code></pre>
           </div>
           <p class="overloads">
@@ -301,10 +292,7 @@ true
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="call">dropLast</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">e</span><span class="quotes">&quot;</span>], <span class="number">3</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>[&quot;a&quot;, &quot;b&quot;]
+            <pre class="result"><code>[&quot;a&quot;, &quot;b&quot;]
 </code></pre>
           </div>
           <p class="overloads">
@@ -327,7 +315,7 @@ true
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">filter</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="std">Math</span>.isEven)</code></pre>
-            <pre class="result" style="undefined"><code>[2, 4]
+            <pre class="result"><code>[2, 4]
 </code></pre>
           </div>
           <p>
@@ -339,7 +327,7 @@ true
 
           <div class="snippet undefined">
             <pre><code class="ptls">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>] <span class="operator">?</span> <span class="std">Math</span>.<span class="call">isEven</span></code></pre>
-            <pre class="result" style="undefined"><code>[2, 4]
+            <pre class="result"><code>[2, 4]
 </code></pre>
           </div>
         </div>
@@ -359,7 +347,7 @@ true
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">find</span>([<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>], <span class="std">Math</span>.isEven)
 <span class="std">List</span>.<span class="call">find</span>([<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>], <span class="keyword">fn</span>(<span class="argument">n</span>) n <span class="operator">&lt;</span> <span class="number">5</span> <span class="keyword">end</span>)</code></pre>
-            <pre class="result" style="undefined"><code>8
+            <pre class="result"><code>8
 none
 </code></pre>
           </div>
@@ -376,7 +364,7 @@ none
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">get</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>], <span class="number">2</span>)</code></pre>
-            <pre class="result" style="undefined"><code>&quot;c&quot;
+            <pre class="result"><code>&quot;c&quot;
 </code></pre>
           </div>
           <p>
@@ -388,7 +376,7 @@ none
 
           <div class="snippet undefined">
             <pre><code class="ptls">[<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>][<span class="number">2</span>]</code></pre>
-            <pre class="result" style="undefined"><code>&quot;c&quot;
+            <pre class="result"><code>&quot;c&quot;
 </code></pre>
           </div>
         </div>
@@ -410,7 +398,7 @@ none
   [<span class="quotes">&quot;</span><span class="string">apple</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">pear</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">banana</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">plum</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">apricot</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">orange</span><span class="quotes">&quot;</span>],
   <span class="keyword">fn</span>(<span class="argument">word</span>) <span class="call">take</span>(word, <span class="number">1</span>) <span class="keyword">end</span>
 )</code></pre>
-            <pre class="result" style="undefined"><code>{
+            <pre class="result"><code>{
   a: [&quot;apple&quot;, &quot;apricot&quot;],
   p: [&quot;pear&quot;, &quot;peach&quot;, &quot;plum&quot;],
   b: [&quot;banana&quot;],
@@ -432,7 +420,7 @@ none
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">has</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>], <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>)
 <span class="std">List</span>.<span class="call">has</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>], <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>)</code></pre>
-            <pre class="result" style="undefined"><code>true
+            <pre class="result"><code>true
 false
 </code></pre>
           </div>
@@ -458,7 +446,7 @@ false
 
 <span class="std">List</span>.<span class="call">hasAll</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>], [<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>])
 <span class="std">List</span>.<span class="call">hasAll</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>], [<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>])</code></pre>
-            <pre class="result" style="undefined"><code>true
+            <pre class="result"><code>true
 false
 true
 false
@@ -482,7 +470,7 @@ false
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">indexOf</span>([<span class="number">1</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">6</span>], <span class="number">9</span>)
 <span class="std">List</span>.<span class="call">indexOf</span>([<span class="number">1</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">6</span>], <span class="number">0</span>)</code></pre>
-            <pre class="result" style="undefined"><code>1
+            <pre class="result"><code>1
 none
 </code></pre>
           </div>
@@ -501,7 +489,7 @@ none
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="call">isEmpty</span>([])
 <span class="call">isEmpty</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>])</code></pre>
-            <pre class="result" style="undefined"><code>true
+            <pre class="result"><code>true
 false
 </code></pre>
           </div>
@@ -523,7 +511,7 @@ false
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="call">len</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>])</code></pre>
-            <pre class="result" style="undefined"><code>4
+            <pre class="result"><code>4
 </code></pre>
           </div>
           <p class="overloads">
@@ -545,7 +533,7 @@ false
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">map</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="keyword">fn</span>(<span class="argument">n</span>) n <span class="operator">*</span> <span class="number">2</span> <span class="keyword">end</span>)</code></pre>
-            <pre class="result" style="undefined"><code>[2, 4, 6, 8]
+            <pre class="result"><code>[2, 4, 6, 8]
 </code></pre>
           </div>
           <p>
@@ -557,7 +545,7 @@ false
 
           <div class="snippet undefined">
             <pre><code class="ptls">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>] <span class="operator">$</span> <span class="keyword">arg</span> <span class="operator">*</span> <span class="number">2</span></code></pre>
-            <pre class="result" style="undefined"><code>[2, 4, 6, 8]
+            <pre class="result"><code>[2, 4, 6, 8]
 </code></pre>
           </div>
         </div>
@@ -578,7 +566,7 @@ false
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">max</span>([<span class="operator">-</span><span class="number">7</span>, <span class="number">1</span>, <span class="number">50</span>])</code></pre>
-            <pre class="result" style="undefined"><code>50
+            <pre class="result"><code>50
 </code></pre>
           </div>
         </div>
@@ -602,7 +590,7 @@ false
   [<span class="quotes">&quot;</span><span class="string">apple</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">pear</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">banana</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">plum</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">apricot</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">orange</span><span class="quotes">&quot;</span>],
   <span class="std">len</span>
 )</code></pre>
-            <pre class="result" style="undefined"><code>[&quot;apricot&quot;]
+            <pre class="result"><code>[&quot;apricot&quot;]
 </code></pre>
           </div>
         </div>
@@ -626,7 +614,7 @@ false
   [<span class="quotes">&quot;</span><span class="string">apple</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">pear</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">banana</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">plum</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">apricot</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">orange</span><span class="quotes">&quot;</span>],
   <span class="std">len</span>
 )</code></pre>
-            <pre class="result" style="undefined"><code>&quot;apricot&quot;
+            <pre class="result"><code>&quot;apricot&quot;
 </code></pre>
           </div>
         </div>
@@ -648,7 +636,7 @@ false
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">maxNone</span>([<span class="operator">-</span><span class="number">7</span>, <span class="number">1</span>, <span class="number">50</span>])
 <span class="std">List</span>.<span class="call">maxNone</span>([])</code></pre>
-            <pre class="result" style="undefined"><code>50
+            <pre class="result"><code>50
 none
 </code></pre>
           </div>
@@ -666,7 +654,7 @@ none
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">median</span>([<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])
 <span class="std">List</span>.<span class="call">median</span>([<span class="number">7</span>, <span class="number">9</span>])</code></pre>
-            <pre class="result" style="undefined"><code>2
+            <pre class="result"><code>2
 8
 </code></pre>
           </div>
@@ -685,7 +673,6 @@ none
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">merge</span>([[<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>], [<span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>], [<span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">e</span><span class="quotes">&quot;</span>]])</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
 </code></pre>
           </div>
@@ -707,7 +694,7 @@ none
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">min</span>([<span class="operator">-</span><span class="number">7</span>, <span class="number">1</span>, <span class="number">50</span>])</code></pre>
-            <pre class="result" style="undefined"><code>-7
+            <pre class="result"><code>-7
 </code></pre>
           </div>
         </div>
@@ -731,10 +718,7 @@ none
   [<span class="quotes">&quot;</span><span class="string">apple</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">pear</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">banana</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">plum</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">apricot</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">orange</span><span class="quotes">&quot;</span>],
   <span class="std">len</span>
 )</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>[&quot;pear&quot;, &quot;plum&quot;]
+            <pre class="result"><code>[&quot;pear&quot;, &quot;plum&quot;]
 </code></pre>
           </div>
         </div>
@@ -758,7 +742,7 @@ none
   [<span class="quotes">&quot;</span><span class="string">apple</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">pear</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">banana</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">plum</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">apricot</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">orange</span><span class="quotes">&quot;</span>],
   <span class="std">len</span>
 )</code></pre>
-            <pre class="result" style="undefined"><code>&quot;pear&quot;
+            <pre class="result"><code>&quot;pear&quot;
 </code></pre>
           </div>
         </div>
@@ -780,7 +764,7 @@ none
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">minNone</span>([<span class="operator">-</span><span class="number">7</span>, <span class="number">1</span>, <span class="number">50</span>])
 <span class="std">List</span>.<span class="call">minNone</span>([])</code></pre>
-            <pre class="result" style="undefined"><code>-7
+            <pre class="result"><code>-7
 none
 </code></pre>
           </div>
@@ -800,7 +784,7 @@ none
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">normalize</span>([<span class="number">5</span>, <span class="number">7</span>, <span class="number">8</span>])</code></pre>
-            <pre class="result" style="undefined"><code>[0.25, 0.35, 0.4]
+            <pre class="result"><code>[0.25, 0.35, 0.4]
 </code></pre>
           </div>
         </div>
@@ -827,7 +811,6 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
 <span class="std">List</span>.<span class="call">of</span>(t)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]
 [{ name: &quot;Ducky&quot;, type: &quot;dog&quot; }, { name: &quot;Clementine&quot;, type: &quot;bird&quot; }]
 </code></pre>
@@ -848,7 +831,7 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">percents</span>([<span class="number">5</span>, <span class="number">7</span>, <span class="number">8</span>])</code></pre>
-            <pre class="result" style="undefined"><code>[25, 35, 40]
+            <pre class="result"><code>[25, 35, 40]
 </code></pre>
           </div>
         </div>
@@ -866,7 +849,6 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">pop</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">e</span><span class="quotes">&quot;</span>])</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]
 </code></pre>
           </div>
@@ -886,7 +868,6 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
             <pre><code class="ptls"><span class="call">push</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>], <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]
 </code></pre>
           </div>
@@ -912,7 +893,6 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">put</span>(<span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, [<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>], <span class="number">2</span>)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]
 </code></pre>
           </div>
@@ -941,10 +921,7 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="call">range</span>(<span class="number">10</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            <pre class="result"><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
           </div>
         </div>
@@ -963,7 +940,7 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="call">remove</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="constant">none</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="constant">none</span>], <span class="constant">none</span>)</code></pre>
-            <pre class="result" style="undefined"><code>[1, 2, 3, 4]
+            <pre class="result"><code>[1, 2, 3, 4]
 </code></pre>
           </div>
           <p class="overloads">
@@ -987,7 +964,7 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">removeAll</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="constant">none</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="constant">none</span>], [<span class="constant">none</span>, <span class="number">0</span>])</code></pre>
-            <pre class="result" style="undefined"><code>[1, 2, 3, 4]
+            <pre class="result"><code>[1, 2, 3, 4]
 </code></pre>
           </div>
         </div>
@@ -1008,7 +985,6 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">repeat</span>(<span class="quotes">&quot;</span><span class="string">0</span><span class="quotes">&quot;</span>, <span class="number">5</span>)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;]
 </code></pre>
           </div>
@@ -1021,7 +997,6 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
             <pre><code class="ptls">[<span class="quotes">&quot;</span><span class="string">0</span><span class="quotes">&quot;</span>] <span class="operator">*</span> <span class="number">5</span></code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;]
 </code></pre>
           </div>
@@ -1041,7 +1016,6 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
             <pre><code class="ptls"><span class="call">reverse</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>])</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;d&quot;, &quot;c&quot;, &quot;b&quot;, &quot;a&quot;]
 </code></pre>
           </div>
@@ -1067,7 +1041,6 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">set</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>], <span class="number">2</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]
 </code></pre>
           </div>
@@ -1082,7 +1055,7 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
             <pre><code class="ptls">letters <span class="operator">=</span> [<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>]
 letters[<span class="number">2</span>] <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span></code></pre>
 
-            <pre class="result" style="undefined"><code>letters =
+            <pre class="result"><code>letters =
 [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]</code></pre>
           </div>
         </div>
@@ -1108,10 +1081,7 @@ letters[<span class="number">2</span>] <span class="operator">=</span> <span cla
             <pre><code class="ptls"><span class="call">sort</span>([<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>])
 <span class="call">sort</span>([<span class="quotes">&quot;</span><span class="string">apple</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">pear</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">banana</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">plum</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">apricot</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">orange</span><span class="quotes">&quot;</span>, <span class="constant">none</span>])
 <span class="call">sort</span>([<span class="constant">true</span>, <span class="constant">false</span>, <span class="constant">true</span>, <span class="constant">false</span>])</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>[1, 1, 2, 3, 4, 4, 5, 5, 6, 9]
+            <pre class="result"><code>[1, 1, 2, 3, 4, 4, 5, 5, 6, 9]
 [&quot;apple&quot;, &quot;apricot&quot;, &quot;banana&quot;, &quot;orange&quot;, &quot;peach&quot;, &quot;pear&quot;, &quot;plum&quot;, none]
 [false, false, true, true]
 </code></pre>
@@ -1143,7 +1113,6 @@ letters[<span class="number">2</span>] <span class="operator">=</span> <span cla
 )</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;pear&quot;, &quot;plum&quot;, &quot;apple&quot;, &quot;peach&quot;, &quot;banana&quot;, &quot;orange&quot;, &quot;apricot&quot;]
 </code></pre>
           </div>
@@ -1171,10 +1140,7 @@ letters[<span class="number">2</span>] <span class="operator">=</span> <span cla
             <pre><code class="ptls"><span class="call">sortDesc</span>([<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>])
 <span class="call">sortDesc</span>([<span class="quotes">&quot;</span><span class="string">apple</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">pear</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">banana</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">plum</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">apricot</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">orange</span><span class="quotes">&quot;</span>, <span class="constant">none</span>])
 <span class="call">sortDesc</span>([<span class="constant">true</span>, <span class="constant">false</span>, <span class="constant">true</span>, <span class="constant">false</span>])</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>[9, 6, 5, 5, 4, 4, 3, 2, 1, 1]
+            <pre class="result"><code>[9, 6, 5, 5, 4, 4, 3, 2, 1, 1]
 [&quot;plum&quot;, &quot;pear&quot;, &quot;peach&quot;, &quot;orange&quot;, &quot;banana&quot;, &quot;apricot&quot;, &quot;apple&quot;, none]
 [true, true, false, false]
 </code></pre>
@@ -1203,7 +1169,6 @@ letters[<span class="number">2</span>] <span class="operator">=</span> <span cla
 )</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;apricot&quot;, &quot;banana&quot;, &quot;orange&quot;, &quot;apple&quot;, &quot;peach&quot;, &quot;pear&quot;, &quot;plum&quot;]
 </code></pre>
           </div>
@@ -1230,10 +1195,7 @@ letters[<span class="number">2</span>] <span class="operator">=</span> <span cla
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="call">span</span>(<span class="number">1</span>, <span class="number">10</span>)
 <span class="call">span</span>(<span class="number">2</span>, <span class="operator">-</span><span class="number">2</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            <pre class="result"><code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 [2, 1, 0, -1, -2]
 </code></pre>
           </div>
@@ -1258,7 +1220,6 @@ letters[<span class="number">2</span>] <span class="operator">=</span> <span cla
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">splice</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">e</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">f</span><span class="quotes">&quot;</span>], <span class="number">3</span>, <span class="number">2</span>, [<span class="quotes">&quot;</span><span class="string">x</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">y</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">z</span><span class="quotes">&quot;</span>])</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;y&quot;, &quot;z&quot;, &quot;f&quot;]
 </code></pre>
           </div>
@@ -1276,7 +1237,7 @@ letters[<span class="number">2</span>] <span class="operator">=</span> <span cla
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="call">sum</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>])</code></pre>
-            <pre class="result" style="undefined"><code>55
+            <pre class="result"><code>55
 </code></pre>
           </div>
         </div>
@@ -1297,7 +1258,6 @@ letters[<span class="number">2</span>] <span class="operator">=</span> <span cla
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">swap</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>], <span class="number">1</span>, <span class="number">2</span>)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]
 </code></pre>
           </div>
@@ -1319,7 +1279,6 @@ letters[<span class="number">2</span>] <span class="operator">=</span> <span cla
             <pre><code class="ptls"><span class="call">take</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">e</span><span class="quotes">&quot;</span>], <span class="number">3</span>)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
 </code></pre>
           </div>
@@ -1345,7 +1304,6 @@ letters[<span class="number">2</span>] <span class="operator">=</span> <span cla
             <pre><code class="ptls"><span class="call">takeLast</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">e</span><span class="quotes">&quot;</span>], <span class="number">3</span>)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;c&quot;, &quot;d&quot;, &quot;e&quot;]
 </code></pre>
           </div>
@@ -1369,7 +1327,7 @@ letters[<span class="number">2</span>] <span class="operator">=</span> <span cla
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">top</span>([<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>], <span class="number">5</span>)</code></pre>
-            <pre class="result" style="undefined"><code>[9, 6, 5, 5, 4]
+            <pre class="result"><code>[9, 6, 5, 5, 4]
 </code></pre>
           </div>
         </div>
@@ -1390,7 +1348,6 @@ letters[<span class="number">2</span>] <span class="operator">=</span> <span cla
             <pre><code class="ptls"><span class="std">List</span>.<span class="call">unique</span>([<span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">FL</span><span class="quotes">&quot;</span>])</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>[&quot;NY&quot;, &quot;CA&quot;, &quot;IL&quot;, &quot;TX&quot;, &quot;AZ&quot;, &quot;PA&quot;, &quot;FL&quot;]
 </code></pre>
           </div>

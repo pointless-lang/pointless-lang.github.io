@@ -116,10 +116,7 @@
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">Hello world 👋🏽🌎!</span><span class="quotes">&quot;</span></code></pre>
-          <pre
-            class="result"
-            style="undefined"
-          ><code>&quot;Hello world 👋🏽🌎!&quot;
+          <pre class="result"><code>&quot;Hello world 👋🏽🌎!&quot;
 </code></pre>
         </div>
         <hr />
@@ -139,7 +136,6 @@ That knocks me out.
 </span><span class="quotes">&quot;</span>)</code></pre>
           <pre
             class="result"
-            style="undefined"
           ><code>To the same place, the same face, the same brute
 Amused shout:
 
@@ -203,7 +199,7 @@ world</span><span class="quotes">&quot;</span></code></pre>
     Hello
       World
     </span><span class="quotes">&quot;</span>)</code></pre>
-          <pre class="result" style="undefined"><code>    Hello
+          <pre class="result"><code>    Hello
       World
   Hello
     World
@@ -227,10 +223,7 @@ Hello
           <pre><code class="ptls">container <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">box</span><span class="quotes">&quot;</span>
 item <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">chocolate</span><span class="quotes">&quot;</span>
 <span class="quotes">&quot;</span><span class="string">a </span><span class="interpolated">$container</span><span class="string"> of </span><span class="interpolated">$item</span><span class="quotes">&quot;</span></code></pre>
-          <pre
-            class="result"
-            style="undefined"
-          ><code>&quot;a box of chocolate&quot;
+          <pre class="result"><code>&quot;a box of chocolate&quot;
 </code></pre>
         </div>
         <p>
@@ -241,10 +234,7 @@ item <span class="operator">=</span> <span class="quotes">&quot;</span><span cla
         <div class="snippet undefined">
           <pre><code class="ptls">bottles <span class="operator">=</span> <span class="number">99</span>
 <span class="quotes">&quot;</span><span class="interpolated">$bottles</span><span class="string"> bottles of beer</span><span class="quotes">&quot;</span></code></pre>
-          <pre
-            class="result"
-            style="undefined"
-          ><code>&quot;99 bottles of beer&quot;
+          <pre class="result"><code>&quot;99 bottles of beer&quot;
 </code></pre>
         </div>
         <p>
@@ -256,7 +246,7 @@ item <span class="operator">=</span> <span class="quotes">&quot;</span><span cla
         <div class="snippet undefined">
           <pre><code class="ptls">dist <span class="operator">=</span> <span class="number">5</span>
 <span class="quotes">&quot;</span><span class="string">Distance: </span><span class="interpolated">$(dist)</span><span class="string">km</span><span class="quotes">&quot;</span> <span class="comment">-- Without parens the variable name would be parsed as `distkm`</span></code></pre>
-          <pre class="result" style="undefined"><code>&quot;Distance: 5km&quot;
+          <pre class="result"><code>&quot;Distance: 5km&quot;
 </code></pre>
         </div>
         <hr />
@@ -272,7 +262,7 @@ item <span class="operator">=</span> <span class="quotes">&quot;</span><span cla
         <div class="snippet undefined">
           <pre><code class="ptls">point <span class="operator">=</span> { x: <span class="number">3</span>, y: <span class="number">4</span> }
 <span class="quotes">&quot;</span><span class="string">(</span><span class="interpolated">$point.x</span><span class="string">, </span><span class="interpolated">$point.y</span><span class="string">)</span><span class="quotes">&quot;</span></code></pre>
-          <pre class="result" style="undefined"><code>&quot;(3, 4)&quot;
+          <pre class="result"><code>&quot;(3, 4)&quot;
 </code></pre>
         </div>
         <hr />
@@ -297,7 +287,7 @@ item <span class="operator">=</span> <span class="quotes">&quot;</span><span cla
 rect
   <span class="operator">|</span> <span class="keyword">arg</span>.width <span class="operator">*</span> <span class="keyword">arg</span>.height
   <span class="operator">|</span> <span class="quotes">&quot;</span><span class="string">Area: </span><span class="interpolated">$arg</span><span class="quotes">&quot;</span></code></pre>
-          <pre class="result" style="undefined"><code>&quot;Area: 12&quot;
+          <pre class="result"><code>&quot;Area: 12&quot;
 </code></pre>
         </div>
         <hr />
@@ -316,7 +306,7 @@ rect
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="call">print</span>(<span class="quotes">&quot;</span><span class="escape">\\</span><span class="string">Hello</span><span class="escape">\n</span><span class="escape">\&quot;</span><span class="string">world</span><span class="escape">\&quot;</span><span class="string">!</span><span class="quotes">&quot;</span>)</code></pre>
-          <pre class="result" style="undefined"><code>\Hello
+          <pre class="result"><code>\Hello
 &quot;world&quot;!
 </code></pre>
         </div>
@@ -334,7 +324,7 @@ rect
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="quotes">&quot;</span><span class="escape">\u{2705}</span><span class="string"> Correct! </span><span class="escape">\u{1F4AF}</span><span class="quotes">&quot;</span></code></pre>
-          <pre class="result" style="undefined"><code>&quot;✅ Correct! 💯&quot;
+          <pre class="result"><code>&quot;✅ Correct! 💯&quot;
 </code></pre>
         </div>
         <hr />
@@ -351,10 +341,7 @@ rect
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="quotes">r&quot;</span><span class="string">Hello\t$world\n</span><span class="quotes">&quot;</span></code></pre>
-          <pre
-            class="result"
-            style="undefined"
-          ><code>&quot;Hello\\t$world\\n&quot;
+          <pre class="result"><code>&quot;Hello\\t$world\\n&quot;
 </code></pre>
         </div>
         <p>
@@ -364,10 +351,7 @@ rect
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="quotes">r#&quot;</span><span class="string">Hello &quot;world&quot;</span><span class="quotes">&quot;#</span></code></pre>
-          <pre
-            class="result"
-            style="undefined"
-          ><code>&quot;Hello \&quot;world\&quot;&quot;
+          <pre class="result"><code>&quot;Hello \&quot;world\&quot;&quot;
 </code></pre>
         </div>
         <p>
@@ -381,7 +365,6 @@ rect
           <pre><code class="ptls"><span class="quotes">r##&quot;</span><span class="string">The #&quot;Pointless&quot;# language</span><span class="quotes">&quot;##</span></code></pre>
           <pre
             class="result"
-            style="undefined"
           ><code>&quot;The #\&quot;Pointless\&quot;# language&quot;
 </code></pre>
         </div>
@@ -393,7 +376,7 @@ rect
         <div class="snippet undefined">
           <pre><code class="ptls">emailAddr <span class="operator">=</span> <span class="quotes">r&quot;</span><span class="string">^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$</span><span class="quotes">&quot;</span>
 <span class="std">Re</span>.<span class="call">test</span>(<span class="quotes">&quot;</span><span class="string">info@ptls.dev</span><span class="quotes">&quot;</span>, emailAddr)</code></pre>
-          <pre class="result" style="undefined"><code>true
+          <pre class="result"><code>true
 </code></pre>
         </div>
         <p>
@@ -414,7 +397,6 @@ rect
 <span class="call">print</span>(logo)</code></pre>
           <pre
             class="result"
-            style="undefined"
           ><code>&lt;a id=&quot;logo&quot; href=&quot;/&quot;&gt;
   &lt;img src=&quot;/icons/icon.svg&quot; /&gt;
   Pointless
@@ -435,7 +417,7 @@ rect
           <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span> <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span>
 <span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span> <span class="operator">!=</span> <span class="quotes">&quot;</span><span class="string">pear</span><span class="quotes">&quot;</span>
 <span class="quotes">&quot;</span><span class="string">abc</span><span class="quotes">&quot;</span> <span class="operator">==</span> <span class="quotes">&quot;</span><span class="escape">\u{61}</span><span class="escape">\u{62}</span><span class="escape">\u{63}</span><span class="quotes">&quot;</span></code></pre>
-          <pre class="result" style="undefined"><code>true
+          <pre class="result"><code>true
 true
 true
 </code></pre>
@@ -455,7 +437,7 @@ true
           <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span> <span class="operator">&lt;</span> <span class="quotes">&quot;</span><span class="string">pear</span><span class="quotes">&quot;</span>
 <span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span> <span class="operator">&gt;=</span> <span class="quotes">&quot;</span><span class="string">pear</span><span class="quotes">&quot;</span>
 <span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span> <span class="operator">&gt;=</span> <span class="quotes">&quot;</span><span class="string">peach</span><span class="quotes">&quot;</span></code></pre>
-          <pre class="result" style="undefined"><code>true
+          <pre class="result"><code>true
 false
 true
 </code></pre>
@@ -471,7 +453,7 @@ true
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">point</span><span class="quotes">&quot;</span> <span class="operator">+</span> <span class="quotes">&quot;</span><span class="string">less</span><span class="quotes">&quot;</span></code></pre>
-          <pre class="result" style="undefined"><code>&quot;pointless&quot;
+          <pre class="result"><code>&quot;pointless&quot;
 </code></pre>
         </div>
         <hr />
@@ -486,7 +468,7 @@ true
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">la</span><span class="quotes">&quot;</span> <span class="operator">*</span> <span class="number">5</span></code></pre>
-          <pre class="result" style="undefined"><code>&quot;lalalalala&quot;
+          <pre class="result"><code>&quot;lalalalala&quot;
 </code></pre>
         </div>
 

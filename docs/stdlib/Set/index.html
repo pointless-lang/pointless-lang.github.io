@@ -81,7 +81,6 @@
 <span class="std">Set</span>.<span class="call">add</span>(s, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>Set.of([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])
 Set.of([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;])
 </code></pre>
@@ -107,7 +106,6 @@ Set.of([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;])
 <span class="std">Set</span>.<span class="call">addAll</span>(s, [<span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">e</span><span class="quotes">&quot;</span>])</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>Set.of([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;e&quot;])
 Set.of([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;])
 </code></pre>
@@ -125,7 +123,7 @@ Set.of([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot
           <p>The empty set.</p>
 
           <div class="snippet undefined">
-            <pre class="result" style="undefined"><code>Set.of([])
+            <pre class="result"><code>Set.of([])
 </code></pre>
           </div>
         </div>
@@ -143,7 +141,7 @@ Set.of([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot
             <pre><code class="ptls">s <span class="operator">=</span> <span class="std">Set</span>.<span class="call">of</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>])
 <span class="std">Set</span>.<span class="call">has</span>(s, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>)
 <span class="std">Set</span>.<span class="call">has</span>(s, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>)</code></pre>
-            <pre class="result" style="undefined"><code>true
+            <pre class="result"><code>true
 false
 </code></pre>
           </div>
@@ -168,7 +166,7 @@ false
             <pre><code class="ptls">s <span class="operator">=</span> <span class="std">Set</span>.<span class="call">of</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>])
 <span class="std">Set</span>.<span class="call">hasAll</span>(s, [<span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>])
 <span class="std">Set</span>.<span class="call">hasAll</span>(s, [<span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>])</code></pre>
-            <pre class="result" style="undefined"><code>true
+            <pre class="result"><code>true
 false
 </code></pre>
           </div>
@@ -192,10 +190,7 @@ false
             <pre><code class="ptls">s1 <span class="operator">=</span> <span class="std">Set</span>.<span class="call">of</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>])
 s2 <span class="operator">=</span> <span class="std">Set</span>.<span class="call">of</span>([<span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">e</span><span class="quotes">&quot;</span>])
 <span class="std">Set</span>.<span class="call">intersection</span>(s1, s2)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>Set.of([&quot;b&quot;, &quot;c&quot;])
+            <pre class="result"><code>Set.of([&quot;b&quot;, &quot;c&quot;])
 </code></pre>
           </div>
         </div>
@@ -213,7 +208,7 @@ s2 <span class="operator">=</span> <span class="std">Set</span>.<span class="cal
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="call">isEmpty</span>(<span class="std">Set</span>.<span class="call">of</span>([]))
 <span class="call">isEmpty</span>(<span class="std">Set</span>.<span class="call">of</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>]))</code></pre>
-            <pre class="result" style="undefined"><code>true
+            <pre class="result"><code>true
 false
 </code></pre>
           </div>
@@ -236,7 +231,7 @@ false
           <div class="snippet undefined">
             <pre><code class="ptls">s <span class="operator">=</span> <span class="std">Set</span>.<span class="call">of</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>])
 <span class="call">len</span>(s)</code></pre>
-            <pre class="result" style="undefined"><code>4
+            <pre class="result"><code>4
 </code></pre>
           </div>
           <p class="overloads">
@@ -263,7 +258,6 @@ s2 <span class="operator">=</span> <span class="std">Set</span>.<span class="cal
 <span class="std">Set</span>.<span class="call">merge</span>([s1, s2])</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>Set.of([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;])
 </code></pre>
           </div>
@@ -290,7 +284,6 @@ t <span class="operator">=</span> <span class="std">Table</span>.<span class="ca
 <span class="std">Set</span>.<span class="call">of</span>(t)</code></pre>
             <pre
               class="result"
-              style="undefined"
             ><code>Set.of([&quot;NY&quot;, &quot;CA&quot;, &quot;IL&quot;, &quot;TX&quot;, &quot;AZ&quot;, &quot;PA&quot;, &quot;FL&quot;])
 Set.of([{ name: &quot;Ducky&quot;, type: &quot;dog&quot; }, { name: &quot;Clementine&quot;, type: &quot;bird&quot; }])
 </code></pre>
@@ -311,7 +304,7 @@ Set.of([{ name: &quot;Ducky&quot;, type: &quot;dog&quot; }, { name: &quot;Clemen
 
           <div class="snippet undefined">
             <pre><code class="ptls"><span class="std">Set</span>.<span class="call">powerset</span>(<span class="std">Set</span>.<span class="call">of</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>]))</code></pre>
-            <pre class="result" style="undefined"><code>[
+            <pre class="result"><code>[
   Set.of([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]),
   Set.of([&quot;a&quot;, &quot;b&quot;]),
   Set.of([&quot;a&quot;, &quot;c&quot;]),
@@ -339,10 +332,7 @@ Set.of([{ name: &quot;Ducky&quot;, type: &quot;dog&quot; }, { name: &quot;Clemen
             <pre><code class="ptls">s <span class="operator">=</span> <span class="std">Set</span>.<span class="call">of</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>])
 <span class="std">Set</span>.<span class="call">remove</span>(s, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>)
 <span class="std">Set</span>.<span class="call">remove</span>(s, <span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>)</code></pre>
-            <pre
-              class="result"
-              style="undefined"
-            ><code>Set.of([&quot;a&quot;, &quot;c&quot;])
+            <pre class="result"><code>Set.of([&quot;a&quot;, &quot;c&quot;])
 Set.of([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])
 </code></pre>
           </div>
@@ -369,7 +359,7 @@ Set.of([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])
             <pre><code class="ptls">s <span class="operator">=</span> <span class="std">Set</span>.<span class="call">of</span>([<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>])
 <span class="std">Set</span>.<span class="call">removeAll</span>(s, [<span class="quotes">&quot;</span><span class="string">b</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>])
 <span class="std">Set</span>.<span class="call">removeAll</span>(s, [<span class="quotes">&quot;</span><span class="string">d</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>])</code></pre>
-            <pre class="result" style="undefined"><code>Set.of([&quot;a&quot;])
+            <pre class="result"><code>Set.of([&quot;a&quot;])
 Set.of([&quot;a&quot;, &quot;b&quot;])
 </code></pre>
           </div>

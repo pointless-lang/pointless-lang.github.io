@@ -118,7 +118,7 @@ after encoding:  n o p q r s t u v w x y z a b c d e f g h i j k l m</code></pre
         <div class="snippet undefined">
           <pre><code class="ptls">alphabet <span class="operator">=</span> <span class="call">chars</span>(<span class="quotes">&quot;</span><span class="string">abcdefghijklmnopqrstuvwxyz</span><span class="quotes">&quot;</span>)</code></pre>
 
-          <pre class="result" style="undefined"><code>alphabet =
+          <pre class="result"><code>alphabet =
 [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;, &quot;h&quot;, &quot;i&quot;, &quot;j&quot;, &quot;k&quot;, &quot;l&quot;, &quot;m&quot;, &quot;n&quot;, &quot;o&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;, &quot;s&quot;, &quot;t&quot;, &quot;u&quot;, &quot;v&quot;, &quot;w&quot;, &quot;x&quot;, &quot;y&quot;, &quot;z&quot;]</code></pre>
         </div>
         <p>
@@ -130,7 +130,7 @@ after encoding:  n o p q r s t u v w x y z a b c d e f g h i j k l m</code></pre
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="std">List</span>.<span class="call">indexOf</span>(alphabet, <span class="quotes">&quot;</span><span class="string">i</span><span class="quotes">&quot;</span>)</code></pre>
-          <pre class="result" style="undefined"><code>8
+          <pre class="result"><code>8
 </code></pre>
         </div>
         <p>
@@ -140,7 +140,7 @@ after encoding:  n o p q r s t u v w x y z a b c d e f g h i j k l m</code></pre
 
         <div class="snippet undefined">
           <pre><code class="ptls">alphabet[<span class="number">8</span>]</code></pre>
-          <pre class="result" style="undefined"><code>&quot;i&quot;
+          <pre class="result"><code>&quot;i&quot;
 </code></pre>
         </div>
         <p>At its core, our cipher will do the following for each letter:</p>
@@ -159,7 +159,7 @@ after encoding:  n o p q r s t u v w x y z a b c d e f g h i j k l m</code></pre
 index <span class="operator">=</span> <span class="std">List</span>.<span class="call">indexOf</span>(alphabet, letter)
 shifted <span class="operator">=</span> alphabet[(index <span class="operator">+</span> <span class="number">13</span>) <span class="operator">%</span> <span class="number">26</span>]</code></pre>
 
-          <pre class="result" style="undefined"><code>shifted =
+          <pre class="result"><code>shifted =
 &quot;v&quot;</code></pre>
         </div>
         <p>
@@ -192,7 +192,7 @@ shifted <span class="operator">=</span> alphabet[(index <span class="operator">+
           <pre><code class="ptls"><span class="call">shift</span>(<span class="quotes">&quot;</span><span class="string">c</span><span class="quotes">&quot;</span>)
 <span class="call">shift</span>(<span class="quotes">&quot;</span><span class="string">a</span><span class="quotes">&quot;</span>)
 <span class="call">shift</span>(<span class="quotes">&quot;</span><span class="string">t</span><span class="quotes">&quot;</span>)</code></pre>
-          <pre class="result" style="undefined"><code>&quot;p&quot;
+          <pre class="result"><code>&quot;p&quot;
 &quot;n&quot;
 &quot;g&quot;
 </code></pre>
@@ -232,7 +232,6 @@ shifted <span class="operator">=</span> alphabet[(index <span class="operator">+
           <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">cat</span><span class="quotes">&quot;</span> <span class="operator">|</span> <span class="call">chars</span></code></pre>
           <pre
             class="result"
-            style="undefined"
           ><code>[&quot;c&quot;, &quot;a&quot;, &quot;t&quot;]
 </code></pre>
         </div>
@@ -264,7 +263,6 @@ message <span class="operator">|</span> <span class="call">chars</span></code></
           <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">cat</span><span class="quotes">&quot;</span> <span class="operator">|</span> <span class="call">chars</span> <span class="operator">$</span> <span class="call">shift</span></code></pre>
           <pre
             class="result"
-            style="undefined"
           ><code>[&quot;p&quot;, &quot;n&quot;, &quot;g&quot;]
 </code></pre>
         </div>
@@ -279,7 +277,7 @@ message <span class="operator">|</span> <span class="call">chars</span></code></
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">cat</span><span class="quotes">&quot;</span> <span class="operator">|</span> <span class="call">chars</span> <span class="operator">$</span> <span class="call">shift</span> <span class="operator">|</span> <span class="call">join</span>(<span class="quotes">&quot;</span><span class="quotes">&quot;</span>)</code></pre>
-          <pre class="result" style="undefined"><code>&quot;png&quot;
+          <pre class="result"><code>&quot;png&quot;
 </code></pre>
         </div>
         <p>
@@ -308,7 +306,7 @@ shifted <span class="operator">|</span> <span class="call">join</span>(<span cla
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="call">cipher</span>(<span class="quotes">&quot;</span><span class="string">cat</span><span class="quotes">&quot;</span>)
 <span class="call">cipher</span>(<span class="quotes">&quot;</span><span class="string">png</span><span class="quotes">&quot;</span>)</code></pre>
-          <pre class="result" style="undefined"><code>&quot;png&quot;
+          <pre class="result"><code>&quot;png&quot;
 &quot;cat&quot;
 </code></pre>
         </div>
@@ -335,7 +333,7 @@ shifted <span class="operator">|</span> <span class="call">join</span>(<span cla
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="call">cipher</span>(<span class="call">cipher</span>(<span class="quotes">&quot;</span><span class="string">cat</span><span class="quotes">&quot;</span>))</code></pre>
-          <pre class="result" style="undefined"><code>&quot;cat&quot;
+          <pre class="result"><code>&quot;cat&quot;
 </code></pre>
         </div>
         <hr />
@@ -386,7 +384,7 @@ shifted <span class="operator">|</span> <span class="call">join</span>(<span cla
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="call">cipher</span>(<span class="quotes">&quot;</span><span class="string">Cat</span><span class="quotes">&quot;</span>)
 <span class="call">cipher</span>(<span class="call">cipher</span>(<span class="quotes">&quot;</span><span class="string">Cat</span><span class="quotes">&quot;</span>))</code></pre>
-          <pre class="result" style="undefined"><code>&quot;png&quot;
+          <pre class="result"><code>&quot;png&quot;
 &quot;cat&quot;
 </code></pre>
         </div>
@@ -426,7 +424,7 @@ after encoded:   N O P Q R S T U V W X Y Z A B C D E F G H I J K L M</code></pre
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="call">cipher</span>(<span class="quotes">&quot;</span><span class="string">Cat</span><span class="quotes">&quot;</span>)
 <span class="call">cipher</span>(<span class="call">cipher</span>(<span class="quotes">&quot;</span><span class="string">Cat</span><span class="quotes">&quot;</span>))</code></pre>
-          <pre class="result" style="undefined"><code>&quot;Png&quot;
+          <pre class="result"><code>&quot;Png&quot;
 &quot;Cat&quot;
 </code></pre>
         </div>
@@ -473,7 +471,7 @@ after encoded:   N O P Q R S T U V W X Y Z A B C D E F G H I J K L M</code></pre
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="call">cipher</span>(<span class="quotes">&quot;</span><span class="string">Cat!</span><span class="quotes">&quot;</span>)
 <span class="call">cipher</span>(<span class="call">cipher</span>(<span class="quotes">&quot;</span><span class="string">Cat!</span><span class="quotes">&quot;</span>))</code></pre>
-          <pre class="result" style="undefined"><code>&quot;Png!&quot;
+          <pre class="result"><code>&quot;Png!&quot;
 &quot;Cat!&quot;
 </code></pre>
         </div>
@@ -488,7 +486,7 @@ after encoded:   N O P Q R S T U V W X Y Z A B C D E F G H I J K L M</code></pre
 
         <div class="snippet undefined">
           <pre><code class="ptls"><span class="call">cipher</span>(<span class="quotes">&quot;</span><span class="string">Uryyb jbeyq!</span><span class="quotes">&quot;</span>)</code></pre>
-          <pre class="result" style="undefined"><code>&quot;Hello world!&quot;
+          <pre class="result"><code>&quot;Hello world!&quot;
 </code></pre>
         </div>
 
