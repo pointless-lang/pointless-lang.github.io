@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>The Pointless Language</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+          <li><a href="/editor/">Editor</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1><a href=".">The Pointless Language</a></h1>
+        <p>A Language for Learning</p>
+      </div>
+
+      <main>
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="keyword">fn</span> <span class="function">step</span>(<span class="argument">n</span>)
+  <span class="keyword">if</span> n <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span> <span class="keyword">then</span> n <span class="operator">/</span> <span class="number">2</span> <span class="keyword">else</span> n <span class="operator">*</span> <span class="number">3</span> <span class="operator">+</span> <span class="number">1</span> <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">fn</span> <span class="function">hailstone</span>(<span class="argument">n</span>)
+  values <span class="operator">=</span> [n]
+
+  <span class="keyword">while</span> n <span class="operator">&gt;</span> <span class="number">1</span> <span class="keyword">do</span>
+    n <span class="operator">|=</span> <span class="call">step</span>
+    values <span class="operator">|=</span> <span class="call">push</span>(n)
+  <span class="keyword">end</span>
+
+  values
+<span class="keyword">end</span>
+
+bars <span class="operator">=</span> <span class="call">chars</span>(<span class="quotes">&quot;</span><span class="string">▁▂▃▄▅▆▇█</span><span class="quotes">&quot;</span>)
+
+<span class="keyword">fn</span> <span class="function">getBar</span>(<span class="argument">n</span>, <span class="argument">maxVal</span>)
+  scaled <span class="operator">=</span> <span class="number">8</span> <span class="operator">*</span> (n <span class="operator">-</span> <span class="number">1</span>) <span class="operator">/</span> (maxVal <span class="operator">-</span> <span class="number">1</span>)
+  bars[<span class="std">Math</span>.<span class="call">min</span>(<span class="std">Math</span>.<span class="call">floor</span>(scaled), <span class="number">7</span>)]
+<span class="keyword">end</span>
+
+<span class="keyword">fn</span> <span class="function">chart</span>(<span class="argument">values</span>)
+  values
+    <span class="operator">$</span> <span class="call">getBar</span>(<span class="call">max</span>(values))
+    <span class="operator">|</span> <span class="call">join</span>(<span class="quotes">&quot;</span><span class="quotes">&quot;</span>)
+<span class="keyword">end</span>
+
+<span class="call">hailstone</span>(<span class="number">78</span>)
+  <span class="operator">|</span> <span class="call">chart</span>
+  <span class="operator">|</span> <span class="call">print</span></code></pre>
+          <pre
+            class="result"
+            style="undefined"
+          ><code>▃▂▄▂▅▃█▄▂▆▃█▄▂▁▁▂▁▃▂▁▁▁▁▂▁▁▂▁▁▁▁▁▁▁▁
+</code></pre>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

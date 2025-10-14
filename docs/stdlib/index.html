@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Standard Library</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+          <li><a href="/editor/">Editor</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1><a href=".">Standard Library</a></h1>
+        <p>Modules containing built-in functionality</p>
+      </div>
+
+      <main>
+        <p>
+          The Pointless standard library contains useful built-in functions and
+          constants. This functionality is split into <em>modules</em>: globally
+          defined objects with definitions based around a common theme. For
+          instance, the <code>Str</code> module contains functions for working
+          with string values.
+        </p>
+        <p>
+          You can access a module&#39;s definitions the <code>.</code> operator.
+          For example, you would access the <code>toLower</code> function from
+          the <code>Str</code> module using <code>Str.toLower</code>. Some
+          commonly used standard library functions like
+          <code>Str.chars</code> are available as globals, and can be called
+          without specifying a module name.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="std">Str</span>.<span class="call">toLower</span>(<span class="quotes">&quot;</span><span class="string">Pointless</span><span class="quotes">&quot;</span>) <span class="comment">-- Call the `toLower` function from the `Str` module</span>
+<span class="call">chars</span>(<span class="quotes">&quot;</span><span class="string">Pointless</span><span class="quotes">&quot;</span>) <span class="comment">-- Call the global `char` function from the `Str` module</span></code></pre>
+          <pre class="result" style="undefined"><code>&quot;pointless&quot;
+[&quot;P&quot;, &quot;o&quot;, &quot;i&quot;, &quot;n&quot;, &quot;t&quot;, &quot;l&quot;, &quot;e&quot;, &quot;s&quot;, &quot;s&quot;]
+</code></pre>
+        </div>
+        <p>
+          See the language reference for
+          <a href="/language#reading-example-code">tips on reading</a> code
+          examples.
+        </p>
+        <p>
+          Along with the <a href="/language">language reference</a>, the
+          standard library documentation is an essential resource for
+          understaning and using the Pointless language. Use the links below to
+          view documentation for each module.
+        </p>
+
+        <hr />
+        <ul class="page-links">
+          <a href="/stdlib/Async/">
+            <li>
+              <strong>Async</strong>
+              Manage concurrent operations
+            </li>
+          </a>
+
+          <a href="/stdlib/Bool/">
+            <li>
+              <strong>Bool</strong>
+              Work with boolean values
+            </li>
+          </a>
+
+          <a href="/stdlib/Char/">
+            <li>
+              <strong>Char</strong>
+              Manage concurrent operations
+            </li>
+          </a>
+
+          <a href="/stdlib/Console/">
+            <li>
+              <strong>Console</strong>
+              Printing, prompting, and low-level console interaction
+            </li>
+          </a>
+
+          <a href="/stdlib/Err/">
+            <li>
+              <strong>Err</strong>
+              Throw and catch recoverable errors
+            </li>
+          </a>
+
+          <a href="/stdlib/Fs/">
+            <li>
+              <strong>Fs</strong>
+              Read and manipulate files and directories
+            </li>
+          </a>
+
+          <a href="/stdlib/List/">
+            <li>
+              <strong>List</strong>
+              Work with lists (sequences of values)
+            </li>
+          </a>
+
+          <a href="/stdlib/Math/">
+            <li>
+              <strong>Math</strong>
+              Mathematical functions and constants
+            </li>
+          </a>
+
+          <a href="/stdlib/None/">
+            <li>
+              <strong>None</strong>
+              Work with none values
+            </li>
+          </a>
+
+          <a href="/stdlib/Obj/">
+            <li>
+              <strong>Obj</strong>
+              Work with objects (key-value maps)
+            </li>
+          </a>
+
+          <a href="/stdlib/Overloads/">
+            <li>
+              <strong>Overloads</strong>
+              Global wrapper functions combining similar type-specific functions
+            </li>
+          </a>
+
+          <a href="/stdlib/Panic/">
+            <li>
+              <strong>Panic</strong>
+              Terminate the program upon an unexpected program state
+            </li>
+          </a>
+
+          <a href="/stdlib/Rand/">
+            <li>
+              <strong>Rand</strong>
+              The Generate random values
+            </li>
+          </a>
+
+          <a href="/stdlib/Re/">
+            <li>
+              <strong>Re</strong>
+              Use regular expressions to search and manipulate strings
+            </li>
+          </a>
+
+          <a href="/stdlib/Ref/">
+            <li>
+              <strong>Ref</strong>
+              Work with mutable state
+            </li>
+          </a>
+
+          <a href="/stdlib/Set/">
+            <li>
+              <strong>Set</strong>
+              Work with sets (collections of unique values)
+            </li>
+          </a>
+
+          <a href="/stdlib/Str/">
+            <li>
+              <strong>Str</strong>
+              Work with strings (pieces of text)
+            </li>
+          </a>
+
+          <a href="/stdlib/Table/">
+            <li>
+              <strong>Table</strong>
+              Work with tables (data-frames)
+            </li>
+          </a>
+
+          <a href="/stdlib/Test/">
+            <li>
+              <strong>Test</strong>
+              Write tests and verify program behavior
+            </li>
+          </a>
+        </ul>
+      </main>
+    </article>
+  </body>
+</html>

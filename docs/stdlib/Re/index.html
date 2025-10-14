@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Re</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+          <li><a href="/editor/">Editor</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>
+          <a href=".." id="parent">Standard Library:</a> <a href=".">Re</a>
+        </h1>
+        <p>Use regular expressions to search and manipulate strings</p>
+      </div>
+
+      <main>
+        <p>
+          As Pointless is currently implemented in JavaScript, it inherits some
+          of the
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#utf-16_characters_unicode_code_points_and_grapheme_clusters"
+            >limitations</a
+          >
+          of the UTF-16 encoding that JS uses, for example:
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="std">Re</span>.<span class="call">test</span>(<span class="quotes">&quot;</span><span class="string">☺</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">^.$</span><span class="quotes">&quot;</span>) <span class="comment">-- &#039;.&#039; matches BMP character U+263A</span>
+<span class="std">Re</span>.<span class="call">test</span>(<span class="quotes">&quot;</span><span class="string">😀</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">^.$</span><span class="quotes">&quot;</span>) <span class="comment">-- &#039;.&#039; doesn&#039;t match SMP character U+1F600</span></code></pre>
+          <pre class="result" style="undefined"><code>true
+false
+</code></pre>
+        </div>
+
+        <ol class="contents std">
+          <li><a href="#escape">escape</a></li>
+          <li><a href="#match">match</a></li>
+          <li><a href="#replace">replace</a></li>
+          <li><a href="#replaceBy">replaceBy</a></li>
+          <li><a href="#split">split</a></li>
+          <li><a href="#test">test</a></li>
+        </ol>
+
+        <hr />
+
+        <h2 class="def-name" id="escape">
+          <code><a href="#escape">Re.escape(string)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Escape special characters in <code>string</code> so it can be used
+            as a literal in a regular expression.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Re</span>.<span class="call">escape</span>(<span class="quotes">&quot;</span><span class="string">Hello? Can you *hear* me??</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>&quot;Hello\\? Can you \\*hear\\* me\\?\\?&quot;
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="match">
+          <code><a href="#match">Re.match(string, pattern)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Find the matches for <code>pattern</code> in <code>string</code>.
+          </p>
+          <p>Return a table with the following columns:</p>
+          <ul>
+            <li><code>value</code>: The matched substring.</li>
+            <li>
+              <code>index</code>: Index of <code>value</code> in
+              <code>string</code>.
+            </li>
+            <li><code>groups</code>: List of captures.</li>
+            <li><code>named</code>: Object of named captures.</li>
+          </ul>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Re</span>.<span class="call">match</span>(<span class="quotes">&quot;</span><span class="string">nessa@example.com, megan@xkcd.com</span><span class="quotes">&quot;</span>, <span class="quotes">r&quot;</span><span class="string">(?&lt;name&gt;\w+)@(\w+\.\w+)</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌───────────────────┬───────┬──────────────────────────┬───────────────────┐
+│ value             │ index │ groups                   │ named             │ x 2
+├───────────────────┼───────┼──────────────────────────┼───────────────────┤
+│ nessa@example.com │     0 │ [&quot;nessa&quot;, &quot;example.com&quot;] │ { name: &quot;nessa&quot; } │
+│ megan@xkcd.com    │    19 │ [&quot;megan&quot;, &quot;xkcd.com&quot;]    │ { name: &quot;megan&quot; } │
+└───────────────────┴───────┴──────────────────────────┴───────────────────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="replace">
+          <code
+            ><a href="#replace"
+              >Re.replace(string, pattern, replacement)</a
+            ></code
+          >
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Replace all matches of <code>pattern</code> in
+            <code>string</code> with <code>replacement</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Re</span>.<span class="call">replace</span>(<span class="quotes">&quot;</span><span class="string">2025  07 22</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string"> +</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">.</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre class="result" style="undefined"><code>&quot;2025.07.22&quot;
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="replaceBy">
+          <code
+            ><a href="#replaceBy"
+              >Re.replaceBy(string, pattern, replacer)</a
+            ></code
+          >
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Replace all matches of <code>pattern</code> in
+            <code>string</code> with <code>replacement</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Re</span>.<span class="call">replaceBy</span>(<span class="quotes">&quot;</span><span class="string">a catalog of cats</span><span class="quotes">&quot;</span>, <span class="quotes">r&quot;</span><span class="string">cat\w*</span><span class="quotes">&quot;</span>, <span class="std">Str</span>.toUpper)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>&quot;a CATALOG of CATS&quot;
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="split">
+          <code><a href="#split">Re.split(string, pattern)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Split <code>string</code> using the regular expression
+            <code>pattern</code>. The matching separators are not included in
+            the resulting substrings.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Re</span>.<span class="call">split</span>(<span class="quotes">&quot;</span><span class="string">NYC NY  USA</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string"> +</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>[&quot;NYC&quot;, &quot;NY&quot;, &quot;USA&quot;]
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="test">
+          <code><a href="#test">Re.test(string, pattern)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Check whether <code>string</code> matches the regular expression
+            <code>pattern</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Re</span>.<span class="call">test</span>(<span class="quotes">&quot;</span><span class="string">nessa@example.com</span><span class="quotes">&quot;</span>, <span class="quotes">r&quot;</span><span class="string">.+@.+\..+</span><span class="quotes">&quot;</span>)
+<span class="std">Re</span>.<span class="call">test</span>(<span class="quotes">&quot;</span><span class="string">nessa at example dot com</span><span class="quotes">&quot;</span>, <span class="quotes">r&quot;</span><span class="string">.+@.+\..+</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre class="result" style="undefined"><code>true
+false
+</code></pre>
+          </div>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/stdlib/Rand">
+              <div>Previous</div>
+              Rand
+            </a>
+
+            <a class="next" href="/stdlib/Ref">
+              <div>Next</div>
+              Ref
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

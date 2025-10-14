@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Console</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+          <li><a href="/editor/">Editor</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>
+          <a href=".." id="parent">Standard Library:</a> <a href=".">Console</a>
+        </h1>
+        <p>Printing, prompting, and low-level console interaction</p>
+      </div>
+
+      <main>
+        <ol class="contents std">
+          <li><a href="#clear">clear</a></li>
+          <li><a href="#debug">debug</a></li>
+          <li><a href="#error">error</a></li>
+          <li><a href="#pauseStdin">pauseStdin</a></li>
+          <li><a href="#print">print</a></li>
+          <li><a href="#prompt">prompt</a></li>
+          <li><a href="#rawKey">rawKey</a></li>
+          <li><a href="#write">write</a></li>
+        </ol>
+
+        <hr />
+
+        <h2 class="def-name" id="clear">
+          <code><a href="#clear">Console.clear()</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Clear the console.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="call">clear</span>() <span class="comment">-- Clear the console</span></code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="debug">
+          <code><a href="#debug">Console.debug(value)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Print the string representation of <code>value</code> to stdout,
+            followed by a newline, and return <code>value</code>. Include quotes
+            if <code>value</code> is a string. Useful for debugging and logging.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Console</span>.<span class="call">debug</span>(<span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>)
+<span class="std">Console</span>.<span class="call">debug</span>(<span class="quotes">&quot;</span><span class="string">world</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre class="result" style="undefined"><code>&quot;Hello&quot;
+&quot;world&quot;
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="error">
+          <code><a href="#error">Console.error(value)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Identical to <code>debug</code>, except that the result is sent to
+            stderr rather than stdout.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Console</span>.<span class="call">error</span>(<span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>)
+<span class="std">Console</span>.<span class="call">error</span>(<span class="quotes">&quot;</span><span class="string">world</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre class="result" style="undefined"><code>Hello
+world
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="pauseStdin">
+          <code><a href="#pauseStdin">Console.pauseStdin()</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>Temporary workaround for lack of JS promise cancellation.</p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="print">
+          <code><a href="#print">Console.print(value)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Print the string representation of <code>value</code> to stdout,
+            followed by a newline, and return <code>value</code>. Does not
+            include quotes if <code>value</code> is a string. Useful for
+            general-purpose printing.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>)
+<span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">world</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre class="result" style="undefined"><code>Hello
+world
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="prompt">
+          <code><a href="#prompt">Console.prompt(message)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Prompt the user for input, displaying the string
+            <code>message</code> beforehand. User input is returned as a string.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="call">prompt</span>(<span class="quotes">&quot;</span><span class="string">Enter name: </span><span class="quotes">&quot;</span>)
+<span class="std">Str</span>.<span class="call">parse</span>(<span class="call">prompt</span>(<span class="quotes">&quot;</span><span class="string">Enter age: </span><span class="quotes">&quot;</span>))</code></pre>
+            <pre class="result" style="undefined"><code>Enter name: avery
+&quot;avery&quot;
+Enter age: 28
+28
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="rawKey">
+          <code><a href="#rawKey">Console.rawKey()</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Read a single keypress from the terminal in raw mode. Return an
+            object with the following keypress event details:
+          </p>
+          <ul>
+            <li>
+              <code>str</code>: the character, if printable, or
+              <code>none</code>.
+            </li>
+            <li><code>name</code>: name of the key.</li>
+            <li><code>ctrl</code>: is <kbd>Ctrl</kbd> pressed.</li>
+            <li><code>meta</code>: is <kbd>Meta</kbd> pressed.</li>
+            <li><code>shift</code>: is <kbd>Shift</kbd> pressed.</li>
+            <li><code>sequence</code>: the raw input sequence.</li>
+          </ul>
+          <p>
+            Panics on <kbd>Ctrl</kbd> + <kbd>C</kbd> or <kbd>Ctrl</kbd> +
+            <kbd>D</kbd>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Console</span>.<span class="call">rawKey</span>() <span class="comment">-- Read the next keypress</span></code></pre>
+          </div>
+          <p>Sample outputs:</p>
+          <ul>
+            <li>
+              <p>For <kbd>Ctrl</kbd> + <kbd>A</kbd>:</p>
+              <pre><code>{
+  str: &quot;\u0001&quot;,
+  name: &quot;a&quot;,
+  ctrl: true,
+  meta: false,
+  shift: false,
+  sequence: &quot;\u0001&quot;,
+}</code></pre>
+            </li>
+            <li>
+              <p>For <kbd>Space</kbd>:</p>
+              <pre><code>{
+  str: &quot; &quot;,
+  name: &quot;space&quot;,
+  ctrl: false,
+  meta: false,
+  shift: false,
+  sequence: &quot; &quot;,
+}</code></pre>
+            </li>
+            <li>
+              <p>For <kbd>Left Arrow</kbd>:</p>
+              <pre><code>{
+  str: none,
+  name: &quot;left&quot;,
+  ctrl: false,
+  meta: false,
+  shift: false,
+  sequence: &quot;\u001b[D&quot;,
+}</code></pre>
+            </li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="write">
+          <code><a href="#write">Console.write(string)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Print <code>string</code> to stdout without adding a trailing
+            newline.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Console</span>.<span class="call">write</span>(<span class="quotes">&quot;</span><span class="string">Hello</span><span class="quotes">&quot;</span>)
+<span class="std">Console</span>.<span class="call">write</span>(<span class="quotes">&quot;</span><span class="string">world</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre class="result" style="undefined"><code>Helloworld</code></pre>
+          </div>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/stdlib/Char">
+              <div>Previous</div>
+              Char
+            </a>
+
+            <a class="next" href="/stdlib/Err">
+              <div>Next</div>
+              Err
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Printing and User Input</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+          <li><a href="/editor/">Editor</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>
+          <a href=".." id="parent">Language Reference:</a>
+          <a href=".">Printing and User Input</a>
+        </h1>
+        <p>Printing values and getting user input in the console</p>
+      </div>
+
+      <main>
+        <p>
+          For information on built-in functions for working with the console,
+          see the standard library <a href="/stdlib/Console">Console module</a>.
+        </p>
+
+        <hr />
+
+        <h2 id="printing">
+          <a href="#printing">Printing</a>
+        </h2>
+        <p>
+          The <a href="/stdlib/Console#print">print</a> function is used to
+          display values.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">Hello world!</span><span class="quotes">&quot;</span>)</code></pre>
+          <pre class="result" style="undefined"><code>Hello world!
+</code></pre>
+        </div>
+        <p>
+          We can combine
+          <a href="/stdlib/strings#interpolation">string interpolation</a> with
+          <code>print</code> to insert variable values into printed messages.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">name <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Theo</span><span class="quotes">&quot;</span>
+<span class="call">print</span>(<span class="quotes">&quot;</span><span class="string">Hello </span><span class="interpolated">$name</span><span class="string">!</span><span class="quotes">&quot;</span>)</code></pre>
+          <pre class="result" style="undefined"><code>Hello Theo!
+</code></pre>
+        </div>
+        <p>
+          We can call <code>print</code> with values of any type. If
+          <code>print</code> is called with a non-string value, it will display
+          the string-representation of the value.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="call">print</span>(<span class="number">7</span> <span class="operator">/</span> <span class="number">10</span>)
+<span class="call">print</span>([])
+<span class="call">print</span>(<span class="std">sum</span>)</code></pre>
+          <pre class="result" style="undefined"><code>0.7
+[]
+List.sum(numbers)
+</code></pre>
+        </div>
+        <hr />
+
+        <h2 id="prompting">
+          <a href="#prompting">Prompting</a>
+        </h2>
+        <p>
+          The <a href="/stdlib/Console#prompt">prompt</a> function is used to
+          get user input. <code>prompt</code> takes a string
+          <code>message</code> which is displayed to the user before reading
+          input.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">name <span class="operator">=</span> <span class="call">prompt</span>(<span class="quotes">&quot;</span><span class="string">Enter name: </span><span class="quotes">&quot;</span>)
+<span class="quotes">&quot;</span><span class="string">Hello </span><span class="interpolated">$name</span><span class="string">!</span><span class="quotes">&quot;</span></code></pre>
+          <pre class="result" style="undefined"><code>Enter name: Theo
+&quot;Hello Theo!&quot;
+</code></pre>
+        </div>
+        <p>
+          The value returned by <code>prompt</code> will always be a string. You
+          can use the <a href="/stdlib/Str#parse">Str.parse</a> function to
+          convert inputs to other
+          <a href="/language/misc#primitives">primitive</a> types.
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls">f <span class="operator">=</span> <span class="call">parse</span>(<span class="call">prompt</span>(<span class="quotes">&quot;</span><span class="string">Enter degrees F: </span><span class="quotes">&quot;</span>))
+c <span class="operator">=</span> (f <span class="operator">-</span> <span class="number">32</span>) <span class="operator">/</span> <span class="number">9</span> <span class="operator">*</span> <span class="number">5</span>
+<span class="quotes">&quot;</span><span class="string">Degrees C: </span><span class="interpolated">$c</span><span class="quotes">&quot;</span></code></pre>
+          <pre class="result" style="undefined"><code>Enter degrees F: 77
+&quot;Degrees C: 25&quot;
+</code></pre>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/language/variables">
+              <div>Previous</div>
+              Variables
+            </a>
+
+            <a class="next" href="/language/numbers">
+              <div>Next</div>
+              Numbers
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Bool</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+          <li><a href="/editor/">Editor</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>
+          <a href=".." id="parent">Standard Library:</a> <a href=".">Bool</a>
+        </h1>
+        <p>Work with boolean values</p>
+      </div>
+
+      <main>
+        <p>
+          For more information on booleans see the
+          <a href="/language/booleans">language reference</a>.
+        </p>
+
+        <ol class="contents std">
+          <li><a href="#toNum">toNum</a></li>
+        </ol>
+
+        <hr />
+
+        <h2 class="def-name" id="toNum">
+          <code><a href="#toNum">Bool.toNum(boolean)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Convert <code>true</code> to <code>1</code> and
+            <code>false</code> to <code>0</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Bool</span>.<span class="call">toNum</span>(<span class="constant">false</span>)
+<span class="std">Bool</span>.<span class="call">toNum</span>(<span class="constant">true</span>)</code></pre>
+            <pre class="result" style="undefined"><code>0
+1
+</code></pre>
+          </div>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/stdlib/Async">
+              <div>Previous</div>
+              Async
+            </a>
+
+            <a class="next" href="/stdlib/Char">
+              <div>Next</div>
+              Char
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

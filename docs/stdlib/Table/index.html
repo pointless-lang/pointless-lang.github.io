@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Table</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+          <li><a href="/editor/">Editor</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>
+          <a href=".." id="parent">Standard Library:</a> <a href=".">Table</a>
+        </h1>
+        <p>Work with tables (data-frames)</p>
+      </div>
+
+      <main>
+        <p>
+          For more information on tables see the
+          <a href="/language/tables">language reference</a>.
+        </p>
+
+        <ol class="contents std">
+          <li><a href="#bottom">bottom</a></li>
+          <li><a href="#columns">columns</a></li>
+          <li><a href="#counts">counts</a></li>
+          <li><a href="#defaultCols">defaultCols</a></li>
+          <li><a href="#drop">drop</a></li>
+          <li><a href="#dropLast">dropLast</a></li>
+          <li><a href="#filter">filter</a></li>
+          <li><a href="#focus">focus</a></li>
+          <li><a href="#get">get</a></li>
+          <li><a href="#group">group</a></li>
+          <li><a href="#has">has</a></li>
+          <li><a href="#indexOf">indexOf</a></li>
+          <li><a href="#isEmpty">isEmpty</a></li>
+          <li><a href="#len">len</a></li>
+          <li><a href="#map">map</a></li>
+          <li><a href="#match">match</a></li>
+          <li><a href="#maxAll">maxAll</a></li>
+          <li><a href="#maxBy">maxBy</a></li>
+          <li><a href="#merge">merge</a></li>
+          <li><a href="#minAll">minAll</a></li>
+          <li><a href="#minBy">minBy</a></li>
+          <li><a href="#new">new</a></li>
+          <li><a href="#of">of</a></li>
+          <li><a href="#pop">pop</a></li>
+          <li><a href="#push">push</a></li>
+          <li><a href="#put">put</a></li>
+          <li><a href="#remove">remove</a></li>
+          <li><a href="#rename">rename</a></li>
+          <li><a href="#reverse">reverse</a></li>
+          <li><a href="#rows">rows</a></li>
+          <li><a href="#select">select</a></li>
+          <li><a href="#set">set</a></li>
+          <li><a href="#sortBy">sortBy</a></li>
+          <li><a href="#sortDescBy">sortDescBy</a></li>
+          <li><a href="#splice">splice</a></li>
+          <li><a href="#summarize">summarize</a></li>
+          <li><a href="#take">take</a></li>
+          <li><a href="#takeLast">takeLast</a></li>
+          <li><a href="#top">top</a></li>
+          <li><a href="#unique">unique</a></li>
+        </ol>
+
+        <hr />
+
+        <h2 class="def-name" id="bottom">
+          <code><a href="#bottom">Table.bottom(table, columns, count)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Sort <code>table</code> in ascending order by
+            <code>columns</code> and take the first <code>count</code>
+            rows of the sorted table. Equivalent to
+            <code>take(sortBy(table, columns), count)</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span>, population: <span class="number">8478072</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">3878704</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span>, population: <span class="number">2721308</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">2390125</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span>, population: <span class="number">1673164</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span>, population: <span class="number">1573916</span> },
+])
+
+<span class="std">Table</span>.<span class="call">bottom</span>(cities, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>, <span class="number">4</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌──────────────┬───────┬────────────┐
+│ city         │ state │ population │ x 4
+├──────────────┼───────┼────────────┤
+│ Philadelphia │ PA    │    1573916 │
+│ Phoenix      │ AZ    │    1673164 │
+│ Houston      │ TX    │    2390125 │
+│ Chicago      │ IL    │    2721308 │
+└──────────────┴───────┴────────────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="columns">
+          <code><a href="#columns">Table.columns(table)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>Get the column names in <code>table</code> as a list.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">columns</span>(cities)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>[&quot;city&quot;, &quot;state&quot;]
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="counts">
+          <code><a href="#counts">Table.counts(table)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Return a table containing deduplicated rows of <code>table</code>.
+            Each row will have two additional entries <code>count</code> and
+            <code>share</code>, which will contain the number of copies of each
+            row in the original table, and the fraction of the total rows that
+            this count represents. The original table may not contain columns
+            named <code>count</code> or <code>share</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">locations <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">counts</span>(locations)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌─────────────┬───────┬───────┬───────┐
+│ city        │ state │ count │ share │ x 4
+├─────────────┼───────┼───────┼───────┤
+│ New York    │ NY    │     3 │ 0.375 │
+│ Los Angeles │ CA    │     2 │ 0.250 │
+│ Houston     │ TX    │     2 │ 0.250 │
+│ Chicago     │ IL    │     1 │ 0.125 │
+└─────────────┴───────┴───────┴───────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="defaultCols">
+          <code
+            ><a href="#defaultCols">Table.defaultCols(table, columns)</a></code
+          >
+        </h2>
+
+        <div class="def-info">
+          <p>
+            If <code>table</code> has zero columns (and therefore by definition
+            zero rows), return an empty table with the given
+            <code>columns</code>. If <code>table</code> has columns then return
+            <code>table</code>.
+          </p>
+          <p>
+            This is useful when you&#39;re making a table from a list of rows
+            that may or may not be empty, and you want to make sure your table
+            ends up with the correct columns.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">players <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span> },
+  { name: <span class="quotes">&quot;</span><span class="string">Josh</span><span class="quotes">&quot;</span>, yards: <span class="number">3731</span> },
+])
+
+<span class="std">Table</span>.<span class="call">defaultCols</span>(players, [<span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">yards</span><span class="quotes">&quot;</span>])
+
+players <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([])
+<span class="std">Table</span>.<span class="call">defaultCols</span>(players, [<span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">yards</span><span class="quotes">&quot;</span>])</code></pre>
+            <pre class="result" style="undefined"><code>┌───────┬───────┐
+│ name  │ yards │ x 2
+├───────┼───────┤
+│ Lamar │  4172 │
+│ Josh  │  3731 │
+└───────┴───────┘
+┌──────┬───────┐
+│ name │ yards │ x 0
+└──────┴───────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="drop">
+          <code><a href="#drop">Table.drop(table, count)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Remove the first <code>count</code> rows from <code>table</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> },
+])
+
+<span class="call">drop</span>(cities, <span class="number">3</span>)</code></pre>
+            <pre class="result" style="undefined"><code>┌─────────┬───────┐
+│ city    │ state │ x 2
+├─────────┼───────┤
+│ Houston │ TX    │
+│ Phoenix │ AZ    │
+└─────────┴───────┘
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#drop">Overloads.drop</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="dropLast">
+          <code><a href="#dropLast">Table.dropLast(table, count)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Remove the last <code>count</code> rows from <code>table</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> },
+])
+
+<span class="call">dropLast</span>(cities, <span class="number">3</span>)</code></pre>
+            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+│ city        │ state │ x 2
+├─────────────┼───────┤
+│ New York    │ NY    │
+│ Los Angeles │ CA    │
+└─────────────┴───────┘
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#dropLast">Overloads.dropLast</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="filter">
+          <code><a href="#filter">Table.filter(table, condition)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Keep the rows in <code>table</code> that satisfy
+            <code>condition</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Diego</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Dallas</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">filter</span>(cities, <span class="keyword">fn</span>(<span class="argument">city</span>) city.state <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> <span class="keyword">end</span>)</code></pre>
+            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+│ city        │ state │ x 3
+├─────────────┼───────┤
+│ Houston     │ TX    │
+│ San Antonio │ TX    │
+│ Dallas      │ TX    │
+└─────────────┴───────┘
+</code></pre>
+          </div>
+          <p>
+            <em
+              >Note that this can also be accomplished using the filter
+              <code>?</code> operator</em
+            >.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">?</span> <span class="keyword">arg</span>.state <span class="operator">==</span> <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span></code></pre>
+            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+│ city        │ state │ x 3
+├─────────────┼───────┤
+│ Houston     │ TX    │
+│ San Antonio │ TX    │
+│ Dallas      │ TX    │
+└─────────────┴───────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="focus">
+          <code><a href="#focus">Table.focus(table, columns)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Reorder the columns in <code>table</code> so that the given
+            <code>columns</code> appear first, in the given order.
+            <code>columns</code> may be a single string (for one column) or a
+            list of strings (for multiple columns).
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">players <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span>, tds: <span class="number">41</span>, ints: <span class="number">4</span> },
+  { name: <span class="quotes">&quot;</span><span class="string">Josh</span><span class="quotes">&quot;</span>, yards: <span class="number">3731</span>, tds: <span class="number">28</span>, ints: <span class="number">6</span> }
+])
+
+<span class="std">Table</span>.<span class="call">focus</span>(players, [<span class="quotes">&quot;</span><span class="string">yards</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>])
+<span class="std">Table</span>.<span class="call">focus</span>(players, <span class="quotes">&quot;</span><span class="string">ints</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌───────┬───────┬─────┬──────┐
+│ yards │ name  │ tds │ ints │ x 2
+├───────┼───────┼─────┼──────┤
+│  4172 │ Lamar │  41 │    4 │
+│  3731 │ Josh  │  28 │    6 │
+└───────┴───────┴─────┴──────┘
+┌──────┬───────┬───────┬─────┐
+│ ints │ name  │ yards │ tds │ x 2
+├──────┼───────┼───────┼─────┤
+│    4 │ Lamar │  4172 │  41 │
+│    6 │ Josh  │  3731 │  28 │
+└──────┴───────┴───────┴─────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="get">
+          <code><a href="#get">Table.get(table, selector)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Get the row or column from <code>table</code> that corresponds to
+            <code>selector</code>, where <code>selector</code> may be a number,
+            string, or object.
+          </p>
+          <ul>
+            <li>
+              If <code>selector</code> is a number, return the row at index
+              <code>selector</code>.
+            </li>
+            <li>
+              If <code>selector</code> is a string, return the values from the
+              column with name <code>selector</code> as a list.
+            </li>
+            <li>
+              If <code>selector</code> is an object, return the first row that
+              <a href="/language/objects#object-matching">matches</a>
+              <code>selector</code>, with the requirement that at least one row
+              matches.
+            </li>
+          </ul>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">get</span>(cities, <span class="number">1</span>)
+<span class="std">Table</span>.<span class="call">get</span>(cities, <span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>)
+<span class="std">Table</span>.<span class="call">get</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> })</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>{ city: &quot;Los Angeles&quot;, state: &quot;CA&quot; }
+[&quot;New York&quot;, &quot;Los Angeles&quot;, &quot;Chicago&quot;, &quot;Houston&quot;]
+{ city: &quot;Houston&quot;, state: &quot;TX&quot; }
+</code></pre>
+          </div>
+          <p>
+            <em
+              >Note that these operations can also be performed using the index
+              <code>[]</code> and field <code>.</code> operators</em
+            >.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities[<span class="number">1</span>]
+cities.city
+cities[<span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>]
+cities[{ state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> }]</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>{ city: &quot;Los Angeles&quot;, state: &quot;CA&quot; }
+[&quot;New York&quot;, &quot;Los Angeles&quot;, &quot;Chicago&quot;, &quot;Houston&quot;]
+[&quot;New York&quot;, &quot;Los Angeles&quot;, &quot;Chicago&quot;, &quot;Houston&quot;]
+{ city: &quot;Houston&quot;, state: &quot;TX&quot; }
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="group">
+          <code><a href="#group">Table.group(table, columns)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Partition <code>table</code> into groups based on the values in
+            <code>columns</code>, which may be a string (single column) or a
+            list of strings (multiple columns).
+          </p>
+          <p>
+            Rows with the same values in the given columns are grouped together.
+            The result is a list of tables, each containing the rows for one
+            group.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Diego</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Dallas</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">group</span>(cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre class="result" style="undefined"><code>[
+  ┌─────────────┬───────┐
+  │ city        │ state │ x 2
+  ├─────────────┼───────┤
+  │ Los Angeles │ CA    │
+  │ San Diego   │ CA    │
+  └─────────────┴───────┘,
+  ┌─────────┬───────┐
+  │ city    │ state │ x 1
+  ├─────────┼───────┤
+  │ Chicago │ IL    │
+  └─────────┴───────┘,
+  ┌─────────────┬───────┐
+  │ city        │ state │ x 3
+  ├─────────────┼───────┤
+  │ Houston     │ TX    │
+  │ San Antonio │ TX    │
+  │ Dallas      │ TX    │
+  └─────────────┴───────┘,
+  ┌─────────┬───────┐
+  │ city    │ state │ x 1
+  ├─────────┼───────┤
+  │ Phoenix │ AZ    │
+  └─────────┴───────┘,
+  ┌──────────────┬───────┐
+  │ city         │ state │ x 1
+  ├──────────────┼───────┤
+  │ Philadelphia │ PA    │
+  └──────────────┴───────┘,
+]
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="has">
+          <code><a href="#has">Table.has(table, selector)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Check whether <code>table</code> contains a column or row that
+            matches <code>selector</code>, which may be either a string or an
+            object.
+          </p>
+          <ul>
+            <li>
+              If <code>selector</code> is a string, check whether
+              <code>table</code> has a column named <code>selector</code>.
+            </li>
+            <li>
+              If <code>selector</code> is an object, check whether
+              <code>table</code> has a row which
+              <a href="/language/objects#object-matching">matches</a>
+              <code>selector</code>.
+            </li>
+          </ul>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">has</span>(cities, <span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>)
+<span class="std">Table</span>.<span class="call">has</span>(cities, <span class="quotes">&quot;</span><span class="string">county</span><span class="quotes">&quot;</span>)
+
+<span class="std">Table</span>.<span class="call">has</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> })
+<span class="std">Table</span>.<span class="call">has</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">VT</span><span class="quotes">&quot;</span> })</code></pre>
+            <pre class="result" style="undefined"><code>true
+false
+true
+false
+</code></pre>
+          </div>
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span> <span class="keyword">in</span> cities
+<span class="quotes">&quot;</span><span class="string">county</span><span class="quotes">&quot;</span> <span class="keyword">in</span> cities
+
+{ state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> } <span class="keyword">in</span> cities
+{ state: <span class="quotes">&quot;</span><span class="string">VT</span><span class="quotes">&quot;</span> } <span class="keyword">in</span> cities</code></pre>
+            <pre class="result" style="undefined"><code>true
+false
+true
+false
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="indexOf">
+          <code><a href="#indexOf">Table.indexOf(table, matcher)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Get the index of the first row in <code>table</code> that
+            <a href="/language/objects#object-matching">matches</a> the object
+            <code>matcher</code>, or <code>none</code> if no row matches.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">indexOf</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> })
+<span class="std">Table</span>.<span class="call">indexOf</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">FL</span><span class="quotes">&quot;</span> })</code></pre>
+            <pre class="result" style="undefined"><code>0
+none
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="isEmpty">
+          <code><a href="#isEmpty">Table.isEmpty(table)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Check whether <code>table</code> is empty (has <code>0</code> rows).
+            Note that an empty table may still have one or more columns.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">players <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span> },
+  { name: <span class="quotes">&quot;</span><span class="string">Josh</span><span class="quotes">&quot;</span>, yards: <span class="number">3731</span> },
+])
+
+<span class="call">isEmpty</span>(players)
+
+players <span class="operator">=</span> <span class="std">Table</span>.<span class="call">new</span>([<span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">yards</span><span class="quotes">&quot;</span>])
+<span class="call">isEmpty</span>(players)</code></pre>
+            <pre class="result" style="undefined"><code>false
+true
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#isEmpty">Overloads.isEmpty</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="len">
+          <code><a href="#len">Table.len(table)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Get the number of rows in <code>table</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">players <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span> },
+  { name: <span class="quotes">&quot;</span><span class="string">Josh</span><span class="quotes">&quot;</span>, yards: <span class="number">3731</span> },
+])
+
+<span class="call">len</span>(players)</code></pre>
+            <pre class="result" style="undefined"><code>2
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#len">Overloads.len</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="map">
+          <code><a href="#map">Table.map(table, func)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Transform each row in <code>table</code> using <code>func</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">players <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span>, tds: <span class="number">41</span>, ints: <span class="number">4</span> },
+  { name: <span class="quotes">&quot;</span><span class="string">Josh</span><span class="quotes">&quot;</span>, yards: <span class="number">3731</span>, tds: <span class="number">28</span>, ints: <span class="number">6</span> }
+])
+
+<span class="keyword">fn</span> <span class="function">addTD</span>(<span class="argument">player</span>)
+  player.tds <span class="operator">+=</span> <span class="number">1</span>
+  player
+<span class="keyword">end</span>
+
+<span class="std">Table</span>.<span class="call">map</span>(players, addTD)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌───────┬───────┬─────┬──────┐
+│ name  │ yards │ tds │ ints │ x 2
+├───────┼───────┼─────┼──────┤
+│ Lamar │  4172 │  42 │    4 │
+│ Josh  │  3731 │  29 │    6 │
+└───────┴───────┴─────┴──────┘
+</code></pre>
+          </div>
+          <p>
+            <em
+              >Note that this can also be accomplished using the map
+              <code>$</code> operator along with <code>Table.of</code></em
+            >.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">players <span class="operator">$</span> <span class="call">addTD</span> <span class="operator">|</span> <span class="std">Table</span>.<span class="call">of</span></code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌───────┬───────┬─────┬──────┐
+│ name  │ yards │ tds │ ints │ x 2
+├───────┼───────┼─────┼──────┤
+│ Lamar │  4172 │  42 │    4 │
+│ Josh  │  3731 │  29 │    6 │
+└───────┴───────┴─────┴──────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="match">
+          <code><a href="#match">Table.match(table, matcher)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Filter <code>table</code> to contain only the rows which
+            <a href="/language/objects#object-matching">match</a> the object
+            <code>matcher</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">match</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> })</code></pre>
+            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+│ city        │ state │ x 2
+├─────────────┼───────┤
+│ Houston     │ TX    │
+│ San Antonio │ TX    │
+└─────────────┴───────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="maxAll">
+          <code><a href="#maxAll">Table.maxAll(table, columns)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Get a table containing all the rows in <code>table</code> for which
+            <code>select(table, columns)</code> is maximized. See the docs for
+            <a href="#sortBy">Table.sortBy</a> for details on the ranking
+            process.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">2390125</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span>, population: <span class="number">1673164</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span>, population: <span class="number">1573916</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1526656</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Diego</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">1404452</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Dallas</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1326087</span> },
+])
+
+<span class="std">Table</span>.<span class="call">maxAll</span>(cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌─────────────┬───────┬────────────┐
+│ city        │ state │ population │ x 3
+├─────────────┼───────┼────────────┤
+│ Houston     │ TX    │    2390125 │
+│ San Antonio │ TX    │    1526656 │
+│ Dallas      │ TX    │    1326087 │
+└─────────────┴───────┴────────────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="maxBy">
+          <code><a href="#maxBy">Table.maxBy(table, columns)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Get the row with the largest values in <code>columns</code> where
+            <code>columns</code> may be a string (single column) or a list of
+            strings (multiple columns). In other words, get the row that would
+            come first if <code>table</code> were sorted by
+            <code>columns</code> in descending order.
+          </p>
+          <p>
+            See the docs for <a href="#sortBy">Table.sortBy</a> for details on
+            the sorting process.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">2390125</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span>, population: <span class="number">1673164</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span>, population: <span class="number">1573916</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1526656</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Diego</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">1404452</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Dallas</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1326087</span> },
+])
+
+<span class="std">Table</span>.<span class="call">maxBy</span>(cities, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>)
+<span class="std">Table</span>.<span class="call">maxBy</span>(cities, [<span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>])</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>{ city: &quot;Houston&quot;, state: &quot;TX&quot;, population: 2390125 }
+{ city: &quot;San Antonio&quot;, state: &quot;TX&quot;, population: 1526656 }
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="merge">
+          <code><a href="#merge">Table.merge(tables)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Merge (flatten) a list of <code>tables</code> into a single table.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">t1 <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> },
+])
+
+t2 <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">merge</span>([t1, t2])</code></pre>
+            <pre class="result" style="undefined"><code>┌──────────────┬───────┐
+│ city         │ state │ x 4
+├──────────────┼───────┤
+│ Houston      │ TX    │
+│ Phoenix      │ AZ    │
+│ Philadelphia │ PA    │
+│ San Antonio  │ TX    │
+└──────────────┴───────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="minAll">
+          <code><a href="#minAll">Table.minAll(table, columns)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Get a table containing all the rows in <code>table</code> for which
+            <code>select(table, columns)</code> is minimized. See the docs for
+            <a href="#sortBy">Table.sortBy</a> for details on the ranking
+            process.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">2390125</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span>, population: <span class="number">1673164</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span>, population: <span class="number">1573916</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1526656</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Diego</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">1404452</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Dallas</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1326087</span> },
+])
+
+<span class="std">Table</span>.<span class="call">minAll</span>(cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌─────────┬───────┬────────────┐
+│ city    │ state │ population │ x 1
+├─────────┼───────┼────────────┤
+│ Phoenix │ AZ    │    1673164 │
+└─────────┴───────┴────────────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="minBy">
+          <code><a href="#minBy">Table.minBy(table, columns)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Get the row with the smallest values in <code>columns</code> where
+            <code>columns</code> may be a string (single column) or a list of
+            strings (multiple columns). In other words, get the row that would
+            come first if <code>table</code> were sorted by
+            <code>columns</code> in ascending order.
+          </p>
+          <p>
+            See the docs for <a href="#sortBy">Table.sortBy</a> for details on
+            the sorting process.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">2390125</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span>, population: <span class="number">1673164</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span>, population: <span class="number">1573916</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1526656</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Diego</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">1404452</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Dallas</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1326087</span> },
+])
+
+<span class="std">Table</span>.<span class="call">minBy</span>(cities, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>)
+<span class="std">Table</span>.<span class="call">minBy</span>(cities, [<span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>])</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>{ city: &quot;Dallas&quot;, state: &quot;TX&quot;, population: 1326087 }
+{ city: &quot;Phoenix&quot;, state: &quot;AZ&quot;, population: 1673164 }
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="new">
+          <code><a href="#new">Table.new(columns)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>Create an empty table with the given <code>columns</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Table</span>.<span class="call">new</span>([<span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">yards</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">tds</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">ints</span><span class="quotes">&quot;</span>])</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌──────┬───────┬─────┬──────┐
+│ name │ yards │ tds │ ints │ x 0
+└──────┴───────┴─────┴──────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="of">
+          <code><a href="#of">Table.of(value)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Create a table from <code>value</code>, where <code>value</code> may
+            be an object, list of objects, or table.
+          </p>
+          <ul>
+            <li>
+              <p>
+                If <code>value</code> is an object, the keys become column
+                names, and the values become the data for each column.
+              </p>
+              <ul>
+                <li>
+                  List values are used directly as the table&#39;s column data,
+                  and must all be the same length.
+                </li>
+                <li>Non-list values are repeated across all rows.</li>
+              </ul>
+            </li>
+            <li>
+              <p>
+                If <code>value</code> is a list of objects, these objects become
+                the rows of the table. The objects must have the same keys,
+                which become the column names. Note that a table with no columns
+                will always have zero rows.
+              </p>
+            </li>
+            <li>
+              <p>If <code>value</code> is a table, return it.</p>
+            </li>
+          </ul>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls"><span class="std">Table</span>.<span class="call">of</span>({
+  name: [<span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Josh</span><span class="quotes">&quot;</span>],
+  pos: <span class="quotes">&quot;</span><span class="string">qb</span><span class="quotes">&quot;</span>,
+  yards: [<span class="number">4172</span>, <span class="number">3731</span>],
+  tds: [<span class="number">41</span>, <span class="number">28</span>],
+  ints: [<span class="number">4</span>, <span class="number">6</span>],
+})
+
+<span class="std">Table</span>.<span class="call">of</span>([
+  { name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, pos: <span class="quotes">&quot;</span><span class="string">qb</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span>, tds: <span class="number">41</span>, ints: <span class="number">4</span> },
+  { name: <span class="quotes">&quot;</span><span class="string">Josh</span><span class="quotes">&quot;</span>, pos: <span class="quotes">&quot;</span><span class="string">qb</span><span class="quotes">&quot;</span>, yards: <span class="number">3731</span>, tds: <span class="number">28</span>, ints: <span class="number">6</span> }
+])</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌───────┬─────┬───────┬─────┬──────┐
+│ name  │ pos │ yards │ tds │ ints │ x 2
+├───────┼─────┼───────┼─────┼──────┤
+│ Lamar │ qb  │  4172 │  41 │    4 │
+│ Josh  │ qb  │  3731 │  28 │    6 │
+└───────┴─────┴───────┴─────┴──────┘
+┌───────┬─────┬───────┬─────┬──────┐
+│ name  │ pos │ yards │ tds │ ints │ x 2
+├───────┼─────┼───────┼─────┼──────┤
+│ Lamar │ qb  │  4172 │  41 │    4 │
+│ Josh  │ qb  │  3731 │  28 │    6 │
+└───────┴─────┴───────┴─────┴──────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="pop">
+          <code><a href="#pop">Table.pop(table)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>Remove the last row from <code>table</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">pop</span>(cities)</code></pre>
+            <pre class="result" style="undefined"><code>┌──────────────┬───────┐
+│ city         │ state │ x 3
+├──────────────┼───────┤
+│ Houston      │ TX    │
+│ Phoenix      │ AZ    │
+│ Philadelphia │ PA    │
+└──────────────┴───────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="push">
+          <code><a href="#push">Table.push(table, row)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Add <code>row</code> to the end of <code>table</code>. The keys in
+            <code>row</code> must match the columns in <code>table</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span> },
+])
+
+<span class="call">push</span>(cities, { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> })</code></pre>
+            <pre class="result" style="undefined"><code>┌──────────────┬───────┐
+│ city         │ state │ x 4
+├──────────────┼───────┤
+│ Houston      │ TX    │
+│ Phoenix      │ AZ    │
+│ Philadelphia │ PA    │
+│ San Antonio  │ TX    │
+└──────────────┴───────┘
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#push">Overloads.push</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="put">
+          <code><a href="#put">Table.put(value, table, selector)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Update the row or column in <code>table</code> that corresponds to
+            <code>selector</code> with <code>value</code>.
+            <code>selector</code> may be a number, string, or object. See the
+            docs for <a href="#set">Table.set</a> for details on the update
+            process.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">put</span>({ city: <span class="quotes">&quot;</span><span class="string">Big Apple</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">Empire</span><span class="quotes">&quot;</span> }, cities, <span class="number">0</span>)
+<span class="std">Table</span>.<span class="call">put</span>([<span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Cali</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Illinois</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Texas</span><span class="quotes">&quot;</span>], cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>)
+<span class="std">Table</span>.<span class="call">put</span>(<span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>)
+<span class="std">Table</span>.<span class="call">put</span>({ city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> }, cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> })</code></pre>
+            <pre class="result" style="undefined"><code>┌─────────────┬────────┐
+│ city        │ state  │ x 4
+├─────────────┼────────┤
+│ Big Apple   │ Empire │
+│ Los Angeles │ CA     │
+│ Chicago     │ IL     │
+│ Houston     │ TX     │
+└─────────────┴────────┘
+┌─────────────┬──────────┐
+│ city        │ state    │ x 4
+├─────────────┼──────────┤
+│ New York    │ New York │
+│ Los Angeles │ Cali     │
+│ Chicago     │ Illinois │
+│ Houston     │ Texas    │
+└─────────────┴──────────┘
+┌─────────────┬───────┐
+│ city        │ state │ x 4
+├─────────────┼───────┤
+│ New York    │ TX    │
+│ Los Angeles │ TX    │
+│ Chicago     │ TX    │
+│ Houston     │ TX    │
+└─────────────┴───────┘
+┌─────────────┬───────┐
+│ city        │ state │ x 4
+├─────────────┼───────┤
+│ New York    │ NY    │
+│ Los Angeles │ CA    │
+│ Chicago     │ IL    │
+│ Phoenix     │ AZ    │
+└─────────────┴───────┘
+</code></pre>
+          </div>
+          <p>
+            <em
+              >Note that if you want to update an existing variable, you could
+              also use variable assignment. See the docs for
+              <a href="#set">Table.set</a> for more details.</em
+            >
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="remove">
+          <code><a href="#remove">Table.remove(table, selector)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Remove columns or rows matching <code>selector</code> from
+            <code>table</code>, where selector may be a string, list of strings,
+            or object.
+          </p>
+          <ul>
+            <li>
+              <p>
+                If <code>selector</code> is a string, remove the single column
+                with that name.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <code>selector</code> is a list of strings, remove all
+                columns listed in <code>selector</code>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <code>selector</code> is an object, remove all rows which
+                <a href="/language/objects#object-matching">match</a>
+                <code>selector</code>.
+              </p>
+            </li>
+          </ul>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">2390125</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span>, population: <span class="number">1673164</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span>, population: <span class="number">1573916</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1526656</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Diego</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">1404452</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Dallas</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1326087</span> },
+])
+
+<span class="call">remove</span>(cities, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>)
+<span class="call">remove</span>(cities, [<span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>])
+<span class="call">remove</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> })</code></pre>
+            <pre class="result" style="undefined"><code>┌──────────────┬───────┐
+│ city         │ state │ x 6
+├──────────────┼───────┤
+│ Houston      │ TX    │
+│ Phoenix      │ AZ    │
+│ Philadelphia │ PA    │
+│ San Antonio  │ TX    │
+│ San Diego    │ CA    │
+│ Dallas       │ TX    │
+└──────────────┴───────┘
+┌───────┐
+│ state │ x 6
+├───────┤
+│ TX    │
+│ AZ    │
+│ PA    │
+│ TX    │
+│ CA    │
+│ TX    │
+└───────┘
+┌──────────────┬───────┬────────────┐
+│ city         │ state │ population │ x 3
+├──────────────┼───────┼────────────┤
+│ Phoenix      │ AZ    │    1673164 │
+│ Philadelphia │ PA    │    1573916 │
+│ San Diego    │ CA    │    1404452 │
+└──────────────┴───────┴────────────┘
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#remove">Overloads.remove</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="rename">
+          <code><a href="#rename">Table.rename(table, old, new)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Rename the column with name <code>old</code> to name
+            <code>new</code> in <code>table</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">players <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span>, tds: <span class="number">41</span>, ints: <span class="number">4</span> },
+  { name: <span class="quotes">&quot;</span><span class="string">Josh</span><span class="quotes">&quot;</span>, yards: <span class="number">3731</span>, tds: <span class="number">28</span>, ints: <span class="number">6</span> }
+])
+
+<span class="std">Table</span>.<span class="call">rename</span>(players, <span class="quotes">&quot;</span><span class="string">tds</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">touchdowns</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌───────┬───────┬────────────┬──────┐
+│ name  │ yards │ touchdowns │ ints │ x 2
+├───────┼───────┼────────────┼──────┤
+│ Lamar │  4172 │         41 │    4 │
+│ Josh  │  3731 │         28 │    6 │
+└───────┴───────┴────────────┴──────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="reverse">
+          <code><a href="#reverse">Table.reverse(table)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Reverse the rows in <code>table</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="call">reverse</span>(cities)</code></pre>
+            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+│ city        │ state │ x 4
+├─────────────┼───────┤
+│ Houston     │ TX    │
+│ Chicago     │ IL    │
+│ Los Angeles │ CA    │
+│ New York    │ NY    │
+└─────────────┴───────┘
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#reverse">Overloads.reverse</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="rows">
+          <code><a href="#rows">Table.rows(table)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>Get a list of the rows in <code>table</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">players <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>({
+  name: [<span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Josh</span><span class="quotes">&quot;</span>],
+  yards: [<span class="number">4172</span>, <span class="number">3731</span>],
+  tds: [<span class="number">41</span>, <span class="number">28</span>],
+  ints: [<span class="number">4</span>, <span class="number">6</span>],
+})
+
+<span class="std">Table</span>.<span class="call">rows</span>(players)</code></pre>
+            <pre class="result" style="undefined"><code>[
+  { name: &quot;Lamar&quot;, yards: 4172, tds: 41, ints: 4 },
+  { name: &quot;Josh&quot;, yards: 3731, tds: 28, ints: 6 },
+]
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="select">
+          <code><a href="#select">Table.select(table, columns)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Create a table containing the specified <code>columns</code> from
+            <code>table</code>, in the given order. <code>columns</code> may be
+            a single string (for one column) or a list of strings (for multiple
+            columns).
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">players <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { name: <span class="quotes">&quot;</span><span class="string">Lamar</span><span class="quotes">&quot;</span>, yards: <span class="number">4172</span>, tds: <span class="number">41</span>, ints: <span class="number">4</span> },
+  { name: <span class="quotes">&quot;</span><span class="string">Josh</span><span class="quotes">&quot;</span>, yards: <span class="number">3731</span>, tds: <span class="number">28</span>, ints: <span class="number">6</span> }
+])
+
+<span class="call">select</span>(players, [<span class="quotes">&quot;</span><span class="string">yards</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>])
+<span class="call">select</span>(players, <span class="quotes">&quot;</span><span class="string">name</span><span class="quotes">&quot;</span>)</code></pre>
+            <pre class="result" style="undefined"><code>┌───────┬───────┐
+│ yards │ name  │ x 2
+├───────┼───────┤
+│  4172 │ Lamar │
+│  3731 │ Josh  │
+└───────┴───────┘
+┌───────┐
+│ name  │ x 2
+├───────┤
+│ Lamar │
+│ Josh  │
+└───────┘
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#select">Overloads.select</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="set">
+          <code><a href="#set">Table.set(table, selector, value)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Update the row or column in <code>table</code> that corresponds to
+            <code>selector</code> with <code>value</code>.
+            <code>selector</code> may be a number, string, or object.
+          </p>
+          <ul>
+            <li>
+              <p>
+                If <code>selector</code> is a number, replace the row at index
+                <code>selector</code> with the data in <code>value</code>, where
+                <code>value</code> is an object whose keys match the columns of
+                <code>table</code>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <code>selector</code> is a string, replace the column named
+                <code>selector</code> with <code>value</code>.
+              </p>
+              <ul>
+                <li>
+                  If <code>value</code> is a list, it becomes the column data. A
+                  list <code>value</code> must have the same length as
+                  <code>table</code>.
+                </li>
+                <li>
+                  If <code>value</code> is not a list, it is repeated across all
+                  rows.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>
+                If <code>selector</code> is an object, find the first row that
+                matches <a href="/language/objects#object-matching">matches</a>
+                <code>selector</code>, with the requirement that at least one
+                row matches. Replace this row with the data in
+                <code>value</code>, where <code>value</code> is an object whose
+                keys match the columns of <code>table</code>.
+              </p>
+            </li>
+          </ul>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">set</span>(cities, <span class="number">0</span>, { city: <span class="quotes">&quot;</span><span class="string">Big Apple</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">Empire</span><span class="quotes">&quot;</span> })
+<span class="std">Table</span>.<span class="call">set</span>(cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, [<span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Cali</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Illinois</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Texas</span><span class="quotes">&quot;</span>])
+<span class="std">Table</span>.<span class="call">set</span>(cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>)
+<span class="std">Table</span>.<span class="call">set</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },  { city: <span class="quotes">&quot;</span><span class="string">Austin</span><span class="quotes">&quot;</span> })
+<span class="std">Table</span>.<span class="call">set</span>(cities, { state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> })</code></pre>
+            <pre class="result" style="undefined"><code>┌─────────────┬────────┐
+│ city        │ state  │ x 4
+├─────────────┼────────┤
+│ Big Apple   │ Empire │
+│ Los Angeles │ CA     │
+│ Chicago     │ IL     │
+│ Houston     │ TX     │
+└─────────────┴────────┘
+┌─────────────┬──────────┐
+│ city        │ state    │ x 4
+├─────────────┼──────────┤
+│ New York    │ New York │
+│ Los Angeles │ Cali     │
+│ Chicago     │ Illinois │
+│ Houston     │ Texas    │
+└─────────────┴──────────┘
+┌─────────────┬───────┐
+│ city        │ state │ x 4
+├─────────────┼───────┤
+│ New York    │ TX    │
+│ Los Angeles │ TX    │
+│ Chicago     │ TX    │
+│ Houston     │ TX    │
+└─────────────┴───────┘
+┌─────────────┬───────┐
+│ city        │ state │ x 4
+├─────────────┼───────┤
+│ New York    │ NY    │
+│ Los Angeles │ CA    │
+│ Chicago     │ IL    │
+│ Austin      │ TX    │
+└─────────────┴───────┘
+┌─────────────┬───────┐
+│ city        │ state │ x 4
+├─────────────┼───────┤
+│ New York    │ NY    │
+│ Los Angeles │ CA    │
+│ Chicago     │ IL    │
+│ Phoenix     │ AZ    │
+└─────────────┴───────┘
+</code></pre>
+          </div>
+          <p>
+            <em
+              >Note that if you want to update an existing variable, you could
+              also use variable assignment</em
+            >.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">citiesCopy <span class="operator">=</span> cities
+citiesCopy[<span class="number">0</span>] <span class="operator">=</span> { city: <span class="quotes">&quot;</span><span class="string">Big Apple</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">Empire</span><span class="quotes">&quot;</span> }</code></pre>
+
+            <pre class="result" style="undefined"><code>citiesCopy =
+┌─────────────┬────────┐
+│ city        │ state  │ x 4
+├─────────────┼────────┤
+│ Big Apple   │ Empire │
+│ Los Angeles │ CA     │
+│ Chicago     │ IL     │
+│ Houston     │ TX     │
+└─────────────┴────────┘</code></pre>
+          </div>
+          <div class="snippet undefined">
+            <pre><code class="ptls">citiesCopy <span class="operator">=</span> cities
+citiesCopy.state <span class="operator">=</span> [<span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Cali</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Illinois</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">Texas</span><span class="quotes">&quot;</span>]</code></pre>
+
+            <pre class="result" style="undefined"><code>citiesCopy =
+┌─────────────┬──────────┐
+│ city        │ state    │ x 4
+├─────────────┼──────────┤
+│ New York    │ New York │
+│ Los Angeles │ Cali     │
+│ Chicago     │ Illinois │
+│ Houston     │ Texas    │
+└─────────────┴──────────┘</code></pre>
+          </div>
+          <div class="snippet undefined">
+            <pre><code class="ptls">citiesCopy <span class="operator">=</span> cities
+citiesCopy.state <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span></code></pre>
+
+            <pre class="result" style="undefined"><code>citiesCopy =
+┌─────────────┬───────┐
+│ city        │ state │ x 4
+├─────────────┼───────┤
+│ New York    │ TX    │
+│ Los Angeles │ TX    │
+│ Chicago     │ TX    │
+│ Houston     │ TX    │
+└─────────────┴───────┘</code></pre>
+          </div>
+          <div class="snippet undefined">
+            <pre><code class="ptls">citiesCopy <span class="operator">=</span> cities
+citiesCopy[{ state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> }].city <span class="operator">=</span> <span class="quotes">&quot;</span><span class="string">Austin</span><span class="quotes">&quot;</span></code></pre>
+
+            <pre class="result" style="undefined"><code>citiesCopy =
+┌─────────────┬───────┐
+│ city        │ state │ x 4
+├─────────────┼───────┤
+│ New York    │ NY    │
+│ Los Angeles │ CA    │
+│ Chicago     │ IL    │
+│ Austin      │ TX    │
+└─────────────┴───────┘</code></pre>
+          </div>
+          <div class="snippet undefined">
+            <pre><code class="ptls">citiesCopy <span class="operator">=</span> cities
+citiesCopy[{ state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> }] <span class="operator">=</span> { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> }</code></pre>
+
+            <pre class="result" style="undefined"><code>citiesCopy =
+┌─────────────┬───────┐
+│ city        │ state │ x 4
+├─────────────┼───────┤
+│ New York    │ NY    │
+│ Los Angeles │ CA    │
+│ Chicago     │ IL    │
+│ Phoenix     │ AZ    │
+└─────────────┴───────┘</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="sortBy">
+          <code><a href="#sortBy">Table.sortBy(table, columns)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Sort the rows of <code>table</code> in ascending order by one or
+            more columns. <code>columns</code> may be a single string (for one
+            column) or a list of strings (for multiple columns).
+          </p>
+          <p>
+            If multiple columns are given, rows are first sorted by the first
+            column; if two rows have the same value in that column, the second
+            column is used to break ties, and so on for any additional columns.
+          </p>
+          <p>
+            Values in the sort columns must be numbers, strings, booleans, or
+            <code>none</code>, and all non-<code>none</code> values within a
+            column must share the same type. Rows with <code>none</code> values
+            in their sort columns will be placed at the end of the resulting
+            table, whether sorting in ascending or descending order.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">2390125</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span>, population: <span class="number">1673164</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span>, population: <span class="number">1573916</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1526656</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Diego</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">1404452</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Dallas</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1326087</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">DC</span><span class="quotes">&quot;</span>, state: <span class="constant">none</span>, population: <span class="number">702250</span> },
+])
+
+<span class="call">sortBy</span>(cities, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>)
+<span class="call">sortBy</span>(cities, [<span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>])</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌──────────────┬───────┬────────────┐
+│ city         │ state │ population │ x 7
+├──────────────┼───────┼────────────┤
+│ DC           │       │     702250 │
+│ Dallas       │ TX    │    1326087 │
+│ San Diego    │ CA    │    1404452 │
+│ San Antonio  │ TX    │    1526656 │
+│ Philadelphia │ PA    │    1573916 │
+│ Phoenix      │ AZ    │    1673164 │
+│ Houston      │ TX    │    2390125 │
+└──────────────┴───────┴────────────┘
+┌──────────────┬───────┬────────────┐
+│ city         │ state │ population │ x 7
+├──────────────┼───────┼────────────┤
+│ Phoenix      │ AZ    │    1673164 │
+│ San Diego    │ CA    │    1404452 │
+│ Philadelphia │ PA    │    1573916 │
+│ Dallas       │ TX    │    1326087 │
+│ Houston      │ TX    │    2390125 │
+│ San Antonio  │ TX    │    1526656 │
+│ DC           │       │     702250 │
+└──────────────┴───────┴────────────┘
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#sortBy">Overloads.sortBy</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="sortDescBy">
+          <code
+            ><a href="#sortDescBy">Table.sortDescBy(table, columns)</a></code
+          >
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Sort the rows of <code>table</code> in descending order by one or
+            more columns. See the docs for
+            <a href="#sortBy">Table.sortBy</a> for details on the sorting
+            process.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">2390125</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span>, population: <span class="number">1673164</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span>, population: <span class="number">1573916</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1526656</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Diego</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">1404452</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Dallas</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1326087</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">DC</span><span class="quotes">&quot;</span>, state: <span class="constant">none</span>, population: <span class="number">702250</span> },
+])
+
+<span class="call">sortDescBy</span>(cities, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>)
+<span class="call">sortDescBy</span>(cities, [<span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, <span class="quotes">&quot;</span><span class="string">city</span><span class="quotes">&quot;</span>])</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌──────────────┬───────┬────────────┐
+│ city         │ state │ population │ x 7
+├──────────────┼───────┼────────────┤
+│ Houston      │ TX    │    2390125 │
+│ Phoenix      │ AZ    │    1673164 │
+│ Philadelphia │ PA    │    1573916 │
+│ San Antonio  │ TX    │    1526656 │
+│ San Diego    │ CA    │    1404452 │
+│ Dallas       │ TX    │    1326087 │
+│ DC           │       │     702250 │
+└──────────────┴───────┴────────────┘
+┌──────────────┬───────┬────────────┐
+│ city         │ state │ population │ x 7
+├──────────────┼───────┼────────────┤
+│ San Antonio  │ TX    │    1526656 │
+│ Houston      │ TX    │    2390125 │
+│ Dallas       │ TX    │    1326087 │
+│ Philadelphia │ PA    │    1573916 │
+│ San Diego    │ CA    │    1404452 │
+│ Phoenix      │ AZ    │    1673164 │
+│ DC           │       │     702250 │
+└──────────────┴───────┴────────────┘
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#sortDescBy">Overloads.sortDescBy</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="splice">
+          <code
+            ><a href="#splice">Table.splice(table, index, count, rows)</a></code
+          >
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Remove <code>count</code> rows from <code>table</code> starting at
+            <code>index</code>, and replace them with those in the table
+            <code>rows</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+newRows <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">splice</span>(cities, <span class="number">1</span>, <span class="number">2</span>, newRows)</code></pre>
+            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+│ city        │ state │ x 5
+├─────────────┼───────┤
+│ Houston     │ TX    │
+│ New York    │ NY    │
+│ Los Angeles │ CA    │
+│ Chicago     │ IL    │
+│ San Antonio │ TX    │
+└─────────────┴───────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="summarize">
+          <code
+            ><a href="#summarize"
+              >Table.summarize(table, columns, reducer)</a
+            ></code
+          >
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Group the rows in <code>table</code> by one or more
+            <code>columns</code> and summarize each group using the function
+            <code>reducer</code>. <code>columns</code> may be a string (single
+            column) or a list of strings (multiple columns).
+          </p>
+          <p>
+            Rows are grouped based on the values in the given
+            <code>columns</code> (see the docs for
+            <a href="#group">Table.group</a> for details on the grouping
+            process.) <code>reducer</code> is called for each group and returns
+            an object containing summary information. These objects are merged
+            with each group&#39;s column values to form the final summary row
+            for that group.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">3878704</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span>, population: <span class="number">2721308</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">2390125</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span>, population: <span class="number">1673164</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span>, population: <span class="number">1573916</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Antonio</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1526656</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">San Diego</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">1404452</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Dallas</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">1326087</span> },
+])
+
+<span class="keyword">fn</span> <span class="function">calcStateStats</span>(<span class="argument">group</span>)
+  totalPop <span class="operator">=</span> <span class="call">sum</span>(group.population)
+  biggestCity <span class="operator">=</span> <span class="std">Table</span>.<span class="call">maxBy</span>(group, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>).city
+  numCities <span class="operator">=</span> <span class="call">len</span>(group)
+  { totalPop, biggestCity, numCities }
+<span class="keyword">end</span>
+
+<span class="std">Table</span>.<span class="call">summarize</span>(cities, <span class="quotes">&quot;</span><span class="string">state</span><span class="quotes">&quot;</span>, calcStateStats)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌───────┬──────────┬──────────────┬───────────┐
+│ state │ totalPop │ biggestCity  │ numCities │ x 5
+├───────┼──────────┼──────────────┼───────────┤
+│ CA    │  5283156 │ Los Angeles  │         2 │
+│ IL    │  2721308 │ Chicago      │         1 │
+│ TX    │  5242868 │ Houston      │         3 │
+│ AZ    │  1673164 │ Phoenix      │         1 │
+│ PA    │  1573916 │ Philadelphia │         1 │
+└───────┴──────────┴──────────────┴───────────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="take">
+          <code><a href="#take">Table.take(table, count)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Get the first <code>count</code> rows from <code>table</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> },
+])
+
+<span class="call">take</span>(cities, <span class="number">3</span>)</code></pre>
+            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+│ city        │ state │ x 3
+├─────────────┼───────┤
+│ New York    │ NY    │
+│ Los Angeles │ CA    │
+│ Chicago     │ IL    │
+└─────────────┴───────┘
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#take">Overloads.take</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="takeLast">
+          <code><a href="#takeLast">Table.takeLast(table, count)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Get the last <code>count</code> rows from <code>table</code>.</p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span> },
+])
+
+<span class="call">takeLast</span>(cities, <span class="number">3</span>)</code></pre>
+            <pre class="result" style="undefined"><code>┌─────────┬───────┐
+│ city    │ state │ x 3
+├─────────┼───────┤
+│ Chicago │ IL    │
+│ Houston │ TX    │
+│ Phoenix │ AZ    │
+└─────────┴───────┘
+</code></pre>
+          </div>
+          <p class="overloads">
+            (Accessible as a global through
+            <a href="../Overloads/#takeLast">Overloads.takeLast</a>)
+          </p>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="top">
+          <code><a href="#top">Table.top(table, columns, count)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Sort <code>table</code> in descending order by
+            <code>columns</code> and take the first <code>count</code> rows of
+            the sorted table.
+          </p>
+          <p>
+            Equivalent to <code>take(sortDescBy(table, columns), count)</code>.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span>, population: <span class="number">8478072</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span>, population: <span class="number">3878704</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span>, population: <span class="number">2721308</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span>, population: <span class="number">2390125</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Phoenix</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">AZ</span><span class="quotes">&quot;</span>, population: <span class="number">1673164</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Philadelphia</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">PA</span><span class="quotes">&quot;</span>, population: <span class="number">1573916</span> },
+])
+
+<span class="std">Table</span>.<span class="call">top</span>(cities, <span class="quotes">&quot;</span><span class="string">population</span><span class="quotes">&quot;</span>, <span class="number">4</span>)</code></pre>
+            <pre
+              class="result"
+              style="undefined"
+            ><code>┌─────────────┬───────┬────────────┐
+│ city        │ state │ population │ x 4
+├─────────────┼───────┼────────────┤
+│ New York    │ NY    │    8478072 │
+│ Los Angeles │ CA    │    3878704 │
+│ Chicago     │ IL    │    2721308 │
+│ Houston     │ TX    │    2390125 │
+└─────────────┴───────┴────────────┘
+</code></pre>
+          </div>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="unique">
+          <code><a href="#unique">Table.unique(table)</a></code>
+        </h2>
+
+        <div class="def-info">
+          <p>
+            Deduplicate rows of <code>table</code>, keeping only the first
+            occurrence of each row.
+          </p>
+
+          <div class="snippet undefined">
+            <pre><code class="ptls">cities <span class="operator">=</span> <span class="std">Table</span>.<span class="call">of</span>([
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Los Angeles</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">CA</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Chicago</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">IL</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">New York</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">NY</span><span class="quotes">&quot;</span> },
+  { city: <span class="quotes">&quot;</span><span class="string">Houston</span><span class="quotes">&quot;</span>, state: <span class="quotes">&quot;</span><span class="string">TX</span><span class="quotes">&quot;</span> },
+])
+
+<span class="std">Table</span>.<span class="call">unique</span>(cities)</code></pre>
+            <pre class="result" style="undefined"><code>┌─────────────┬───────┐
+│ city        │ state │ x 4
+├─────────────┼───────┤
+│ New York    │ NY    │
+│ Los Angeles │ CA    │
+│ Chicago     │ IL    │
+│ Houston     │ TX    │
+└─────────────┴───────┘
+</code></pre>
+          </div>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/stdlib/Str">
+              <div>Previous</div>
+              Str
+            </a>
+
+            <a class="next" href="/stdlib/Test">
+              <div>Next</div>
+              Test
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>

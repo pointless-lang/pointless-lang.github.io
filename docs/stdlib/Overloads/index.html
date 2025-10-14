@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="/icons/icon.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/icons/icon-light.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>Overloads</title>
+  </head>
+
+  <body>
+    <header>
+      <a id="logo" href="/">
+        <img src="/icons/icon.svg" />
+        Pointless
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="/intro/">Intro</a></li>
+          <li><a href="/philosophy/">Philosophy</a></li>
+          <li><a href="/language/">Language</a></li>
+          <li><a href="/stdlib/">Standard Library</a></li>
+          <li><a href="/articles/">Articles</a></li>
+          <li><a href="/editor/">Editor</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="title">
+        <h1>
+          <a href=".." id="parent">Standard Library:</a>
+          <a href=".">Overloads</a>
+        </h1>
+        <p>
+          Global wrapper functions combining similar type-specific functions
+        </p>
+      </div>
+
+      <main>
+        <p>
+          Some modules contain functions with the same name as those in other
+          modules. For example, <code>List</code>, <code>Str</code>, and
+          <code>Table</code> each contain a <code>reverse</code> function.
+          Normally this wouldn&#39;t be a problem, but it gets tricky when we
+          want to make those functions global; without a module prefix, how does
+          the language know which version of the function to call?
+        </p>
+        <p>
+          To solve this, the standard library provides overloaded functions:
+          global wrapper functions combining two or more module functions with
+          the same name. The overloaded function will choose which module
+          function to call based on the type of the first argument it receives.
+          For example, the function <code>Overloads.reverse(values)</code> will
+          call <code>List.reverse(list)</code>,
+          <code>Str.reverse(string)</code>, or
+          <code>Table.reverse(table)</code> based on the type of
+          <code>values</code>
+        </p>
+
+        <div class="snippet undefined">
+          <pre><code class="ptls"><span class="call">reverse</span>(<span class="quotes">&quot;</span><span class="string">hello</span><span class="quotes">&quot;</span>) <span class="comment">-- Calls Str.reverse</span>
+<span class="call">reverse</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]) <span class="comment">-- Calls List.reverse</span></code></pre>
+          <pre class="result" style="undefined"><code>&quot;olleh&quot;
+[5, 4, 3, 2, 1]
+</code></pre>
+        </div>
+
+        <ol class="contents std">
+          <li><a href="#drop">drop</a></li>
+          <li><a href="#dropLast">dropLast</a></li>
+          <li><a href="#isEmpty">isEmpty</a></li>
+          <li><a href="#len">len</a></li>
+          <li><a href="#push">push</a></li>
+          <li><a href="#remove">remove</a></li>
+          <li><a href="#reverse">reverse</a></li>
+          <li><a href="#select">select</a></li>
+          <li><a href="#sortBy">sortBy</a></li>
+          <li><a href="#sortDescBy">sortDescBy</a></li>
+          <li><a href="#take">take</a></li>
+          <li><a href="#takeLast">takeLast</a></li>
+        </ol>
+
+        <hr />
+
+        <h2 class="def-name" id="drop">
+          <code><a href="#drop">Overloads.drop(values, count)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Overload of:</p>
+          <ul class="overloads">
+            <li><a href="../List/#drop">List.drop(list, count)</a></li>
+            <li><a href="../Str/#drop">Str.drop(string, count)</a></li>
+            <li><a href="../Table/#drop">Table.drop(table, count)</a></li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="dropLast">
+          <code><a href="#dropLast">Overloads.dropLast(values, count)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Overload of:</p>
+          <ul class="overloads">
+            <li><a href="../List/#dropLast">List.dropLast(list, count)</a></li>
+            <li><a href="../Str/#dropLast">Str.dropLast(string, count)</a></li>
+            <li>
+              <a href="../Table/#dropLast">Table.dropLast(table, count)</a>
+            </li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="isEmpty">
+          <code><a href="#isEmpty">Overloads.isEmpty(values)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Overload of:</p>
+          <ul class="overloads">
+            <li><a href="../List/#isEmpty">List.isEmpty(list)</a></li>
+            <li><a href="../Obj/#isEmpty">Obj.isEmpty(object)</a></li>
+            <li><a href="../Set/#isEmpty">Set.isEmpty(set)</a></li>
+            <li><a href="../Str/#isEmpty">Str.isEmpty(string)</a></li>
+            <li><a href="../Table/#isEmpty">Table.isEmpty(table)</a></li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="len">
+          <code><a href="#len">Overloads.len(values)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Overload of:</p>
+          <ul class="overloads">
+            <li><a href="../List/#len">List.len(list)</a></li>
+            <li><a href="../Obj/#len">Obj.len(object)</a></li>
+            <li><a href="../Set/#len">Set.len(set)</a></li>
+            <li><a href="../Str/#len">Str.len(string)</a></li>
+            <li><a href="../Table/#len">Table.len(table)</a></li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="push">
+          <code><a href="#push">Overloads.push(values, item)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Overload of:</p>
+          <ul class="overloads">
+            <li><a href="../List/#push">List.push(list, value)</a></li>
+            <li><a href="../Table/#push">Table.push(table, row)</a></li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="remove">
+          <code><a href="#remove">Overloads.remove(values, elem)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Overload of:</p>
+          <ul class="overloads">
+            <li><a href="../List/#remove">List.remove(list, value)</a></li>
+            <li><a href="../Obj/#remove">Obj.remove(object, key)</a></li>
+            <li><a href="../Set/#remove">Set.remove(set, value)</a></li>
+            <li>
+              <a href="../Table/#remove">Table.remove(table, selector)</a>
+            </li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="reverse">
+          <code><a href="#reverse">Overloads.reverse(values)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Overload of:</p>
+          <ul class="overloads">
+            <li><a href="../List/#reverse">List.reverse(list)</a></li>
+            <li><a href="../Str/#reverse">Str.reverse(string)</a></li>
+            <li><a href="../Table/#reverse">Table.reverse(table)</a></li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="select">
+          <code><a href="#select">Overloads.select(collection, keys)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Overload of:</p>
+          <ul class="overloads">
+            <li><a href="../Obj/#select">Obj.select(object, keys)</a></li>
+            <li><a href="../Table/#select">Table.select(table, columns)</a></li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="sortBy">
+          <code><a href="#sortBy">Overloads.sortBy(values, ranker)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Overload of:</p>
+          <ul class="overloads">
+            <li><a href="../List/#sortBy">List.sortBy(list, ranker)</a></li>
+            <li><a href="../Table/#sortBy">Table.sortBy(table, columns)</a></li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="sortDescBy">
+          <code
+            ><a href="#sortDescBy"
+              >Overloads.sortDescBy(values, ranker)</a
+            ></code
+          >
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Overload of:</p>
+          <ul class="overloads">
+            <li>
+              <a href="../List/#sortDescBy">List.sortDescBy(list, ranker)</a>
+            </li>
+            <li>
+              <a href="../Table/#sortDescBy"
+                >Table.sortDescBy(table, columns)</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="take">
+          <code><a href="#take">Overloads.take(values, count)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Overload of:</p>
+          <ul class="overloads">
+            <li><a href="../List/#take">List.take(list, count)</a></li>
+            <li><a href="../Str/#take">Str.take(string, count)</a></li>
+            <li><a href="../Table/#take">Table.take(table, count)</a></li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <h2 class="def-name" id="takeLast">
+          <code><a href="#takeLast">Overloads.takeLast(values, count)</a></code>
+          <span class="tag" title="Global"></span>
+        </h2>
+
+        <div class="def-info">
+          <p>Overload of:</p>
+          <ul class="overloads">
+            <li><a href="../List/#takeLast">List.takeLast(list, count)</a></li>
+            <li><a href="../Str/#takeLast">Str.takeLast(string, count)</a></li>
+            <li>
+              <a href="../Table/#takeLast">Table.takeLast(table, count)</a>
+            </li>
+          </ul>
+        </div>
+
+        <div id="sequencer">
+          <hr />
+          <div>
+            <a href="/stdlib/Obj">
+              <div>Previous</div>
+              Obj
+            </a>
+
+            <a class="next" href="/stdlib/Panic">
+              <div>Next</div>
+              Panic
+            </a>
+          </div>
+        </div>
+      </main>
+    </article>
+  </body>
+</html>
