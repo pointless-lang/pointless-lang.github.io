@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "node --watch-path=. build-scripts/build.js",
+    "build": "node build-scripts/build.js",
+    "build-watch": "node --watch-path=. build-scripts/build.js",
     "fmt": "deno fmt --ignore=docs",
     "lint": "deno lint; stylelint static/css/*",
     "serve": "serve --config serve.json"
