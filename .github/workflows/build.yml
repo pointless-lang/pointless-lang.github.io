@@ -26,11 +26,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-      
-      - name: Install latest Pointless
-        run: npm install github:pointless-lang/pointless
-      
-      - name: Install other dependencies
+
+      - name: Install dependencies
         run: npm ci
 
       - name: Build site
