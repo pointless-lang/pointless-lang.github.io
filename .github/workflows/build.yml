@@ -28,7 +28,7 @@ jobs:
           node-version: "24"
       
       - name: Install latest Pointless
-        run: npm install github:pointless-lang/pointless#main
+        run: npm install https://github.com/pointless-lang/pointless/
         
       - name: Install other dependencies
         run: npm ci
