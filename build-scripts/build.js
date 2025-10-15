@@ -128,11 +128,11 @@ async function buildIndex(node) {
   });
 
   const result = await format(html, { parser: "html" });
-  await writeFile(`docs/${node.path}/index.html`, result);
+  await writeFile(`dist/${node.path}/index.html`, result);
 }
 
 async function buildPage(node) {
-  await mkdir(`docs/${node.path}`, { recursive: true });
+  await mkdir(`dist/${node.path}`, { recursive: true });
   await buildIndex(node);
 
   for (const child of node.children.values()) {
@@ -142,13 +142,13 @@ async function buildPage(node) {
   for (const file of node.files) {
     await cp(
       `pages/${node.path}/${file}`,
-      `docs/${node.path}/${file}`,
+      `dist/${node.path}/${file}`,
     );
   }
 }
 
-await rm("docs", { recursive: true, force: true });
-await mkdir("docs", { recursive: true });
+await rm("dist", { recursive: true, force: true });
+await mkdir("dist", { recursive: true });
 const tree = await getTree("");
 await buildPage(tree);
-await cp("static", "docs", { recursive: true });
+await cp("static", "dist", { recursive: true });
