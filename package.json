@@ -7,6 +7,7 @@
     "build-watch": "node --watch-path=. build-scripts/build.js",
     "fmt": "deno fmt --ignore=dist",
     "lint": "deno lint; stylelint static/css/*",
+    "pull": "git pull && npm r pointless && npm i https://github.com/pointless-lang/pointless/",
     "serve": "serve --config serve.json"
   },
   "stylelint": {
@@ -19,7 +20,7 @@
   "dependencies": {
     "gray-matter": "^4.0.3",
     "marked": ">=15",
-    "pointless": "github:pointless-lang/pointless#main",
+    "pointless": "github:pointless-lang/pointless",
     "prettier": "^3.6.2",
     "serve": "^14.2.4",
     "string-argv": "^0.3.2",
