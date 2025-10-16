@@ -7,11 +7,11 @@ const meta = loadMeta();
 
 function showTags(name, value) {
   if (meta.globals[name] === value || meta.variants[name]) {
-    return `<span class="tag" title="Global"></span>`;
+    return h`<span class="tag" title="Global"></span>`;
   }
 
   if (getType(value) !== "function") {
-    return `<span class="tag" title="Constant"></span>`;
+    return h`<span class="tag" title="Constant"></span>`;
   }
 
   return "";

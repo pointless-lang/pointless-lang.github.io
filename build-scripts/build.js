@@ -55,7 +55,6 @@ async function getTree(path, parent = null) {
 const layouts = {
   collection: (await import("./layouts/collection.js")).build,
   module: (await import("./layouts/module.js")).build,
-  editor: (await import("./layouts/editor.js")).build,
 };
 
 let template;
@@ -89,21 +88,19 @@ async function buildIndex(node) {
   let sequencer;
 
   if (node.depth >= 2) {
-    const prev = node.prev &&
-      h`
-        <a href="/${node.prev.path}">
-          <div>Previous</div>
-          ${node.prev.label}
-        </a>
-      `;
+    const prev = node.prev && h`
+      <a href="/${node.prev.path}">
+        <div>Previous</div>
+        ${node.prev.label}
+      </a>
+    `;
 
-    const next = node.next &&
-      h`
-        <a class="next" href="/${node.next.path}">
-          <div>Next</div>
-          ${node.next.label}
-        </a>
-      `;
+    const next = node.next && h`
+      <a class="next" href="/${node.next.path}">
+        <div>Next</div>
+        ${node.next.label}
+      </a>
+    `;
 
     sequencer = h`
       <div id="sequencer">
