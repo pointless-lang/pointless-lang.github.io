@@ -1,0 +1,69 @@
+body {
+  max-width: none;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+nav {
+  justify-content: left;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+pre {
+  all: revert;
+}
+
+#source {
+  background-color: #fef5ea;
+  border: var(--border);
+  border-color: #f7e3ca;
+  position: relative;
+}
+
+#source textarea {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  outline: none;
+  border: none;
+  padding: 10px;
+  box-sizing: border-box;
+  background: none;
+  color: transparent;
+  caret-color: blue;
+}
+
+#source textarea::selection {
+  background-color: #00f2;
+}
+
+#source pre {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 1px 0;
+  padding: 10px;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: red;
+}
+
+#source textarea, #source pre {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+
+#output {
+  background-color: #f1f1f1;
+  border: var(--border);
+  margin: 0;
+}
