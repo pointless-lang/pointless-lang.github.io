@@ -1,4 +1,5 @@
 body {
+  height: 100vh;
   max-width: none;
   grid-template-rows: auto 1fr;
   gap: 20px;
@@ -13,6 +14,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  min-height: 0;
 }
 
 pre {
@@ -24,6 +26,7 @@ pre {
   border: var(--border);
   border-color: #f7e3ca;
   position: relative;
+  font-family: var(--font-mono);
 }
 
 #source textarea {
@@ -38,6 +41,17 @@ pre {
   background: none;
   color: transparent;
   caret-color: blue;
+  /* 1. Preserve whitespace and force wrap on overflow */
+  white-space: pre-wrap;
+
+  /* 2. Crucial for identical wrapping: Force wrap only at normal word boundaries. */
+  /* This matches the default behavior of the textarea (especially with wrap="soft"). */
+  word-break: normal;
+
+  /* 3. Allow breaking very long words (or URLs) without a hyphen, for overflow */
+  overflow-wrap: break-word;
+  overflow-y: scroll;
+  word-break: break-all;
 }
 
 #source textarea::selection {
@@ -51,8 +65,17 @@ pre {
   margin: 1px 0;
   padding: 10px;
   box-sizing: border-box;
+  /* 1. Preserve whitespace and force wrap on overflow */
   white-space: pre-wrap;
-  word-break: break-word;
+
+  /* 2. Crucial for identical wrapping: Force wrap only at normal word boundaries. */
+  /* This matches the default behavior of the textarea (especially with wrap="soft"). */
+  word-break: normal;
+
+  /* 3. Allow breaking very long words (or URLs) without a hyphen, for overflow */
+  overflow-wrap: break-word;
+  overflow-y: scroll;
+  word-break: break-all;
   color: red;
 }
 
@@ -66,4 +89,8 @@ pre {
   background-color: #f1f1f1;
   border: var(--border);
   margin: 0;
+  padding: 10px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow: scroll;
 }

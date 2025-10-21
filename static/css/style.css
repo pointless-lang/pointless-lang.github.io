@@ -3,9 +3,9 @@
 }
 
 :root {
-  --border: 2px solid #e1e1e1;
+  --gray: #e8e8e8;
+  --border: 2px solid var(--gray);
   --font-mono: "DejaVu Sans Mono", monospace;
-  --gray: #eee;
   --link: #346bed;
   --margin: 30px;
   --text: #222;
@@ -415,7 +415,7 @@ kbd {
   font-family: var(--font-mono);
   color: #333;
   padding: 10px 14px;
-  background-color: #e1e1e1;
+  background-color: var(--gray);
   margin: -14px -14px 14px;
 }
 

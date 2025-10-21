@@ -1,12 +1,13 @@
 import { renderMarkdown } from "pointless/render/render-markdown.js";
 import { h } from "pointless/render/escape.js";
-import { getType } from "pointless/src/values.js";
-import { loadMeta } from "pointless/src/std.js";
+import { getType } from "pointless/lang/values.js";
+import { Std } from "pointless/lang/std.js";
+import { impl } from "pointless/runtime/impl.js";
 
-const meta = loadMeta();
+const { modules, globals, variants } = new Std(impl);
 
 function showTags(name, value) {
-  if (meta.globals[name] === value || meta.variants[name]) {
+  if (globals[name] === value || variants[name]) {
     return h`<span class="tag" title="Global"></span>`;
   }
 
@@ -32,7 +33,7 @@ function getDocStr(func) {
 
 async function showDocs(modName, name, value, consts) {
   if (modName === "Overloads") {
-    const items = meta.variants[name].map((child) => {
+    const items = variants[name].map((child) => {
       const other = child.name.split(".")[0];
       return h`<li><a href="../${other}/#${name}">${child}</a></li>`;
     });
@@ -46,7 +47,7 @@ async function showDocs(modName, name, value, consts) {
   }
 
   if (getType(value) === "function") {
-    const overloader = meta.variants[name] &&
+    const overloader = variants[name] &&
       h`
         <p class="overloads">
           (Accessible as a global through <a href="../Overloads/#${name}">Overloads.${name}</a>)
@@ -69,7 +70,7 @@ export async function build(node) {
   const modName = node.path.split("/").at(-1);
   const defs = [];
 
-  for (const [name, value] of Object.entries(meta.modules[modName])) {
+  for (const [name, value] of Object.entries(modules[modName])) {
     const label = getType(value) === "function" ? value : `${modName}.${name}`;
     const docs = await showDocs(modName, name, value, node.consts);
 
@@ -85,7 +86,7 @@ export async function build(node) {
     `);
   }
 
-  const contents = Object.keys(meta.modules[modName]).map(
+  const contents = Object.keys(modules[modName]).map(
     (name) => h`<li><a href="#${name}">${name}</a></li>`,
   );
 

@@ -28,78 +28,21 @@
       <nav>
         <ul>
           <li><a href="/">Back to Main Site</a></li>
+          <li><button id="run">Run Code</button></li>
+          <li><button>Stop Code</button></li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <div id="source">
-        <pre id="highlight"><code class="ptls"><span class="keyword">fn</span> <span class="function">step</span>(<span class="argument">n</span>)
-  <span class="keyword">if</span> n <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span> <span class="keyword">then</span> n <span class="operator">/</span> <span class="number">2</span> <span class="keyword">else</span> n <span class="operator">*</span> <span class="number">3</span> <span class="operator">+</span> <span class="number">1</span> <span class="keyword">end</span>
-<span class="keyword">end</span>
-
-<span class="keyword">fn</span> <span class="function">hailstone</span>(<span class="argument">n</span>)
-  values <span class="operator">=</span> [n]
-
-  <span class="keyword">while</span> n <span class="operator">&gt;</span> <span class="number">1</span> <span class="keyword">do</span>
-    n <span class="operator">|=</span> <span class="call">step</span>
-    values <span class="operator">|=</span> <span class="call">push</span>(n)
-  <span class="keyword">end</span>
-
-  values
-<span class="keyword">end</span>
-
-bars <span class="operator">=</span> <span class="call">chars</span>(<span class="quotes">"</span><span class="string">▁▂▃▄▅▆▇█</span><span class="quotes">"</span>)
-
-<span class="keyword">fn</span> <span class="function">getBar</span>(<span class="argument">n</span>, <span class="argument">maxVal</span>)
-  scaled <span class="operator">=</span> <span class="number">8</span> <span class="operator">*</span> (n <span class="operator">-</span> <span class="number">1</span>) <span class="operator">/</span> (maxVal <span class="operator">-</span> <span class="number">1</span>)
-  bars[<span class="std">Math</span>.<span class="call">min</span>(<span class="std">Math</span>.<span class="call">floor</span>(scaled), <span class="number">7</span>)]
-<span class="keyword">end</span>
-
-<span class="keyword">fn</span> <span class="function">chart</span>(<span class="argument">values</span>)
-  values
-    <span class="operator">$</span> <span class="call">getBar</span>(<span class="call">max</span>(values))
-    <span class="operator">|</span> <span class="call">join</span>(<span class="quotes">"</span><span class="quotes">"</span>)
-<span class="keyword">end</span>
-
-<span class="call">hailstone</span>(<span class="number">78</span>)
-  <span class="operator">|</span> <span class="call">chart</span>
-  <span class="operator">|</span> <span class="call">print</span></code></pre>
-        <textarea spellcheck="false">fn step(n)
-  if n % 2 == 0 then n / 2 else n * 3 + 1 end
-end
-
-fn hailstone(n)
-  values = [n]
-
-  while n > 1 do
-    n |= step
-    values |= push(n)
-  end
-
-  values
-end
-
-bars = chars("▁▂▃▄▅▆▇█")
-
-fn getBar(n, maxVal)
-  scaled = 8 * (n - 1) / (maxVal - 1)
-  bars[Math.min(Math.floor(scaled), 7)]
-end
-
-fn chart(values)
-  values
-    $ getBar(max(values))
-    | join("")
-end
-
-hailstone(78)
-  | chart
-  | print
-</textarea>
-      </div>
+      <div id="source" class="ptls"><!-- 
+        <pre><code class="ptls"></code></pre>
+        <textarea spellcheck="false" wrap="off"></textarea>
+       --></div>
 
       <pre id="output"></pre>
     </main>
+
+    <script type="module" src="editor.js"></script>
   </body>
 </html>
