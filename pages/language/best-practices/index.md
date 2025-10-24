@@ -4,9 +4,8 @@ subtitle: Guidelines for writing clear and concise Pointless code
 ---
 
 These best-practices are meant to help you make effective use of the language
-features of Pointless. They are recommendations, not strict rules. You can find
-detailed descriptions of the language features covered here in the
-[language reference](/language).
+features of Pointless. You can find detailed descriptions of the language
+features covered here in the [language reference](/language).
 
 Note that this guide focuses on recommendations relating to the core language,
 rather than [the standard library](/stdlib).
