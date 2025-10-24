@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "node build-scripts/build.js && npm run runtime",
+    "build": "node build/build.js && npm run bundle",
     "fmt": "deno fmt --ignore=dist",
     "lint": "deno lint; stylelint static/css/*",
     "pull": "git pull && npm r pointless && npm i https://github.com/pointless-lang/pointless/",
-    "runtime": "esbuild --bundle --format=esm runtime/runtime.js --outfile=dist/editor/runtime.js",
+    "bundle": "esbuild --bundle --format=esm bundle.js --outfile=dist/bundle.js",
     "serve": "serve --config serve.json"
   },
   "stylelint": {

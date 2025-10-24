@@ -21,75 +21,21 @@ pre {
   all: revert;
 }
 
-#source {
-  background-color: #fef5ea;
+#editor, #output {
+  padding: 14px;
   border: var(--border);
+}
+
+#editor {
+  background-color: #fef5ea;
   border-color: #f7e3ca;
   position: relative;
   font-family: var(--font-mono);
 }
 
-#source textarea {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  resize: none;
-  outline: none;
-  border: none;
-  padding: 10px;
-  box-sizing: border-box;
-  background: none;
-  color: transparent;
-  caret-color: blue;
-  /* 1. Preserve whitespace and force wrap on overflow */
-  white-space: pre-wrap;
-
-  /* 2. Crucial for identical wrapping: Force wrap only at normal word boundaries. */
-  /* This matches the default behavior of the textarea (especially with wrap="soft"). */
-  word-break: normal;
-
-  /* 3. Allow breaking very long words (or URLs) without a hyphen, for overflow */
-  overflow-wrap: break-word;
-  overflow-y: scroll;
-  word-break: break-all;
-}
-
-#source textarea::selection {
-  background-color: #00f2;
-}
-
-#source pre {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  margin: 1px 0;
-  padding: 10px;
-  box-sizing: border-box;
-  /* 1. Preserve whitespace and force wrap on overflow */
-  white-space: pre-wrap;
-
-  /* 2. Crucial for identical wrapping: Force wrap only at normal word boundaries. */
-  /* This matches the default behavior of the textarea (especially with wrap="soft"). */
-  word-break: normal;
-
-  /* 3. Allow breaking very long words (or URLs) without a hyphen, for overflow */
-  overflow-wrap: break-word;
-  overflow-y: scroll;
-  word-break: break-all;
-  color: red;
-}
-
-#source textarea, #source pre {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  line-height: 1.25;
-}
-
 #output {
   background-color: #f1f1f1;
-  border: var(--border);
   margin: 0;
-  padding: 10px;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   overflow: scroll;

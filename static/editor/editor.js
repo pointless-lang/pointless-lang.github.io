@@ -1,31 +1,22 @@
-import { tokenize } from "./pointless/lang/tokenizer.js";
-import { parse } from "./pointless/lang/parser.js";
-import { Panic } from "./pointless/lang/panic.js";
-import { highlight } from "./pointless/render/highlight.js";
-import { show } from "./pointless/lang/repr.js";
-import { CodeJar, makeRuntime } from "./runtime.js";
+import { CodeJar, ptls } from "/bundle.js";
 
-const hl = (editor) => {
-  const tokens = tokenize("editor", editor.textContent);
-  editor.innerHTML = highlight(tokens);
-};
+function highlight() {
+  const tokens = ptls.tokenize("editor", jar.toString());
+  editor.innerHTML = ptls.highlight(tokens);
+}
 
-const jar = CodeJar(document.querySelector("#source"), hl);
+const jar = CodeJar(document.querySelector("#editor"), highlight);
 
-// const textarea = document.querySelector("#source textarea");
-// const highlighted = document.querySelector("#source pre code");
-// const output = document.querySelector("#output");
-// const run = document.querySelector("#run");
+function saveSource() {
+  localStorage.setItem("source", jar.toString());
+}
 
-// textarea.oninput = async () => {
-//   const tokens = tokenize("editor", textarea.value);
-//   highlighted.innerHTML = highlight(tokens);
+jar.updateCode(
+  new URLSearchParams(location.search).get("source") ??
+    localStorage.getItem("source") ?? "",
+);
 
-//   const statements = parse(tokens);
-//   // await (await spawnStd()).eval(statements)
-// };
-
-// await textarea.oninput();
+saveSource();
 
 const Console = {
   clear() {
@@ -33,7 +24,7 @@ const Console = {
   },
 
   print(value) {
-    output.innerText += show(value) + "\n";
+    output.innerText += ptls.show(value) + "\n";
   },
 
   write(string) {
@@ -41,19 +32,17 @@ const Console = {
   },
 };
 
-const shim = { Console };
+jar.onUpdate(saveSource);
 
 run.onclick = async () => {
   try {
-    const tokens = tokenize("editor", jar.toString());
-    const statements = parse(tokens);
-    const runtime = makeRuntime(shim, {});
+    Console.clear();
+    const tokens = ptls.tokenize("editor", jar.toString());
+    const statements = ptls.parse(tokens);
+    const runtime = new ptls.Runtime({ ...ptls.impl, Console }, {});
     await runtime.spawnEnv().eval(statements);
   } catch (err) {
-    console.log(err.toString());
+    output.innerText = err.toString();
+    throw err;
   }
 };
-
-// textarea.onscroll = () => {
-
-// }
