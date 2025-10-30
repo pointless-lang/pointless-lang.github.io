@@ -1,20 +1,32 @@
 import { CodeJar, ptls } from "/bundle.js";
 
+const editor = document.querySelector("#editor");
+const run = document.querySelector("#run");
+const stop = document.querySelector("#stop");
+const output = document.querySelector("#output");
+
 function highlight() {
   const tokens = ptls.tokenize("editor", jar.toString());
   editor.innerHTML = ptls.highlight(tokens);
 }
 
-const jar = CodeJar(document.querySelector("#editor"), highlight);
+const jar = CodeJar(editor, highlight);
 
 function saveSource() {
   localStorage.setItem("source", jar.toString());
 }
 
-jar.updateCode(
-  new URLSearchParams(location.search).get("source") ??
-    localStorage.getItem("source") ?? "",
-);
+const sourceUrl = new URLSearchParams(location.search).get("source");
+let source;
+
+if (sourceUrl) {
+  const response = await fetch(sourceUrl);
+  source = await response.text();
+} else {
+  source = localStorage.getItem("source") ?? "";
+}
+
+jar.updateCode(source);
 
 saveSource();
 
