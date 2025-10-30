@@ -34,15 +34,25 @@ const Console = {
 
 jar.onUpdate(saveSource);
 
+const runtime = new ptls.Runtime({ ...ptls.impl, Console }, {});
+
 run.onclick = async () => {
   try {
+    runtime.halted = true;
+    await new Promise((resolve) => setTimeout(resolve, 50));
     Console.clear();
+
     const tokens = ptls.tokenize("editor", jar.toString());
     const statements = ptls.parse(tokens);
-    const runtime = new ptls.Runtime({ ...ptls.impl, Console }, {});
+    runtime.halted = false;
+
     await runtime.spawnEnv().eval(statements);
   } catch (err) {
-    output.innerText = err.toString();
+    output.innerText += err.toString();
     throw err;
   }
+};
+
+stop.onclick = () => {
+  runtime.halted = true;
 };
