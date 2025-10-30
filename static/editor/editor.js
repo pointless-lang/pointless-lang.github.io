@@ -17,14 +17,16 @@ function saveSource() {
 }
 
 const sourceUrl = new URLSearchParams(location.search).get("source");
-let source;
 
-if (sourceUrl) {
-  const response = await fetch(sourceUrl);
-  source = await response.text();
-} else {
-  source = localStorage.getItem("source") ?? "";
+async function loadUrl(url) {
+  const response = await fetch(url);
+  return await response.text();
 }
+
+const source = sourceUrl
+  ? await loadUrl(sourceUrl)
+  : localStorage.getItem("source") ??
+    await loadUrl("/examples/hailstone/hailstone.ptls");
 
 jar.updateCode(source);
 
