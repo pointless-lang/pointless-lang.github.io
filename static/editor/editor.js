@@ -23,8 +23,8 @@ const Console = {
     output.innerText = "";
   },
 
-  print(value) {
-    output.innerText += ptls.show(value) + "\n";
+  async print(value) {
+    output.innerText += await ptls.repr(value, { rawStr: true }) + "\n";
   },
 
   write(string) {

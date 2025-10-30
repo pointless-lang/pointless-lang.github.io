@@ -4,7 +4,7 @@ import { tokenize } from "./node_modules/pointless/lang/tokenizer.js";
 import { parse } from "./node_modules/pointless/lang/parser.js";
 import { Panic } from "./node_modules/pointless/lang/panic.js";
 import { highlight } from "./node_modules/pointless/render/highlight.js";
-import { show } from "./node_modules/pointless/lang/repr.js";
+import { repr } from "./node_modules/pointless/lang/repr.js";
 import { Runtime } from "./node_modules/pointless/runtime/runtime.js";
 
 const impl = {
@@ -28,4 +28,4 @@ const impl = {
   Test: await import("./node_modules/pointless/std/Test.js"),
 };
 
-export const ptls = { tokenize, parse, Panic, highlight, show, Runtime, impl };
+export const ptls = { tokenize, parse, Panic, highlight, repr, Runtime, impl };
