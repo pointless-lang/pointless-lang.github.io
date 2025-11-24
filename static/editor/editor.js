@@ -88,7 +88,7 @@ run.onclick = async () => {
 
     await runtime.spawnEnv().eval(statements);
   } catch (err) {
-    output.innerText += await err.repr();
+    output.innerText += String(err);
     throw err;
   }
 };
