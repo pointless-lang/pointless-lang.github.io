@@ -64,13 +64,13 @@ const Console = {
 
 jar.onUpdate((code) => {
   if (sourceUrl() && code !== source) {
-    window.history.pushState({}, "", window.location.pathname);
+    globalThis.history.pushState({}, "", globalThis.location.pathname);
   } else {
     saveSource();
   }
 });
 
-window.onpopstate = () => {
+globalThis.onpopstate = () => {
   jar.updateCode(source);
 };
 
