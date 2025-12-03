@@ -62,7 +62,7 @@ To implement the cipher, we start by defining the variable `alphabet` as a list
 containing the `26` letters of the English alphabet. We do this using the
 `chars(string)` function to split a string of these letters into a list.
 
-```ptls --compact
+```ptls --mode compact
 alphabet = chars("abcdefghijklmnopqrstuvwxyz")
 ```
 

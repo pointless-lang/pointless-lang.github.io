@@ -46,7 +46,7 @@ Wikipedia doesn't give us a way to export table data, but I found a good
 Wikipedia article. I used this tool to extract and save the data in the file
 [pa-cities.csv](pa-cities.csv).
 
-```ptls --raw --hide --max-height 400
+```ptls --mode raw --hide --max-height 400
 import "text:pa-cities.csv"
 ```
 
