@@ -54,7 +54,7 @@ const Console = {
   },
 
   async print(value) {
-    output.innerText += await ptls.repr(value, { rawStr: true }) + "\n";
+    output.innerText += await ptls.repr(value, "pretty", true) + "\n";
   },
 
   write(string) {
