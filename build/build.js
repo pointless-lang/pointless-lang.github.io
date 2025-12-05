@@ -149,3 +149,4 @@ await mkdir("dist", { recursive: true });
 const tree = await getTree("");
 await buildPage(tree);
 await cp("static", "dist", { recursive: true });
+await cp("node_modules/pointless/examples", "dist/examples", { recursive: true });

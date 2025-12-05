@@ -64,7 +64,7 @@ const Console = {
 
 jar.onUpdate((code) => {
   if (sourceUrl() && code !== source) {
-    globalThis.history.pushState({}, "", globalThis.location.pathname);
+    // globalThis.history.pushState({}, "", globalThis.location.pathname);
   } else {
     saveSource();
   }
@@ -74,7 +74,27 @@ globalThis.onpopstate = () => {
   jar.updateCode(source);
 };
 
-const runtime = new ptls.Runtime({ ...ptls.impl, Console }, {});
+const loader = {
+  resolve(root, path) {
+    return (sourceUrl() ?? "").replace(/\/[^/]*$/, "") + "/" + path;
+  },
+
+  async realPath(path) {
+    return path;
+  },
+
+  async readRaw(path) {
+    const response = await fetch(path);
+    return await response.bytes();
+  },
+
+  async readTxt(path) {
+    const response = await fetch(path);
+    return await response.text();
+  },
+};
+
+const runtime = new ptls.Runtime({ ...ptls.impl, Console }, loader);
 
 run.onclick = async () => {
   try {
@@ -82,7 +102,8 @@ run.onclick = async () => {
     await new Promise((resolve) => setTimeout(resolve, 50));
     Console.clear();
 
-    const tokens = ptls.tokenize("editor", jar.toString());
+    const path = sourceUrl() ?? "editor";
+    const tokens = ptls.tokenize(path, jar.toString());
     const statements = ptls.parse(tokens);
     runtime.halted = false;
 
