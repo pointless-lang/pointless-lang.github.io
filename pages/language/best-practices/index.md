@@ -116,19 +116,21 @@ Use valid identifiers as record object keys and table columns.
 ```ptls --no-eval --class yes
 { userName: "Clementine", userId: 0 }
 
-Table.of([
-  { userName: "Clementine", userId: 0 },
-  { userName: "Ducky", userId: 1 },
-])
+#{
+  userName     , userId
+  "Clementine" ,      0 
+  "Ducky"      ,      1 
+}
 ```
 
 ```ptls --no-eval --class no
 { "user name": "Clementine", "user-id": 0 }
 
-Table.of([
-  { "user name": "Clementine", "user-id": 0 },
-  { "user name": "Ducky", "user-id": 1 },
-])
+#{
+  "userName"   , "userId"
+  "Clementine" ,        0 
+  "Ducky"      ,        1 
+}
 ```
 
 ## Use Key Punning
@@ -161,12 +163,13 @@ city["name"]
 Use tables to store lists of record objects with matching keys.
 
 ```ptls --no-eval --class yes
-Table.of([
-  { city: "New York", state: "NY", population: 8478072 },
-  { city: "Los Angeles", state: "CA", population: 3878704 },
-  { city: "Chicago", state: "IL", population: 2721308 },
-  { city: "Houston", state: "TX", population: 2390125 },
-])
+#{
+  city          , state , population
+  "New York"    , "NY"  ,    8478072
+  "Los Angeles" , "CA"  ,    3878704
+  "Chicago"     , "IL"  ,    2721308
+  "Houston"     , "TX"  ,    2390125
+}
 ```
 
 ```ptls --no-eval --class no

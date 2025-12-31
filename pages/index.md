@@ -5,7 +5,11 @@ subtitle: A Language for Learning
 
 ```ptls
 fn step(n)
-  if n % 2 == 0 then n / 2 else n * 3 + 1 end
+  if n % 2 == 0 then
+    n / 2
+  else
+    n * 3 + 1
+  end
 end
 
 fn hailstone(n)
@@ -32,7 +36,7 @@ fn chart(values)
     | join("")
 end
 
-hailstone(78)
+hailstone(7)
   | chart
   | print
 ```
