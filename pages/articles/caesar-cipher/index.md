@@ -13,7 +13,7 @@ alphabet = chars("abcdefghijklmnopqrstuvwxyz")
 -- Shift a single letter 13 places
 
 fn shift(letter)
-  index = List.indexOf(Str.toLower(letter), alphabet)
+  index = List.indexOf(alphabet, Str.toLower(letter))
 
   if index == none then
     letter
@@ -71,7 +71,7 @@ We can use the `List.indexOf` function to get the index of a character within
 have index `8` (Pointless lists are _0-indexed_).
 
 ```ptls
-List.indexOf( "i",alphabet)
+List.indexOf(alphabet, "i")
 ```
 
 In addition to finding the index of a letter, we can also do the reverse: get a
@@ -92,7 +92,7 @@ We can write a few lines of code that do just that.
 
 ```ptls
 letter = "i"
-index = List.indexOf(letter, alphabet)
+index = List.indexOf(alphabet, letter)
 shifted = alphabet[(index + 13) % 26]
 ```
 
@@ -108,7 +108,7 @@ single letter and return the corresponding ROT13 encoded letter. We can use the
 
 ```ptls
 fn shift(letter)
-  index = List.indexOf(letter, alphabet)
+  index = List.indexOf(alphabet, letter)
   shifted = alphabet[(index + 13) % 26]
   shifted
 end
@@ -220,7 +220,7 @@ Currently, our code looks like this.
 alphabet = chars("abcdefghijklmnopqrstuvwxyz")
 
 fn shift(letter)
-  index = List.indexOf(letter, alphabet)
+  index = List.indexOf(alphabet, letter)
   shifted = alphabet[(index + 13) % 26]
   shifted
 end
@@ -240,7 +240,7 @@ having `shift` convert `letter` to lowercase before finding its index.
 
 ```ptls
 fn shift(letter)
-  index = List.indexOf(Str.toLower(letter), alphabet)
+  index = List.indexOf(alphabet, Str.toLower(letter))
   shifted = alphabet[(index + 13) % 26]
   shifted
 end
@@ -271,7 +271,7 @@ whether `letter` is uppercase and convert `shifted` to uppercase when necessary.
 
 ```ptls
 fn shift(letter)
-  index = List.indexOf(Str.toLower(letter), alphabet)
+  index = List.indexOf(alphabet, Str.toLower(letter))
   shifted = alphabet[(index + 13) % 26]
 
   if Str.isUpper(letter) then
@@ -300,7 +300,7 @@ if it did.
 
 ```ptls
 fn shift(letter)
-  index = List.indexOf(Str.toLower(letter), alphabet)
+  index = List.indexOf(alphabet, Str.toLower(letter))
 
   if index == none then
     letter

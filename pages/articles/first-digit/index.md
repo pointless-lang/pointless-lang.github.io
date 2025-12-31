@@ -109,13 +109,13 @@ population.
 cities.population $ chars(Str.of(arg))[0]
 ```
 
-Finally, we'll use `List.counts` to get the occurrence count and share for each
+Finally, we'll use `List.countAll` to get the occurrence count and share for each
 value.
 
 ```ptls
 cities.population
   $ chars(Str.of(arg))[0]
-  | List.counts
+  | List.countAll
 ```
 
 Now we have the frequency information (in the `share` column) for each starting
@@ -129,7 +129,7 @@ we'll go back and store our table in a new variable.
 ```ptls --no-echo
 digitStats = cities.population
   $ chars(Str.of(arg))[0]
-  | List.counts
+  | List.countAll
 ```
 
 We can use this new variable to access the values in the `share` column as a
@@ -176,7 +176,7 @@ cities = import "csv:pa-cities.csv"
 
 digitStats = cities.population
   $ chars(Str.of(arg))[0]
-  | List.counts
+  | List.countAll
 
 digitStats.share $= roundTo(arg * 100, 1)
 
