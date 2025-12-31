@@ -51,14 +51,17 @@ saveSource();
 const Console = {
   clear() {
     output.innerText = "";
+    return null;
   },
 
   async print(value) {
     output.innerText += await ptls.repr(value, "pretty", true) + "\n";
+    return value;
   },
 
   write(string) {
     output.innerText += string;
+    return string;
   },
 };
 
