@@ -165,28 +165,17 @@ h3 code {
   list-style: none;
 }
 
-.std {
-  font-family: var(--font-mono);
+.contents li {
+  display: inline-block;
 }
 
-.std .tag {
-  padding: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 4px;
-  margin-top: 3px;
+.contents li:not(:last-child)::after {
+  content: ", ";
+  font-weight: normal;
+}
 
-  &::before {
-    display: none;
-  }
-
-  &[title="Global"] {
-    background-color: #d4b0ff;
-  }
-
-  &[title="Constant"] {
-    background-color: #a1d2fb;
-  }
+.std {
+  font-family: var(--font-mono);
 }
 
 .page-links {
@@ -205,9 +194,7 @@ h3 code {
 }
 
 .page-links li {
-  border: var(--border);
-  padding: 12px 16px;
-  border-radius: var(--radius);
+  padding-block: 6px;
 }
 
 .page-links strong {
@@ -421,10 +408,6 @@ kbd {
 
 .def-name {
   font-size: 1.16rem;
-}
-
-.def-info {
-  margin-left: 24px;
 }
 
 .tag {
