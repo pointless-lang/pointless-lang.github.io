@@ -1,4 +1,4 @@
-import { headerId, renderMarkdown } from "pointless/render/render-markdown.js";
+import { renderMarkdown } from "pointless/render/render-markdown.js";
 import { h, serialize } from "pointless/render/escape.js";
 import { cp, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import matter from "gray-matter";
@@ -62,18 +62,9 @@ let template;
 async function buildIndex(node) {
   const generated = await layouts[node.layout]?.(node) ?? "";
 
-  const contents = node.content
-    .matchAll(/^##(.*)/gm)
-    .map(([, title]) => h`<li><a href="#${headerId(title)}">${title}</a></li>`);
-
-  const withTOC = node.content.replace(
-    "[[_TOC_]]",
-    h`<ol class="contents">$${contents}</ol>`,
-  );
-
   const intro = await renderMarkdown(
     `pages/${node.path}/index.md`,
-    withTOC,
+    node.content,
   );
 
   const main = h`

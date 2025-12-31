@@ -10,8 +10,6 @@ features covered here in the [language reference](/language).
 Note that this guide focuses on recommendations relating to the core language,
 rather than [the standard library](/stdlib).
 
-[[_TOC_]]
-
 ## Use Compound Assignment
 
 Use compound assignment operators when possible.
