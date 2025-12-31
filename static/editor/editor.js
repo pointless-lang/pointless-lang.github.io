@@ -78,11 +78,11 @@ globalThis.onpopstate = () => {
 };
 
 const loader = {
-  resolve(root, path) {
+  resolve(_root, path) {
     return (sourceUrl() ?? "").replace(/\/[^/]*$/, "") + "/" + path;
   },
 
-  async realPath(path) {
+  realPath(path) {
     return path;
   },
 

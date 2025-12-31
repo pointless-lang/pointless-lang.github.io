@@ -109,8 +109,8 @@ population.
 cities.population $ chars(Str.of(arg))[0]
 ```
 
-Finally, we'll use `List.countAll` to get the occurrence count and share for each
-value.
+Finally, we'll use `List.countAll` to get the occurrence count and share for
+each value.
 
 ```ptls
 cities.population
