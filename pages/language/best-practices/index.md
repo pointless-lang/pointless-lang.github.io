@@ -24,7 +24,7 @@ score = score + 1
 price = round(price)
 ```
 
-## Separate Statements
+## Put Statements on Separate Lines
 
 Put statements on separate lines.
 
@@ -95,9 +95,9 @@ player.health += 1
 player += { health: player.health + 1 }
 ```
 
-## Omit String Key Quotes
+## Omit Quotes from Keys
 
-Omit quotes for keys in record objects.
+Omit quotes for string keys in record objects.
 
 ```ptls --no-eval --class yes
 { city: "Chicago", state: "IL", population: 2721308 }
@@ -125,9 +125,9 @@ Use valid identifiers as record object keys and table columns.
 { "user name": "Clementine", "user-id": 0 }
 
 #{
-  "userName"   , "userId"
-  "Clementine" ,        0 
-  "Ducky"      ,        1 
+  "user name"  , "user-id"
+  "Clementine" ,         0 
+  "Ducky"      ,         1 
 }
 ```
 
@@ -179,6 +179,48 @@ Use tables to store lists of record objects with matching keys.
 ]
 ```
 
+## Align Table Columns
+
+Align and pad table columns for readability.
+
+```ptls --no-eval --class yes
+#{
+  city          , state , population
+  "New York"    , "NY"  ,    8478072
+  "Los Angeles" , "CA"  ,    3878704
+  "Chicago"     , "IL"  ,    2721308
+  "Houston"     , "TX"  ,    2390125
+}
+```
+
+```ptls --no-eval --class yes
+#{
+  city, state, population
+  "New York", "NY", 8478072
+  "Los Angeles", "CA", 3878704
+  "Chicago", "IL", 2721308
+  "Houston", "TX", 2390125
+}
+```
+
+## Put Table Rows on Separate Lines
+
+Put table rows on separate lines.
+
+```ptls --no-eval --class yes
+#{
+  city          , state , population
+  "New York"    , "NY"  ,    8478072
+  "Los Angeles" , "CA"  ,    3878704
+  "Chicago"     , "IL"  ,    2721308
+  "Houston"     , "TX"  ,    2390125
+}
+```
+
+```ptls --no-eval --class no
+#{ city, state , population; "New York", "NY", 8478072; "Los Angeles", "CA", 3878704; "Chicago", "IL", 2721308; "Houston", "TX", 2390125 }
+```
+
 ## Use Row Lookups
 
 Use the row lookup feature of tables to find individual rows based on unique
@@ -216,7 +258,7 @@ isEmpty(playlist)
 len(playlist) == 0
 ```
 
-## Use Push for Single Items
+## Use Push to Add a Single Item to a List
 
 Use `push` to append a single item to a list or table instead of concatenation.
 
@@ -266,7 +308,7 @@ Use string interpolation instead of concatenation.
 "Hello " + person.name + "!"
 ```
 
-## Omit Interpolation Parens
+## Omit Interpolation Parentheses
 
 Omit unnecessary parentheses around interpolated variables.
 
@@ -382,7 +424,7 @@ if Math.isInt(quantity) == false then
 end
 ```
 
-## Use Boolean Parentheses
+## Use Parentheses in Complex Boolean Expressions
 
 Use parentheses in expressions that mix different boolean operators (`and`,
 `or`, or `not`).
@@ -395,7 +437,7 @@ isGood and (isFast or isCheap)
 isGood and isFast or isCheap
 ```
 
-## Use Set Membership
+## Use Set When Checking Membership
 
 Use sets instead of lists to store a large number of values on which you will be
 calling `has`.
@@ -519,7 +561,7 @@ numbers ? Math.isEven $ arg / 2
 List.map(List.filter(numbers, Math.isEven), fn(n) n * 2 end)
 ```
 
-## Omit Pipe Parentheses
+## Omit Parentheses in Pipelines
 
 Omit parentheses for single-argument functions in pipelines.
 
@@ -618,7 +660,7 @@ strings | join(arg[0])
 strings | join(arg, arg[0])
 ```
 
-## Put Primary Parameter First
+## Put the Most Important Parameter First
 
 Put the most important parameter first in a function definition. If a function
 could be described as transforming, accessing, or analyzing one of its
@@ -750,7 +792,7 @@ fn findOdd(numbers)
 end
 ```
 
-## Use Specific Functions
+## Use the Right Function
 
 If a function exists that specifically accomplishes a desired task, choose it
 over more general functions.
@@ -777,18 +819,20 @@ print("Hello world!")
 Console.print("Hello world!")
 ```
 
-## Don't Shadow Globals
+## Don't Shadow Built-In Definitions
 
-Don't shadow global built-in functions.
+Don't shadow global built-in functions or module names.
 
 ```ptls --no-eval --class yes
 message = "Enter a rating 1-5: "
 maximum = 5
+list = []
 ```
 
 ```ptls --no-eval --class no
 prompt = "Enter a rating 1-5: "
 max = 5
+List = []
 ```
 
 ## Use Camel Case
@@ -835,7 +879,7 @@ n = .1
 ## Use Trailing Commas
 
 When splitting a piece of comma-separated code across multiple lines, include a
-trailing comma on the last line before the closing delimeter.
+trailing comma on the last line before the closing delimiter.
 
 ```ptls --no-eval --class yes
 days = [
@@ -907,7 +951,7 @@ end
 maximum
 ```
 
-## Use Fixed-Path Imports
+## Use Imports to Read from a Known File
 
 Use `import` with the appropriate [specifier](/language/import/#specifiers) to
 load files from a fixed path relative to your source file.
