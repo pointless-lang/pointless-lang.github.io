@@ -258,6 +258,35 @@ isEmpty(playlist)
 len(playlist) == 0
 ```
 
+## Use the Not-In Operator
+
+Use the not-in `!in` operator to write `.. !in ..` instead of `not .. in ..`.
+
+```ptls --no-eval --class yes
+guess !in words
+```
+
+```ptls --no-eval --class no
+not guess in words
+```
+
+## Use the Fallback Operator
+
+Use the fallback operator `??` to avoid `.. !in ..` or `.. == none` conditions.
+
+```ptls --no-eval --class yes
+size = beverage.size ?? "small"
+```
+
+```ptls --no-eval --class no
+size =
+  if "size" !in beverage or beverage.size == none then
+    "small"
+  else
+    beverage.size
+  end
+```
+
 ## Use Push to Append to a List
 
 Use `push` to append a single item to a list or table instead of concatenation.
@@ -809,7 +838,7 @@ split("Hello world!", "")
 dropLast(items, 1)
 ```
 
-## Omit Module Prefixes
+## Omit Module Prefixes for Globals
 
 Omit module prefixes when calling global functions.
 
@@ -823,7 +852,7 @@ Console.print("Hello world!")
 
 ## Don't Shadow Built-In Definitions
 
-Don't shadow global built-in functions or module names.
+Don't shadow built-in global functions or module names.
 
 ```ptls --no-eval --class yes
 message = "Enter a rating 1-5: "
