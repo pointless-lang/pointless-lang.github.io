@@ -85,7 +85,7 @@ card = [10, "hearts"]
 
 ## Don't Concatenate to Update
 
-Use variable updates instead of object concatenation to update record objects.
+Use variable updates instead of object concatenation to update objects.
 
 ```ptls --no-eval --class yes
 player.health += 1
@@ -95,21 +95,9 @@ player.health += 1
 player += { health: player.health + 1 }
 ```
 
-## Omit Quotes from Keys
-
-Omit quotes for string keys in record objects.
-
-```ptls --no-eval --class yes
-{ city: "Chicago", state: "IL", population: 2721308 }
-```
-
-```ptls --no-eval --class no
-{ "city": "Chicago", "state": "IL", "population": 2721308 }
-```
-
 ## Use Identifier Keys
 
-Use valid identifiers as record object keys and table columns.
+Use valid identifiers as record keys and table columns.
 
 ```ptls --no-eval --class yes
 { userName: "Clementine", userId: 0 }
@@ -129,6 +117,18 @@ Use valid identifiers as record object keys and table columns.
   "Clementine" ,         0 
   "Ducky"      ,         1 
 }
+```
+
+## Omit Quotes from Keys
+
+Omit quotes for string in record objects.
+
+```ptls --no-eval --class yes
+{ city: "Chicago", state: "IL", population: 2721308 }
+```
+
+```ptls --no-eval --class no
+{ "city": "Chicago", "state": "IL", "population": 2721308 }
 ```
 
 ## Use Key Punning
@@ -218,7 +218,7 @@ Put table rows on separate lines.
 ```
 
 ```ptls --no-eval --class no
-#{ city, state , population; "New York", "NY", 8478072; "Los Angeles", "CA", 3878704; "Chicago", "IL", 2721308; "Houston", "TX", 2390125 }
+#{ city, state, population; "New York", "NY", 8478072; "Los Angeles", "CA", 3878704; "Chicago", "IL", 2721308; "Houston", "TX", 2390125 }
 ```
 
 ## Use Row Lookups
@@ -258,7 +258,7 @@ isEmpty(playlist)
 len(playlist) == 0
 ```
 
-## Use Push to Add a Single Item to a List
+## Use Push to Append to a List
 
 Use `push` to append a single item to a list or table instead of concatenation.
 
@@ -424,7 +424,7 @@ if Math.isInt(quantity) == false then
 end
 ```
 
-## Use Parentheses in Complex Boolean Expressions
+## Use Parentheses in Mixed Boolean Expressions
 
 Use parentheses in expressions that mix different boolean operators (`and`,
 `or`, or `not`).
@@ -554,7 +554,9 @@ Use the map `$` and filter `?` operators instead of `map` and `filter`
 functions.
 
 ```ptls --no-eval --class yes
-numbers ? Math.isEven $ arg / 2
+numbers
+  ? Math.isEven
+  $ arg / 2
 ```
 
 ```ptls --no-eval --class no
@@ -794,8 +796,8 @@ end
 
 ## Use the Right Function
 
-If a function exists that specifically accomplishes a desired task, choose it
-over more general functions.
+If a function exists that accomplishes a specific task, choose it over more
+general functions.
 
 ```ptls --no-eval --class yes
 chars("Hello world!")
@@ -957,11 +959,12 @@ Use `import` with the appropriate [specifier](/language/import/#specifiers) to
 load files from a fixed path relative to your source file.
 
 ```ptls --no-eval --class yes
+-- Looks for 'alice.txt' in the source directory
 story = import "text:alice.txt"
 ```
 
 ```ptls --no-eval --class no
--- Won't work if script is called outside the source directory
+-- Looks for 'alice.txt' in the call directory
 story = Fs.read("alice.txt")
 ```
 
