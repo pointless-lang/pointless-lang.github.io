@@ -161,6 +161,10 @@ h3 code {
 
 .contents {
   font-weight: bold;
+  font-family: var(--font-mono);
+}
+
+.contents ol, .contents ul {
   padding: 0;
   list-style: none;
 }
@@ -172,10 +176,6 @@ h3 code {
 .contents li:not(:last-child)::after {
   content: ", ";
   font-weight: normal;
-}
-
-.std {
-  font-family: var(--font-mono);
 }
 
 .page-links {
@@ -248,7 +248,6 @@ hr {
 table {
   border-collapse: collapse;
   table-layout: fixed;
-  margin-inline: auto;
   background-color: white;
   margin-block: var(--margin);
 }

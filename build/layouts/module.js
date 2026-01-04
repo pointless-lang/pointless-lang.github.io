@@ -91,7 +91,9 @@ export async function build(node) {
   );
 
   return h`
-    <ol class="contents std">$${contents}</ol>
+    <hr />
+    <h2>Module Contents</h2>
+    <div class="contents"><ol>$${contents}</ol></div>
     $${defs}
   `;
 }
