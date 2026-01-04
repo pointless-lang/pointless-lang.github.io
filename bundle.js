@@ -16,7 +16,6 @@ const impl = {
   // Fs: await import("./node_modules/pointless/std/Fs.js"),
   List: await import("./node_modules/pointless/std/List.js"),
   Math: await import("./node_modules/pointless/std/Math.js"),
-  None: await import("./node_modules/pointless/std/None.js"),
   Obj: await import("./node_modules/pointless/std/Obj.js"),
   Panic: await import("./node_modules/pointless/std/Panic.js"),
   Rand: await import("./node_modules/pointless/std/Rand.js"),
