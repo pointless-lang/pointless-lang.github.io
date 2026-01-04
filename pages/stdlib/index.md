@@ -16,8 +16,8 @@ access the `toLower` function from the `Str` module using `Str.toLower`.
 Str.toLower("Pointless") -- Call the `toLower` function from the `Str` module
 ```
 
-Some commonly used standard library functions, like `Str.chars`, are available as
-[globals](#global-functions), and can be called without specifying a module
+Some commonly used standard library functions, like `Str.chars`, are available
+as [globals](#global-functions), and can be called without specifying a module
 name.
 
 ```ptls
