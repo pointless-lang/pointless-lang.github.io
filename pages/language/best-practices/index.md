@@ -193,7 +193,7 @@ Align and pad table columns for readability.
 }
 ```
 
-```ptls --no-eval --class yes
+```ptls --no-eval --class no
 #{
   city, state, population
   "New York", "NY", 8478072
@@ -272,7 +272,7 @@ not guess in words
 
 ## Use the Fallback Operator
 
-Use the fallback operator `??` to avoid `.. !in ..` or `.. == none` conditions.
+Use the fallback operator `??` to avoid `.. !in ..` or `.. == none` conditions for getting fallback values.
 
 ```ptls --no-eval --class yes
 size = beverage.size ?? "small"
@@ -891,9 +891,6 @@ end
 
 PI = 3.141592654
 ```
-
-_(Yes, the standard library module variables [are capitalized](/articles); do as
-I say, not as I do)_
 
 ## Use Leading Zero for Decimals
 

@@ -360,21 +360,27 @@ kbd {
 .snippet.yes::after,
 .snippet.no::after {
   align-content: center;
-  color: #aaa;
   font-size: 0.9rem;
   white-space: pre;
 }
 
 .snippet.yes::after {
   content: "yes";
+  color: #f3941a;
 }
 
 .snippet.no::after {
   content: "no ";
+  color: #f37f7f;
 }
 
 .snippet.no {
-  margin-top: -16px;
+  margin-top: -20px;
+}
+
+.snippet.no pre {
+  background-color: #feeded;
+  border-color: #ffd8d8;
 }
 
 .snippet.yes,
