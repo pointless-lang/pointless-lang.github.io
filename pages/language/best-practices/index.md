@@ -67,6 +67,8 @@ evilTwin = Obj.set(player, "malice", 100)
 player = Obj.set(player, "enemies", player.enemies + 1)
 ```
 
+*Note that the structural update semantics of Pointless mean that these two ways of updating variables are equivalent.*
+
 ## Use Objects for Records
 
 Use objects to represent [records](/language/Objects#records) (structures with a
@@ -95,7 +97,7 @@ player.health += 1
 player += { health: player.health + 1 }
 ```
 
-## Use Identifier Keys
+## Use Identifier Keys in Records
 
 Use valid identifiers as record keys and table columns.
 
@@ -121,7 +123,7 @@ Use valid identifiers as record keys and table columns.
 
 ## Omit Quotes from Keys
 
-Omit quotes for string in record objects.
+Omit quotes for keys in record objects.
 
 ```ptls --no-eval --class yes
 { city: "Chicago", state: "IL", population: 2721308 }
