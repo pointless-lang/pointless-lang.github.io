@@ -98,19 +98,22 @@ const loader = {
 };
 
 const runtime = new ptls.Runtime({ ...ptls.impl, Console }, loader);
+let abortController = new AbortController();
 
 run.onclick = async () => {
   try {
-    runtime.halted = true;
+    abortController.abort()
     await new Promise((resolve) => setTimeout(resolve, 50));
     Console.clear();
 
     const path = sourceUrl() ?? "editor";
     const tokens = ptls.tokenize(path, jar.toString());
     const statements = ptls.parse(tokens);
-    runtime.halted = false;
 
-    await runtime.spawnEnv().eval(statements);
+    abortController = new AbortController();
+    runtime.addSignal(abortController.signal);
+
+    const result = await runtime.spawnEnv().eval(statements);
   } catch (err) {
     output.innerText += String(err);
     throw err;
@@ -118,5 +121,5 @@ run.onclick = async () => {
 };
 
 stop.onclick = () => {
-  runtime.halted = true;
+  abortController.abort();
 };
