@@ -52,6 +52,7 @@ Mathematical operations use the following operators.
 20 - 4 -- Subtraction
 6 * 7 -- Multiplication
 3 / 12 -- Division
+12 // 5 -- Floor division
 2 ** 4 -- Exponentiation
 10 % 7 -- Modulus
 ```
@@ -109,10 +110,7 @@ numerical operations in Pointless involving non-integer values
 Watch out for this behavior when comparing non-integer values.
 
 ```ptls
-n = (Math.sqrt(5) * 2) ** 2
-n
-
-n == 20
+0.1 + 0.2
 ```
 
 ## Strictness
