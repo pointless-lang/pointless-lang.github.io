@@ -46,7 +46,7 @@ Wikipedia doesn't give us a way to export table data, but I found a good
 Wikipedia article. I used this tool to extract and save the data in the file
 [pa-cities.csv](pa-cities.csv).
 
-```ptls --mode raw --hide --max-height 400
+```ptls --raw --hide
 import "text:pa-cities.csv"
 ```
 
@@ -55,14 +55,14 @@ import "text:pa-cities.csv"
 We can use the `csv:` import scheme to import the population data as a Pointless
 table.
 
-```ptls --max-height 400
+```ptls
 cities = import "csv:pa-cities.csv"
 ```
 
 This table contains `2570` rows and has two columns: `name` and `population`. We
 can access the values in the population column as a list.
 
-```ptls --max-height 200
+```ptls
 cities.population
 ```
 
@@ -105,7 +105,7 @@ We'll tweak this code to use the mapping pipeline operator `$` to get the first
 digit for every population value in the list, rather than just the first
 population.
 
-```ptls --max-height 200
+```ptls
 cities.population $ chars(Str.of(arg))[0]
 ```
 

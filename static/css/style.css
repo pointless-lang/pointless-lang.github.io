@@ -394,6 +394,10 @@ kbd {
   margin-block: 0;
 }
 
+.result {
+  max-height: 25vh;
+}
+
 .snippet .result {
   margin-top: 8px;
 }
