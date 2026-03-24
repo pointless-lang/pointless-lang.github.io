@@ -102,7 +102,7 @@ let abortController = new AbortController();
 
 run.onclick = async () => {
   try {
-    abortController.abort()
+    abortController.abort();
     await new Promise((resolve) => setTimeout(resolve, 50));
     Console.clear();
 

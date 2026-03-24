@@ -67,7 +67,8 @@ evilTwin = Obj.set(player, "malice", 100)
 player = Obj.set(player, "enemies", player.enemies + 1)
 ```
 
-*Note that the structural update semantics of Pointless mean that these two ways of updating variables are equivalent.*
+_Note that the structural update semantics of Pointless mean that these two ways
+of updating variables are equivalent._
 
 ## Use Objects for Records
 
@@ -274,7 +275,8 @@ not guess in words
 
 ## Use the Fallback Operator
 
-Use the fallback operator `??` to avoid `.. !in ..` or `.. == none` conditions for getting fallback values.
+Use the fallback operator `??` to avoid `.. !in ..` or `.. == none` conditions
+for getting fallback values.
 
 ```ptls --no-eval --class yes
 size = beverage.size ?? "small"
