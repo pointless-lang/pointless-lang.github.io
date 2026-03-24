@@ -113,7 +113,7 @@ run.onclick = async () => {
     abortController = new AbortController();
     runtime.addSignal(abortController.signal);
 
-    const result = await runtime.spawnEnv().eval(statements);
+    await runtime.spawnEnv().eval(statements);
   } catch (err) {
     output.innerText += String(err);
     throw err;
