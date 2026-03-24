@@ -96,10 +96,8 @@ Equality in Pointless obeys the following rules:
   end
 
   inc == inc
-
-  inc == fn(n) n * 3 end
-
-  fn(n) n * 3 end == fn(n) n * 3 end -- May or may not be equal
+  
+  (fn(n) n * 3) == (fn(n) n * 3) -- May or may not be equal
   ```
 
 - A ref is only ever equal to itself. Two different refs are not equal, even if
