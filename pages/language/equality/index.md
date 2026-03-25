@@ -96,7 +96,7 @@ Equality in Pointless obeys the following rules:
   end
 
   inc == inc
-  
+
   (fn(n) n * 3) == (fn(n) n * 3) -- May or may not be equal
   ```
 

@@ -55,7 +55,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 17px;
   scroll-padding-top: 20px;
   scrollbar-gutter: stable;
 }
@@ -465,6 +465,11 @@ kbd {
 
 #sequencer .next {
   text-align: right;
+}
+
+img {
+  border-radius: var(--radius);
+  max-width: 100%;
 }
 
 @media (width < 800px) {
