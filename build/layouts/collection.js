@@ -1,4 +1,4 @@
-import { h } from "pointless/render/escape.js";
+import { h } from "../render/escape.js";
 
 export function build(node) {
   const main = node.children.map(

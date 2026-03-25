@@ -19,9 +19,11 @@
   },
   "dependencies": {
     "codejar": "^4.3.0",
+    "command-line-args": "^6.0.2",
     "esbuild": "^0.25.11",
     "gray-matter": "^4.0.3",
-    "marked": ">=15",
+    "marked": "^15",
+    "marked-highlight": "^2.2.3",
     "pointless": "github:pointless-lang/pointless",
     "prettier": "^3.6.2",
     "serve": "^14.2.4",

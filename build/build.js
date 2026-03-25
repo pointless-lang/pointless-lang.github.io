@@ -1,5 +1,5 @@
-import { renderMarkdown } from "pointless/render/render-markdown.js";
-import { h, serialize } from "pointless/render/escape.js";
+import { renderMarkdown } from "./render/render-markdown.js";
+import { h, serialize } from "./render/escape.js";
 import { cp, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import matter from "gray-matter";
 import { format } from "prettier";

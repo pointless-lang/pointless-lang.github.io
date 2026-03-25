@@ -1,5 +1,5 @@
-import { renderMarkdown } from "pointless/render/render-markdown.js";
-import { h } from "pointless/render/escape.js";
+import { renderMarkdown } from "../render/render-markdown.js";
+import { h } from "../render/escape.js";
 import { getType } from "pointless/lang/values.js";
 import { Std } from "pointless/lang/std.js";
 import { impl } from "pointless/runtime/impl.js";

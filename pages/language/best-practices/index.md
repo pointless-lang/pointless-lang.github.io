@@ -423,7 +423,7 @@ end
 ```
 
 _These two strings produce the same output. For details see
-[multi-line strings](/docs/language/strings#multi-line-strings)._
+[multi-line strings](/language/strings#multi-line-strings)._
 
 ## Avoid Redundant Booleans
 

@@ -3,7 +3,7 @@ export { CodeJar } from "codejar";
 import { tokenize } from "./node_modules/pointless/lang/tokenizer.js";
 import { parse } from "./node_modules/pointless/lang/parser.js";
 import { Panic } from "./node_modules/pointless/lang/panic.js";
-import { highlight } from "./node_modules/pointless/render/highlight.js";
+import { highlight } from "./build/render/highlight.js";
 import { repr } from "./node_modules/pointless/lang/repr.js";
 import { Runtime } from "./node_modules/pointless/runtime/runtime.js";
 
