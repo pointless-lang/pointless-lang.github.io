@@ -6,9 +6,6 @@ subtitle: The none value and its uses
 Pointless includes a value `none` which is used to represent values that aren't
 defined or which can't be calculated.
 
-See the standard library [None module](/stdlib/None) for built-in functions for
-working with `none` values.
-
 ## Syntax
 
 In Pointless, the `none` value is accessible through the `none` keyword.

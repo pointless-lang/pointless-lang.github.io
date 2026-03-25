@@ -4,7 +4,7 @@ subtitle:
 ---
 
 For information on built-in functions for working with objects, see the standard
-library [Object module](/stdlib/Object).
+library [Object module](/stdlib/Obj).
 
 - objets
 - punning
