@@ -13,27 +13,27 @@ const globals = new Set([
   "Fs",
   "List",
   "Math",
-  "None",
   "Obj",
   "Overloads",
+  "Panic",
   "Rand",
   "Re",
   "Ref",
   "Set",
   "Str",
+  "Sys",
   "Table",
   "Test",
   "assert",
   "chars",
-  "clear",
   "drop",
   "dropLast",
-  "has",
   "isEmpty",
   "join",
   "len",
   "max",
   "min",
+  "parse",
   "print",
   "prompt",
   "push",
@@ -95,8 +95,8 @@ const classNames = {
   and: "operator",
   or: "operator",
   not: "operator",
+  "not in": "operator",
   in: "operator",
-  "!in": "operator",
   "??=": "operator",
   "??": "operator",
   ">=": "operator",
@@ -119,7 +119,8 @@ const classNames = {
   "*": "operator",
   "%=": "operator",
   "%": "operator",
-  "!=": "operator",
+  "#=": "operator",
+  "#": "operator",
 };
 
 class Highlighter {
@@ -257,7 +258,7 @@ class Highlighter {
       return;
     }
 
-    if (this.has("|=", "|", "?=", "?", "$=", "$")) {
+    if (this.has("|=", "|", "?=", "?", "$=", "$", "#=", "#")) {
       this.addNext("operator");
 
       if (this.has("name")) {
