@@ -99,6 +99,6 @@ like:
 
 - I will use AI to lint my code and proofread my writing.
 
-- I will continue to ask AI what to name standard library functions. After all,
-  it is the [hardest problem](https://martinfowler.com/bliki/TwoHardThings.html)
-  in computer science.
+- I will continue to ask AI what to name standard library functions. It is the
+  [hardest problem](https://martinfowler.com/bliki/TwoHardThings.html) in
+  computer science, after all.

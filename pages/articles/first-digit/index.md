@@ -1,6 +1,5 @@
 ---
 title: First-Digit Law Tutorial
-parent: Articles
 ---
 
 ## Introduction
