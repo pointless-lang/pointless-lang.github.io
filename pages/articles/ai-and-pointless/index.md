@@ -1,6 +1,6 @@
 ---
-title: The Role of AI in Pointless Development
-parent: Articles
+title: AI and Pointless
+subtitle: The role of AI in Pointless development
 ---
 
 As I write this in **March 2026**, AI has played a very limited role in the
@@ -100,6 +100,6 @@ like:
 
 - I will use AI to lint my code and proofread my writing.
 
-- I will continue to ask AI what to name standard library functions. After all,
-  it is the [hardest problem](https://martinfowler.com/bliki/TwoHardThings.html)
-  in computer science.
+- I will continue to ask AI what to name standard library functions. It is the
+  [hardest problem](https://martinfowler.com/bliki/TwoHardThings.html) in
+  computer science, after all.
