@@ -119,10 +119,24 @@ nav li {
 #title p {
   font-size: 0.95rem;
   margin: 5px 2px 0;
+  color: #444;
 }
 
 #parent {
-  color: inherit;
+  display: block;
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: #777;
+  margin-bottom: 4px;
+  text-decoration: none;
+}
+
+#parent::before {
+  content: "← ";
+}
+
+#parent:hover {
+  text-decoration: underline;
 }
 
 h1 {
@@ -138,8 +152,20 @@ h3 {
   color: #444;
 }
 
-h1 a[href^="#"], h1 a[href^="."], h2 a[href^="#"], h3 a[href^="#"] {
+h2 a[href^="#"], h3 a[href^="#"] {
   color: inherit;
+}
+
+h2 a[href^="#"]::after, h3 a[href^="#"]::after {
+  content: " #";
+  opacity: 0;
+  font-weight: normal;
+  font-size: 0.9em;
+  transition: opacity 100ms linear;
+}
+
+h2:hover a[href^="#"]::after, h3:hover a[href^="#"]::after {
+  opacity: 0.5;
 }
 
 h2 {
@@ -289,6 +315,10 @@ a {
   color: var(--link);
 }
 
+main a:hover:not(h2 a, h3 a) {
+  text-decoration: underline;
+}
+
 /* https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/kbd */
 
 kbd {
@@ -307,7 +337,7 @@ pre {
   background-color: #f1f1f1;
   border: var(--border);
   margin-block: var(--margin);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   line-height: 1.25;
 }
 
@@ -317,9 +347,9 @@ pre:has(code.ptls) {
 }
 
 code {
-  background-color: #ffeed9;
+  background-color: #eee;
   padding: 1px 4px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 pre code {
@@ -360,7 +390,7 @@ kbd {
 .snippet.yes::after,
 .snippet.no::after {
   align-content: center;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   white-space: pre;
 }
 
