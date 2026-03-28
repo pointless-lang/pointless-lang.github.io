@@ -1,6 +1,6 @@
 ---
 title: The Role of AI in Pointless Development
-parent: Articles
+subtitle: The ways I use it, and the ways I don't
 ---
 
 As I write this in **March 2026**, AI has played a very limited role in the
@@ -60,9 +60,8 @@ like:
 - I won't use AI to generate any person-to-person communications (emails,
   comments, etc).
 
-- I won't use AI-generated images anywhere in this project (or anywhere else,
-  for that matter). I may use AI to generate SVG diagrams if it ever becomes
-  good at that.
+- I won't use AI-generated images anywhere in this project. I may use AI to
+  generate SVG diagrams if it ever becomes good at that.
 
 - I won't use AI to generate any
   [articles or tutorials](https://pointless.dev/articles/) on the language
@@ -88,7 +87,7 @@ like:
   decisions.
 
 - I will use AI to help tighten up the written descriptions for
-  [standard library](https://pointless.dev/stdlib/) functions. I may use also AI
+  [standard library](https://pointless.dev/stdlib/) functions. I may also use AI
   (along with careful human review and editing) to help generate new
   documentation for standard library functions. I've found that AI is very good
   at writing clear and concise specifications.
