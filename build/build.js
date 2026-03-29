@@ -74,7 +74,7 @@ async function buildIndex(node) {
 
   const header = h`${node.title}`;
   const eyebrow = node.depth >= 2
-    ? h`<a href=".." id="parent">${node.parent.title}</a>`
+    ? h`<div id="parent"><a href="..">${node.parent.title}</a></div>`
     : null;
 
   let sequencer;

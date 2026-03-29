@@ -26,7 +26,7 @@ built. I think that generative AI could be helpful in this next phase of work.
 
 As of March 2026, essentially all of the code in this project has been designed
 and written by hand, with the exception being very small code snippets (things
-like _"write a function to escape an HTML string in JS"_). Currently, there are
+like _"write a function to escape an HTML string in JS"_). Until now, there have been
 fewer than 100 lines of AI-generated code in this project across the core
 language code, standard library implementation, documentation, tooling, and
 website. Any AI-generated code that is currently present was not added using
@@ -34,7 +34,7 @@ agentic AI, but was instead manually reviewed and incorporated into the project.
 
 I myself started using AI regularly about a year ago, slowly incorporating it
 into my work. Over the past six months, when working on this project, I've used
-generative AI to help me improve as a software developer, understand APIs and
+generative AI to help me understand APIs and
 specifications of existing software, and get feedback on design decisions.
 Examples of questions I've asked AI include:
 
@@ -96,7 +96,7 @@ like:
 - The question of [language documentation](https://pointless.dev/language/) is a
   little tricky, since it sits somewhere between a specification and a tutorial.
   I won't use AI to generate language documentation from scratch, but I may use
-  it to clean up or round out draft content that I've written.
+  it to revise draft content that I've written.
 
 - I will use AI to lint my code and proofread my writing.
 

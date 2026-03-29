@@ -126,16 +126,19 @@ nav li {
   display: block;
   font-size: 0.8rem;
   font-weight: normal;
-  color: #777;
   margin-bottom: 4px;
-  text-decoration: none;
 }
 
 #parent::before {
   content: "← ";
 }
 
-#parent:hover {
+#parent a {
+  color: #777;
+  text-decoration: none;
+}
+
+#parent a:hover {
   text-decoration: underline;
 }
 
@@ -501,6 +504,11 @@ kbd {
 img {
   border-radius: var(--radius);
   max-width: 100%;
+  display: block;
+}
+
+main > img {
+  margin-inline: auto;
 }
 
 @media (width < 800px) {
