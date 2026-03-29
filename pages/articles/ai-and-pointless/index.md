@@ -3,12 +3,12 @@ title: The Role of AI in Pointless Development
 subtitle: The ways I use it, and the ways I don't
 ---
 
+<img src="code-review.jpg" />
+
 As I write this in **March 2026**, AI has played a very limited role in the
 design and development of the Pointless language, its documentation, and its
 website. In this document I'll describe the ways in which this may change, and
 the ways in which it will not.
-
-<img src="code-review.jpg" />
 
 I've been working on this project for around 8 years now; making engineering
 mistakes, applying my knowledge of algorithms to a variety of tricky problems,
@@ -42,7 +42,7 @@ Examples of questions I've asked AI include:
 - What are valid characters in an ISO 8601 string?
 - Why does `{}[print("a")] = print("b")` print `"b"` before `"a"` in Python?
 - Are there any languages that include a `break` keyword for loops but not a
-  `continue` keyword? _(Lua)_
+  `continue` keyword? <small>_(Lua)_</small>
 - Which of these standard library functions (...) should be globals?
 - I'm writing a standard library function that does (...), what should I name
   it?
@@ -53,7 +53,8 @@ like:
 > I'm thinking of allowing the `arg` keyword before a field name to be omitted
 > and inserted implicitly by the parser, which would let me write code like this
 > `cities $ .population > 100000` as a shorthand for
-> `cities $ arg.population > 100000`. Is this a good idea?
+> `cities $ arg.population > 100000`. Is this a good idea? <small>_(It was
+> not)_</small>
 
 ## How I plan to use AI going forward
 

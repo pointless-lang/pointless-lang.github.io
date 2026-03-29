@@ -258,6 +258,7 @@ p {
 ul,
 ol {
   margin-block: var(--margin);
+  padding-left: 24px;
 }
 
 li + li {
