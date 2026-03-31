@@ -26,17 +26,17 @@ built. I think that generative AI could be helpful in this next phase of work.
 
 As of March 2026, essentially all of the code in this project has been designed
 and written by hand, with the exception being very small code snippets (things
-like _"write a function to escape an HTML string in JS"_). Until now, there have been
-fewer than 100 lines of AI-generated code in this project across the core
+like _"write a function to escape an HTML string in JS"_). Until now, there have
+been fewer than 100 lines of AI-generated code in this project across the core
 language code, standard library implementation, documentation, tooling, and
 website. Any AI-generated code that is currently present was not added using
 agentic AI, but was instead manually reviewed and incorporated into the project.
 
 I myself started using AI regularly about a year ago, slowly incorporating it
 into my work. Over the past six months, when working on this project, I've used
-generative AI to help me understand APIs and
-specifications of existing software, and get feedback on design decisions.
-Examples of questions I've asked AI include:
+generative AI to help me understand APIs and specifications of existing
+software, and get feedback on design decisions. Examples of questions I've asked
+AI include:
 
 - What is the difference between `AbortController` and `AbortSignal`?
 - What are valid characters in an ISO 8601 string?
@@ -70,8 +70,11 @@ like:
   list of topics I want to cover I might ask AI for suggestions on the best
   order in which to cover them.
 
-- I won't use AI to write any of the core language code (the code in
-  [pointless/lang](https://github.com/pointless-lang/pointless/tree/main/lang)).
+- I won't use AI to write any of the core language or standard library code
+  (the code in
+  [pointless/lang](https://github.com/pointless-lang/pointless/tree/main/lang)
+  and
+  [pointless/stdlib](https://github.com/pointless-lang/pointless/tree/main/stdlib))).
   I know this code like the back of my hand and I want it to stay this way. If I
   ever decide to overhaul the language implementation (have it compile to WASM,
   say) then I might revisit this decision.

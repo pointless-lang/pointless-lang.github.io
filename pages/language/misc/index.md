@@ -35,6 +35,7 @@ values, including:
   which contains no code, or whose [final statement](misc#final-statement-value)
   is not an expression.
 
+<!--
 - Evaluating an `if` or `match` expression with no matching branch and no `else`
   branch.
 
@@ -49,6 +50,7 @@ values, including:
     case 0 then "even"
   end
   ```
+ -->
 
 - Calling a function, evaluating a conditional branch, or importing a script
   which contains no code.

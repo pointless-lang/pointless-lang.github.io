@@ -146,6 +146,7 @@ parity = match n % 2
 end
 ```
 
+<!--
 ## Match without Else
 
 `match` expressions don't need to have `else` branches. If none of the `case`
@@ -161,6 +162,7 @@ parity = match n % 2
   case 1 then "odd"
 end
 ```
+ -->
 
 ## Multi-Option Cases
 
