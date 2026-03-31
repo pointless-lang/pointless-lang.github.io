@@ -1,6 +1,6 @@
-import { highlight } from "./highlight.js";
 import { h } from "./escape.js";
 import { impl, shimConsole } from "./doc-impl.js";
+import { Highlighter } from "pointless/utils/highlight.js";
 import { loader } from "pointless/runtime/loader.js";
 import { Runtime } from "pointless/runtime/runtime.js";
 import { tokenize } from "pointless/lang/tokenizer.js";
@@ -53,7 +53,7 @@ async function renderCode(code, config, filePath, env) {
   }
 
   const source = !config["hide"] &&
-    h`<pre><code class="ptls">$${highlight(tokens)}</code></pre>`;
+    h`<pre><code class="ptls">$${new Highlighter(tokens).html()}</code></pre>`;
 
   shimConsole.inputs = config.input ?? [];
 

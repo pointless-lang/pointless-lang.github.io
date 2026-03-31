@@ -7,7 +7,7 @@ const output = document.querySelector("#output");
 
 function highlight() {
   const tokens = ptls.tokenize("editor", jar.toString());
-  editor.innerHTML = ptls.highlight(tokens);
+  editor.innerHTML = new ptls.Highlight(tokens).html();
 }
 
 editor.addEventListener("keydown", (event) => {

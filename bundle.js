@@ -27,4 +27,12 @@ const impl = {
   Test: await import("./node_modules/pointless/std/Test.js"),
 };
 
-export const ptls = { tokenize, parse, Panic, highlight, repr, Runtime, impl };
+export const ptls = {
+  tokenize,
+  parse,
+  Panic,
+  Highlighter,
+  repr,
+  Runtime,
+  impl,
+};
