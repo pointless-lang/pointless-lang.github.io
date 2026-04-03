@@ -72,8 +72,7 @@ async function buildIndex(node) {
     $${generated}
   `;
 
-  const header = h`${node.title}`;
-  const eyebrow = node.depth >= 2
+  const parent = node.depth >= 2
     ? h`<div id="parent"><a href="..">${node.parent.title}</a></div>`
     : null;
 
@@ -104,9 +103,8 @@ async function buildIndex(node) {
 
   const values = {
     title: node.title,
-    header,
-    eyebrow,
     subtitle: node.subtitle,
+    parent,
     main,
     sequencer,
   };

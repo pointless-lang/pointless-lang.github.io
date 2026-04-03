@@ -1,6 +1,6 @@
 ---
-title: The Role of AI in Pointless Development
-subtitle: The ways I use it, and the ways I don't
+title: AI and Pointless
+subtitle: The Role of AI in Pointless Development
 ---
 
 <img src="code-review.jpg" />
@@ -70,8 +70,8 @@ like:
   list of topics I want to cover I might ask AI for suggestions on the best
   order in which to cover them.
 
-- I won't use AI to write any of the core language or standard library code
-  (the code in
+- I won't use AI to write any of the core language or standard library code (the
+  code in
   [pointless/lang](https://github.com/pointless-lang/pointless/tree/main/lang)
   and
   [pointless/stdlib](https://github.com/pointless-lang/pointless/tree/main/stdlib))).
