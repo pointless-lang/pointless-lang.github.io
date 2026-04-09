@@ -89,7 +89,7 @@ async function renderCode(code, config, filePath, env) {
           case "tandemFor":
           case "anonFor":
           case "while":
-            break;
+            continue;
 
           case "def":
             if (echo && statement.value.rhs.type !== "fn") {
@@ -103,12 +103,16 @@ async function renderCode(code, config, filePath, env) {
               `;
             }
 
-            break;
+            continue;
 
-          default:
-            if (echo && !isConsole(statement)) {
-              results.push((repr(result, mode, raw)) + "\n");
+          case "if":
+            if (!statement.value.fallback) {
+              continue;
             }
+        }
+
+        if (echo && !isConsole(statement)) {
+          results.push((repr(result, mode, raw)) + "\n");
         }
       } catch (err) {
         logErr(err, config);
